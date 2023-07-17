@@ -1,0 +1,36 @@
+ulcerative dermatitis mouse us meps with 500khz transducer, and ketamine/xylazine cocktail. 
+- with first test of antisedan antidote usage. 
+
+========== 
+- 24g weight
+
+- observation of physical motor evoked potential, with antidote recovery. 
+
+TODO: trim off the wires without disrupting them too much(to avoid CSF leakage).
+This mouse is now an US MEP mouse. 
+
+1. Every couple of minutes, i run a burst from the function generator to check for a response. 
+
+So far I have no toe pinch response and no whisker movement. 
+
+At the 2 hr mark, I could get some ultrasound neuromodulation responses at 2MPa i.e. 0.2v output, with burst length 10000 repeats of 500khz sine wave. 
+
+2. 2 hrs 36 mionutes to recover consciousness.
+Antisedan administered.
+
+Heart rate or breathing rate seems high when antisedan is administered.  
+
+Ideas: 
+- I should try with a different waveform - similar to the ones listed in papers. 
+- try with continuous waveform. 
+- consider a more systematic way to move it around. 
+
+Note: the skull seems white i.e. drying out. This may change its mechanical properties. 
+In future, always put a bandaid. I think the water tight ones are fine. 
+
+- It may be better to do this experiment in the morning, as the recovery takes a long time. 
+
+- 
+
+
+

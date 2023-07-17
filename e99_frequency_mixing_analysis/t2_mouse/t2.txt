@@ -1,0 +1,123 @@
+t1 - Mouse. Do I see mixing frequencies due to US. 
+====================================================
+
+- I could move the stereotax arm over one notch so the big US doesn't hit it. 
+  Or alternatively move the mouse holder area? that would really be easier. 
+  
+- It is going to be key to ensure that the wires do not short with each other... 
+
+Isoflurane. 
+
+- ae_calibrate_with_ae_PRF1k
+- first find the focus with 8k. 
+
+Use the set up with monopolar claibration, and my EEG mouse do find the focus. 
+
+10:09am
+- Impedance measurement. 
+  6k at 2kHz
+  5kohm at 8kHz. 
+  1.7k at 500kHz. 
+Seems acceptable.
+Add tape to the back of head, so I don't short the wires together. 
+
+Putting the US gel on, I go down to 2.8k impedance at 8kHz. 
+
+Now calibrate with 8kHz, 2V signal. 
+Notably, the AE magnitude is much much smaller with this PT wire pt electrode.
+
+I get to 14 microvolts in amplitude, and say good enough with v out = 2v. 
+
+Now I have approximately found the focus, I change Daq range to 0.2V and recompile. 
+
+
+I try ae_calibrate_with_PRF 1k.. it appears lost in the noise, similar to my last saline measurement. 
+answer, i am outputting the wrong thing through the rf amplifier, so I was also applying nothing in saline.
+
+- try moving duration to 8 seconds. amplitude to 0.11v. 
+
+Now try changing the pressure. 
+PRF 1kHz. 
+
+I can use the below files to get the RF amplifier data out from ch
+
+file  pressure vout   df=1k  sf=1mhz+1  carrier   (all in microvolts)
+4.    0.15              2         12      661
+1     0.11              3.67      5   	  505		(both df and sf are biforcated)
+5     0.11              2         4       426
+2     0.1               3.9       3.5     460
+6     0.1               3         4       413 
+3     0.05              1.0       1.0     222   (noise floor)
+
+DC and 1MHZ. 
+file  pressure vout   df=DC  sf=1MHz carrier   (all in microvolts)
+13.    0.15            35     39      1020
+14.    0.15            24     38      1057
+9.     0.11            45     9       853 
+10.    0.11            19     9       824
+7.     0.1             23     7.5     793
+8.     0.1             46     6       774
+11.    0.05            40     1.75    423
+12.    0.05            17     1.6     429 
+15.    0.01            18     0.9     89      (noise floor on sf)
+16     0.01            48     0.67    83 
+
+Spatial location testing with the sf for 1MHz script, as this appears the largest and easiest to see. 
+
+Some jerking motion occurred when i moved it. 
+the DC measure is contaminated with noise, but the sf might be ok. 
+
+file 17 
+
+I am not confident the spatial test is a good one, as there is no current source exactly to map. 
+
+Finally, lets to with and without acoustic connection. 
+
+With acoustic connection. 
+DC and 1Mhz
+file    pout   df    sf   carrier   (microvolts) 
+18.     0.1    25    8.9   939
+19.     0.1    24    8.4   1086
+20.     0.1    55    7.53  1005
+21.     0.1    47    8.55  1044 
+
+PRF1kHz
+With acoustic connection. 
+file    pout   df    sf   carrier   (microvolts) 
+22.     0.1     3    3.9   516
+23.     0.1     2.9  4.48  492
+24.     0.1     2.5  4.2   505
+25.     0.1     2.3     4.0   500
+ 
+all run for 8s duration. 
+Without acoustic connection.   LOOK AT THE DC OFFSET HAS GONE DOWN A LOT COMPARED WITH ACOUSTICALLY CONNECTED? 
+
+PRF1kHz
+file    pout   df    sf   carrier   (microvolts) 
+26.     0.1    2.59   2.66  110
+27.     0.1    2.8    1.65  127   (still above noise floor)
+28.     0.1     4.3   1.42  125
+29.     0.1     4.0   1.69  130    i CANT BE CLEAR THAT THE DF ISNT A HARMONIC OF MAINS? CHECK. 
+ 
+I seem to be getting some sort of frequency offset too? 
+
+Without acoustic connection. 
+DC and 1Mhz
+file    pout   df    sf   carrier   (microvolts) 
+30.     0.1    29   2.3   238
+31.     0.1    18   3     222
+32.     0.1    26   3.3   259
+33.     0.1    23   3.05  225
+
+So some proportion is EM noise(likely due to my silver wires being antennae). Some proportion is not EM noise. 
+
+END. 2hrs 32 minutes, note its left eye(VEP eye) seems to have no lubricant on it. It may be blind... unknown. 
+
+TODO: 
+Check whether the DC offset is larger when I run PRF code vs 1MHz code? It looks like it may be. 
+ALSO CHECK THE dc OFFSET BETWEEN ACOUSTICALLY CONNECTED AND NOT. 
+
+
+
+
+

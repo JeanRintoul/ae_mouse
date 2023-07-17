@@ -1,0 +1,64 @@
+VEP test with ket/xyl and MEP test on new mouse. 
+======
+
+- new mouse. cag number: 112289 
+this mouse has mep coords AP 0.0, ML 2.0mm.
+
+3.2 ket
+1.5xyl
+6.8 antisedan
+reup dose: 1 tick ket
+
+This mouse fits into neurotar well. Looks good so far. 
+Using MEP screw as VEP reference. 
+
+ae_demod_vep.py 
+can I see a VEP? Decide here whether to try demodulation or not. 
+
+ae_calibrate_with_ae.py 
+ - I will have to calibrate the MEP position. This will take time. 
+
+ae_test.py - can I see a MEP? 
+
+- i could do VEPs and just e stim to see if I have the right spot? 
+
+= = 
+
+13:30 start. gain 500 throughout. 
+
+1. 500 gain. I can see it - it is very small. 1 microvolt. 
+
+2. I can see it, very small. I can also see the k oscillations
+
+3-10. Neural signal with 7 hz. 
+
+Attach MEP electrodes. Try a low amplitude MEP on right forepaw with just e stim. 
+
+Reverse the MEP electrodes and locate the demod location. calibrate with a low voltage. 
+
+repeat VEP experiment, this time with US. 
+
+leave air gap, get a set of 10. 
+
+11. MEP electroddes read to stim forepaw. 
+   running ae_calibrate with ae.py 
+   v out = 3v out I can see paw movement. 
+
+12. 2v out. I see nothing. 
+
+13. Swap the electrodes around ready for ae calibration for VEPs. 
+
+I see a big movement. mouse is waking. no time to calibrate. 
+administer antisedan. 
+1hr 8 minutes. Into warming chamber. 
+
+The VEP wire came off. Next time I will have to replace it. But this mouse had both VEPs and paw movement. The headbar was well positioned. 
+
+= = 
+
+Is it possible some of my other mice have broken VEP wires? 
+
+I think the reason I haven't been able to do demod yet with the 500khz transducer, is due to positioning calibration. The smaller transducer was easier to calibrate, but didn't pass the noise test. 
+
+
+

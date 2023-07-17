@@ -1,0 +1,74 @@
+t7 - mouse rough calibration and time based change w.r.t time. 
+========================================================================  
+p = 0.1(1MPa), vout e = 1V, f = 8khz
+
+- keep an eye on the 02 as this is a long experiment and it is at 50. 
+
+
+ae_calibrate_with_ae_e97.py 
+
+- try position calibration with reference location at headbar? 
+- is it possible to put reference in mouth?
+- ensure mouse is adequately supported so stress doesn't fall on headbar. 
+- do 1 hour set of measurements at focal point. 
+- at the end, increase the voltage linearly at the focal point. 
+- then separately do a pressure ramp and record the ae amplitudes. 
+- recover the mouse. 
+
+
+- Question: Can I pair this with the LED? No not really, as I am injecting a signal on purpose. 
+
+- - - END - - - 
+
+- if there is time in the afternoon. Do the demodulation signal quality test with saline only. Test the LED faraday cage for efficacy. 
+
+
+= = 10:30am. 
+- it took ages to put a wire around the screw. 
+- i am trying a paw reference in this. 
+- i can't see any df. 
+
+- when I move the reference to the US gel on the head I can see DF. However, I am not sure if it is being created in the gel, or in the brain as I do not have a second electrode in the brain. 
+- hence this test set up is no good for testing ae amplitudes in the brain. 
+- at some point i got an amplitude of 100, then i couldnt see it anymore. 
+my 500khz appears biforcated. Altogether this is not an ideal setup.  
+
+- end. unsuccesful. I need a new mouse. 
+
+12:25 2 hrs end. 
+
+- i think because the wire was pulling, this dislodged the screw somewhat and I lost connection. However. It does seem true that the AE effect is larger in the mouse. 
+- i need strain relief system for the wire/screw/connection. 
+
+- I could use glue on the headbar and have a small amount of wire exposed at the back. Then cover the wires with the silicon stuff? on the head? 
+- the problem with this is that the point of strain would now be at the back of the headbar. 
+- anything that sticks up inhibits the US. 
+
+
+- the grabbers themselves need to be on some sort of support system. 
+
+- if i had mini grabbers that just rested there, i could the plug things into the mini grabbers.... 
+
+
+What if? 
+- what if I went back to PtIr instead of screws due to its stiffness? It could just poke out the back a little bit. It would have to be resting on something non-conductive though. 
+
+Demodulation noise test. 
+2. 1000 gain, using 7Hz frequency of LED (i.e. set to 14 in code). 
+4. No DC filter. 
+
+- -   
+research 1/f noise. 
+
+
+- do the demodulation noise test. I can't really see the demodulation LED artefact either way. 
+- I think pushing the alfoil back into the LED helped. 
+- turning on and off the heat mat didnt make a big difference. 
+
+- - 
+
+- go home and get the little bits of PtIr ready for tomorrow. 
+- review previous mouse amplitudes. Do I have any at 1V, 8kHz? 
+
+
+It looks like previously I got to 166 microvolts. So approx 4.7 times larger. 

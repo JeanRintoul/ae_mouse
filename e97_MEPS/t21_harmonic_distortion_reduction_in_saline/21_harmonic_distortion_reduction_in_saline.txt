@@ -1,0 +1,16 @@
+21 harmonic noise reduction in saline. 
+============
+
+- i did a rough calibration. 
+- turned on the preamp with gain = 200 and set the frequency transmitted to 
+ 499.996khz
+
+v out = 4v 
+current frequency = 499.996khz
+time duration = 4s
+
+- - - 
+- Do a with current, without current with pressure, without pressure set up. 
+
+
+

@@ -1,0 +1,67 @@
+20_mep mouse with d bonos new current source. 
+- mouse with one ptir wire at 0mm and 2.5mm screw. 
+==
+
+ket = 3
+k2=1
+antidote = 6 (1:10) 
+x = 1.5
+
+= = 
+
+13:20
+
+1. anesthetize mouse and get in position.
+2. hook up electrodes, using the thin silver wire as well. 
+3. i am getting zero response... 
+
+5k resistance between two cup electrodes... one in mouth, one on head. 
+
+- the mouse has zero response... 
+
+- 8k between the v1 and m1... 
+
+im getting this strange current distribution
+
+
+- i seem to be  not injecting a constant voltage... i do not know why. 
+
+- i am not sure why i cannot inject a voltage. 
+
+- wait - the tx does not output low freq voltages... 
+- now it works at 499.998...  z = 393, i = 16ma. vpp = 12. 
+
+--- - -- - - 
+- interestingly the mouse response at8khz, but not at 100khz. 
+
+480 ohm, 11ma, vpp=12v
+
+- to test my mep ability, i need to do direct current stim too. 
+
+5. we have a pretty big 2hz amplitude.. make pictures out of it. 0.11v acoustic. 12v out. gain = 200 , 6 seconds. 
+
+6. 4hz df. 8 seconds. df pp = 290 microvolts... 
+
+7. 1hz df. 8s. I seem to be getting ok amplitudes now, but i am not positioned correctly. 374 microvolts... this is pretty good. But I couldn't see a movement. 
+make picture out of this one. make picture out of this. 
+
+8. 277 microvolts. 
+
+9. 2hz df. 
+
+10. 2hz df, 426 microvolts... still cannot see anything. other electrode. 
+
+11. i saw movements of tail and whisker... hooked to both electrodes. 
+
+- - - 
+
+12. df 2hz. 12v - i saw movement but hard to parse. 
+
+13. 0v, but pressure. i see the same movements... 
+
+14. 12v, no pressure. nothing. 
+
+
+
+
+

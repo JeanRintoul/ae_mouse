@@ -1,0 +1,44 @@
+t4  - point and plate for higher current density. 
+====================================================
+
+
+black on point electrode 4v, 8khz 1MPa 3.66 mA. 780 ohms. 
+
+red on point electrode 213 microvlts
+
+I get a similar value either way the electrodes are positioned 
+
+Being closer together, the results do seem larger. 
+
+
+# Now with larger values with Pt and large surface area plate... 
+which are also closer together do the 
+
+(changed daq range to 0.2V)
+
+
+1. ae_calibrate with ae DC 8 second duration
+   33.5 microvolts. at sum and difference. 
+   31 microvolts. 
+   18 and 32 microcolts. 
+2-4.    16.8 and 33 microvolts. 
+
+5-9 ae_calibrate_with_ae_PRF1k.py (far more visible at sum and difference frequencies. )
+   (still the s and diff is biforcated)
+   Note: there is also a DC offset. 
+
+   How does the DC offset in ae PRF1k change with pressure? 
+   Note the carrier and DC offsets are offset due to biforcated carrier frequency? 
+
+These files all have reasonably large amplitude signals. So would be good to look at/filter etc. 
+
+file    pout   df    sf   carrier   DC offset  1Mhz (microvolts) 
+10.     0.1    4.2   13   1550        23.5      18.2
+11.     0.15   9     45   2046        21        62
+12.     0.05   3.6   1.8  797        17        2.6
+13.     0.0    4     0.76  0         31         1 
+(Note I think 13 is mains harmonics)
+
+TO ADD: Another proof point of mixing, is if the 1k is larger than the 2k spike? 
+
+

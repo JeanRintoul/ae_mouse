@@ -1,0 +1,119 @@
+t6 - meps 
+================================================
+
+27g female, with two electrodes in the motor cortex. Never been used before. 
+
+drugs:
+antidote:5.2
+X:1.3
+k1:2.6
+k2:1.0
+saline: 50
+
+Plan: 
+- reapply nail polish to mouse. 9 minutes in nail polish applied. 
+- calibrate position roughly. Do I get a larger amplitude sum frequency? 
+- run aedelta_demod.py with continuous wave. 
+- Can I do it with the noisy heat mat? I think this keeps the mouse warmer. 
+- If I have time, try demod at a few different pressures. 
+
+== start 10:40 am. 12/7/2023
+
+Note: this mouse has a little cement sticking out the side, that means it only fits into headbar at an angle. 
+
+Wait 5 minutes for nail polish to dry. 
+
+z = 4.8k at 8khz 
+rough calibration complete, using 1V, 8kHz. I am getting much higher values than yesterday than I was with 2v applied. This may be due to higher current density in this arrangement of electrodes? 
+
+Plug electrodes into preamp. gain = 1000. 
+
+2. aedelta_demod.py pressure voltage out = 0.08V, I see what looks like some DC offset in data. I see the heat mat noise.  turned off heat mat. 
+
+3. repeat of v out = 0.08
+
+4-5. v out = 0.1v 
+
+6-7. ae_calibrate_with_ae_PRF1k, 1020 
+
+HERE HERE START HERE! 
+- start analysis here. suddenly the sum f turned on. Weird! first mouse use, 42 mins into ket/xyl. 
+
+8-9. vout = 0.1 aedelta_demod suddenly a giant DC offset. ANALYZE these ones! Suddenly the sum f is huge! 
+
+10. p vout = 0.15 aedelta_demod note: i got an ovld. 
+
+11-12. p vout = 0.05 aedelta_demod
+
+13-14. p v out = 0.02 aedelta_demod 
+
+15-16 p out = 0.08v aedelta_demod  - it stopped doing the mixing thing? 
+
+One more PRF1k. 8seconds. Can I demod with the PRF? 
+17-18 aedelta demod. 
+v out = 0.1v
+
+19-20. continuous wave comparison of aedelta_demod, p v out = 0.1v. 
+   19 and 20 went outside the range due to giant DC offset. 
+
+21  p vout = 0.08
+22  p vout = 0.08 
+
+heat mat was off for all this time? it was cold and that induced f mixing?
+
+- - MEPS - - 
+
+- put electrodes onto left forepaw and tail. 
+- leave preamp hooked up to brain. 
+- change daq range to 0.2 recompile. 
+
+put rf amp input onto fg1. 
+
+23. aemeps_dual_acoustic_waveform, i can see a mixing frequency in the neurons, but it is possible that the mouse is too deep in the k-hole. 
+
+i set up the camera, and the LED as well. Each time I do this, the neural DF data looks awesome, having a good amplitude of the df freuquemcy. However, my mouse is not moving, not even twitching. 1hr 26 minutes in. 
+
+24. mb a little something, df = 2hz
+
+25. it was in the neural data, but only 50 microvolts. that isn
+t enough. 
+
+26. turn off the heat mat at 12:15. dfx = 2 
+100 microvolts neural amplitude at 12:20
+turn heat mat back on. 
+
+27. heat mat back on. 
+neural amplitude at 12:25 is 100 microvolts
+
+28 it worked! but i didnt viddy it. 
+
+29 vid 1. 12:46 i 2hz df. 
+
+30. vid 2 df = 1 great! notably my EMG electrode are not good. 
+
+31. vid 3 df = 3 great
+
+32. vid 4 df = 4 
+
+33. vid 5 df = 3 
+
+34. vid 6 df = 2 
+
+35. vid 6 df = 1 
+
+36 vid 7 df = DC 
+
+37 vid 8 df = DC 
+
+38 acoustic ramp. 
+
+39 acoustic ramp 2
+
+40. Vary the pressure. aemeps_dual_acoustic_waveform.py fuck I oover road 37
+   p out = 0
+
+mouse woke up started moving too much. 
+2hrs 30 mins to warming chamber. 
+
+
+

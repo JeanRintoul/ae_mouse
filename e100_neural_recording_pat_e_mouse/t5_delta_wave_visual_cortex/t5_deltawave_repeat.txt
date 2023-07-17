@@ -1,0 +1,104 @@
+t5 - delta wave neural decoding 
+================================================
+23.6g female mouse with Pat style head bar. Cage 115198 (surgery 27.6.23)
+- 23.6g inclusive of headbar. It has lost weight... It used to be 26g. 
+- I think last time, maybe it got cold? I was using the chemical heater only, and this is a very small adult female mouse. 
+
+drugs:
+antidote:4.2
+X:1.1
+k1:2.2
+k2:1.0
+saline: 50
+
+Plan: 
+- calibrate position roughly. Do I get a larger amplitude sum frequency? 
+- run aedelta_demod.py with continuous wave. 
+- Can I do it with the noisy heat mat? I think this keeps the mouse warmer. 
+- If I have time, try demod at a few different pressures. 
+
+= = =
+
+Experiment Plan: 
+- Can I see a delta wave after K-administration?
+- When running calibration position, obtain the impedance. 
+- what is the amplitude of the carrier frequency? Does it seem like it is being magnified by mouse? 
+- run ae_calibrate_with_ae_PRF1k.py  what is the amplitude at 1020Hz? is it above 100 microvolts?
+- try a few different pressures. Is there a pressure that works better? 
+
+-  
+start: 12:33 am 
+
+1. there appears to be a delta wave. Also heat mat noise but Im going to try ignoring it. 
+
+2. ae calibrate with ae. no US or gel. 8kohm impedance = 5.3kohm. 
+
+Set up US. 4kohm impoedance at 8khz
+3. 
+
+Switch to preamp. 
+4. ae_calibrate_with ae PRF1k. 
+
+gain = 500. P out = 0.1 (1MPa) running aedelta_demod.py
+5. aedelta_demod.py  notably, it railed toward the end where DC offset is big. I need to go down to 500 gain. 
+
+6. repeat 
+
+7. gain = 500. P out = 0.05v 400kPa. The signal looks less distorted as raw data. 
+
+8. gain = 500. P out = 0.05v 400kPa. I cannot see the demod signal at all. 
+
+9. gain = 500. P out = 0.02v 400kPa. 
+
+10. gain = 500. P out = 0.02v 400kPa. 
+
+11. gain = 500. P out = 0.0v 0kPa. clear delta waves + heat mat noise
+
+12. gain = 500. P out = 0.0v 0kPa. clear delta waves + heat mat noise
+
+Turn off heat mat, perhaps heat mat is getting in the way of demod? 
+   
+13. gain = 500. P out = 0.08v 0kPa. no heat mat. 
+
+14. gain = 500. P out = 0.08v 0kPa. no heat mat. 
+
+I am not getting it... try moving the transducer around. 
+heat mat on. 
+
+15. 0,0 test. 
+
+16. wait, the demod fft sorta matches. moved 0.39mm ml right. 
+
+17-20. move down dv by..? 0.5 , p =0.08, gain = 500. Analyze these ones. Did I miss something in my script? 
+
+21-22. PRF 1020 
+
+Move the US around some more. Go back to continuous wave. 
+23-24, position 0,0.3
+
+In none of my measures i am getting DC offset. why not? 
+XY
+25 (1.0) 
+
+26 (1,0.5)
+
+27. (1,1)
+
+28. (0,1)
+
+29. (0,0)
+
+30. (0,-1)
+
+31. down another 0.5 , mouse is starting to wake up 1hr 35 minutes in. 
+
+32. (0,0) why do I not see a DC offset in these recordings when US is applied? 
+ 
+go back to calibration. 
+
+33. calibrate with ae. I saw the tail go up. I can see NO AE effect here. 
+
+1hr 45 min finish, antidote and move mouse to warming chamber. END. 
+
+
+

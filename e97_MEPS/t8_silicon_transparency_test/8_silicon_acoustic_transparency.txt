@@ -1,0 +1,44 @@
+t8 - in saline phantom test whether the silicon I'm using in the mouse, is acoustically transparent. 
+========================================================================  
+p = 0.1(1MPa), vout e = 1V, f = 8khz
+
+ae_calibrate_with_ae_e97.py 
+
+
+All my values are lower than last time when I used the cup electrode. 
+
+When I plug in the start GND reference, suddenly my values are bigger. i.e. 25 microvolts. 
+
+When i add cup electrode - values shoot up again to 41. 
+cup electrode leads to higher current value for the same voltage... 
+
+change frequency to higher. goes up a tiny bit but not as much as when I change the shape or position of the electrode. 
+
+
+move cup electrode closer -65 microvolts. measured current is 0.595mA at 1V injection. 
+
+
+- - - - 
+
+However, when compared with and without silicon sheet, I get close to equivalent values. Thus the silicon is approximately acoustically transparent. 
+
+- - - - 
+
+This suggests that if I want a large dF(i.e. for stimulation) I need two electrodes placed close together? This way I have a bigger current density at the location of interest. 
+
+For neural recording, I want the endogenous signal so be amplified as much as possible too. i.e. a big dF. However the injection point is different and I cannot change the actual current density - just how it is measured. 
+
+
+- - - - - - 
+
+When I plug in the cup electrode, the amplitude of the carrier changes significantly. 
+
+I can see a 6Hz dF, but for neural recording should use preamp. 
+
+32 microvolts, 2v amplitude. 
+
+How the current moves through space seems key here. 
+
+
+
+

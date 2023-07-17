@@ -1,0 +1,23 @@
+VEP test with isoflurane. 
+======
+Ephys mouse with oozy headbar issue. cage number 110612
+
+ae_demod_vep.py 
+
+- this mouse has reference back rostral of lambda. 
+
+= = 
+
+13:45
+
+still having trouble seeing it. Maybe I do need averaging. 
+
+1. 14hz LED. 7 times a second. 500 gain. 
+
+1-10 14hz. gain 500. (i.e. 7 time per second. )
+
+14:50 end. 
+
+TODO: do VEP averaging to see the VEP? 
+
+

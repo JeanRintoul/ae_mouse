@@ -1,0 +1,92 @@
+t4- using the new mouse with higher current density geometry. 
+===============================================================  
+
+Ketamine/Xylazine with Antisedan antidote. 
+
+x = 1.5
+K = 3
+k up = 1
+antidote = 6 
+
+2 days after surgery, most neurons should be undamaged. 
+
+I can use the ae_calibrate_with ae_e97.py and just change parameters. 
+
+- use the new twisted wire to connect the mouse to reduce the artefact amplitude. 
+- set up so I have the filter in place? 
+
+- Experiment Plan: 
+
+1. Does the mouse fit into the headbar. What is the impedance? 
+2. calibrate the position with a 1v stimulus? 8khz?
+3. move left of the calibrated position by 1mm. 
+4. correct location.  
+5. Can I do direct stimulation at 2hz? What level? Record Z, and I for each attempt. 
+6. With US as well, at 499998Hz, start ramping the voltage/current. If I cannot see the dF, add the filter in so I can see it. 
+
+- - - - - 
+
+start 10:36am. 
+- mouse fits well into headbar. 
+- impedance is open circuit. 
+- i fiddled with back coinnections a bit and it is down to 15k. 
+TODO: the stim electrode has such thin wire, that it feels like it will break due to brittleness. If I use wire around electrode, I need to connect it to something stronger. 
+TODO: I need a better connection strategy. I do actually have vertical play room at the back of the headbar. 
+
+- suddenly switched to 2.5k? 
+
+- calibration. 1v 8khz. I found the center, but my maximum was only 3.4 microvolts which is a bit dissappointing. 
+
+- unplug the GND wire to remove artefact. 
+- switch to 500002Hz. 
+- Do voltage ramp. 
+
+1hr 20 i gave an extra tick 
+- 
+
+4. 6v 500.002khz. 
+
+5. 4v 2hz
+ 
+6. 10v 500.002khz. 
+
+
+When I switch the electrodes around I finally get a paw movementat 1hz. Mouse is waking up though. It is the end of the paw. I think that putting two electrodes near motorcortex is good as I then have a couple of options. 
+
+My max current is only 4mA... this is smaller than expected and/or hoped.... How can I increase this? 
+
+8. 12v, no calibration, p at 0.15
+9. copy
+
+i need the filter in place... get this ready. 
+
+1hr 52, moved to warming chamber, whiskers going. 
+
+
+Summary todos: 
+- saline testing at 2mm separation of PtIr? what is the max mA I can put in? 
+- get set up to use David Bono's voltage source. 
+- get the filter in place. Not sure why I didn't have it this time. 
+
+- make another mouse, that has a better back connector. (I asked Pat for some of her connectors, can also ask Jon if Pat doesn't respond). 
+
+
+- do another test with this new mouse, this time with electrodes around the other way so as to get the forepaw movement, and with everything set up as per my todo list. 
+
+- try getting VEPs with this mouse. 
+
+
+PtIr is easier to work with than the screws. If I can get a high enough current density, switch right over. 
+
+
+
+
+
+
+
+
+
+
+
+
+

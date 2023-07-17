@@ -1,0 +1,32 @@
+t7 - dual wave demodulation 
+================================================
+
+ketamin/xylazine delta wave demodulation. 
+
+24.2g female mouse, one electrode over visual cortex, the other over the motor cortex. 
+
+drugs:
+antidote:4.8
+X:1.2
+k1:2.4
+k2:1.0
+saline: 50
+
+- use a 500khz and 510khz signal super imposed, such that the demodulation is done around 10khz. 
+- change my preamp filter to remove the 500khz. 
+
+
+= = = = = = = = 
+Start: 1:30pm
+
+2. 2.6kohm impedance at 8k
+ae_calibrate position i get a max of 5 microvolts. it is pretty low. 
+
+3. aedelta_demod with no pressure and connected to the preamp at 1000 gain. 
+Can I see a delta wave? NO. 
+Is my mouse breathing? NO. 
+I think my mouse died. 
+
+END EXPERIMENT 
+
+

@@ -1,0 +1,23 @@
+AE demod
+======
+
+Ephys mouse. 
+
+Try to get some clean demod data. 
+Calibrate first. 
+do artefact test. 
+only a couple of recordings. 
+
+
+I didnt have time to calibrate. This will be shite. 
+
+7hz. gain = 1000. I see NO VEP. I think I have a bad connection, but I don't have time to debug. It's possible I shouldn't have started this, but I was waiting for the ket/xyl mouse to recover. 
+
+1-10. VEPs. 
+10-15: no acoustic connection. 
+
+- If possible - I could use this just for the 500khz signal size comparison. 
+   The data had biug 50hz. this suggests a bad connection. 
+36 min end
+
+dont try doingh multiple exps per session...

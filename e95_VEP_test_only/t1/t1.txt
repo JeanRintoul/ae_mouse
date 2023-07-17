@@ -1,0 +1,73 @@
+VEP test with xylazine and ketamine. 
+======
+Ephys mouse. cage number: 111497
+
+2.5 ket
+1.5xyl
+6 antisedan
+reup dose: 1 tick ket
+
+ae_demod_vep.py 
+
+= = 
+
+The right eye has cement pretty close to it. I suspect the right eye is damaged in some way. This mouse has too much cement and had trouble fitting into neurotar. 
+
+This mouse has been used in 2 experiments. Mostly the motor cortex ones. 
+
+This experiment I could: 
+- see if I can obtain VEPs?
+
+- also the MEP electrode is over the vibrissa. Hence, any stimulus info is not directly applicable. 
+
+Lets do an inventory of my mice.
+
+1. There is a mouse that has done 9 experiments. I may be able to add a screw and turn it into a MEP mouse? Either that - or retire the mouse. TBD. 
+
+2. There is a mouse that sort of appears to leak fluid. Maybe I can use this mouse instead for ephys? Retire this mouse.
+
+3. I have a new mouse, which is an unknown quantity. 
+
+4. I have this mouse, which looks like the area above its eye may be damaged. Lets test it. It is only good for this purpose, possibly. 
+
+= = 
+
+11:23 start VEP testing with this mouse, which may be blind in right eye. 
+
+1. test with preamp at 1000 gain. I can see what looks like signal, but it seems to peak around 2.8Hz, nothing is at 7Hz LED frequency. 
+
+2. test plugging into the differential input of the daq ch 4 instead. still 2.75Hz seems to be predominant. 
+
+3. change led frequency down to 7, or 3.5 repeats per second. 
+
+4. move back to preamp. gain 100. I see what looks like a neural signal, but not one at the LED frequency. 
+
+5. gain 100. I still cannot see VEPs. 
+
+6. led frequency = 10. should result on 5 ons per second. I am seeing a neural signal I think, but not VEP. 
+
+7. 5hz really unconvincing. I think the preamp is working. I think I am seeing the anaesthesia oscillation from ketamine/xylazine. 
+
+8. change filter cutoff 3.5-300hz to see the 5hz more clearly. 
+
+9. switch to other side. Right eye still works. 
+
+10. I think I see large amplitude oscillations due to the anesthesia, but not so much VEPs. Recover the mouse, decide later what to do with it. 
+
+I think this mouse is blind in the left eye. The MEP electrode is at vibrissa. The head bar is crooked and has too much cement. 
+
+111497 
+
+12:43 end, move to warming chamber. 
+
+
+
+
+
+
+
+
+
+
+
+

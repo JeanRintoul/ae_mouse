@@ -1,0 +1,105 @@
+t1 - can i see a vep with pat's style electrodes? 
+====================================================
+
+Isoflurane? 
+
+Set up updates: 
+- New heat mat (Ideally has less noise?)
+- I moved the RF channel to the differential input number 4. 
+- I moved the whole neurator rig one breadboard spot to the left. 
+- I am using Pat's electrode cable, with a mouse with that has this headbar attachment on it for the first time. 
+
+Plug in using the plug and apply 4Hz LED. Can I see anything? 
+- If so, try neural recording experiment. 
+
+Two python files used: 
+- ae_calibrate_with_ae.py 
+- ae_demod_vep.py 
+
+=== 
+
+Date: 03/07/2023
+Experiment start time: 12:52
+
+Remember: double check signal cable, LED cable, and US cable positions to try to minimize interference. 
+
+Cables are set ready for a straight VEP detection experiment. 
+
+- Everything fit, it was a bit fiddly to plug in the cable but it worked. 
+- It overloaded when I tried to go to 1000 gain. This may be due to high impedance? 
+I then placed tape, and US gel. 
+
+1. Obtain a VEP. Gain = 1000. Lights on in room. 
+ae_demod_vep.py with pressure set to 0, LED frequency set to 4Hz. 
+
+NOTE: I have giant heat mat noise... this limits the preamp range. When I turn off the heat mat, I can move the gain to 1000. I am going to have to toggle the heat mat on and off. 
+
+Get at least one file with a clear VEP in it to continue. 
+
+TODO: move the thermostar controller out of the faraday cage, so I can more easily turn it on and off, and also understand it as a noise source better. 
+
+Honestly I cannot see the VEP. I don't think it is worth going further, unless I can see the VEP. 
+
+Break, lets check the impedance. 
+
+Note: my mini banana cable was totally broken.. this means I may not have measured anything. My bad. 
+
+So the impedance between the electrodes seems quite good. Not the current problem. 
+File 2. vpp = 1.768@8kHz, I = 0.379, z = 2.33kOhm. 
+File 3. vpp = 1.79@2kHz  I = 0.344, z = 2.6kOhm. 
+File 4. vpp = 1.622@500khz, I = 0.636, z = 1.27kOhm.  
+
+Try VEPs again, but change the cable. My cable was broken... 
+
+Mouse is breathing funny. Iso at 0.8. Irregular breathing. 
+
+5. gain to 1000 with the heat mat off. 
+I see large low f oscillation at 1.6hz. 
+
+6. Add the GND wire back. 
+
+I think I should finish this exp, recover the mouse. I see a large low f oscillation. 
+
+Nothing really in terms of VEPs... I could see a dominate other low frequency oscillation.  
+The good news was the mouse was easy to plug and unplug from the connector, and it fit well into the neurotar. 
+
+1hr 29 min under iso, mouse woke up almost immediately after iso removal. 
+
+What did I learn? 
+The noise from the heat mat is a big problem. 
+The cable to my preamp broke. 
+It is unclear whether or not I can measure a VEP with this implant in the current state. 
+
+The situation for the mouse seems much improved. 
+
+TODO: Is the heat mat noise issue due to the heat mat, or the probe itself? 
+
+Use gain and then test - icannot see the heat mat noise now. 
+
+
+I can use the other mouse tomorrow. The one with two wires. It appears reasonable in quality. I will need to also use the silver wire. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

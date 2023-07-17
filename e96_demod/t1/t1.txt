@@ -1,0 +1,78 @@
+t1 - 500khz demodulation with calibration on mouse. 
+========== 
+
+Using the new mouse, isoflurane anesthesia. 
+
+First, get a VEP. Using ae_demod_vep.py 
+Then, calibrate using ae_calibrate_with_ae.py, but in 1mm increments first to get the rough location. 
+Then do demodulation recordings. 
+Try a couple of different frequencies. 
+Then create air gap and repeat recordings for artefact test. 
+
+= = = = = = = = 
+
+10:06am start. 
+- some of the skull appears soft, around the VEP screw. 
+- there is a large periodic signal, that wasn't there in the saline. It appears artificial as it occurrs in regular bursts of 3 repeats. 
+- put the filtering back on the preamp to try to mitigate these bursts. 
+- gain 1000. 
+- i think there is a VEP.
+- look at it in vep analysis. When I do this, I can no longer see it. Something is wrong. 
+- I think I should go ahead. If I fail, I can switch it to whether I can demod the delta wave.
+
+1. shows basic vep. 
+
+- set up calibration. 
+Weirdly, the calibration started off clearly with 1v output and applied v at 499905, then the amplitude suddenly became very low. i.e. 8 microvolts etc, and I couldn't recover it. 
+
+2. shows one of the calibration files with a low value. 
+
+Since I have got poor calibration values, stop. 
+
+The other problem is that it is hard to change the wires over after calibrating. What I SHOULD DO IS PUT BANANA PLUGS ON THOSE cables, and plug that back into the stim output... i.e. that way it is one double cable only. The change over happens away from the mouse too. 
+
+To try: The problem may be occuring when I unstick the headbar. Perhaps next mouse, should have no tape or wires, and I place the wires each time? 
+
+2hrs 34 minutes mouse is awake in warming chamber. 
+
+I could try another mouse in the afternoon. 
+Which mouse? 
+
+
+Ulcerative Dermatitis Mouse. 
+crooked headbar mouse? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

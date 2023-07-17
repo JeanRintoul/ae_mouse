@@ -1,0 +1,84 @@
+t2 - can I see a VEP with implanted electrodes in recovery mouse?
+====================================================
+
+Result: On analysis, there was pretty much no VEP. I do not know why. 
+It's possible that the VEP electrode wasn't that well connected? 
+
+Isoflurane? 
+Mouse with implanted electrodes that go INTO brain. 
+
+Two python files used: 
+- ae_calibrate_with_ae.py 
+- ae_demod_vep.py 
+
+Let's try this using a different temp probe. 
+
+Note: I put tape over the other reference electrode, and at the back of the headbar, so ideally only the one VEP electrode is acoustically exposed. 
+
+=== 
+
+Date: 04/07/2023
+Experiment start time: 10:04am.
+
+
+Basic VEP test: 
+Lights off overhead. Iso 1.2
+1. I think I am getting a VEP. 
+
+Apply US. 
+Calibrate US position using ae_calibrate_with_ae.py 
+
+2. Location roughly calibrated to electrode
+
+Plug back into PREAMP. I have a 0.1Hz high pass filter. 1Mhz low pass. 
+still overloads. Gain down to 500. No longer overloads. 
+8 second duration. 
+
+Question: is the thermo mat noise or the RF amp noise bigger?
+LED frequency 4Hz. 
+Acoustically Connected.
+Starting VEP tests: 
+3 - 5
+heat mat off
+6-9 
+heat mat back on. 
+during this time a perioding low f thing came into the waveform in two files. 
+I think this is induced when the mouse is not in thermal equilibrium. 
+Wait a couple of minutes. Iso to 0.8? Freezer off. 
+10-20
+VEP test summary: files 3 - 23
+
+Put a little more eye lube. 
+7Hz LED Flash, acoustically connected. A periodic 10Hz signal appeared that is quite large. I do not know what it is. 
+Stop I have very little O2. Cannot do more unless I sacrifice obtaining a control. 
+### PRF TESTS
+Acoustically connected.
+30. PRF 1020
+31. PRF 1020
+
+### NO ACOUSTIC CONNECTION 
+32. PRF 1020
+33. PRF 1020
+
+No acoustic connection. Otherwise same voltages and other parameters. US is in position, with wires in same places. 
+NO ACOUSTIC CONNECTION 
+ae_demod_vep.py 
+4Hz 34-54. 
+
+There seems to be some weird periodic signals in the final few files. They may be from the mouse as they are low frequency. 
+
+Should I do any 7Hz control? Nah. 
+
+= = = = = = 
+Note: all measurements here are pure differential measurement(to try to reduce common mode noise).
+
+END and recover mouse. 
+Time: 2 hrs  12:04pm. 
+
+Note: there was heat mat noise all the way through this, but I can still see the VEP underneath. 
+
+Note: the VEP electrode wire didnt seem all that well connected. 
+
+Change over the 02. 
+
+

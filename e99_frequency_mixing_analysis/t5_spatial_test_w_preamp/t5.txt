@@ -1,0 +1,34 @@
+t5 - spatial test with preamp, and pats electrodes as phantom. 
+=============================================================== 
+
+- preamp
+- rf monitor plugged into ch 4. 
+I cannot do this with the preamp, unless I have separate charge injection and measure electrodes... 
+
+TO do the ultrasound measurements, I need low noise environment as the signal can't be made bigger... 
+
+
+- so find the focus using the v measurement system. Once I've found it, switch over to the preamp. DONE! 
+
+
+1. I am roughly on focus using 8kHz to find the focus. calibrate_ae... 
+2. run ae_calibrate_with_ae_PRF1k.py
+
+
+This time I am assessing amplitude through filtering instead... it is lower, but seems more dependable. 
+
+The amplitude of thd df and sf is scaling with the carrier frequency amplitude. 
+
+- - 
+It is scaling with the EM magnitude, and not the actual pressure. 
+Whereas, the AE field scales with the pressure. 
+
+
+3. acoustically connected. PRF 1k 
+4. not acoustically connected. The sf and df are still there, they are just smaller in amplitude. 
+
+Hence, this data is interesting but suggests the AE effect is a separate entity from this EM interference. 
+
+This is not bad, but it blows away my AE  and US neuromodulation are the same thing idea. 
+
+

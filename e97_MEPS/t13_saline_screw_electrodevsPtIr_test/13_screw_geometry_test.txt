@@ -1,0 +1,39 @@
+t1- saline test for ae magnitude effects of changing surface area and geometry. 
+====================================================  
+
+- make my way to the focus in each case, and then do p vs ae and e vs ae plots which include a current read out. 
+
+- why is my carrier so high again, at 785 microvolts. or 1354? 
+- it is mirroring what i see in vivo. I think this carrier amplitude has nothing to do with anything I am interested in, but risks causing an artefact mixing on any preamp. 
+
+---- 
+
+
+Same 5mm apart. 
+two PtIr wires, mounted horizontally. 
+one screw and one PtIr wire. 
+
+Result: The larger surface area stim electrode makes a MASSIVE difference. I am now getting results in saline that are larger than what I was getting in mouse, because I have a giant silver blob on my screw. 
+
+The first couple of measurements were amazing, then something happened and they settled into a more stable size. This could be due to movement, or other. 
+
+The impedance keeps changing. Something weird is happening... not sure if screw is moving or not. 
+
+Distance test: 
+Result: having the stim and reference closer together appears to increase the size of the effect. 
+
+Artefact hunt: 
+500kHz Artefact hunt: why is it big again? Should I even care? I should care because it gets in the way of my neural recording ability, providing an artefact. 
+
+- disconnect the cable from the stalk. 
+
+- the noise is on the gnd plane. When I disconnect the GND, the noise goes away. 
+- it is also coming from the silver wire. I think I should use a twisted pair wire that has different colors so I can see it instead. 
+
+- - - 
+
+Try to repeat the first test with the screw where I got really high results? Maybe the surface area was made artificially larger somehow? 
+
+
+
+

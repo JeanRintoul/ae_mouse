@@ -1,0 +1,35 @@
+t3 - 500khz phantom test for demodulation, with a preamp. 
+========== 
+- using new phantom set up such that all cables are the same as they were originally. 
+
+1. 70 hz v out = 3v, using differential inputs. 
+
+The amplitude definitely seems small. The difference frequency is notably larger than the sum frequency? 
+
+2. Swap the +- around. i can now see both sum and difference frequency. I think 2.54 mm makes a big difference to the amplitude at the point of interest - so position of the electrode is going to be very important. 89 microvolts at 500 khz... not too big. I don't see other noise etc. It is clean. 
+
+3. Can I see it now, when I switch back to the preamp? Yes, it is small - 8 microamps at difference frequency. 
+
+4. switch to amplifier at 10x. The sum and difference freqs are both equal height and very clear. Looks pretty good. 6.83 micro amps at diff freq. 0.2 volts at the input. 100 microamps at 500khz. 
+
+Now, do the proper artefact test at 70 Hz. 
+Test in situ. 
+5-10. Repeat measurement at 10x gain (so as not to overload the preamp) 5 times. 
+
+do the prf measurement? calibrate with prf. gain is still at 10. 
+11. prfs
+12. prfs 
+13.
+14.
+
+Comparison measurement
+Now, have the ultrasound do it's thing with the cone in the air, but leave the elecctrodes set up as is. keep all positions the same. 
+
+13-18. No acoustic connection - just lifted up a bit. The signal at 500khz is still there, but the sum and difference frequencies are not. i.e. no 70hz. 
+
+- Do comparison measurement plot. 
+- Do demodulation and look at the phase offset of the recreated artificial signal. 
+
+
+todo: consider an improved 
+position calibration. 

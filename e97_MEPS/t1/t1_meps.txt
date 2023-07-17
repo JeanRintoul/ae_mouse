@@ -1,0 +1,107 @@
+t1 - 500khz meps with US position calibration. 
+========== 
+
+reference on head. 36g mouse. 
+
+3.6 ket
+1.8xyl
+6 antisedan
+reup dose: 1 tick ket
+
+ae_calibrate_with_ae_e97.py
+
+1. Do calibration over the MEP electrode. 
+   record coordinates and values, so I can look later to see if there is a trend in the 500khz amplitude with distance. ae_calibrate_with_ae.py 
+   This should also tell me the ae amplitude with distance. 
+
+2. Once in position, try stimulation the forepaw with direct current stimulation. 
+   What is the minimum voltage I need to do this. Keep this file. 
+
+3. ramp the electric field at high frequency whilst applying 1MPa. 
+
+4. ramp the pressure field while keeping the electric field constant. 
+
+= = = 
+
+- Though dry the mouse head looks damaged in some way. Next surgery do without the wires when finished. Unclear whether I should revive this mouse or not based on this. 
+
+
+1. Calibrating, it seems like the 500khz amplitude scales with spatial distance from the screw. 
+
+To test: 
+It also seems like the amplitude of the 500khz, scales with the applied voltage in the neural tissue. 
+
+2. change the applied electric field amplitude. P = 0.1 (1MPa). Note, sometimes the mixed amplitude is 'smeared'.
+
+file no:	v_out (f = 499905)  df_amplitude    carrier_amplitude
+===============================================================
+1			0     				6.5              205
+2.  		0.5                 17               584
+3. 			1.0                  50              1063
+4. 			2.0                  201             1559
+5.          3                    158             2599
+6.          4                    268             2772
+
+3. Change the pressure amplitude v out = 2.0V 
+
+file no:	p_out (f = 500000)  df_amplitude    carrier_amplitude
+===============================================================
+7.			0     				 1.99              1705 ? ? ? ?
+8.  		0.01                 9                 1578  
+9. 			0.05                 6.4               1698
+10. 		0.08                 11                1609                         
+11.         0.1                  5                 1603
+12.         0.11                 5                 1939   
+13.         0.15                 5                 1716
+
+weird? look into why this is happening. Maybe a code bug. 
+
+e mep threshold test at 2Hz. 4 seconds. with pressure running in background. 
+14.  vout = 2.0 , nothing 
+15. vout = 4, nothing.
+16. vout = 6 , nothing. Something is wrong. 
+
+17 pressure to 0. 
+17.			0     				 11             1647 ? ? ? ?
+nothing is coming out of US. But, I can see something on the v out. Weird? 
+18. pressure 0.1, vout = 2v 499905hz. I can see the v out on the us. the v measure remains the same. 
+19. set the pressure f to 0, and output amp to 0. fft at carrier is still 500khz?? 
+    suggests that the vibration is coming some other way. 
+
+20. another try at plain emeps. Nothing. I cannot get AE MEPS if I can't get E MEPS. 
+
+21. Try moving the reference to in the mouth. 2hz, 4v out. Plain emep. 
+   I am seeing mouth movements, and not paw movements. 
+
+22. Try switch the electrodes around. Maybe +ve and -ve are switched. 
+  simlar mouth movement. 
+
+23. around the original direction. 4 hz. mouth still. 
+
+24. Back to original reference on head. Nothing. Mouse whiskers are moving when no stim applied. 1hr 36 minutes. The cup electrode appears to be better than the head reference, but more investigation required. 
+
+25. Mostly the left check seems to be moving.... why? Look into the Maps. 
+
+1MPa. 'current_frequency': 499996,  # 6 second duration. 
+Increasing amplitude voltage. 
+26. v out = 2v nothing. giant 100hz signal?  why? df = 38, carrier = 2595
+27  vout = 12v occasional whisker tweeks. US is 14161, df 207. I am seeing a 20hz peak in the data and not a low frequency one. why?
+28 vout = 12v , df 268, carrier 12192
+
+1 hr 50 minutes, injected with antisedan. 12:06 lunchtime. 
+
+- - - - 
+
+Finish up experiment. 
+
+Questions: Why did the voltage exist at the pressure frequency? 
+
+BIG QUESTION: Why did I get a large amplitude signal at 20 Hz for the mixing? 
+
+Can I repeat this in saline? After lunch perhaps. 
+
+TODO: make more mice.
+ 
+If I could get a 
+
+

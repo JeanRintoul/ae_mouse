@@ -1,0 +1,67 @@
+AE amplitudes test. 
+======
+Ephys mouse. 
+using ae_calibrate_with_ae.py
+
+frequency at 499905 (i..e 95 Hz difference frequency).
+
+1. calibrate position. 
+2. once I find a position, do repeated ae amplitude tests at a range of frequencies. 
+3. lift the transducer, take a measurement when there is an air gap to show artefact test is valid. 
+
+= = = 
+
+start: 11am
+
+current amplitude 2v, frequency 499905hz. vout = 0.1v(pressure). recording duration = 4s. 
+attempting to leave 2 minutes between stims. 
+
+Note: the sum frequency is much larger... this is likely due to having more samples to average? 
+
+1. 348 microvolts at 95Hz. 
+2. 951 microvolts. 
+3. 414 microvolts. 
+4. 868 microvolts 
+5. 970 microvolts. 
+
+
+trying a few different frequencies, at the point that I found was good. 
+
+70Hz.
+6. 252
+7. 1072
+8. 961
+
+2000Hz
+9.  636
+10. 1738
+11. 1520
+
+499.905Hz (i.e. df at 95Hz)
+12. 1617
+13. 720 
+14. 295
+
+artefact test, adding an air gap. f applied = 499.905khz
+15. 8.7    noise floor. 
+16. 4.5
+17. 2
+
+
+VEP attempt: 7Hz, same location. Thonny loaded up with some other 'main'. It appears slower than 7Hz. 
+18-24. 3.2 times per second. 
+
+25 I cannot even see the 7Hz VEP. 
+
+26-30. remove filters, gain down to 100 to avoid overload. 7hz vep. 
+ post-analyze
+
+
+my filtering in this code ae_demod_vept is truly bad. what is going on here? 
+
+1:19 pm 
+
+
+
+
+

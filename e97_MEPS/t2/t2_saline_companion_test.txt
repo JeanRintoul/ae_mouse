@@ -1,0 +1,92 @@
+t1 - 500khz meps with US position calibration. 
+========== 
+
+I think my carrier measurements were off in the mouse experiment, because the v out was too close to it. Try using a frequency further away. 
+
+ae_calibrate_with_ae_e97.py
+
+1. Why is the carrier amplitude directly proportional to the applied voltage? something is not right. 
+Why is the output voltage of the pressure signal, and the frequency of the measured carrier different?  
+
+- - - - 
+
+I tried to calibrate. ALL MY AMPLITUDE are lower. 
+
+Questions: Why did the voltage exist at the pressure frequency? It didn't, spectral leakage did. 
+
+BIG QUESTION: Why did I get a large amplitude signal at 20 Hz for the mixing? 
+   - I put so much voltage in it went past the daq range. 
+
+Changing the voltage amplitude in saline while keeping pressure constant. 
+pressure = 1MPa, 0.1V out. 
+file no:	v_out (f = 95)  df_amplitude    carrier_amplitude
+1. 				0              2.3  			103
+2. 				0.5            1.5              106
+3. 				1.0            4                146
+4. 				4              22               148
+5. 				6              32               98 
+6. 				12             14               57
+I think there was some sort of gel change in the above, indicated by the decrease in carrier amplitude. 
+
+file no:	v_out (f = 95)  df_amplitude    carrier_amplitude
+7. 						0              1.2  			51
+8. 						0.5              1  			47
+9. 						1.0 	 		3.8             53
+10. 					4               22              48
+11. 					6               31              39
+12. 					12              6               27
+
+13. back to 6v out, since both times i get a peak df amplitude at this voltage. 
+
+Change the pressure amplitude v out = 6.0V , 95 hz. 
+file no:	p_out (f = 500000)  df_amplitude    carrier_amplitude
+===============================================================
+14.			0     				3   		   2 
+15.  		0.01                1.8            3.4
+16. 		0.05                12             17
+17. 		0.08                23             42                        
+18.         0.1                 27             29  
+19.         0.11                29             32  
+20.         0.15                27             69
+
+
+Double check that df is bigger at 6v than 12v. 
+file no:	v_out (f = 95)  df_amplitude    carrier_amplitude
+21. 		6                 19              48
+22.			12                 9               21
+23.         6                 22              58
+
+There appears to be a sweet spot for both pressure and electric field to get a bigger amplitude? 
+
+Now do df of 4Hz. Do I see anything at 20Hz? 6v out, 499996Hz. 8 second recording. 
+24. I see nothing at 4Hz. I see something at 100Hz though. 
+What frequency do I see the correct df frequency? 
+25. 6v out, 499990Hz same problem. 
+26. 499905hz, should be df at 95Hz. 
+27. 499000Hzshould be df at 1000Hz.Nothing.  
+I think I need to manually look at the time series data of these to understand what is going wrong. 
+
+Uunplug the daqs to run on battery power. 
+28. 499000Hz - nothing... 
+29. 8000Hz
+
+Ok lets try repeating this at a lower voltage. The output voltage is causing harmonic distortion because it goes past the max voltage range of the daq... That's why I am seeing things at frequencies I should not be. 
+30. v out = 2v, 499990Hz I still cannot see it? 
+31. repeat - nothing is there. 
+32. 499905Hz, nothing is there. 
+33. 
+So... something is not right. 
+
+Result, I need to double check all my daq ranges based on these measurements. 
+Something is going wrong on my end. This is likely effecting my ability to do demod too. 
+
+34. Plugged daqs back into mains. 8khz out. 
+
+No difference. It seems highly likely I lost my calibration location through an accidental touch. 
+
+END. 
+ 
+
+
+
+

@@ -1,0 +1,43 @@
+t6 - saline baseline testing, double check geometry configuration for calibration. 
+====================================================================================  
+
+- repeat the horizontal vs vertical alignment test, as this will determine whether I shift to this set up in the mouse. 
+- Do a careful calibration with electrodes in whatever the 'winning' position and set up is. 
+
+
+1. I got about 50 microvolts at the optimal position I could find with 2 electrodes spaced 5mm apart. 
+
+Switching to the gold cup reference on the bottom, suddenly the df and carrier amplitude increase. The carrier has increased from 80 to 688 
+
+This suggests that I should switch to a gold cup reference. 
+
+
+positioning gold cup out of the focal region 59 and 415. 
+
+positioning the gold cup on the side. df = 110?
+
+it seems not so much about its position, but rather how close it is? 
+Either way, the larger surface area seems reference like it enhances the amplitude of the ae effect. 
+
+- How should I put a vertical reference, if the mouse is under isoflurane? 
+  - shave bottom of chin? 
+
+- Do a detailed map, at vout p = 0.1(1MPa), vout e = 1V, f = 8khz. Am I sure I cannot use a horizontal referencein the mouse? No I am not sure. It is definitely much easier if I can. 
+
+
+- I think for stimulation it is better if I can have a vertical stim field. So that is with Ket/Xyl and involves the cup electrode. 
+- For demodulation, the question remains whether I can do a position calibration in the mouse with some other horizontal referencing technique. i.e. attach a reference to the headbar itself? I think I will simply have to test this. 
+
+The problem with doing a position calibration now, is that my noise level is high. I tried moving the daq range down to 2V, and indeed now I can see it clearly. 
+
+Full position calibration at Vout = 1V, 8kHz, with gold cup electrode. I don't think it matters which electrode too much really. It will always be a bit approximate. 
+
+Get lunch, then start. 
+
+1v out, 8khz, 1MPa. 
+
+
+
+
+
+

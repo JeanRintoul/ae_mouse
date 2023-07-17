@@ -1,0 +1,121 @@
+AE amplitude exploration
+
+======
+
+Ephys mouse. This experiment is with the stim wires, and does not involve the preamp. I have removed the attenuator. 
+
+Only use ae_calibrate_with_ae.py. 
+
+- run calibrate ae to find the optimal position. 70Hz, 3v out to match the saline test. 
+- try to obtain a 5x5 matrix of 0.5mm movements in XY after finding the center point, to show ability to do this hydrophone focus measurement. This also shows it is not a mixing artefact of the measurement device as all output signals are the same. 
+
+Questions: 
+What is the ratio between the applied field and the ae difference frequency? 
+What is the new 500kHz level at the central focus point now? 
+
+Vary the Iso level while US is at the center point:
+0.5,0.8,1.0,1.5,2.0,2.5,2.5,2.0,1.5,1.0,0.8,0.5 for symmetry. Wait 1min after each adjustment to take the 4second AE calibrate measure. 
+
+Get this from the 3v measurement
+
+Does the 500khz level vary w.r.t. iso level? 
+Does the AE level var w.r.t. iso level?
+
+TODO: repeat artefact test but with the front electrode slightly offset... using the PtIR probe instead. 
+
+- - - 
+
+Ephys mouse look like there has been leakage. This is not good in terms of headbar stability. My other two mice are looking good though.  
+
+The skull is intact. There is liquid leakage, need to do better job gluing and cement layer 1 next time. 
+
+Iso at 1.5 
+Instead of 3V output, I am doing it at 1V output. This means I will need to do the saline test again to get a comparative output. I am doing it this way, so the mouse is unharmed. 
+
+1. really good one... almost calibrated position. 300 microvolts. (2v out)
+there appears to be a high degree of intertrial variability. 
+I have approximately found the central focus, I am going to skip DV(depth), 1hr 23 minutes. 
+
+2. really big one. 2v out. 
+
+3. 3v out. this can be compared against the saline result. (mouse jolts a little due to the high voltage). 
+3v out didnt have a larger value than 2v out. The AE magnitude is very variable. Far more than in saline. 
+Sometimes it is a steep peak, other time it is spread spectrum. Not sure why. 
+
+4. 2V out. wait 1 min after switch iso to 2.5 
+Iso 2.5. Location at the center point I found. 
+giant!
+463 microvolts. wow! 
+down to 1 for rest, until breathing becomes frequent. 
+
+5. Iso to 2.0. Wait a minute for it to sink in. 
+  490 microvolts! 
+
+down to 1 for rest, until breathing becomes frequent. 
+
+6. Iso to 1.5. Wait a minute for it to sink in.
+  590 microvolts. 
+
+7. Iso to 1.0. Wait a minute for it to sink in. 
+  547 microvolts. 
+There appears to be a recovery time. 
+
+8. Iso to 0.6. Wait a minute for it to sink in. 
+  473 microvolts. 
+
+9. Iso to 2.5. low... maybe i didn't wait long enough? spread spectrum... 
+  still around 100 microvolts. 
+
+Iso appears to not have a notable effect, though my stats are not high enough yet. 
+What does have an effect is waiting a couple of minutes between ae pulses. 
+
+10. Iso at 1. 
+    167 microvolts. 
+
+11. calibration start? 0,0 Iso at 1. dF frequency mag in microvolts. 
+
+12. repeat 0,0. 
+
+13. 0.5,0 (x,y coord sys). 
+
+14. 0.5,0 (x,y coord sys). 370  
+
+15. 1.0,0 (x,y coord sys). 
+
+16. 1.0,0 (x,y coord sys). 
+
+17. 1.5,0 (x,y coord sys). 500
+
+18. 1.5,0 (x,y coord sys). 280
+
+19. 2.0,0 (x,y coord sys). 
+
+20. 2.0,0 (x,y coord sys). 
+
+21. 0.0,0 (x,y coord sys). 
+
+22. 0.0,0 (x,y coord sys). 
+
+My map isn't working as the time between stims is too important. 
+
+What I should do before ending, is the artefact test, where I apply the same signal but no acoustic connection. 
+
+23. US with no acoustic connection. Hooked up same way as throughout exp. 
+
+24. repeat of 23. 
+
+25. repeat of 23. 
+
+26. repeat of 23. 
+
+Hook up the measurement electrodes such that I have a preamp on and gain of 10. 
+I could have done this to get the 500khz measure out? I didn't do this, as it seems more important to compare the ae magnitude from the v component. 
+
+- 2 hrs 35 minutes. At 3hrs I moved mouse to warming chamber. 
+
+
+
+
+
+
+
