@@ -24,7 +24,7 @@ from scipy.signal import iirfilter,sosfiltfilt
 # 
 # Increment this for each test. 
 # 
-test_no = 39
+test_no = 1
 gain    = 100 # gain of EMG electrode? 
 # Change this difference frequency. 
 dfx = 2 
@@ -57,7 +57,7 @@ aeti_variables = {
 'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\mouse_aeti\\e100_neural_recording_pat_e_mouse',
+'save_folder_path':'D:\\ae_mouse\\e104_mep_us_frequency_proofpoint',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 #

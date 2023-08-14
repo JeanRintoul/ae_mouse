@@ -122,13 +122,11 @@ window          = np.hanning(end_pause-start_pause)
 fft_unfiltered_data = fft(unfiltered_data[start_pause:end_pause]*window)
 fft_unfiltered_data = np.abs(2.0/(end_pause-start_pause) * (fft_unfiltered_data))[1:(end_pause-start_pause)//2]
 
-
 fft_data        = fft(fsignal[start_pause:end_pause]*window)
 fft_data        = np.abs(2.0/(end_pause-start_pause) * (fft_data))[1:(end_pause-start_pause)//2]
 
 fft_demod        = fft(demodulated[start_pause:end_pause]*window)
 fft_demod        = np.abs(2.0/(end_pause-start_pause) * (fft_demod))[1:(end_pause-start_pause)//2]
-
 
 xf              = np.fft.fftfreq( (end_pause-start_pause), d=timestep)[:(end_pause-start_pause)//2]
 frequencies     = xf[1:(end_pause-start_pause)//2]

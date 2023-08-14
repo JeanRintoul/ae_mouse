@@ -1,0 +1,58 @@
+t6 phantom demodulation amplitudes. 
+=================================== 
+
+First calibration the position. 
+switched away from bonos tx, as it doesnt transmit at low fs. 
+
+ae_demod_PRF.py 
+   duration = 8 s
+   sampling rate is 5e6.
+   set my gain to 2000. 
+   pressure_burst_length: 0.000004
+
+1. output voltage = 26 Hz. I can clearly see that the thermal noise is a problem which is going to obscure the signal if I make it lower frequency. 
+
+2. pressure = 0.15V out, gain = 2000. v f out = 26hz. see if I can improve the SNR by using multiple copies of this data at different frequencies? 
+
+Dual frequency 14 and 26Hz.prf 
+3. switched to a ti model 14hz and 26hz so I have a more complex wave to recover. 
+   I cannot see it. prf 1030
+
+4. burst length = 0.00004, prf 1030, p out = 0.15  ANALYZE this one. Decreasing the burst length makes the PRF amplitude bigger... 
+
+Everything below has 3 and 7hz as the output frequencies. 
+
+5. F out = 3Hz, 7Hz. prf 180, p out = 0.1, fft spread in the result... again, using the other harmonics might help here. 
+
+6. repeat number 5.  At lower frequencies, I think I need more data to obtain spectral resolution. I can do this, by utilizing the other harmonics. 
+
+7-8. Turn the pressure down, and increase the burst length. p vout = 0.1 
+   burst length, 0.0004 , prf 180
+
+9-10. p out = 0.1V, burst length = 0.004 prf 180
+
+END. Now go home and create a multifrequency demodulation algorithm. I think this will help with the poisson noise. Done, but the signals were too small. The multifrequency algorithm does appear to improve SNR, but not enough. 
+
+Date: 04/08/2023
+Find an amplitude which I can see, then look at how the parameters change to optimize SNR. Can I obtain a 3Hz signal?
+Date: 07/08/2023
+calibrated position. Using the impedance adapter not the bono tx. 6
+
+filled in the t6 phantom demodulation parameters spreadsheet. 
+dual acoustic wave isn't that great, but the PRF strategy is. 
+
+Connected versus not connected test. Monitor PRF and recovered signal amplitude. 
+PRf = 4020, Burst = 0.0004, pressure = 0.13
+1-4 Connected
+5-8 Not Connected
+
+
+
+
+
+
+
+
+
+
+

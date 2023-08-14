@@ -1,0 +1,15 @@
+t2 - phantom study and test of updated codes. 
+================================================
+
+1. calibrate position
+2. run aE_rf_dual_transfer_function.py with the preamp set at gain = 500, no filters in place. 
+
+
+3. If there is time, do a calibration with the dual waveform whereby I record the two carriers, and the sum and difference amplitudes at all positions to obtain spatial maps. 
+
+
+
+
+
+
+

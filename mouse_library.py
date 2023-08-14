@@ -108,6 +108,12 @@ def aeti_recording(**aeti_variables):
             command = command + ' -f ' + str(value)
         elif key == 'current_amplitude':
             command = command + ' -b ' + str(value)
+        elif key == 'current_prf':
+            command = command + ' -u ' + str(value)              
+        elif key == 'current_burst_length':
+            command = command + ' -w ' + str(value)
+        elif key == 'current_ISI':
+            command = command + ' -y ' + str(value)
         elif key == 'start_null':
             command = command + ' -k ' + str(value)   
         elif key == 'end_null':
@@ -117,11 +123,13 @@ def aeti_recording(**aeti_variables):
         elif key == 'end_pause':
             command = command + ' -e ' + str(value)     
         elif key == 'no_ramp':
-            command = command + ' -z ' + str(value)   
+            command = command + ' -z ' + str(value)  
+        elif key == 'pi_frequency':
+            command = command + ' -x ' + str(value)   
         elif key == 'ti_frequency':
             command = command + ' -m ' + str(value)  
-        elif key == 'prf_frequency':
-            command = command + ' -u ' + str(value)  
+        elif key == 'long_recording':
+            command = command + ' -q ' + str(value) 
     # print ('command: ',command)
     # print ('prefix: ',prefix)
     execution_result = None

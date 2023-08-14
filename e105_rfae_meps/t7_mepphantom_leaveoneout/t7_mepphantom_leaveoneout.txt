@@ -1,0 +1,52 @@
+t7 MEP leave one out. 
+=================================== 
+
+- Calibrate position. 36 microvolts. Seems good enough. 
+- Using D Bonos tx. 
+- Now run aemeps_rf.py 
+
+Is the electric field effected by the PVDF sheet and the copper mesh. 
+
+Gain = 1. Duration = 8 seconds. 
+Inserting objects on by one, but not adding electric power. 
+1. US only. 376 microvolts at 500khz. 
+2. US and pvdf. 316 microvolts at 500khz. 
+3. repeat of US and PVDF. 306 microvolts at 500khz. 
+4. US, PVDF and mesh. 367 microvolts. 
+5. US, PVDF and mesh. 280 microvolts. 
+6. US, PVDF and mesh. 364 microvolts. 
+7. US and PVDF only. 280 microvolts at 500khz. 
+8. US and PVDF only. 283 microvolts at 500khz. 
+9. US and mesh. 362 microvolts. 
+10. US and mesh. 372 microvolts.
+
+The above tests how the electric field is effected by the things overhead.
+Result: It seems the PVDF attenuates the US induced electric field, but the mesh does not. 
+
+Obtain a pressure estimate, by measuring the acoustoelectric effect with different sets of things there. 
+
+ 
+aemeps_rf.py, with the current output set to 8khz. 
+then on the preamp I need a high pass filter. 
+Gain = 10 , 12db per octave 10khz high pass filter. 
+
+11. No PVDF, no mesh, just US gel. 431 microvolts at 500khz ae effect = 2 microvolts at 492khz. 
+12. PVDF and gel. 486 microvolts at 500khz ae = 2.5 microvolts. 
+13. PVDF and gel. 474 microvolts at 500khz ae = 2.25 microvolts. 
+14. PVDF, mesh and gel. 107 microvolts at 500khz, ae = 1.5 microvolts. (maybe i got air bubbles caught too?)
+15. PVDF, mesh and gel. 121 microvolts at 500khz, ae = 1.75 microvolts. 
+16. mesh and gel. 519 microvolts, ae = 2.94 microvolts. 
+17. mesh and gel. 524 microvolts, ae = 3.3 microvolts. 
+18. US gel alone. 533 microvolts. ae = 2.97
+19. US gel alone. 524 microvolts. ae = 3.1 microvolts. 
+
+The PVDF attenuates the electric signal coming from the US. 
+The mesh and gel seems like it should work however I use it. 
+
+Result prediction: 
+- US dual modulation should work with mesh and gel, as should RF AE neuromodulation. 
+- US dual modulation would not work with a PVDF layer... but... RF AE modulation should if the voltage is high enough? 
+
+
+
+

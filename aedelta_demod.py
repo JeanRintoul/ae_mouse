@@ -25,7 +25,7 @@ from scipy.signal import iirfilter,sosfiltfilt
 # 
 file_list_start = 2
 file_list_end   = 2
-gain            = 1000
+gain            = 500
 # 
 
 aeti_variables = {
@@ -33,7 +33,7 @@ aeti_variables = {
 'Fs': 5e6,                # 
 'duration': 8.0,          # 
 'position': 1, 
-'pressure_amplitude': 0.0,  # 0.1 is 1MPa. 
+'pressure_amplitude': 0.1,  # 0.1 is 1MPa. 
 'pressure_frequency': 500000.0,
 # 'pressure_prf':1020,          # pulse repetition frequency for the sine wave. Hz. 
 # 'pressure_ISI':0,             # inter trial interval in seconds. 

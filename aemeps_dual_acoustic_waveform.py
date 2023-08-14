@@ -24,10 +24,14 @@ from scipy.signal import iirfilter,sosfiltfilt
 # 
 # Increment this for each test. 
 # 
-test_no = 40
+test_no = 17
 gain    = 1000 #  
 # Change this difference frequency. 
-dfx = 2
+dfx = 1
+#base_carrier_frequency = 1000000 
+# base_carrier_frequency = 750000 
+base_carrier_frequency = 500000 
+# base_carrier_frequency = 250000 
 # 
 aeti_variables = {
 'type':'demodulation',        # choice of 'pressure' or 'ae'. Note: this doesn't change the contents of the file, just the way it is processed at the end. 
@@ -37,14 +41,15 @@ aeti_variables = {
 # 'USMEP': 1,                 # when usmep == 1, the current and pressure Fs can be different to the recorded Fs. In this case the US is at 5Mhz, but the recording frequency is 100kHz. This decreases the amount of data that needs to be dumped to disk. 
 'duration': 4.0, 
 'position': test_no,
-'pressure_amplitude': 0.0,      # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
-'pressure_frequency': 500000.0,
+'pressure_amplitude': 0.12,      # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
+'pressure_frequency': base_carrier_frequency,
+'pi_frequency':base_carrier_frequency + dfx,
 # 'pressure_prf':1020,          # pulse repetition frequency for the sine wave. Hz. 
 # 'pressure_ISI':0,             # inter trial interval in seconds. 
 # 'pressure_frequency': 0.0,    #  
 'current_amplitude': 0.0,       # its actually a voltage .. Volts. 
 'current_frequency': 500000,    # 
-'ti_frequency':500000 - dfx,    # comment this out to get a continuous wave. 
+# 'ti_frequency':500000 - dfx,    # comment this out to get a continuous wave. 
 # 'current_frequency': current_frequency,    # 
 # 'ti_frequency': 0,            # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
 'ae_channel': 0,                # the channel of the measurement probe. 
@@ -62,7 +67,7 @@ aeti_variables = {
 'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\mouse_aeti\\e100_neural_recording_pat_e_mouse',
+'save_folder_path':'D:\\ae_mouse\\e105_rfae_meps',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 
@@ -138,13 +143,22 @@ emg_band = iirfilter(17, [emg1,emg2], rs=60, btype='bandpass',
                        output='sos')
 emg_data    = sosfiltfilt(emg_band, emg_data)
 # 
-fig = plt.figure(figsize=(10,6))
-ax  = fig.add_subplot(111)
-plt.plot(t,emg_data,'k')
-plt.legend(['filt EMG on V chan'],loc = 'upper right')
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-plt.show()
+
+# fig = plt.figure(figsize=(10,6))
+# ax  = fig.add_subplot(111)
+# plt.plot(t,data[m_channel],'k')
+# plt.legend(['raw data m chan'],loc = 'upper right')
+# ax.spines['right'].set_visible(False)
+# ax.spines['top'].set_visible(False)
+# plt.show()
+
+# fig = plt.figure(figsize=(10,6))
+# ax  = fig.add_subplot(111)
+# plt.plot(t,emg_data,'k')
+# plt.legend(['filt EMG on V chan'],loc = 'upper right')
+# ax.spines['right'].set_visible(False)
+# ax.spines['top'].set_visible(False)
+# plt.show()
 # 
 # difference frequencies plot. 
 fig = plt.figure(figsize=(10,6))

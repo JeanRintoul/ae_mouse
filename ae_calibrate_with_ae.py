@@ -25,7 +25,7 @@ from scipy.signal import iirfilter,sosfiltfilt
 # Increment this for each test. 
 # 
 test_no = 1
-gain    = 100
+gain    = 1
 # 
 # This control of the sample rate is to avoid aliasing in the recorded electric signal. 
 # The sample rate should be an integer sub-multiple of the 
@@ -75,7 +75,7 @@ aeti_variables = {
 'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\mouse_aeti\\e100_neural_recording_pat_e_mouse',
+'save_folder_path':'D:\\ae_mouse\\e107_revision',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 #  
@@ -139,10 +139,7 @@ fft_fg = np.abs(2.0/(end_pause-start_pause) * (fft_fg))[1:(end_pause-start_pause
 df = int(abs(acoustic_frequency - current_signal_frequency))
 sf = int(abs(acoustic_frequency + current_signal_frequency))
 # print ('frequencies of interest')
-#     resistor_current_mon    = 49.9  # 49.9 Ohms for current monitor, 
-# Now calculate the resistance and the reactance.   
-# i_data         = -5*data[i_channel]/resistor_current_mon
-#
+
 carrier_idx = m.find_nearest(frequencies,acoustic_frequency)
 df_idx = m.find_nearest(frequencies,df)
 sf_idx = m.find_nearest(frequencies,sf)
@@ -186,13 +183,13 @@ plt.axvline(sf,color='k')
 # plt.plot(frequencies,fft_us,'b')
 
 plt.plot(frequencies,1e6*fft_v,'r')
-plt.plot(frequencies,fft_m,'c')
+# plt.plot(frequencies,fft_m,'c')
 # plt.plot(frequencies,fft_i,'orange')
 # ax2.set_ylim([0,500])
 ax2.set_xlim([acoustic_frequency - 2*current_signal_frequency,acoustic_frequency + 2*current_signal_frequency])
 # ax2.set_xlim([0,40])
 ax2.set_ylim([0,2000])
-plt.legend(['fft us','fft v'],loc='upper right')
+plt.legend(['fft v'],loc='upper right')
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax2.spines['right'].set_visible(False)

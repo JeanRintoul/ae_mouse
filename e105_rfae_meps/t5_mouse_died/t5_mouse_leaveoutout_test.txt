@@ -1,0 +1,41 @@
+t5 - mouse 
+===============================
+
+Plan:
+I got NO MEPS at all last time, so this time start with no mesh and no silicon sheet in place. Do I see dual meps? If so, insert the mesh and do another recording(with preamp letting signal through so I can see comparative amplitudes of the carrier as well. )
+
+
+Mouse with two electrodes in motor cortex.  
+
+Date of experiment: 03/08/2023  
+Mouse Cage: 115197
+Number of uses before: 3 
+Gender: female
+Weight: 27.5
+DOB: 28.01.2023
+
+Ket/Xyl - I am deliberately giving it a low dosage. 
+drugs:
+antidote:5.2 
+X:1.3
+k1:2.2
+k2:1.0
+saline: 50
+
+- calibrate the phantom position using ae_calibrate_ae.py 
+- run ae_demod_PRF.py to collect some data with no pressure to look at the ketamine waveform. Make it Fs = 5e3, and 12 seconds long. 
+- do a couple of demod recordings at lower pressure, and lesser prf length. 
+- then move up to the higher pressure incrementally so I can compare. 
+- If desired, run with the ae_demod_PRF waveform too. 
+- Run aemeps_rf.py 
+- Do not put the mesh. See if I get a motor response. If I do, then add the mesh. 
+
+= = start 10:27am = = 
+6 min it mouse is gasping. mb overdose? 
+put it back in the chamber with 02 running. 
+At the beginning I had iso on without 02, perhaps this effected it. 
+it last had k 2 days ago. Perhaps it builds up. Mouse is dead. 
+= = = end = = = 
+
+
+

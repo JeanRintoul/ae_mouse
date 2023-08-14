@@ -1,0 +1,48 @@
+t2 - k gamma neural recording. Don't try for MEPS at the end so I have longer to concentrate on good neural recording results. 
+============================================ 
+Neural decoding test in my new k gamma mouse.
+Pilot test for final testing and artefact analysis. 
+
+- set up ultrasound. 
+- use new twisted wires. 
+- set up cables and wires to apply a signal separately. 
+
+- Does applying a signal at the PRF amplitude in solution really equivalent? 
+  - No, applying a 500kHz signal with the same pulse shape is equivalent? 
+
+Date of experiment: 14/08/2023  
+Mouse Cage: 110444
+Number of uses before: 3 
+Gender: male
+Weight: 34
+DOB: 8.01.2023
+
+Ket/Xyl 
+drugs:
+antidote:6.0
+X:1.5
+k1:2.3
+k2:1.0
+saline: 50
+
+Previously: 
+Fs = 5e3, US with PRF set 0.0004, 3k low pass on preamp. v out pressure = 0.15, prf = 180, gain = 1000. No high pass on preamp. 12 seconds duration. 
+Now: 
+Fs = 10khz, PRF = 1020, v out pressure = 0.15, gain = 1000, 3k low pass on preamp. 
+12 seconds. 
+
+- Calibrate position first to position US over the frontal electrode where gamma should be biggest. 
+- Neural Decoding: Alternate between a measurement with US, and a measurement without US on, as this forms the baseline comparison study. 
+   What settings will I use? 
+   Note the amplitude of the PRF. 
+- and artefact test in vivo, no US needed. Inject two signals on separate wires, one at the PRF(i.e. 1020) and one at a lower frequency. The amplitudes should be the same as the PRF. Show that they do NOT mix together. 
+
+= = Time start: 12:26am = = 
+
+ae_demod_PRF.py 
+
+First calibrate with ae.py, using the impedance adapter as the voltage source. 
+
+
+
+

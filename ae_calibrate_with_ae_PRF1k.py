@@ -24,7 +24,7 @@ from scipy.signal import iirfilter,sosfiltfilt
 # 
 # Increment this for each test. 
 # 
-test_no = 7
+test_no = 2
 gain    = 1000
 # 
 # This control of the sample rate is to avoid aliasing in the recorded electric signal. 
@@ -77,7 +77,7 @@ aeti_variables = {
 'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\mouse_aeti\\e100_neural_recording_pat_e_mouse',
+'save_folder_path':'D:\\ae_mouse\\e100_neural_recording_pat_e_mouse',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 #  
@@ -178,14 +178,13 @@ cet = carrier_idx + 10
 carrier_test = 1e6*fft_v[cst:cet]
 
 # print ('test',test,st,et,np.max(test))
-# fig = plt.figure(figsize=(10,6))
-# ax = fig.add_subplot(111)
-# plt.plot(test,'r')
-# plt.show()
+fig = plt.figure(figsize=(10,6))
+ax = fig.add_subplot(111)
+plt.plot(t,data[rf_channel],'k')
+plt.show()
 
 # print ('Amplitude at df and sf:',2*fft_v[df_idx],2*fft_v[sf_idx])
 now = datetime.now()
-
 current_time = now.strftime("%H:%M:%S")
 print("Current Time =", current_time)
 

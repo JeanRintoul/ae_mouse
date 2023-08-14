@@ -1,0 +1,102 @@
+t2 - phantom based detangling of fields at low frequencies. 
+===============================
+
+- calibrate the phantom position using ae_calibrate_ae.py 
+- check that I can do the ae_demod_PRF.py and it looks as intended. 
+
+Demodulation Challenge: 
+1-10. I can output 100 microvolts at 26 Hz. I have a 2MPa pressure at a PRF of 80Hz. 
+   I am repeating the signal far more times than they are. 
+   V out = 0.1V(then 2x in Bono's TX), such that it appears as 100 microvolts at my measurement electrodes. 
+
+   Can I decode a 100 microvolts signal using this set up?? 
+   I set the ramp to zero, and it to start at the beginning and go for 12 seconds. 
+   sampling rate is 5e3.
+   set preamp to 3k low pass. 
+   set my gain to 2000. 
+   'pressure_burst_length': 0.0004
+
+11. Fs = 5e6, so I can see the number of  pulses more clearly. 
+TODO: mouse_stream needs an option just to repeat what is in the generator. 
+
+Phantom Detangling. 
+
+Dual acoustic waveforms. Works perfectly. 
+12. Dual acoustic waveform aemeps_rf.py, 2Hz df. pi_frequency setting. 
+    I can see the 2Hz easily. 40 microvolts peak-peak. 
+13. 4 hz df with the same two acoustic waves. 20 microvolts peak-peak
+
+Now, one acoustic and one electric waveform. Tennis racket mesh. Duration = 8s. p vout = 0.1 
+14. df = 2hz. Needs to use a ramp so I don't have a big peak at the front and back. 
+	This means I also need larger v out or pressure... 20 microvolts.
+
+15  df = 4hz. at the beginning and at the end. current vout(v) = 2 also just at the beginning and end. 
+10 microvolts p-p, changes amplitude to be smaller in the middle but still there. 
+
+16. I go to v out = 3v, 2hz df, and I got 1000 microvolts p-p, again larger at the front than at the back. 
+
+Result: ae should work. Needs a bit of attention on how to get the signal to stay a stable size. 
+
+rf ti. two e field applied as modulated waveform. 2v out 
+17. 2hz difference frequency. 200 microvolts p-p, works perfectly 
+
+18. 4hz difference frequency. 200 microvolts p-p, works perfectly 
+
+19. 4hz again. this time with v daq range down to 8v. 
+
+Ok, if they all work... we haven't proved anything.
+
+ae again. 4hz. 
+20. looks beautiful. 
+21. start and end only. I had it set to no ramp.. it was due to an onset effect. 
+
+I can see the difference frequency in all of the above. They could be mixing in other locations I suppose, but the mesh is right over the top of the electrodes. it is not that close to the measurement wire. 
+
+TODO: for meps in a mouse, i will need to slowly ramp the pressure signal so as not to induce the DC offset too much. 
+aemeps_rf.py I will need to be at 0.1v out for pressure and 4-8V for voltage output.
+
+It's possible I would induce a neural block from the voltage at HF? 
+
+22. ae_rf_transmitter_transfer_function.py Result: It looks like I have a direct connect and not a cap one. 
+
+23. aemeps_rf.py with two electric fields, where both electric fields are 2khz. 
+    This is to test that current doesn't get through at low frequencies. If it does, it means we have problem where modulation is coming from the fg output. I can see the 10hz, amplitude 200 microvolts pp 
+
+24. 500khz + 10hz rf e ti. 10hz, 60 microvolts p-p. This shouldn't be smaller... it suggests I do not have a simple capacitive connection, but something mopre like a direction connection currently. 
+
+Question, when I do rf ae meps, do I see the difference frequency in the raw signals at all? 
+25. yes, it is being picked up, but that might be because it is also measuring here, which is also true. It seems smaller in size? gain = 100 
+
+26. same as 25, gain = 1000. during rf ae i can see that the df of 10hz is on the v out electrode, but it's amplitude doesn't follow with the amplitude of 10hz in v out. the amplitude of 10hz in v out may just be at the noise floor and I can see it in the tight filter. 
+Seems legit. Try it in a mouse. Also I have done previous location mappings which give it the shape of the US focus.  
+
+27. Back to RF E TI. 2khz 2010hz. Seems to be a direct correlation between the outputs voltage and the measured voltage. Same amplitude, same phase. Thus, RF E TI is confounded by the direct connection meaning low frequencies pass through. Needs a thicker capacitive connection. 
+
+28. ae rf, seems not as in phase. 
+
+Last thing, test the new long recording. 
+
+29. it appears to repeat. Though that wasn't what was causing the problem with long recordings. THere is still a problem, though the recording does complete after an initial failure. 
+
+Try replacing the glad wrap, with the silicon, then repeating the ae_rf_transmitter test again. 
+
+30. pure rf ae test. 
+
+31. ti test at 2khz. There is definitely demod artefact in the output signal(though the tx doesn't transmit at this range). This is likely just due to f mixing in the wires and ionic connection. However, the amplitude of the 
+
+32. do the transmission function again but with the silicon on place. This time, I removed the preamp filter so we can actually get the correct result. 
+
+33. rf e ti at 2khz. 10hz df. 
+
+34. rf e ti at 500khz. 10hz df.  
+
+- - -
+ 
+
+
+
+
+
+
+
+

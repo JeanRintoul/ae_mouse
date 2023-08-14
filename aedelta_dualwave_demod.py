@@ -23,28 +23,30 @@ from scipy.signal import iirfilter,sosfiltfilt
 # 
 # increment this for each test. 
 # 
-file_list_start = 21
-file_list_end   = 22
-gain            = 1000
+file_list_start = 6
+file_list_end   = 9
+gain            = 2000
 # 
 # 
-dfx             = 10000  # this means we have
-base_frequency  = 500000
+dfx             = 1000  # this means we have
+# base_frequency  = 500000
+base_frequency  = 1000000
 # 
 aeti_variables = {
 'type':'demodulation',    # choice of 'pressure' or 'ae'. Note: this doesn't change the contents of the file, just the way it is processed at the end. 
 'Fs': 5e6,                # 
 'duration': 8.0,          # 
 'position': 1, 
-'pressure_amplitude': 0.0,    # 0.1 is 1MPa. 
-'pressure_frequency': 500000.0,
+'pressure_amplitude': 0.1,    # 0.1 is 1MPa. 
+'pressure_frequency': base_frequency,
+'pi_frequency':base_frequency + dfx, # uncomment this for dual wave delta demod. 
 # 'pressure_prf':1020,        # pulse repetition frequency for the sine wave. Hz. 
 # 'pressure_ISI':0,           # inter trial interval in seconds. 
 # 'current_amplitude': 0.0,   # its actually a voltage .. Volts. 
 # 'current_frequency': 70,    # 
 'current_amplitude': 0.0,     # its actually a voltage .. Volts. 
 'current_frequency': 500000,  # 
-'ti_frequency':500000 + dfx,  # comment this out to get a continuous wave. 
+# 'ti_frequency':500000 + dfx,  # comment this out to get a continuous wave. 
 # 'ti_frequency': 0,        # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
 'ae_channel': 0,            # the channel of the measurement probe. 
 'rf_monitor_channel': 4,    # this output of the rf amplifier.  
@@ -59,7 +61,7 @@ aeti_variables = {
 'gain':gain,                # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':10,        # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\mouse_aeti\\e100_neural_recording_pat_e_mouse',
+'save_folder_path':'D:\\ae_mouse\\e105_rfae_meps',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 # 

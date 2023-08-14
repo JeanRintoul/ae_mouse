@@ -90,9 +90,11 @@ int main(int argc, char* argv[])
   // double duration                  = 1.0;   // measured in seconds  
   unsigned int resolution             = 0;
   int usmep                           = 0;
-  //uint64_t record_length            = 50000; // 50 kS
-  uint64_t record_length              = 50000; // 50 kS 
-  //uint64_t record_length            = 100000; // 50 kS    
+  uint64_t record_length            = 60000; // 50 kS
+  //uint64_t record_length            = 50000; // 50 kS 
+  // uint64_t record_length           = 100000; // 50 kS    
+  //uint64_t record_length            = 10000; // 50 kS   
+  //uint64_t record_length            = 20000; // 50 kS
   // this is so channels can be selectively activated or de-activated. 
   // demod setting
   //double chEnables[8]                 = {1,1,1,0,0,0,0,1};
@@ -107,26 +109,46 @@ int main(int argc, char* argv[])
   double pressure_amplitude           = 0.0; //0.13;  
   // double pressure_amplitude        = 0.031;    
   double current_signal_frequency     = 8000;  
-  double pressure_signal_frequency  = 500000;  
+  double pressure_signal_frequency    = 500000;  
   //double pressure_signal_frequency    = 672800;    
   // variables for ultrasound neuromodulation. 
   double pressure_prf          = 0;   // pulse repetition frequency for the sine wave. h
   double pressure_ISI          = 3;     // inter-trial interval. i
-  double pressure_burst_length = 0.3;   // milliseconds j
-  // 
-  double prf_pulse_length      = 0.01; // 0.1 seconds. 
+  double pressure_burst_length = 0.004;   // milliseconds j
+  // double prf_pulse_length      = 0.01; // 0.1 seconds. 
   double prf_frequency         = 0;  // this is the number of times a second to pulse the signal. Each pulse should be of length 0.1 seconds. 
+  // current settings. 
+  double current_burst_length  = 0.004;
+  double  current_ISI          = 3;
+//
   double start_pause           = 0.25;
   double end_pause             = 0.75;  
   double start_null            = 0.0; 
   double end_null              = 0.0;      
-  double ti_frequency          = 0.0;    
-  while ((opt = getopt(argc, argv, "f:g:h:i:j:p:d:s:c:a:b:k:n:t:e:z:m:u:")) != -1) {    
+  double ti_frequency          = 0.0;  
+  double pi_frequency          = 0.0;  
+  double long_recording        = 0.0; // if it is a long recording, then we loop a shorter amount of time(specificed in seconds) in the function generator. Ensure no ramp. 
+  // letters remaining. l,o,r,v,w,y
+  //      current_burst_length
+  //      current_ISI
+  //
+  while ((opt = getopt(argc, argv, "a:b:c:d:e:f:g:h:i:j:k:m:n:p:q:s:t:u:x:z:w:y:")) != -1) {   
+  // while ((opt = getopt(argc, argv, "f:g:h:i:j:p:d:s:c:a:b:k:n:t:e:z:m:u:")) != -1) {    
       switch(opt) {
       case 'f':
         sscanf(optarg,"%lf\n",&current_signal_frequency); 
         // snprintf(filename_prefix, MAX, "%0.2f", (float)current_signal_frequency) ;
         printf("\ncurrent_signal_frequency(Hz): %s\n",optarg);
+      break;
+      case 'w':
+        sscanf(optarg,"%lf\n",&current_burst_length); 
+        // snprintf(filename_prefix, MAX, "%0.2f", (float)current_signal_frequency) ;
+        printf("\ncurrent_burst_length: %s\n",optarg);
+      break;
+      case 'y':
+        sscanf(optarg,"%lf\n",&current_ISI); 
+        // snprintf(filename_prefix, MAX, "%0.2f", (float)current_signal_frequency) ;
+        printf("\ncurrent_ISI: %s\n",optarg);
       break;
       case 'g':
         sscanf(optarg,"%lf\n",&pressure_signal_frequency); 
@@ -193,11 +215,18 @@ int main(int argc, char* argv[])
         sscanf(optarg,"%lf\n",&ti_frequency);
         printf("\nti_frequency: %s\n",optarg);
       break;
+      case 'x':  // start pause in percentage of total samples
+        sscanf(optarg,"%lf\n",&pi_frequency);
+        printf("\npi_frequency: %s\n",optarg);
+      break;      
       case 'u':  // start pause in percentage of total samples
         sscanf(optarg,"%lf\n",&prf_frequency);
         printf("\nprf_frequency: %s\n",optarg);
       break;
-
+      case 'q':  // 
+        sscanf(optarg,"%lf\n",&long_recording);
+        printf("\nlong recording: %s\n",optarg);
+      break;
       case '?':
       /* Case when user enters the command as
        * $ ./cmd_exe -i
@@ -372,11 +401,10 @@ int main(int argc, char* argv[])
   // double dRanges[8] = {20.0,0.2,20.0,20.0,0.4,0.2,4.0,2.0};
   // double dRanges[8] = {20.0,80.0,20.0,0.2,2.0,0.2,8.0,2.0}; 
   // double dRanges[8] = {20.0,80.0,20.0,0.2,2.0,2.0,8.0,2.0}; 
-
   // double dRanges[8] = {40.0,0.2,20.0,0.2,2.0,0.2,8.0,8.0}; 
   // this one: 
   // double dRanges[8] = {2.0,0.2,20.0,20.0,0.8,0.2,40.0,40.0}; 
-  double dRanges[8] = {20.0,20,20.0,20.0,20.0,2.0,4.0,40.0}; 
+  double dRanges[8] = {8.0,20,20.0,20.0,8.0,4.0,8.0,40.0}; 
   //double dRanges[8] = {0.2,0.2,20.0,20.0,4.0,4.0,8.0,40.0};   
   //
   //double dRanges[8] = {20.0,80.0,20.0,0.2,2.0,0.2,0.2,2.0};   
@@ -387,7 +415,6 @@ int main(int argc, char* argv[])
   uint64_t Couplings[8] = {CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV};
   // 
   //uint64_t Couplings[8] = {CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_ACV,CK_ACV};
-  
   //uint64_t Couplings[8] = {CK_ACV,CK_ACV,CK_ACV,CK_ACV,CK_ACV,CK_ACV,CK_ACV,CK_ACV};
   const uint16_t channel_count = ScpGetChannelCount(scp);
   // 
@@ -426,9 +453,6 @@ int main(int argc, char* argv[])
   GenSetFrequency(gen_current, gen_current_sample_frequency); // 1 kHz
   CHECK_LAST_STATUS();
 
-  // make it so the signal doesnt repeat. 
-  GenSetMode(gen_current, GM_BURST_COUNT);
-  GenSetBurstCount(gen_current, 1 );
 
   // current generator 
   int current_duration_in_samples = (int)gen_current_sample_frequency*duration;
@@ -437,6 +461,18 @@ int main(int argc, char* argv[])
   // pressure generator 
   int pressure_duration_in_samples = (int)gen_pressure_sample_frequency*duration;  
   float* datap = malloc(sizeof(float) * pressure_duration_in_samples);  
+
+  if (long_recording > 0) { // long recording in seconds. 
+      current_duration_in_samples = (int)gen_current_sample_frequency*long_recording;
+      data = malloc(sizeof(float) * current_duration_in_samples);
+      pressure_duration_in_samples = (int)gen_pressure_sample_frequency*duration;  
+      datap = malloc(sizeof(float) * pressure_duration_in_samples);  
+  }
+  else {    // make it so the signal doesnt repeat. 
+    GenSetMode(gen_current, GM_BURST_COUNT); 
+    GenSetBurstCount(gen_current, 1 );
+  }
+
 
   memset(datap, 0, pressure_duration_in_samples*sizeof(float) );
   memset(data, 0, current_duration_in_samples*sizeof(float) ); 
@@ -491,7 +527,9 @@ int main(int argc, char* argv[])
   // the electric field needs to ramp in. 
   double pressure_prf_guide = 0.0; 
   int pressure_prf_counter  = 0;
+  // 
   int isi_counter = 0;
+  int current_isi_counter  = 0;
   int check = 0;
   // printf("\n pressure duration in samples %d", pressure_duration_in_samples);
   // printf("\n pressure final end ramp %d", pressure_final_end_ramp);
@@ -508,14 +546,13 @@ int main(int argc, char* argv[])
       datap[i] = 0.0;
       // printf("\n %d = %lf", i, data[i]);
       // code for the initial pressure ramp. 
-
-
       if (no_ramp == 0.0) { 
         pressure_ramp_factor = (float)(i-pressure_start_null)/(float)(pressure_start_time-pressure_start_null);   
-        datap[i] = pressure_ramp_factor*sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency);   
-
-        // Ultrasound Neuromodulation Option. 
-        if (pressure_prf  > 0.0) {  // if we are in US neuromodulation mode... 
+        
+        if (pi_frequency > 0.0) {  // dual sine wave output option. 
+          datap[i] = pressure_ramp_factor*(sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency)+sinf(2*PI* pi_frequency * (float)i/gen_pressure_sample_frequency + PI) );  
+        }
+        else if (pressure_prf  > 0.0) { // Ultrasound Neuromodulation Option. 
           isi_counter++;
           pressure_prf_counter++;
           pressure_prf_guide = sinf( 2*PI*(pressure_prf)*(float)i/gen_pressure_sample_frequency);
@@ -523,21 +560,28 @@ int main(int argc, char* argv[])
           if (pressure_prf_guide > 0 && (float)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
             datap[i] = pressure_ramp_factor*sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency); 
           }
+          // Reset the prf burst length counter. 
+          if (pressure_prf_guide < 0  ) {
+            pressure_prf_counter = 0;
+          }
           // Reset. 
           if ((float)isi_counter/gen_pressure_sample_frequency > pressure_ISI) {
             isi_counter = 0;
-            pressure_prf_counter = 0;
           }
         }  // end of PRF/ISI option inside the ramp. 
-
-
+        else {
+          datap[i] = pressure_ramp_factor*sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency);   
+        }
+        //
       }
 
     }
     else if (i <= (int)pressure_final_end_ramp && i >= (int)pressure_start_time ) {  // the main pressure signal 
-
-      // Ultrasound Neuromodulation Option. 
-      if (pressure_prf  > 0.0) {  // if we are in US neuromodulation mode... 
+      // 
+      if (pi_frequency > 0.0) {
+        datap[i] = (sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency)+sinf(2*PI* pi_frequency * (float)i/gen_pressure_sample_frequency + PI) );  
+      }
+      else if (pressure_prf  > 0.0) {  // standard Ultrasound Neuromodulation Option. 
         isi_counter++;
         pressure_prf_counter++;
         pressure_prf_guide = sinf( 2*PI*(pressure_prf)*(float)i/gen_pressure_sample_frequency);
@@ -545,14 +589,16 @@ int main(int argc, char* argv[])
         if (pressure_prf_guide > 0 && (float)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
           datap[i] = sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency); 
         }
-        // Reset. 
-        if ((float)isi_counter/gen_pressure_sample_frequency > pressure_ISI) {
-          isi_counter = 0;
+        // Reset the prf burst length counter. 
+        if (pressure_prf_guide < 0  ) {
           pressure_prf_counter = 0;
         }
-
+        // Reset the isi counter. 
+        if ((float)isi_counter/gen_pressure_sample_frequency > pressure_ISI) {
+          isi_counter = 0;
+        }
       }
-      else {
+      else {  // single sine-wave. 
         datap[i] = sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency);
       }
  
@@ -572,23 +618,34 @@ int main(int argc, char* argv[])
         //
         // implement the final end ramp, and end null period if requested. 
         if ((pressure_duration_in_samples - i - pressure_end_null) > 0) {
+          // end ramp scaling factor. 
           pressure_ramp_factorend = (float)(pressure_duration_in_samples - i - pressure_end_null)/(float)(pressure_duration_in_samples-pressure_final_end_ramp - pressure_end_null);
-          datap[i] = pressure_ramp_factorend*sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency);   
-          // Ultrasound PRF Neuromodulation Option. 
-          if (pressure_prf  > 0.0) {  // if we are in US neuromodulation mode... 
+          if (pi_frequency > 0.0) {
+            datap[i] = pressure_ramp_factorend*(sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency)+sinf(2*PI* pi_frequency * (float)i/gen_pressure_sample_frequency + PI) );  
+          }
+          else if (pressure_prf  > 0.0) {  //  Ultrasound PRF Neuromodulation Option. 
             isi_counter++;
             pressure_prf_counter++;
             pressure_prf_guide = sinf( 2*PI*(pressure_prf)*(float)i/gen_pressure_sample_frequency);
             datap[i] = 0;
-            if (pressure_prf_guide > 0 && (float)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
-              datap[i] = pressure_ramp_factor*sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency); 
+            if (pressure_prf_guide > 0 ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+              if ((float)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {
+                datap[i] = pressure_ramp_factorend*sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency); 
+              }
+            }
+
+            // Reset the prf burst length counter. 
+            if (pressure_prf_guide < 0  ) {
+                pressure_prf_counter = 0;
             }
             // Reset. 
             if ((float)isi_counter/gen_pressure_sample_frequency > pressure_ISI) {
               isi_counter = 0;
-              pressure_prf_counter = 0;
             }
           }  // end of PRF/ISI option inside the down ramp. 
+          else {
+            datap[i] = pressure_ramp_factorend*sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency);   
+          }
 
         }
         else{
@@ -621,27 +678,28 @@ int main(int argc, char* argv[])
             data[i] = current_factor*(sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency)+sinf(2*PI* ti_frequency * (float)i/gen_current_sample_frequency + PI) +dc_offset);  
           }
           else if (prf_frequency > 0.0) {  // toggle the current sine wave on and off at the prf frequency. 
+            current_isi_counter++;            
+            prf_counter++;
             prf_guide = sinf( 2*PI*(prf_frequency)*(float)i/gen_current_sample_frequency);
-            if (prf_guide > 0) {  // if prf frequency is 5 times a second, this will toggle 5 times on off. 
+            data[i] = 0;
+            if (prf_guide > 0 && (float)prf_counter/gen_current_sample_frequency < current_burst_length) {  // if prf frequency is 5 times a second, this will toggle 5 times on off. 
               data[i] = current_factor*sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency)+dc_offset; 
-              prf_counter++;
-              // 
-              if ((float)prf_counter/gen_current_sample_frequency > prf_pulse_length) {  // ensure it stops at the 0.1 second mark. 
-                data[i] = 0;
-              }
+            }  
+            // Reset the prf burst length counter. 
+            if (prf_guide < 0  ) {
+              prf_counter = 0;
             }
-            else {
-              data[i] = 0;
-              prf_counter = 0;  // prf counter should be zerod
+            // Reset. 
+            if ((float)current_isi_counter/gen_current_sample_frequency > current_ISI) {
+              current_isi_counter = 0;
             }
-          }
+          }  // end of PRF/ISI option inside the ramp.   
           else {
             data[i] = current_factor*sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency)+dc_offset;            
           }
         }
         else {  // this is if no_ramp is true,  there will be no ramp. 
           data[i] = 0.0;
-
         }      
 
     }  //
@@ -650,22 +708,24 @@ int main(int argc, char* argv[])
         data[i] = (sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency)+sinf(2*PI* ti_frequency * (float)i/gen_current_sample_frequency + PI) +dc_offset);  
       }
       else if (prf_frequency > 0.0) {  // toggle the current sine wave on and off at the prf frequency. 
+        current_isi_counter++;            
+        prf_counter++;
         prf_guide = sinf( 2*PI*(prf_frequency)*(float)i/gen_current_sample_frequency);
-        if (prf_guide > 0) {  // if prf frequency is 5 times a second, this will toggle 5 times on off. 
+        data[i] = 0;
+        if (prf_guide > 0 && (float)prf_counter/gen_current_sample_frequency < current_burst_length) {  // if prf frequency is 5 times a second, this will toggle 5 times on off. 
           data[i] = sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency)+dc_offset; 
-          prf_counter++;
-          // 
-          if ((float)prf_counter/gen_current_sample_frequency > prf_pulse_length) {  // ensure it stops at the 0.1 second mark. 
-            data[i] = 0;
-          }
+        }  
+        // Reset the prf burst length counter. 
+        if (prf_guide < 0  ) {
+          prf_counter = 0;
         }
-        else {
-          data[i] = 0;
-          prf_counter = 0;  // prf counter should be zerod
+        // Reset. 
+        if ((float)current_isi_counter/gen_current_sample_frequency > current_ISI) {
+          current_isi_counter = 0;
         }
-      }
-      else {
-        data[i] = sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency)+dc_offset;            
+      }  // end of PRF/ISI option inside the ramp.   
+      else {  // the pi/2 is so that when you inject a pressure and a current that are single sine waves they will be offset correctly. 
+        data[i] = sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency )+dc_offset;            
       }  
 
     }
@@ -683,20 +743,22 @@ int main(int argc, char* argv[])
               data[i] = current_factorend*(sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency)+sinf(2*PI* ti_frequency * (float)i/gen_current_sample_frequency + PI) +dc_offset);        
             }
             else if (prf_frequency > 0.0) {  // toggle the current sine wave on and off at the prf frequency. 
+              current_isi_counter++;            
+              prf_counter++;
               prf_guide = sinf( 2*PI*(prf_frequency)*(float)i/gen_current_sample_frequency);
-              if (prf_guide > 0) {  // if prf frequency is 5 times a second, this will toggle 5 times on off. 
+              data[i] = 0;
+              if (prf_guide > 0 && (float)prf_counter/gen_current_sample_frequency < current_burst_length) {  // if prf frequency is 5 times a second, this will toggle 5 times on off. 
                 data[i] = current_factorend*sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency)+dc_offset; 
-                prf_counter++;
-                // 
-                if ((float)prf_counter/gen_current_sample_frequency > prf_pulse_length) {  // ensure it stops at the 0.1 second mark. 
-                  data[i] = 0;
-                }
-              }
-              else {
-                data[i] = 0;
+              }  
+              // Reset the prf burst length counter. 
+              if (prf_guide < 0  ) {
                 prf_counter = 0;
               }
-            }  //end prf . 
+              // Reset. 
+              if ((float)current_isi_counter/gen_current_sample_frequency > current_ISI) {
+                current_isi_counter = 0;
+              }
+            }  // end of PRF/ISI option inside the ramp.   
             else {  // don't add two sine waves together.
               //current_factorend = (float)(current_duration_in_samples - i)/(float)current_end_ramp;
               data[i] = current_factorend*sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency)+dc_offset;        
@@ -757,9 +819,12 @@ int main(int argc, char* argv[])
   GenSetFrequencyMode(gen_pressure,FM_SAMPLEFREQUENCY );
   GenSetFrequency(gen_pressure, gen_pressure_sample_frequency); // 1 kHz
   CHECK_LAST_STATUS();
-  // set the pressure mode to burst
-  GenSetMode(gen_pressure, GM_BURST_COUNT);
-  GenSetBurstCount(gen_pressure, 1 );
+
+  if (long_recording == 0) { 
+    // set the pressure mode to burst
+    GenSetMode(gen_pressure, GM_BURST_COUNT);
+    GenSetBurstCount(gen_pressure, 1 );
+  }
   // 
 
   // Set amplitude:
