@@ -19,6 +19,23 @@ from scipy.signal import decimate
 import scipy.signal
 import pandas as pd
 # 
+signal_of_interest 	= 90.0
+low 				= 0.1
+
+savepath        = 'D:\\ae_mouse\\e107_revision\\t2_mouse_neural_decoding_only\\'
+file_number     = 12
+Fs              = 5e6
+Fs              = 1e4
+duration        = 12	
+prf_list 		= [1020*1, 1020*3,500000*2] # 1020*2 no  # 1020*1, 1020*3
+prf_list 		= [1020]
+# prf_list 		= [750000] # no 500000, 500000+10201020*2 no  # 1020*1, 1020*3, 500000*2 + 1020, 500000*2-1020,500000*2-2*1020
+# 
+factor_1 		= 1
+factor_2 		= 5
+# factor_2 		= 2
+gain            = 1000
+
 # savepath        = 'D:\\ae_mouse\\e105_rfae_meps\\t4_mouse\\'
 # file_number     = 11
 # Fs              = 1e4
@@ -26,10 +43,10 @@ import pandas as pd
 # prf_list 		= [180]
 # factor_1 		= 10
 # factor_2 		= 2
-# gain            = 1000
+# gain          = 1000
 
 # the mouse from yesterday. 
-# savepath        = 'D:\\ae_mouse\\e107_revision\\t1_mouse\\'
+# savepath        = 'D:\\ae_mouse\\e107_revision\\t2_mouse_neural_decoding_only\\'
 # file_number     = 2
 # Fs              = 5e6
 # duration        = 8.0	
@@ -39,18 +56,18 @@ import pandas as pd
 # gain            = 1000
 # # 
 # # Phantom files 1-10 are all the same. 
-savepath        = 'D:\\ae_mouse\\e105_rfae_meps\\t2_phantom_detangling\\demodulation_challenge\\'
-file_number     = 5
-Fs              = 5e3
-duration        = 12.0	
+# savepath        = 'D:\\ae_mouse\\e105_rfae_meps\\t2_phantom_detangling\\demodulation_challenge\\'
+# file_number     = 5
+# Fs              = 5e3
+# duration        = 12.0	
 
-# file_number     = 11
-# Fs              = 5e6
-# duration        = 4.0	
-prf_list 		= [80]
-gain            = 2000
-factor_1 		= 1
-factor_2 		= 5
+# # file_number     = 11
+# # Fs              = 5e6
+# # duration        = 4.0	
+# prf_list 		= [80]
+# gain            = 2000
+# factor_1 		= 1
+# factor_2 		= 5
 # 
 # Why does it work so much better when there is a lower sampling rate? I had a 3k low pass in place, so I was effectively doing signal averaging to remove noise. 
 # TODO: I should be able to recreate this in software? 
@@ -110,8 +127,7 @@ def demodulate2(in_signal,carrier_signal):
     return in_signal*carrier_signal
 # 
 # 
-signal_of_interest 	= 30
-low 				= 10
+
 high 				= signal_of_interest
 # 
 demod_outputs 		= []
@@ -213,7 +229,7 @@ print ('lag is',idx_lag)
 # zero it if it is so wrong. 
 if idx_lag > new_Fs:
 	idx_lag = 0 
-
+idx_lag = 0 
 if idx_lag > 0:
     x 		= x[:(len(y)-idx_lag)]
     t_cut  	= t_cut[idx_lag:]

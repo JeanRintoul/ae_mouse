@@ -1,0 +1,49 @@
+t1 - mineral oil. PRF and dual waveform measurements. 
+====================================================== 
+
+ae_calibrate_with_prf.py 
+aemeps_prf.py at center point
+
+Goal: What does the electrical noise look like with the mineral oil in place? 
+
+1. Do I still see PRF mixing? When I increase the gain to 1000, and add a 3k low-pass filter, then I do see the 1020Hz. I can also see the carrier frequency still has significant amplitude. 
+
+However, I no longer see the focal mixing shape. This suggests that the acoustic electric signal is getting in and mixing in OTHER ways(maybe because I removed the shielding?), but is not being mediated by the pressure signal to produce a focal shape. 
+
+2. Do I still see the acoustoelectric effect? use ae_calibrate_with_ae to map to the center point using mineral oil. Yes I do see the acoustoelectric effect. Is it focal? 
+
+- If I put the volts up too high, I get lots of non-linearities in the output voltage. So to get an accurate result I am better off with low voltage, and longer measurement time. 
+- still i am getting a biforcated peak. 
+- I stopped geting biforcated peak when I switched to the preamp and added some amplification to get above the daq resolution. 
+
+I didn't see focality. I think to see focality I need a current source, one measurement channel together, and a distant reference. What I am seeing now, is just the current travelling from wherever the pressure peak is. 
+
+3. phantom tests aemeps_prf.py , phantom amplitudes v out = 3v. The amount received at electrodes depends on how it moves thorugh medium.. so this might not be equal to mouse. 
+f = [1,2,5,40,100]
+a = [2950,1900,1280,1680,1900]
+Then do 1hz, 2Hz, 5Hz, 40Hz, 100Hz df to do phantom comparison map versus LFP. 
+
+- Does the electrical noise from the transducer, still intervene with the output signals when I use mineral oil? 
+
+RUN the dual meps thing to find out. Yes it does, 5 x and 10x gets in there, but only after a couple of seconds. I may have to live with this. 
+
+Leak! The parafilm is stuck to the side, and there are air bubbles at the transducer focus. The mineral oil is dissolving the parafilm. No good. No results are trustworthy. Start again. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

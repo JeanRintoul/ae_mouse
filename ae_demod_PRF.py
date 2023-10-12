@@ -22,34 +22,32 @@ import pandas as pd
 from scipy.signal import iirfilter,sosfiltfilt
 # 
 # 
-file_list_start = 1
-file_list_end   = 1
+file_list_start = 2
+file_list_end   = 2
 gain            = 1000
 # 
 aeti_variables = {
-'type':'demodulation',       # choice of 'pressure' or 'ae'. Note: this doesn't change the contents of the file, just the way it is processed at the end. 
-'Fs': 1e4,                  # recording sampling frequency. 
+'type':'demodulation',        # choice of 'pressure' or 'ae'. Note: this doesn't change the contents of the file, just the way it is processed at the end. 
+'Fs': 5e6,                    # recording sampling frequency. 
 #'Fs': 5e6, 
-#'long_recording':1,        # if it is a long recording, loop the data stored in the function generator. Specify the number of seconds to loop. 
-'duration': 12.0,            # overflows 
+#'long_recording':1,          # if it is a long recording, loop the data stored in the function generator. Specify the number of seconds to loop. 
+'duration': 12.0,             # ensure duration, and Fs can fit into an integer multiple of the block size. 
 'position': 1,
-'USMEP': 1,                  #  this allows the sample rate of recording to be different from the function generator output. 
-'pressure_amplitude': 0.05,  #0.13
+'USMEP': 1,                   # this allows the sample rate of recording to be different from the function generator output. 
+'pressure_amplitude': 0.1,    # 0.13
+# 'pressure_amplitude': 1.0,  # 0.13
 'pressure_frequency': 500000.0,
 #'pressure_burst_length': 0.000004, # pressure burst length in milliseconds. (this should be 2 cycles). 
-# 'pressure_burst_length': 0.004,
-#'pressure_burst_length': 0.0004, # pressure burst length in milliseconds. (this should be more cycles). 
-'pressure_burst_length': 0.0004, # pressure burst length in milliseconds. (this should be more cycles). 
-'pressure_prf': 1020,         # pulse repetition frequency for the sine wave. Hz. 
-#'pressure_prf':520,         # pulse repetition frequency for the sine wave. Hz. 
-'pressure_ISI': 0,           # inter trial interval in seconds. 
+'pressure_burst_length': 0.004,   # pressure burst length in milliseconds. (this should be more cycles). 
+'pressure_prf': 1020,             # pulse repetition frequency for the sine wave. Hz. 
+'pressure_ISI': 0,                # inter trial interval in seconds. 
 # 'pi_frequency':500000 + 1020, 
-'current_amplitude': 1.0,   # its actually a voltage .. Volts. 
-'current_frequency': 100000,    # 
-'current_ISI':0,
-'current_burst_length':0.004,
-'current_prf':1020,
-# 'ti_frequency':23, 
+'current_amplitude': 0.00,        # its actually a voltage .. Volts. 
+'current_frequency': 9000,        # 
+# 'current_ISI':0,
+# 'current_burst_length':0.0004,
+# 'current_prf':1020,
+# 'ti_frequency':15, 
 # 'ti_frequency': 0,        # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
 'ae_channel': 0,            # the channel of the measurement probe. 
 'rf_monitor_channel': 4,    # this output of the rf amplifier.  
@@ -101,6 +99,7 @@ frequencies = xf[1:(end_pause-start_pause)//2]
 # signal_of_interest    = aeti_variables['current_frequency'] 
 signal_of_interest      = 90 # 
 prf                     = aeti_variables['pressure_prf'] 
+# prf = 1020
 # 
 sos_finalpass = iirfilter(17, [signal_of_interest], rs=60, btype='lowpass',
                        analog=False, ftype='cheby2', fs=Fs,
@@ -152,18 +151,22 @@ for test_number in range(len(file_list)):
     dfiltered_rawdata           = filtered_rawdata[::decimation_factor]   
     dfiltered_demodulated       = filtered_demodulated[::decimation_factor]           
     td                          = t[::decimation_factor]  
+
+    m_idx   = m.find_nearest(frequencies,prf)
+    print ('prf amplitude p-p',2*fft_r[m_idx])
     #  
     fig = plt.figure(figsize=(10,6))
     ax = fig.add_subplot(311)
     plt.plot(t,data[m_channel],'k')
     ax2 = fig.add_subplot(312)
-    plt.plot(t,vdata,'k')
+    # plt.plot(t,vdata,'k')
     plt.plot(t,rfdata,'r')    
     ax3 = fig.add_subplot(313)
-    # plt.plot(frequencies,fft_r,'k')
-    plt.plot(frequencies,fft_v,'k')    
-    plt.plot(frequencies,fft_rf,'r')       
-    ax3.set_xlim([0,prf + 50])
+    plt.plot(frequencies,fft_r,'k')
+    plt.plot(frequencies,fft_v,'r')    
+    # plt.plot(frequencies,fft_rf,'r')       
+    ax3.set_xlim([0,prf + signal_of_interest])
+    # ax3.set_xlim([0,600000])
     plot_filename = savepath + '\\t'+str(file_list[test_number])+'_raw_datacheck.png'
     plt.savefig(plot_filename)
     plt.show()

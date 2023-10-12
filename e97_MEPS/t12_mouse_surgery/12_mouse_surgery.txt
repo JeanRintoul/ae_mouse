@@ -1,9 +1,0 @@
-t11 - new mouse surgery
-====================================================  
-
-- MEP electrodes designed for highest mA throughput and high current density(2 screws close together).
-
-- Try EEG electrode for demodulation, this should not degrade over time, and have better SNR due to slightly larger surface area. 
-
-TODO: refill the de-ionised water. 
-

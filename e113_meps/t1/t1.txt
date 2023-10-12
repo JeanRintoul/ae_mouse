@@ -1,0 +1,150 @@
+t1 - MEPS test in mouse. 
+============================================ 
+
+ae_calibrate_with_prf.py 
+aemeps_prf.py at center point
+
+Mouse with inserted electrodes in motor cortex. Tape current electrode onto neurotar so it is in the gel. 
+
+Date of experiment: 27/09/2023  
+Mouse Cage: 119466
+Number of uses before: 0, surgery 1.5 weeks previous. 
+Gender: male
+Weight: 32g with headbar. 
+DOB: 6.05.2023
+
+Ket/Xyl 
+drugs:
+antidote: 6
+X: 1.5
+k1: 2.3
+k2: 1.0
+saline: 50
+
+= = = = = = = = = = = = = = = = start 12:50 = = = = =  
+
+- trouble with headbar fit. This time, the glue from holding the ears back is in the way. I had to do some trimming to get it to fit. Not ideal. 
+The amplitude of the electric signal from the rf amplifier is super big. 
+
+preamp settings 3k low pass. 500 gain. 
+First, locate the pressure focus with ae_calibrate_with_prf.py over the motor cortex. 
+
+- measure the df amplitude at a range of frequencies. (so I can compare against the phantom). 
+GOAL: Obtain the amplitude at the center point as mouse is waking for 
+df = 1hz, 
+df = 2hz, 
+df = 5hz 
+df = 10hz
+df = 40hz
+df = 100hz. 
+
+- measure the df with v only, p only and then both. df = 2hz. 
+
+- can i see spike data at the df? 2hz. To do this ideally I will need a few recordings of longer duration.  
+
+- remove the preamp at the end, and measure behavioral data at higher voltages. 
+
+= = = = = = = = = = = = = = = = 
+
+- took 30 minutes to trim it into the right amplitude. 
+- my rf amplifier seems to have lots of noise again. 
+- skip the accurate positioning. 
+- aemeps_prf.py 
+
+1. 5hz df, amplitude is huge! vout = 1v. but my rf amplifier volts r big. gain = 1. 
+
+2. gain = 100. df = 5. the neural df is giant... 2500 micrvolts... 
+
+GAIN = 100. 3k low pass. duration = 6 seconds. 
+3. df = 1Hz. amplitude = 4000 microvolts in fft. 
+
+4. df = 2Hz. amplitude = 3650 microvolts in fft. 
+
+5. df = 5hz. amplitude = 3400 microvolts. 
+
+6. df = 10. amplitude 3400 microvolts.
+
+7. df = 40, amplitude 2500 
+
+8. df = 100, df = 3400? 
+
+- - - something cannot be right? 
+
+9. no signals applied, gain = 100. I can see the 1Hz. 
+
+10. pressure only 1MPa. 
+
+11. Current only. 1v output. 
+
+12. Both. df = 1hz. vout = 1v. 
+
+13. df = 1hz. vout = 2 (3k lowpass). HUGE amplitude. 
+
+14. df = 1Hz. move transducer backward. v out = 1v. 
+
+Note: red one was on the visual cortex. so swap polarity for all recorded files here. 
+
+What I think is happening, is that my v out is picking up on the electrical PRF and is adjusting to it... Thus, my vout is delivering the df directly. 
+
+15. df =1. Using mineral oil guard. The amplitude has almost completely disappeared? The voltage data is once again very clean.... 
+
+16. df = 1, v out = 1v, mineral oil. 
+
+17. df = 1, v out = 2v, mineral oil. 
+
+18. df = 1, vout = 3v, mineral oil.  (i can see that now i get that non-linear mixing thing at 5x and 10x)
+
+19. df = 2 vout = 3   (oil is leaking...)
+    amplitude looks big again? 
+20. df = 2, v out = 3
+
+21. df = 2 vout = 3 moved it up a bit. 
+
+22. df = 2, vout = 1   (started twitching) (its there, its just i do not know if it is due to water leaking out etc. )
+
+23. df = 2, vout =1 nothing
+
+24. preamp off. turn up amplitude of v out = 4, df = 2.
+
+Water is once again leaking out. 
+
+14:30... moved into warming chamber. Mouse has oil on it. 
+
+Check any past data, to see if the vout does not also contain the difference frequency, as it is mixing with the PRF. 
+
+The mouse should now fit in the neurotar. In future surgeries, I should pay careful attention to how their ears are glued back. 
+
+TODO:  
+
+Result: I definitely need to electrically isolate the transducer. I think that perhaps filling the cone with oil would be better - it just seems really hard to do. 
+
+Bring in the bottle of mineral oil. 
+
+= = = = = 
+
+END RESULT: I think this is electrical mixing and not true acoustoelectric mixing, but I need to test this with the mineral oil in the US cone. 
+
+= = = = = = 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

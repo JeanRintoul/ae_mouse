@@ -47,7 +47,7 @@ class MidpointNormalize(colors.Normalize):
 
 filename	="ae_xy_syncdata_0.npz"   # save out the data. 
 data 		= np.load(filename) 	#  
-# ae_diff_array 	= data['ae_diff_array'] 	   # 
+ae_diff_array 	= data['ae_diff_array'] 	   # 
 # ae_sum_array    = data['ae_sum_array']
 ae_broadband_array = data['ae_broadband_array']
 x 			= data['x']
@@ -73,6 +73,7 @@ for i in range(a):
         ae_carrier_array[i,j,:] = signal.sosfilt(sos_carrier_ae, ae_broadband_array[i,j,:] )  
 
 ae_array = ae_carrier_array
+ae_array = ae_diff_array
 a,b,c = ae_array.shape
 print ('ae array shape',a,b,c)
 # Fs          = 5e6
@@ -107,7 +108,7 @@ fig = plt.figure(figsize=(10,7),num ='Time scroller tool for XY data')
 ax = fig.add_subplot(121)
 fig.subplots_adjust(bottom=0.15) 
 
-im_h = plt.imshow(ae_array[:, :, idx],cmap=colormap_choice,interpolation='nearest',extent=rectangle,clim=(elev_min, elev_max), norm=MidpointNormalize(midpoint=mid_val,vmin=elev_min, vmax=elev_max))
+im_h = plt.imshow(ae_array[:, :, idx],cmap=colormap_choice,extent=rectangle,clim=(elev_min, elev_max), norm=MidpointNormalize(midpoint=mid_val,vmin=elev_min, vmax=elev_max))
 divider = make_axes_locatable(ax)
 cax = divider.append_axes("right", size="10%", pad=0.1)
 cbar = plt.colorbar(im_h, cax=cax)

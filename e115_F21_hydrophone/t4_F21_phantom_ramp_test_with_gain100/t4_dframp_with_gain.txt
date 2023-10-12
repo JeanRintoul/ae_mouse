@@ -1,0 +1,48 @@
+t3 - F21 with df ramp and preamp gain. 
+====================================================== 
+Date: 11/10/2023
+
+The goal of this test, is to use an equivalent gain and filter as the mouse, to see if the spikes I saw were artefacts or not. 
+
+Wait a second, I used a 300hz filter in the mouse... that means I filtered OUT the spikes? 
+
+Do this test with:
+1. 300hz low pass filter. 
+
+Use F21. 
+
+- - - - - - - -  
+
+1v output(because more ovlds). run aemeps_prf.py. 
+Gain = 100, low pass = 300Hz. Using F21. 
+1. 1Hz
+2. 2Hz
+3. 5
+4. 10
+5. 40
+6. 100
+
+The noise coming from the transducer is so high, that it limits where I can put the filter cut off, and how high I can up the gain. 
+
+I can see however, that I see 'spiking' in this equivalent data. 
+That means, that the spiking I saw before in the mouse, is less likely to be real. 
+
+This is equivalent data. So I can analyse and compare with mouse. 
+I do believe something is wrong with the transducer though. 
+- - - - - - - - 
+
+Measure transducer cone position, I get a similar amplitude wherever I go. 
+I think this means it is due to e f mixing instead. I did always get that when I applied the e field in this way however... so unclear. 
+
+
+- - - - - - 
+
+
+
+
+
+
+
+
+
+

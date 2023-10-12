@@ -1,0 +1,66 @@
+t2 - k gamma neural recording. 
+============================================ 
+Mouse with inserted electrodes in motor cortex. 
+
+Date of experiment: 16/08/2023  
+Mouse Cage: 110444
+Number of uses before: 4 
+Gender: male
+Weight: 33.5g
+DOB: 8.01.2023
+
+Ket/Xyl 
+drugs:
+antidote:6
+X:1.5
+k1:2.3
+k2:1.0
+saline: 50
+
+- use a single thick wire as the way to apply the e field. tape this onto the headbar with copper tape to increase surface area. 
+
+Now I know how to make a good n hz signal, try it in the mouse. v out = 3v. 
+preamp high pass 1hz, low pass 100Hz, so that I get maximal attenuation up where I am applying the current at 500khz. 
+
+Try the e field alone, the p field alone, and also ofcourse the combined field. 
+
+= = = time started:  12:19am = = = = 
+- ae_demod_PRF calibration, preamp set to 3k low pass. 
+
+I had trouble calibrating, and a massive mains hum. I am not sure why. I think I have a bad connection but cannot pinpoint it. 
+
+Interestingly, this mains hum seems to be effecting the antenna resonance of the transducer and creating unpredictable ae field sizes. 
+preamp 3k low pass, 1hz high pass. 
+1. no US. 12 seconds. I cannot see a delta wave. I definitely have a connection issue. 
+2. demodulation PRF 1020 . Likely nothing since I have no delta wave, despite checking connections. 
+    PRF heigh = 32 microvolts. 
+MEPS: 
+3. dF = 10hz. still massive mains noise, which only gets worse apparently when I apply electric field. it's 1000 microvolts at times, but it is not visible in the fft. 
+
+4. df = 4 
+
+1 hr whiskers twitching. 
+
+5. df = 2 , i maybe saw something. 
+
+6. repeat
+
+7. df = 10 
+
+- - 
+
+6. df = 10 
+
+= = =  1hr 8 minutes moved to warming chamber. 
+
+I had both mains noise, and the surface area of my stimulation was too small. 
+I think I also wasn't connected somehow, as I couldn't see a delta wave. 
+I probably should have re-stripped off the ends of the silver wire... 
+
+
+I still have a strange stimulation error where the signal gets larger and introduces harmonics over time... what is the go with that? It happens after 3.5 seconds. 
+- to solve it, I plugged a measurement probe into the inner electrods and can apply voltage with the outer probe. can I do it with a single electrode? 
+
+Is the problem that I am using a single electrode? 
+
+= = = = = = = = = = = = = = = 

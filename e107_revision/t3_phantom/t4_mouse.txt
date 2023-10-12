@@ -1,0 +1,32 @@
+t2 - k gamma neural recording. Don't try for MEPS at the end so I have longer to concentrate on good neural recording results. 
+============================================ 
+Neural decoding test in my new k gamma mouse.
+
+Date of experiment: 14/08/2023  
+Mouse Cage: 115578
+Number of uses before:0, surgery 1 week ago. 
+Gender: male
+Weight: 30
+DOB: 8.04.2023
+
+Ket/Xyl 
+drugs:
+antidote:5.6
+X:1.4
+k1:2.1
+k2:1.0
+saline: 50
+
+
+Settings to try: 
+1. Fs = 5e3, PRF set 0.0004, 3k low pass on preamp. v out pressure = 0.15, prf = 180, gain = 1000. No high pass on preamp. 12 seconds duration. 
+2. Fs = 5e6, PRF set 0.0004, 10k low pass on preamp. v out pressure = 0.15, prf = 180, gain = 1000. No high pass on preamp. 12 seconds duration. 
+
+- Neural Decoding: Alternate between a measurement with US, and a measurement without US on, as this forms the baseline comparison study. 
+Note the amplitude of the PRF. 
+- MEP LFP amplitudes. Hook up the mesh to D Bonos tx. Run aemeps_rf at 1, 2, 4, 10, 100Hz. 
+
+= = = = 
+Last time I got a poor ae amplitude. Remove the green silicon, and do the experiment this time. 
+Yesterday in the mouse, I think I had a bad acoustic connection, as my ae amplitudes were always small. This would definitely inhibit me getting a good result for the demodulation. What I should do is have a distant reference, not the one that is so close. This reference could be at the back of the mouse head and in the gel. I could also consider removing the silicon. 
+

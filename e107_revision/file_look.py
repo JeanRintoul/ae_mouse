@@ -15,13 +15,13 @@ import pandas as pd
 from scipy.signal import iirfilter,sosfiltfilt
 # 
 # 
-file_number    = 14
+file_number    = 21
 gain           = 100
 # in the mouse yesterday. 
-savepath       = 'D:\\ae_mouse\\e107_revision\\t1_mouse\\'
+savepath       = 'D:\\ae_mouse\\e107_revision\\t7_mouse\\'
 
 Fs              = 5e6
-duration        = 8.0	
+duration        = 6.0	
 timestep        = 1.0/Fs
 N               = int(Fs*duration)
 marker_channel  = 7 

@@ -14,8 +14,8 @@ import rp2
 import time
 # 
 # Marker to show when US is turned on and off. Update from my main code to suit specific circumstance
-duration   = 8.0 
-start_null = 0.5 * duration * 1000 # in milliseconds(ms)
+duration   = 6.0 
+start_null = 0.25 * duration * 1000 # in milliseconds(ms)
 end_null   = 0.75 * duration * 1000 # in milliseconds(ms)
 # 
 # Select the frequency it will run at. 

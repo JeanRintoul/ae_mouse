@@ -25,8 +25,8 @@ from scipy.signal import iirfilter,sosfiltfilt
 # 
 # 
 # 
-test_no = 37
-gain = 100
+test_no = 8
+gain = 1000
 # 
 aeti_variables = {
 'type':'demodulation',         # choice of 'pressure' or 'ae'. Note: this doesn't change the contents of the file, just the way it is processed at the end. 
@@ -35,7 +35,7 @@ aeti_variables = {
 'position': test_no,
 'pressure_amplitude': 0.1,  # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': 500000.0,
-'current_amplitude': 0.0,   #  its actually a voltage .. Volts. 
+'current_amplitude': 2.0,   #  its actually a voltage .. Volts. 
 'current_frequency': 8000,  # 
 # 'ti_frequency': 0,        # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
 'ae_channel': 0,            # the channel of the measurement probe. 
@@ -51,12 +51,12 @@ aeti_variables = {
 'IV_attenuation':10,        # the current and voltage monitor both have attenuators on them 
 'marker_channel':7,
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\mouse_aeti\\e100_neural_recording_pat_e_mouse',
+'save_folder_path':'D:\\mouse_aeti\\e110_F21_noise_reduction_characterization',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 #  
 result, data_out            = m.aeti_recording(**aeti_variables)
-print ('impedance:',data_out[0])
+# print ('impedance:',data_out[0])
 data                        = m.copy_to_folder_and_return_data(**aeti_variables)
 #  
 rf_channel = aeti_variables['rf_monitor_channel']

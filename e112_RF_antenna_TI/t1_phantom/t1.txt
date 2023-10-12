@@ -1,0 +1,67 @@
+t1 - Phantom. RF TI with antenna and an air gap. 
+================================================== 
+
+I was running rf_ti.py 
+
+Using the 500kHz RF antenna, can I transmit a 500khz + 500.001kHz signal into US gel and pick it up? Can I obtain a difference frequency? This would mean there is an air gap between the antenna and the medium. 
+
+This would make for an exciting result, as it would be totally non-invasive. 
+
+= = 
+I set the donut antenna up over the gel, with the electrode in the center. 
+
+I can see f mixing only when the amplitude is v. high. 
+
+
+v out = 10v. 
+1. Test at carrier = 1Mhz, df = 1000Hz.  
+   amplituyde of carrier in microvolts: 4000 microvolts. 
+   In electrolyte sf = 124 microvolts. 
+
+   at 500khz carrier, amplitude of carrier at electrode = 3320 micovolts. sf = 28 microvolts. 
+
+   2Mhz carrier: 3329 micrvoolts. 
+
+   The amplitude of df seems biggest when I use a carrier of 1MHz. 
+
+Can I see a df in the neural range? 10Hz. 
+
+Let's implement a filter, low pass on preamp. Gain = 100, low pass with 1k cut off. 
+
+Suddenly the 10Hz is clean... 
+
+Now I have it working, make measurements at a few dFs that I will repeat in the mouse. 
+
+carrier = 1MHz, Fs = 5e6. 
+
+Final settings:  preamp gain = 1000, low pass with 1khz cut off with 6dB roll-off. 
+
+2. 2khz and 2khz + 5Hz. Same output voltage v out = 10V. 
+
+3. 1MHz and 1MHz + 3Hz. 
+
+4. 1MHz and 1MHz + 1Hz. 
+
+5. df = 5Hz
+
+6. df = 10hz
+
+7. df = 40hz
+
+8. df = 100Hz 
+
+9. df = 4hz
+
+10. df = 2hz. 
+
+see powerpoint. i labelled it better there. 
+
+Result: RF TI is worth trying in the mouse. 
+
+
+
+
+
+
+
+

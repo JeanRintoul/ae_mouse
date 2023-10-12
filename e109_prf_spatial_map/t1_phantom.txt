@@ -1,0 +1,14 @@
+t1 - phantom prf spatial map. 
+============================================ 
+
+Run the code ae_calibrate_with_prf.py 
+No filters on preamp. Gain = 100. 
+
+Result: I can clearly see the effect around the electrodes. 
+
+
+
+
+
+
+

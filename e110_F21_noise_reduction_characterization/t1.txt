@@ -1,0 +1,72 @@
+t1 - Test whether the F21 is effective.
+============================================ 
+- first test. No it blocks pressure too. 
+Now I am just interrogating how and when the weird mixing effects occur in aemeps_prf.py. 
+
+aemeps_prf.py at center point
+I can measure both the PRF amplitude and the df amplitude. 
+duration = 8s. gain = 500. v out = 1v. 
+no shielding: 
+1. df = 10Hz
+2. df = 2hz. 
+This time, I am not seeing any of this gunk. The data generated is ideal. 
+
+Increase the voltage output to 2v. gain = 200. low pass cut off 10k. 
+3. df = 10Hz.  looks great 
+4. df = 2hz.   now I see the problem. I see a 2hz, 10hz and 20hz in the signal. 
+
+Increase the voltage output to 4v. gain = 200. low pass cut off 10k. 
+I cannot really see this voltage level on the preamp. It is too high.
+
+5. df = 5Hz, so i can see the x5 and x10 issue more clearly. vout = 2v, gain = 500. There is indeed a problem whereby the 25hz is larger as is 50hz. 
+low pass at 3k. 
+exemplary file of the problem. 
+
+Settings: 
+Gain = 500. vout = 2v. 3k low pass on preamp. pressure = 1MPa. 
+
+Goal: Run these same settings with some mineral oil separating. 
+
+6. The 25Hz and the 50Hz is still there, if anything it is worse. 
+TODO: compare plot 5,6... 
+
+7. Remove the RF monitor so there is a straight connection between the transducer and the RF amplifier in case reflections are happening due to this, leaving the oil in place. Do I still see 25Hz? yes i do. 
+
+It looks beautiful when I filter for 5Hz... I am wondering if there is some sort of sample frequency artefact due to sampling frequency? 
+
+On another axis, I cannot increase the output voltage and run the preamp at the same time... 
+
+8. That is it, it is an aliasing problem - and not a REAL thing in the signal. However, now I am not measuring the df amplitude correctly. 
+
+So, I think I am doing it correctly, but I haven't increased the amplitude enough yet. 
+
+9. ae_calibrate_with_prf.py amplitude at 1020hz is 0.49 microvolts with mineral oil in place. 
+
+10. without mineral oil. ae_calibrate_with_prf.py. it is about 1 microvolts. Bigger, but i have oil every where. so this is a bad measurement really. 
+The carrier is bigger too. This suggests that US neuromodulation could be due to just an electrical mixing interactoin of the PRF? 
+
+clean up, and consider doing an AE MEPS experiment. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

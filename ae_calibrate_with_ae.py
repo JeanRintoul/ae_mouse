@@ -24,7 +24,7 @@ from scipy.signal import iirfilter,sosfiltfilt
 # 
 # Increment this for each test. 
 # 
-test_no = 1
+test_no = 4
 gain    = 1
 # 
 # This control of the sample rate is to avoid aliasing in the recorded electric signal. 
@@ -40,12 +40,12 @@ aeti_variables = {
 # 'Fs': Fs,                   # 
 # 'Fs': 1e6,                  # this will change just the sample rate, and not the f generated rate if those two lines are left uncommented. 
 # 'USMEP': 1,                 # when usmep == 1, the current and pressure Fs can be different to the recorded Fs. In this case the US is at 5Mhz, but the recording frequency is 100kHz. This decreases the amount of data that needs to be dumped to disk. 
-'duration': 4.0, 
+'duration': 6.0, 
 'position': test_no,
 'pressure_amplitude': 0.1,      # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': 500000.0,
 # 'pressure_frequency': 0.0,
-'current_amplitude': 2.0,      # its actually a voltage .. Volts. 
+'current_amplitude': 1.0,      # its actually a voltage .. Volts. 
 'current_frequency': 8000,     # 
 # 'current_frequency': current_frequency, # 
 # 'current_frequency': 499996,  # 
@@ -69,13 +69,13 @@ aeti_variables = {
 # 'end_pause': 1.0,             # start of end ramp
 # 'start_null': 0.0,           # percent of file set to zero at the beginning. 
 # 'start_pause': 0.0,           # percent of file in ramp mode or null at start.
-'start_null': 0.125,            # percent of file set to zero at the beginning. 
+'start_null': 0.15,            # percent of file set to zero at the beginning. 
 'start_pause': 0.25,            # percent of file in ramp mode or null at start.
 'no_ramp':0.0,                  # when we have no ramp we set this to 1. i.e. an impedance spectrum test. 
 'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\ae_mouse\\e107_revision',
+'save_folder_path':'D:\\ae_mouse\\e114_mineral_oil',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 #  
@@ -104,9 +104,7 @@ end_pause       = int(aeti_variables['end_pause'] *N-1)
 
 # fake start and end due to timing mismatch. 
 start_pause     = int(0.25*N)
-end_pause       = int(0.75*N)
-
-
+end_pause       = int(0.875*N)
 
 # print ('start and end:',start_pause,end_pause)
 resistor_current_mon    = 49.9  # 49.9 Ohms for current monitor, 
@@ -117,7 +115,7 @@ fft_m = np.abs(2.0/(end_pause-start_pause) * (fft_m))[1:(end_pause-start_pause)/
 xf = np.fft.fftfreq( (end_pause-start_pause), d=timestep)[:(end_pause-start_pause)//2]
 frequencies = xf[1:(end_pause-start_pause)//2]
 # 
-fft_us = fft(data[rf_channel][start_pause:end_pause])
+fft_us = fft(10*data[rf_channel][start_pause:end_pause])
 fft_us = np.abs(2.0/(end_pause-start_pause) * (fft_us))[1:(end_pause-start_pause)//2]
 # 
 # 
@@ -165,16 +163,23 @@ print ('df (\u03BCV):',1e6*fft_v[df_idx])
 print ('carrier (\u03BCV):',1e6*fft_v[carrier_idx])
 print ('sf (\u03BCV):',1e6*fft_v[sf_idx])
 # 
+# print ('Amplitude at df and sf:',2*fft_m[df_idx],2*fft_m[sf_idx])
+# 
+# fig = plt.figure(figsize=(10,6))
+# ax = fig.add_subplot(111)
+# plt.plot(t,data[m_channel],'k')
+# plt.show()
+
 # First plot is the raw signal, 
 # Second plot is the 
 fig = plt.figure(figsize=(10,6))
 ax = fig.add_subplot(211)
 # plt.plot(t,10*data[rf_channel],color='b')
 # plt.plot(t,10*data[v_channel],color='r')
-plt.plot(frequencies,fft_us,'b')
+# plt.plot(frequencies,fft_us,'b')
 plt.plot(frequencies,fft_v,'r')
 # plt.plot(frequencies,fft_m,'k')
-plt.legend(['fft us','fft v'],loc='upper right')
+# plt.legend(['fft us','fft v'],loc='upper right')
 ax.set_xlim([0,int(np.max(frequencies))/2])
 
 ax2 = fig.add_subplot(212)
@@ -183,12 +188,12 @@ plt.axvline(sf,color='k')
 # plt.plot(frequencies,fft_us,'b')
 
 plt.plot(frequencies,1e6*fft_v,'r')
-# plt.plot(frequencies,fft_m,'c')
+# plt.plot(frequencies,fft_m,'r')
 # plt.plot(frequencies,fft_i,'orange')
 # ax2.set_ylim([0,500])
 ax2.set_xlim([acoustic_frequency - 2*current_signal_frequency,acoustic_frequency + 2*current_signal_frequency])
 # ax2.set_xlim([0,40])
-ax2.set_ylim([0,2000])
+ax2.set_ylim([0,1000])
 plt.legend(['fft v'],loc='upper right')
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
@@ -198,7 +203,7 @@ plt.suptitle('AE location calibration')
 plot_filename = savepath + '\\t'+str(test_no)+'_datacheck.png'
 plt.savefig(plot_filename)
 plt.show()
-# 
+
 # 
 # At low frequencies, I don't have enough repeats, and I have too much Johnson noise
 # to see the difference frequency. I definitely cannot see it in the 

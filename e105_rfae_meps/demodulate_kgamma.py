@@ -57,12 +57,12 @@ fsignal = fsignal-np.mean(fsignal)
 # 
 
 # 
-fig = plt.figure(figsize=(6,6))
-ax = fig.add_subplot(211)
-plt.plot(t,data[m_channel],'k')
-ax2 = fig.add_subplot(212)
-plt.plot(t,data[rf_channel],'k')
-plt.show()
+# fig = plt.figure(figsize=(6,6))
+# ax = fig.add_subplot(211)
+# plt.plot(t,data[m_channel],'k')
+# ax2 = fig.add_subplot(212)
+# plt.plot(t,data[rf_channel],'k')
+# plt.show()
 # 
 # downsample the signal
 # new_Fs                        = 1000 
@@ -108,8 +108,6 @@ for i in range(len(prf_list)):
 	demodulated_signal  = demodulate(modulated_signal,prf)
 
 	# Now finally filter both original and new signals? 
-	# low  = 10
-	# high = 90
 	signal_isolation_filter = iirfilter(17, [low,high], rs=60, btype='bandpass',
                        analog=False, ftype='cheby2', fs=new_Fs,
                        output='sos')
@@ -164,41 +162,41 @@ window          = 10000
 rolling_corr    = df['x'].rolling(window).corr(df['y'])
 
 
-fig = plt.figure(figsize=(10,6))
-ax = fig.add_subplot(611)
-plt.plot(t[start_pause:end_pause],filtered_real_signal[start_pause:end_pause],'k')
-plt.xlim([2,duration])
-plt.legend(['lfp signal'],loc='upper right')
-ax2 = fig.add_subplot(612)
-plt.plot(t[start_pause:end_pause],filtered_demod_signal[start_pause:end_pause],'r')
-plt.xlim([2,duration])
-plt.legend(['demodulated signal'],loc='upper right')
+# fig = plt.figure(figsize=(10,6))
+# ax = fig.add_subplot(611)
+# plt.plot(t[start_pause:end_pause],filtered_real_signal[start_pause:end_pause],'k')
+# plt.xlim([2,duration])
+# plt.legend(['lfp signal'],loc='upper right')
+# ax2 = fig.add_subplot(612)
+# plt.plot(t[start_pause:end_pause],filtered_demod_signal[start_pause:end_pause],'r')
+# plt.xlim([2,duration])
+# plt.legend(['demodulated signal'],loc='upper right')
 
-ax3 = fig.add_subplot(613) # rolling correlation metric. 
-plt.plot(t_cut,rolling_corr*rolling_corr,'k')
-plt.xlim([2,duration])
-plt.ylim([0,1])
-plt.legend(['rolling correlation'],loc='upper right')
+# ax3 = fig.add_subplot(613) # rolling correlation metric. 
+# plt.plot(t_cut,rolling_corr*rolling_corr,'k')
+# plt.xlim([2,duration])
+# plt.ylim([0,1])
+# plt.legend(['rolling correlation'],loc='upper right')
 
-ax3 = fig.add_subplot(223)
-plt.plot(frequencies,fft_data,'k')
-ax3.set_xlim([0,signal_of_interest])
-plt.legend(['lfp signal'],loc='upper right')
-ax4 = fig.add_subplot(224)
-plt.plot(frequencies,fft_ddata,'r')
-plt.legend(['demodulated signal'],loc='upper right')
-ax4.set_xlim([0,signal_of_interest])
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax2.spines['right'].set_visible(False)
-ax2.spines['top'].set_visible(False)
-ax3.spines['right'].set_visible(False)
-ax3.spines['top'].set_visible(False)
-ax4.spines['right'].set_visible(False)
-ax4.spines['top'].set_visible(False)
-plot_filename = '_demod_result.png'
-plt.savefig(plot_filename)
-plt.show()
+# ax3 = fig.add_subplot(223)
+# plt.plot(frequencies,fft_data,'k')
+# ax3.set_xlim([0,signal_of_interest])
+# plt.legend(['lfp signal'],loc='upper right')
+# ax4 = fig.add_subplot(224)
+# plt.plot(frequencies,fft_ddata,'r')
+# plt.legend(['demodulated signal'],loc='upper right')
+# ax4.set_xlim([0,signal_of_interest])
+# ax.spines['right'].set_visible(False)
+# ax.spines['top'].set_visible(False)
+# ax2.spines['right'].set_visible(False)
+# ax2.spines['top'].set_visible(False)
+# ax3.spines['right'].set_visible(False)
+# ax3.spines['top'].set_visible(False)
+# ax4.spines['right'].set_visible(False)
+# ax4.spines['top'].set_visible(False)
+# plot_filename = '_demod_result.png'
+# plt.savefig(plot_filename)
+# plt.show()
 # 
 # Do Spectrograms of both the original 10-100 Hz signal, and the demodulated one. 
 # 
@@ -231,6 +229,8 @@ df = pd.DataFrame({'x': lfp_time_totals -np.mean(lfp_time_totals), 'y': demod_ti
 window          = 4000
 # window        = len(demodulated_signal)
 rolling_corr2   = df['x'].rolling(window).corr(df['y'])
+
+print ('mean correlation:',np.mean(rolling_corr2))
 # 
 # What if I calculated the correlation with time per frequency bin? i.e. some frequency bins will trend better than others. 
 # i.e. the 50 Hz one will not. 
@@ -247,12 +247,12 @@ for i in range(len(flfp)):
 # 
 # 
 # 
-fig = plt.figure(figsize=(10,6))
-ax = fig.add_subplot(111)
-plt.plot(flfp,corr_per_freq)
-ax.set_xlim([low,high])
-ax.set_xlabel('Frequencies(Hz)')
-plt.show()
+# fig = plt.figure(figsize=(10,6))
+# ax = fig.add_subplot(111)
+# plt.plot(flfp,corr_per_freq)
+# ax.set_xlim([low,high])
+# ax.set_xlabel('Frequencies(Hz)')
+# plt.show()
 # 
 # 
 # 
@@ -267,7 +267,7 @@ ax.set_xlim([0,duration])
 ax.set_ylabel('Normalized amplitudes')
 ax.set_title('Ketamine Gamma Demodulation')
 ax2 = fig.add_subplot(212)
-plt.plot(td,rolling_corr2*rolling_corr2,'k')
+plt.plot(td,rolling_corr2,'k')
 ax2.set_xlim([0,duration])
 ax2.set_ylabel('Correlation')
 ax2.set_xlabel('Time(s)')
@@ -292,21 +292,21 @@ plt.show()
 
 fig = plt.figure(figsize=(10,6))
 ax = fig.add_subplot(211)
-im = plt.pcolormesh(tlfp, flfp, Sxx, shading='auto',cmap = 'inferno',vmin=vvmin,vmax=vvmax)
+im = plt.pcolormesh(tlfp, flfp, Sxx, shading='auto',cmap = 'Reds',vmin=vvmin,vmax=vvmax)
 plt.ylim([10,90])
 plt.xlim([0,duration])
 plt.ylabel('Frequency (Hz)')
 plt.xlabel('Time (s)')
-plt.legend(['demodulated'],loc='upper right')
+# plt.legend(['demodulated'],loc='upper right')
 fig.colorbar(im).set_label('Intensity (dB)')
 
 ax2 = fig.add_subplot(212)
-im = plt.pcolormesh(td, fd, Sxxd, shading='auto',cmap = 'inferno',vmin=dvvmin,vmax=dvvmax)
+im = plt.pcolormesh(td, fd, Sxxd, shading='auto',cmap = 'Reds',vmin=dvvmin,vmax=dvvmax)
 plt.ylim([10,90])
 plt.xlim([0,duration])
 plt.ylabel('Frequency (Hz)')
 plt.xlabel('Time (s)')
-plt.legend(['demodulated'],loc='upper right')
+# plt.legend(['demodulated'],loc='upper right')
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax2.spines['right'].set_visible(False)

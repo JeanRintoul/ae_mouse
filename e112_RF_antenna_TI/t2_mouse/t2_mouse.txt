@@ -1,0 +1,115 @@
+t2 - RF TI with a mouse. 
+===========================
+
+Goal: Do I see any neural signals induced by the rf antenna? What distance away can I do this at? 
+
+Mouse with inserted electrodes in motor cortex. 
+
+Date of experiment: 22/09/2023  
+Mouse Cage: 119465
+Number of uses before: 0, surgery 4 days previous.  
+Gender: male
+Weight: 40g
+DOB: 6.05.2023
+
+Ket/Xyl 
+drugs:
+antidote: 7.4
+X: 1.9
+k1: 2.7
+k2: 1.0
+saline: 50
+
+Use the antenna, position over the mouse, use the preamp settings that I had in t1. 
+Measure the LFP and spikes at a variety of difference frequencies, all with the 
+
+Final settings:  preamp gain = 1000, low pass with 1khz cut off with 6dB roll-off. 
+
+Running python rf_ti.py and ae_rf_transmitter_transfer_function.py 
+
+df    = 1,2,3,4,5,10,40,100
+vout  = 10V. 
+- do many repeats when I find something that works, so I can create a spike timing diagram. 
+- I also want if possible some measures at lower gain, so I can see the total amplitude ratio between the applied signal and the mixed signal in the mouse. 
+
+- - 
+
+- First find a voltage and a distance where I can see the difference frequency in the mouse? 
+Stretch goal: behavioral video of movement at the difference frequency. 
+
+Note diff a is the motor cortex electrode. 
+
+= = = = = start time = 12:28am = = = = = = 
+4 second duration. 
+1. Gain = 1. run rf_ti.py dfx = 100, no preamp filter. Amplitude is a little over 4000 microvolts at 1MHz. I can see df at 100Hz. Its possible it is split into two bins, as my gain is high and daq resolution low. 
+
+2. Gain up to 1000. preamp filtewr 1k. 
+
+The df signal is very small. So I add the cap sheet, moving the antenna down as low as possible, with v out  = 12v. Now I am starting to see something. 
+carrier = 1MHz. preamp filter 1k. 
+
+switched duration to 8 seconds. 
+
+These repeats are to enable to creation of a spike diagram. 
+3-13. dfx = 10, 40 microvolts amplitude. 
+
+14-15. control without applying any voltage. Can see ketamine delta. 
+
+Now try varying dfx. vout = 12 
+
+16. dfx = 1Hz. 
+
+17. dfx = 2hz. 
+
+18. dfx = 3 
+
+19. dfx = 4 
+
+20. dfx = 5 
+
+21. dfx = 10
+
+22. dfx = 40
+
+23. dfx = 100 
+
+- -  
+
+24. carrier = 2khz, df = 10hz. preamp filter in place. 
+
+--- 
+preamp gain = 1000, no filter. 
+25. repeat the no filter in place measure with df = 10hz. carrier = 1MHz. 
+26. repeat the no filter in place measure with df = 10hz, carrier = 2khz. 
+
+--- Now try moving the antenna around, and see if I can get behavioral response. 
+
+27. behavioral at 5Hz? 
+
+28. 3hz. 
+
+29. 3hz. 
+
+30. 3hz. 
+
+1hr 17 minutes end and into warming chamber. 2pm. 
+
+There is something on the side of the headbar, such that it does not sit flat. Investigate another time. 
+
+I may need to move up to a higher carrier frequency, in which case I will need to decouple the transmit and receive frequencies. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -34,8 +34,8 @@ gain    = 1
 # Fs = current_frequency*10 
 # Fs = 5e6
 dfx = 1020 
-carrier = 672800 
-# carrier = 500000 
+# carrier = 672800 
+carrier = 500000 
 # one of the forks is always 2Hz higher than the specified frequency. 
 broken_offset = 2  
 
@@ -47,7 +47,7 @@ aeti_variables = {
 # 'USMEP': 1,                 # when usmep == 1, the current and pressure Fs can be different to the recorded Fs. In this case the US is at 5Mhz, but the recording frequency is 100kHz. This decreases the amount of data that needs to be dumped to disk. 
 'duration': 4.0, 
 'position': test_no,
-'pressure_amplitude': 0.3,      # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
+'pressure_amplitude': 0.1,      # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': carrier,
 'pi_frequency': carrier + dfx,
 'current_amplitude': 0.0,      # its actually a voltage .. Volts. 

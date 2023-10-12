@@ -74,8 +74,16 @@ int main(int argc, char* argv[])
   int opt = 0;
   char filename_prefix[MAX];
   // constants which can either be parsed in or set here and recompiled.  
-  double gen_pressure_sample_frequency  = 5e6;    // 5Mhz sample rate 
-  double gen_current_sample_frequency   = 5e6;    // 5Mhz sample rate 
+  double gen_pressure_sample_frequency  = 5e6;   // 5Mhz sample rate 
+  double gen_current_sample_frequency   = 5e6;   // 5Mhz sample rate 
+
+  // double gen_pressure_sample_frequency  = 1e7;   // 5Mhz sample rate 
+  // double gen_current_sample_frequency   = 1e7;   // 5Mhz sample rate 
+
+  // for rf ti hf. 
+  // double gen_pressure_sample_frequency  = 5e4;      // 5Mhz sample rate 
+  // double gen_current_sample_frequency   = 5e6*2;    // 5Mhz sample rate 
+
   double sample_frequency               = 5e6;        // this is the recording sampling frequency. 
   
   // double gen_pressure_sample_frequency  = 499996*10;    // 5Mhz sample rate 
@@ -90,7 +98,8 @@ int main(int argc, char* argv[])
   // double duration                  = 1.0;   // measured in seconds  
   unsigned int resolution             = 0;
   int usmep                           = 0;
-  uint64_t record_length            = 60000; // 50 kS
+  // uint64_t record_length           = 60000; // 50 kS
+  uint64_t record_length              = 100000; // 50 kS
   //uint64_t record_length            = 50000; // 50 kS 
   // uint64_t record_length           = 100000; // 50 kS    
   //uint64_t record_length            = 10000; // 50 kS   
@@ -404,7 +413,7 @@ int main(int argc, char* argv[])
   // double dRanges[8] = {40.0,0.2,20.0,0.2,2.0,0.2,8.0,8.0}; 
   // this one: 
   // double dRanges[8] = {2.0,0.2,20.0,20.0,0.8,0.2,40.0,40.0}; 
-  double dRanges[8] = {8.0,20,20.0,20.0,8.0,4.0,8.0,40.0}; 
+  double dRanges[8] = {8.0,2.0,20.0,20.0,8.0,4.0,20.0,40.0}; // ch 6 was 40.0 
   //double dRanges[8] = {0.2,0.2,20.0,20.0,4.0,4.0,8.0,40.0};   
   //
   //double dRanges[8] = {20.0,80.0,20.0,0.2,2.0,0.2,0.2,2.0};   
@@ -529,7 +538,8 @@ int main(int argc, char* argv[])
   int pressure_prf_counter  = 0;
   // 
   int isi_counter = 0;
-  int current_isi_counter  = 0;
+  int current_isi_counter = 0;
+  int current_isi_end_counter = 0; // stop the transformer to recover from magnetostriction. 
   int check = 0;
   // printf("\n pressure duration in samples %d", pressure_duration_in_samples);
   // printf("\n pressure final end ramp %d", pressure_final_end_ramp);
@@ -719,10 +729,19 @@ int main(int argc, char* argv[])
         if (prf_guide < 0  ) {
           prf_counter = 0;
         }
-        // Reset. 
-        if ((float)current_isi_counter/gen_current_sample_frequency > current_ISI) {
-          current_isi_counter = 0;
+
+        // Reset.       
+        if ((float)current_isi_counter/gen_current_sample_frequency > current_ISI && current_ISI != 0) {
+          data[i] = 0;
+          current_isi_end_counter++;
+          // 
+          if ((float)current_isi_end_counter/gen_current_sample_frequency > 0.05) {  // 0.05 seconds. 
+            current_isi_end_counter = 0;
+            current_isi_counter     = 0;
+          }
+          // 
         }
+
       }  // end of PRF/ISI option inside the ramp.   
       else {  // the pi/2 is so that when you inject a pressure and a current that are single sine waves they will be offset correctly. 
         data[i] = sinf(2*PI* current_signal_frequency * (float)i/gen_current_sample_frequency )+dc_offset;            
@@ -754,10 +773,11 @@ int main(int argc, char* argv[])
               if (prf_guide < 0  ) {
                 prf_counter = 0;
               }
-              // Reset. 
+
               if ((float)current_isi_counter/gen_current_sample_frequency > current_ISI) {
                 current_isi_counter = 0;
               }
+ 
             }  // end of PRF/ISI option inside the ramp.   
             else {  // don't add two sine waves together.
               //current_factorend = (float)(current_duration_in_samples - i)/(float)current_end_ramp;

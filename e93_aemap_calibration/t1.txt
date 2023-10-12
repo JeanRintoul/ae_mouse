@@ -1,7 +1,0 @@
-ae map calibration in US gel. 
-===============  
-
-vp =0.1, 500khz
-vout = 4v, f = 70hz. 
-
-- filling in excel spreadsheet. 

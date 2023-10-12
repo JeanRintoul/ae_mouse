@@ -46,7 +46,7 @@ aeti_variables = {
 'pressure_amplitude': 0.0,      # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': 500000.0,
 # 'pi_frequency': 500000 +dfx,
-'current_amplitude': 2.0,      # its actually a voltage .. Volts. 
+'current_amplitude': 10.0,      # its actually a voltage .. Volts. 
 'current_frequency': 8000,     # 
 # 'current_frequency': current_frequency, # 
 # 'current_frequency': 499996,  # 
@@ -76,7 +76,7 @@ aeti_variables = {
 'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\ae_mouse\\e105_rfae_meps',
+'save_folder_path':'D:\\ae_mouse\\e112_RF_antenna_TI',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 # 

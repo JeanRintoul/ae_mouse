@@ -52,7 +52,7 @@ class MidpointNormalize(colors.Normalize):
 filename        ="ae_xz_syncdata_0.npz"
 
 data 		    = np.load(filename) 	#  
-# ae_diff_array 	= data['ae_diff_array'] 	   # 
+ae_diff_array 	= data['ae_diff_array'] 	   # 
 # ae_sum_array    = data['ae_sum_array']
 ae_broadband_array = data['ae_broadband_array']
 x 			= data['x']
@@ -79,8 +79,8 @@ for i in range(a):
     for j in range(b):
         ae_carrier_array[i,j,:] = signal.sosfilt(sos_carrier_ae, ae_broadband_array[i,j,:] )  
 
-ae_array = ae_carrier_array
-# ae_array = ae_diff_array
+# ae_array = ae_carrier_array
+ae_array = ae_diff_array
 a,b,c    = ae_array.shape
 
 
@@ -126,7 +126,7 @@ fig = plt.figure(figsize=(10,7),num ='Time scroller tool for XZ data')
 ax = fig.add_subplot(121)
 fig.subplots_adjust(bottom=0.15) 
 
-im_h = plt.imshow(ae_array[:, :, idx].T-mean_level,cmap=colormap_choice,interpolation='nearest',extent=rectangle,clim=(elev_min, elev_max), norm=MidpointNormalize(midpoint=mid_val,vmin=elev_min, vmax=elev_max))
+im_h = plt.imshow(ae_array[:, :, idx].T,cmap=colormap_choice,extent=rectangle,clim=(elev_min, elev_max), norm=MidpointNormalize(midpoint=mid_val,vmin=elev_min, vmax=elev_max))
 divider = make_axes_locatable(ax)
 cax = divider.append_axes("right", size="10%", pad=0.1)
 cbar = plt.colorbar(im_h, cax=cax)
@@ -146,6 +146,7 @@ m1 = m1[0]
 m2 = m2[0]
 print ('max indice:', m1,m2)
 # maxidx = np.argmax(sum_array)
+
 view_width = 5000
 view_width = 100
 ax2 = fig.add_subplot(122)
@@ -169,6 +170,14 @@ ax2.xaxis.set_ticks(tick_values)
 
 vw = view_width
 
+# # # time series comparison. 
+# fig = plt.figure(figsize=(10,7),num ='Time series comparison')
+# ax = fig.add_subplot(121)
+# ax.plot(t, ae_diff_array[m1,m2, :])
+# ax2 = fig.add_subplot(122)
+# ax2.plot(t, ae_carrier_array[m1,m2, :])
+# plt.show()
+
 # update the figure with a change on the slider 
 def update_depth(val):
     global idx,view_width
@@ -176,8 +185,8 @@ def update_depth(val):
     idx = int(round(slider_depth.val))
 
     img     = ae_array[:, :, idx]
-    mean_level = np.mean(ae_array[:, :, idx])
-    img = img - mean_level
+    # mean_level = np.mean(ae_array[:, :, idx])
+    # img = img - mean_level
 
     img_min = np.min(img)
     img_max = np.max(img)
