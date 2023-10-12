@@ -74,11 +74,11 @@ int main(int argc, char* argv[])
   int opt = 0;
   char filename_prefix[MAX];
   // constants which can either be parsed in or set here and recompiled.  
-  double gen_pressure_sample_frequency  = 5e6;   // 5Mhz sample rate 
-  double gen_current_sample_frequency   = 5e6;   // 5Mhz sample rate 
+  // double gen_pressure_sample_frequency  = 5e6;   // 5Mhz sample rate 
+  // double gen_current_sample_frequency   = 5e6;   // 5Mhz sample rate 
 
-  // double gen_pressure_sample_frequency  = 1e7;   // 5Mhz sample rate 
-  // double gen_current_sample_frequency   = 1e7;   // 5Mhz sample rate 
+  double gen_pressure_sample_frequency  = 1e7;   // 10Mhz sample rate 
+  double gen_current_sample_frequency   = 1e7;   // 10Mhz sample rate 
 
   // for rf ti hf. 
   // double gen_pressure_sample_frequency  = 5e4;      // 5Mhz sample rate 
@@ -413,7 +413,7 @@ int main(int argc, char* argv[])
   // double dRanges[8] = {40.0,0.2,20.0,0.2,2.0,0.2,8.0,8.0}; 
   // this one: 
   // double dRanges[8] = {2.0,0.2,20.0,20.0,0.8,0.2,40.0,40.0}; 
-  double dRanges[8] = {8.0,2.0,20.0,20.0,8.0,4.0,20.0,40.0}; // ch 6 was 40.0 
+  double dRanges[8] = {8.0,2.0,20.0,20.0,8.0,2.0,20.0,40.0}; // ch 6 was 40.0 
   //double dRanges[8] = {0.2,0.2,20.0,20.0,4.0,4.0,8.0,40.0};   
   //
   //double dRanges[8] = {20.0,80.0,20.0,0.2,2.0,0.2,0.2,2.0};   

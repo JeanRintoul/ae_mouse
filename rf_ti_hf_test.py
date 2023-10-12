@@ -31,9 +31,10 @@ gain    = 1000
 # 
 # Fs = current_frequency*10 
 # Fs = 5e6
-carrier = 1e6*2
+# carrier = 1e6*2
+carrier = 1e3
 dfx 	= 3
-df_l = 0.3
+
 
 aeti_variables = {
 'type':'demodulation',        # choice of 'pressure' or 'ae'. Note: this doesn't change the contents of the file, just the way it is processed at the end. 
@@ -43,10 +44,10 @@ aeti_variables = {
 'USMEP': 1,                 # when usmep == 1, the current and pressure Fs can be different to the recorded Fs. In this case the US is at 5Mhz, but the recording frequency is 100kHz. This decreases the amount of data that needs to be dumped to disk. 
 'duration': 6.0, 
 'position': test_no,
-'pressure_amplitude': 0.1,      # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
+'pressure_amplitude': 0.2,      # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': carrier,
 # 'pressure_frequency': 0.0,
-'current_amplitude': 0.0,      # its actually a voltage .. Volts. 
+'current_amplitude': 0.0,       # its actually a voltage .. Volts. 
 # 'current_frequency': 8000,     # 
 # 'current_frequency': current_frequency, # 
 'current_frequency': carrier,  # 
@@ -72,9 +73,8 @@ aeti_variables = {
 'save_folder_path':'D:\\ae_mouse\\e116_estim',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
-#  
+#  Do a recording and copy it into the experiment folder. 
 result, data_out            = m.aeti_recording(**aeti_variables)
-# print ('impedance:',data_out[0])
 data                        = m.copy_to_folder_and_return_data(**aeti_variables)
 
 # #  
@@ -98,8 +98,8 @@ end_pause       = int(aeti_variables['end_pause'] *N-1)
 
 # This control of the sample rate is to avoid aliasing in the recorded electric signal. 
 # The sample rate should be an integer sub-multiple of the 
+df_l = 0.3
 df_h = 300
-
 sos_lfp_band = iirfilter(17, [df_l, df_h], rs=60, btype='bandpass',
                        analog=False, ftype='cheby2', fs=Fs,
                        output='sos')
@@ -163,77 +163,86 @@ print ('df and sf:',2*fft_m[df_idx],2*fft_m[sf_idx])
 # print ('carrier (\u03BCV):',1e6*fft_v[carrier_idx])
 # print ('sf (\u03BCV):',1e6*fft_v[sf_idx])
 # # 
-fig = plt.figure(figsize=(10,6))
-ax = fig.add_subplot(411)
-plt.plot(t,data[m_channel],'k')
-ax2 = fig.add_subplot(412)
-plt.plot(t,data[v_channel],'k')
-ax3 = fig.add_subplot(413)
-plt.plot(t,data[i_channel],'k')
-ax4 = fig.add_subplot(414)
-# plt.plot(t,data[rf_channel],'k')
-# plt.plot(frequencies,fft_us,'k')
-plt.show()
-# 
-print ('carrier:',2*fft_m[carrier_idx])
-print ('rf antenna f:',2*fft_m[v_idx])
-# 
-fig = plt.figure(figsize=(10,6))
-ax = fig.add_subplot(411)
-plt.plot(frequencies,fft_v,'r')
-ax.set_ylabel('Volts(V)')
-plt.legend(['voltage output monitor'],loc='upper right')
-
-ax2 = fig.add_subplot(412)
-plt.plot(frequencies,fft_m,'k')
-ax2.set_ylabel('Volts ($\mu$V)')
-ax2.set_xlim([carrier-20000,carrier+20000])
-ax2.set_ylim([0,200])
-# ax2.set_xlim([400000,600000])
-ax2.set_xlabel('Frequencies(Hz)')
-plt.legend(['measurement in electrolyte'],loc='upper right')
-
-ax3 = fig.add_subplot(413)
-plt.plot(frequencies,fft_m,'k')
-ax3.set_xlim([0,dfx*1.5])
-# ax3.set_ylim([0,200])
-plt.legend(['dfx close up'],loc='upper right')
-
-ax4 = fig.add_subplot(414)
-plt.plot(frequencies,fft_m,'k')
-ax4.set_xlim([2*carrier,2*carrier+dfx*2])
-# ax4.set_ylim([0,200])
-plt.legend(['sfx close up'],loc='upper right')
-
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax2.spines['right'].set_visible(False)
-ax2.spines['top'].set_visible(False)
-ax3.spines['right'].set_visible(False)
-ax3.spines['top'].set_visible(False)
-ax4.spines['right'].set_visible(False)
-ax4.spines['top'].set_visible(False)
-
-plt.suptitle('RF transmitter/receiver test')
-# plot_filename = savepath + '\\rf_receiver_test.png'
-plot_filename = savepath + '\\t'+str(test_no)+'_rf.png'
-plt.savefig(plot_filename)
-plt.show()
 
 
 fig = plt.figure(figsize=(10,6))
-ax = fig.add_subplot(211)
-plt.plot(t,data[v_channel],'r')
-
-ax2 = fig.add_subplot(212)
-plt.plot(t,lfp_data,'k')
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax2.spines['right'].set_visible(False)
-ax2.spines['top'].set_visible(False)
-plot_filename = savepath + '\\lfp_filtered.png'
-plt.savefig(plot_filename)
+ax = fig.add_subplot(111)
+# plt.plot(t,data[5],'k')
+plt.plot(t,data[5],'k')
 plt.show()
+
+
+# fig = plt.figure(figsize=(10,6))
+# ax = fig.add_subplot(411)
+# plt.plot(t,data[m_channel],'k')
+# ax2 = fig.add_subplot(412)
+# plt.plot(t,data[v_channel],'k')
+# ax3 = fig.add_subplot(413)
+# plt.plot(t,data[i_channel],'k')
+# ax4 = fig.add_subplot(414)
+# # plt.plot(t,data[rf_channel],'k')
+# # plt.plot(frequencies,fft_us,'k')
+# plt.show()
+# # 
+# print ('carrier:',2*fft_m[carrier_idx])
+# print ('rf antenna f:',2*fft_m[v_idx])
+# # 
+# fig = plt.figure(figsize=(10,6))
+# ax = fig.add_subplot(411)
+# plt.plot(frequencies,fft_v,'r')
+# ax.set_ylabel('Volts(V)')
+# plt.legend(['voltage output monitor'],loc='upper right')
+
+# ax2 = fig.add_subplot(412)
+# plt.plot(frequencies,fft_m,'k')
+# ax2.set_ylabel('Volts ($\mu$V)')
+# ax2.set_xlim([carrier-20000,carrier+20000])
+# ax2.set_ylim([0,200])
+# # ax2.set_xlim([400000,600000])
+# ax2.set_xlabel('Frequencies(Hz)')
+# plt.legend(['measurement in electrolyte'],loc='upper right')
+
+# ax3 = fig.add_subplot(413)
+# plt.plot(frequencies,fft_m,'k')
+# ax3.set_xlim([0,dfx*1.5])
+# # ax3.set_ylim([0,200])
+# plt.legend(['dfx close up'],loc='upper right')
+
+# ax4 = fig.add_subplot(414)
+# plt.plot(frequencies,fft_m,'k')
+# ax4.set_xlim([2*carrier,2*carrier+dfx*2])
+# # ax4.set_ylim([0,200])
+# plt.legend(['sfx close up'],loc='upper right')
+
+# ax.spines['right'].set_visible(False)
+# ax.spines['top'].set_visible(False)
+# ax2.spines['right'].set_visible(False)
+# ax2.spines['top'].set_visible(False)
+# ax3.spines['right'].set_visible(False)
+# ax3.spines['top'].set_visible(False)
+# ax4.spines['right'].set_visible(False)
+# ax4.spines['top'].set_visible(False)
+
+# plt.suptitle('RF transmitter/receiver test')
+# # plot_filename = savepath + '\\rf_receiver_test.png'
+# plot_filename = savepath + '\\t'+str(test_no)+'_rf.png'
+# plt.savefig(plot_filename)
+# plt.show()
+
+
+# fig = plt.figure(figsize=(10,6))
+# ax = fig.add_subplot(211)
+# plt.plot(t,data[v_channel],'r')
+
+# ax2 = fig.add_subplot(212)
+# plt.plot(t,lfp_data,'k')
+# ax.spines['right'].set_visible(False)
+# ax.spines['top'].set_visible(False)
+# ax2.spines['right'].set_visible(False)
+# ax2.spines['top'].set_visible(False)
+# plot_filename = savepath + '\\lfp_filtered.png'
+# plt.savefig(plot_filename)
+# plt.show()
 
 # First plot is the raw signal, 
 # Second plot is the 
