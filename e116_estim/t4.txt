@@ -1,0 +1,20 @@
+t1 - estim
+= = = = = = = = = = = = = = = = = = = = =  
+
+Code: rf_ti_hf_test.py 
+
+============================================ 
+Date of experiment: 13/10/2023  
+Mouse Cage: 119465
+Number of uses before: 2, surgery 3 weeks previous. tested with k+US 2 days previous(e113 t2)
+Gender: male
+Weight: 37.3g with headbar. 
+DOB: 6.05.2023
+
+Ket/Xyl
+drugs:
+antidote: 6.8
+X: 1.7
+k1: 2.6
+k2: 1.0
+saline: 50

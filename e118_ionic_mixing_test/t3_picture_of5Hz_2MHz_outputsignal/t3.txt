@@ -1,0 +1,12 @@
+t3 - picture of output signal. 
+=======================================================
+
+Here I attach a t connector to the current output generator, so I can get nice plots of the output signals equivalent to 
+
+run rf_ti_hf_test.py 
+
+1. Ch1 is the output waveform (here I use 500kHz) so I don't get aliasing effects on the recording. (just for imagery plots.)
+
+2. 10Hz direct. ch 1 is the one to look at for the output data. 
+
+END. 

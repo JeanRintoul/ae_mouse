@@ -1,0 +1,25 @@
+t5 electric field with hydrophone. 
+====================================================== 
+Date: 20/10/2023
+
+The goal of this test is to show that the hydrophone picks up electric signals too. 
+
+Run ae_calibrate_with_prf2.py 
+vout = 2 v (with d bonos tx )
+1. You can clearly see the electric field measured via the hydrophone. 
+
+2. v out = 4 (i.e. 8v pp).You can clearly see the electric field around 500khz. 
+   BUT! you cannot see the mixing frequencies at the sum. 
+
+3-5. repeat of file 2. 8v pp applied in rf resonator form.(no gnd)
+
+ A hydrophone converts acoustic signals to electric signals, but as it is a submerged electrical amplifier it also simply picks up electrical signals. 
+
+We show here that the hydrophone picks up both acoustic and electric signals. However, we note that frequency mixing at the sum frequency only occurs when an acoustic field is applied. 
+
+The difference frequency is unfortunately obscured by the DC coupler in the hydrophone which filters out low frequency signals, so we must depend upon looking at the sum frequencies.  
+
+So a proof point is this, the mixing frequencies only appear on the hydrophone output, when there is an electric field and an acoustic field. 
+
+
+So this is a second proofpoint that frequency mixing is occuring due to the acoustoelectric effect. 

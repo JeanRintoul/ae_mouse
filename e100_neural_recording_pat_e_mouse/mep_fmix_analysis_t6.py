@@ -15,13 +15,13 @@ import pandas as pd
 from scipy.signal import iirfilter,sosfiltfilt
 # 
 # 
-file_number         = 17
+file_number         = 31
 stim_df_frequency   = 0
 
 gain            = 1000
-savepath        = 'D:\\mouse_aeti\\e100_neural_recording_pat_e_mouse\\t6_mep_delta_wave_motorcortex\\'
+savepath        = 'D:\\ae_mouse\\e100_neural_recording_pat_e_mouse\\t6_mep_delta_wave_motorcortex\\'
 Fs              = 5e6
-duration        = 8.0
+duration        = 4.0
 timestep        = 1.0/Fs
 N               = int(Fs*duration)
 marker_channel  = 7 
@@ -110,14 +110,14 @@ frequencies         = xf[1:(end_pause-start_pause)//2]
 #
 #
 #
-# fig = plt.figure(figsize=(10,6))
-# ax = fig.add_subplot(311)
-# plt.plot(t,rf_data1,'k')
-# ax = fig.add_subplot(312)
-# plt.plot(t,rf_data2,'k')
-# ax = fig.add_subplot(313)
-# plt.plot(t,rf_data,'k')
-# plt.show()
+fig = plt.figure(figsize=(10,6))
+ax = fig.add_subplot(311)
+plt.plot(t,rf_data1,'k')
+ax = fig.add_subplot(312)
+plt.plot(t,rf_data2,'k')
+ax = fig.add_subplot(313)
+plt.plot(t,rf_data,'k')
+plt.show()
 #
 #
 #

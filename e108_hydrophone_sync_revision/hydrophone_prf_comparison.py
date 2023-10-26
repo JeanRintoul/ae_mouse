@@ -159,9 +159,32 @@ ax2.spines['top'].set_visible(False)
 plt.savefig("hydrophone_pfield_prf_hf.png", bbox_inches="tight") 
 plt.show()
 
+fig = plt.figure(figsize=(7,5))
+ax2 = fig.add_subplot(111)
+ax2.plot(frequencies,fft_p,'k')
+# plt.legend(['hydrophone'],loc='upper right')
+ax2.set_ylim([0,6])
+ax2.set_xlim([1e6,1e6+5100])
+plt.xticks(fontsize=fz)
+plt.yticks(fontsize=fz)
+ax2.spines['right'].set_visible(False)
+ax2.spines['top'].set_visible(False)
+plt.savefig("hydrophone_pfield_prf_sf.png", bbox_inches="tight") 
+plt.show()
 
-
-
+fig = plt.figure(figsize=(7,5))
+ax = fig.add_subplot(111)
+ax.plot(frequencies,fft_m,'k')
+# ax.set_xlim([0,5100])
+ax.set_xlim([1e6,1e6+5100])
+ax.set_ylim([0,1])
+plt.xticks(fontsize=fz)
+plt.yticks(fontsize=fz)
+# plt.legend(['ae_chan'],loc='upper right')
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+plt.savefig("hydrophone_efield_prf_sf.png", bbox_inches="tight") 
+plt.show()
 # 
 # resistor_current_mon = 49.9  #  49.9 Ohms for current monitor, 1k resistor 
 # 

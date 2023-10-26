@@ -33,17 +33,17 @@ aeti_variables = {
 'Fs': 5e6,                  	# 
 'duration': 4.0, 
 'position': test_no,
-'pressure_amplitude': 0.1, 		# how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
+'pressure_amplitude': 0.01, 		# how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': 500000.0,
 # 'pi_frequency': carrier + dfx,
 # 'pressure_frequency': 672800.0,
 'pressure_prf':1020,        	# pulse repetition frequency for the sine wave. Hz.
 'pressure_ISI':2.0,         	# inter trial interval in seconds. 
-'pressure_burst_length':3.0,  # burst length in seconds. 
+'pressure_burst_length':0.25,  # burst length in seconds. 
 'current_amplitude': 0,    		# its actually a voltage .. Volts. 
 'current_frequency': 500000.0,  # 
 'current_ISI':0,
-'current_burst_length':0.0004,
+'current_burst_length':0.3,
 'current_prf':1020,
 #'ti_frequency': 0,        # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
 'ae_channel': 0,            # the channel of the measurement probe. 
@@ -135,7 +135,7 @@ plt.plot(t,data[1],'k')
 plt.legend(['@measurement electrode nopreamp'],loc='upper right')
 ax2 = fig.add_subplot(212)
 plt.plot(frequencies,fft_nopreamp,color='k')
-ax2.set_xlim([0,1e6])
+ax2.set_xlim([0,1e6+10000])
 plt.legend(['fft@measurement electrode nopreamp'],loc='upper right')
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)

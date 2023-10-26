@@ -1,0 +1,148 @@
+t3 - estim
+= = = = = = = = = = = = = = = = = = = = =  
+
+Code: rf_ti_hf_test.py 
+
+For RF TI settings were previously: 
+Gain = 500 before. 
+df    = 1,2,5,10,40,100. 
+
+On the current side, have impedance adapter only for direct electrical pulse stim. On the RF TI side, use the RF amplifier. 
+
+============================================ 
+
+Goal: Apply pulse e stim and rf with the same pulse settings. 
+
+Date of experiment: 16/10/2023  
+Mouse Cage: 116345
+Number of uses before: 1
+Gender: male
+Weight: 34.5g plus headbar. 
+DOB: 6.05.2023
+
+= = = = = = = = = =  start 11:30am = = = = = 
+500kHz, Fs = 5e6
+
+daq range on measurement chan = 0.2. 
+1. iso = 0.5, gain = 1000, 0.3 Hp, 10k low pass. 1v output over motor cortex electrode. 
+prf = 1.0 
+
+2. same as above but PRF = 2
+
+3. prf = 5 
+
+4. prf = 10 - done
+
+5. prf = 40 - done
+
+6. prf = 100 - done. 
+
+Now switch to rf amplifier antenna pulse. 
+vout = 0.1 into rf amplifier, preamp settings the same. iso = 1.0 
+
+7. prf = 1.0 
+
+8. prf = 2.0 
+
+9. prf = 5.0 
+
+10. prf = 10.0 
+
+11. prf = 100
+
+iso at 1.0, vout = 0.25
+
+12. prf = 1.0 
+
+13. prf = 1.0 
+====================
+iso = 0.5 , v out = 0.25 
+
+14. prf = 1 
+
+15. prf =  1 analyse this one. 
+
+16. prf = 1 analyse this one. 
+
+17. prf = 1 
+
+18. prf = 1 analyse this one. 
+
+19. prf = 1
+
+20. prf = 2 
+
+21. prf = 2 - 
+
+22. prf = 2 
+
+23. prf = 2
+
+24. prf = 2 
+
+25. prf = 5 - done. 
+
+26. prf = 5 - analyse this one. 
+
+27. prf = 5 - 
+
+28. prf = 5 
+
+29. prf = 5 
+
+30. prf = 10 
+
+31. prf = 10 - mouse moved a lot... look at the data. 
+
+32. prf = 10  iso back to 1.0 , neural signal is gone. check it out! 
+
+33. prf = 10 iso back to 0.5, start of. 
+
+34. prf = 10  - clear 5 hz... check it out. even though prf = 10. 
+
+35.  prf = 10 
+
+Try to get a motion video. 1hz
+36. 
+
+37 vout =0.3  prf = 1 
+
+38 vout = 0.3 prf = 1 
+
+39. vout = 0.1 prf = 1 
+
+1hr 24 min under iso, 23/10/2023 
+Mouse recovered very fast. 
+
+= = END = = = 
+
+Summary, using t3_direct_segment and averaging. 
+Direct stim
+lfp size 
+1hz, 159 microvolts. 
+2 Hz, 136 microvolts. 
+5 Hz, 48 microvolts. 
+10Hz, 34.89 microvolts. 
+40Hz, 16.59 microvolts. 
+100Hz, 3.72 microvolts. 
+ - It would be better to have mean and averages so I could bar graph this up. 
+
+RF stim
+lfp size 
+1hz, 157 microvolts. 
+2 Hz, 109 microvolts. 
+5 Hz, 77.8 microvolts. 
+10Hz, 50.05 microvolts. 
+40Hz, 
+100Hz, 3.5 microvolts. 
+
+Is this size change just due to averaging? 
+The above is just averaging. 
+
+
+
+
+
+
+
+

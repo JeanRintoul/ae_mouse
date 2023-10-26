@@ -103,9 +103,13 @@ def aeti_recording(**aeti_variables):
         elif key == 'pressure_ISI':
             command = command + ' -i ' + str(value)
         elif key == 'pressure_burst_length':
-            command = command + ' -j ' + str(value)            
+            command = command + ' -j ' + str(value) 
+        elif key == 'pressure_fswitching':
+            command = command + ' -r ' + str(value)  
         elif key == 'current_frequency':
             command = command + ' -f ' + str(value)
+        elif key == 'current_fswitching':
+            command = command + ' -v ' + str(value)            
         elif key == 'current_amplitude':
             command = command + ' -b ' + str(value)
         elif key == 'current_prf':
@@ -138,7 +142,7 @@ def aeti_recording(**aeti_variables):
             # print ('command',command)
             foo = check_output(command, shell=True)
             execution_result = str(foo, 'utf-8')
-            # print ('execution_result',execution_result)
+            print ('execution_result',execution_result)
             filename = prefix+'_stream.npy'
             print ('filename is',filename)
         except Exception as e: print(e, execution_result)
