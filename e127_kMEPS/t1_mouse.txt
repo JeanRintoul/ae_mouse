@@ -1,0 +1,60 @@
+t1 - RF antenna with the RF amplifier mouse test with ketamine. 
+================================================== 
+
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 21/11/2023  
+Mouse Cage: 116345
+Number of uses before: 2
+Gender: male
+Weight: 31.5g including headbar. 
+DOB: 6.05.2023
+
+e127_rfti.py
+e127_pulse_antenna.py
+
+No need to connect the mouse, leave amplifier off as I plan to inject LARGE amplitudes. 
+
+I have separated the mouse from ground by about 5cm, to try to increase the amplitude of the evoked response in the mouse. 
+
+I can also try shielding the VEP electrode, such that the potential difference is larger. 
+
+I can also try using a direct capacitively connected electrode. 
+
+========  start time :    =====
+
+i am not seeing anything with either pulsing or rf ti. 
+I have moved to just a capacitive sheet... and still nothing. 
+
+I could directly apply a voltage? Even when I do this... nothing is happening. 
+
+I think this is a give away for  what the problem is... 
+
+- switched to d bonos thing? 
+- even at max amplitudes, directly applied... i get nothing. 
+- absolutely 0. 
+
+2 hrs. into warming chamber at 13:04. 
+
+There is definitely something wrong with the way I am applying the electric field. 
+=== === ==== ==== ==== === ==== 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

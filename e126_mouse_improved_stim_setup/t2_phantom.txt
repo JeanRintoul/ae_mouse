@@ -1,0 +1,40 @@
+t2 - RF antenna with the RF amplifier test. Reps and jitter. 
+The purpose of this test is to have a clean baseline for t1_mouse. 
+All other settings are the same as t1. 
+================================================== 
+
+Preamp 10k low pass. Gain = 500. 
+
+- both with jitter, reps. 
+e126_pulse_antenna.py
+e126_fswitching_antenna.py 
+
+Do both the pulse protocol, and the frequency switching protocol. 
+- gain = 500, 10k low pass filter. 
+
+====== start time 12:41am ====== 
+
+
+= Done, now set up for pulse with better noise arrangements i.e. cable not phantom = 
+= = fridge off, faraday cage closed. = = 
+
+1-50. pulse antenna.py 
+51-100. fswitching protocol. i have turned off the ramp. 
+
+==   ==  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

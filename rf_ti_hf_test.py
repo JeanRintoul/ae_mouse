@@ -25,13 +25,12 @@ from scipy.signal import iirfilter,sosfiltfilt
 # Increment this for each test. 
 # ch5 has the differential measurement of the function generator. 
 # 
-test_no = 39
-gain    = 1000
+test_no = 36
+gain    = 100
 # 
-prf                 = 1.0
+prf     = 1.0
 
-
-current_prf         = 2
+current_prf = 0.5
 # Fs = current_frequency*10 
 # Fs = 5e6
 carrier = 5e5
@@ -50,13 +49,13 @@ aeti_variables = {
 'USMEP': 1,                   # when usmep == 1, the current and pressure Fs can be different to the recorded Fs. In this case the US is at 5Mhz, but the recording frequency is 100kHz. This decreases the amount of data that needs to be dumped to disk. 
 'duration': 6.0, 
 'position': test_no,
-'pressure_amplitude': 0.1,    # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
+'pressure_amplitude': 0.0,    # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': carrier,
 # 
 # Test 1: pulsed rf stim. 
-'pressure_ISI':0,
-'pressure_prf':prf,            # pulse repetition frequency for the sine wave. Hz. 
-'pressure_burst_length':0.0002,  # in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
+# 'pressure_ISI':0,
+# 'pressure_prf':prf,            # pulse repetition frequency for the sine wave. Hz. 
+# 'pressure_burst_length':0.0002,  # in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
 # 'pressure_burst_length':0.05,  # in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
 # i.e. x/1e7 = 0.003s . 3 cycles so 0.003 seconds... 3 milliseconds
 # 
@@ -66,12 +65,18 @@ aeti_variables = {
 # Test 4: RF TI at 2Mhz. Filter on preamp. Consider using RF Amplifier? 
 # 'pi_frequency':carrier + dfx,
 # 
-'current_amplitude': 0,       # its actually a voltage .. Volts. 
+'current_amplitude': 5,       # its actually a voltage .. Volts. 
 # 'current_frequency': 8000,     # 
 # 'current_frequency': current_frequency, # 
-'current_frequency': carrier,  # 
-'current_ISI':0,
-'current_burst_length':0.0002,
+# 'current_frequency': carrier,  # 
+'current_frequency': 1,  # 
+# 'current_ISI':0,
+# 'current_burst_length':0.0002,  # 200 microseconds.
+# 'current_burst_length':0.001,   # 1ms 
+# 'current_burst_length':0.050,   # 50ms 
+# 'current_burst_length':0.1,     # 100ms 
+# 'current_burst_length':0.01,     # 10ms 
+
 'current_prf':current_prf,
 # 'ti_frequency': carrier + dfx,  # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
 'ae_channel': 0,                # the channel of the measurement probe. 
@@ -81,11 +86,15 @@ aeti_variables = {
 'e_channel': 6,                 # this is the voltage measured between the stimulator probes. 
 'current_monitor_channel': 5,   # this is the current measurement channel of the transformer. 
 'marker_channel':7,
-'end_null': 0.1,                # start of end null. 
-'end_pause': 0.8,               # start of end ramp
-'start_null': 0.2,              # percent of file set to zero at the beginning. 
-'start_pause': 0.3,             # percent of file in ramp mode or null at start.
-'no_ramp':0.0,                  # when we have no ramp we set this to 1. i.e. an impedance spectrum test. 
+# 'end_null': 0.1,                # start of end null. 
+# 'end_pause': 0.8,               # start of end ramp
+# 'start_null': 0.2,              # percent of file set to zero at the beginning. 
+# 'start_pause': 0.3,             # percent of file in ramp mode or null at start.
+'end_null': 0.05,                # start of end null. 
+'end_pause': 0.95,               # start of end ramp
+'start_null': 0.1,              # percent of file set to zero at the beginning. 
+'start_pause': 0.1,             # percent of file in ramp mode or null at start.
+'no_ramp':1.0,                  # when we have no ramp we set this to 1. i.e. an impedance spectrum test. 
 'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
@@ -163,7 +172,7 @@ stop  = duration
 
 fig = plt.figure(figsize=(5,5))
 ax = fig.add_subplot(211)
-plt.plot(t,data[1],'k')
+plt.plot(t,data[0],'k')
 ax.set_xlim([start,stop])
 ax2 = fig.add_subplot(212)
 plt.plot(t,lfp_data,'k')
@@ -184,7 +193,7 @@ plt.show()
 fig = plt.figure(figsize=(10,6))
 ax = fig.add_subplot(311)
 # plt.plot(t,data[measurement_channel],'k')
-plt.plot(t,data[rf_channel],'k')
+plt.plot(t,data[v_channel],'k')
 ax2 = fig.add_subplot(312)
 plt.plot(frequencies,fft_m,'k')
 ax2.set_xlim([0,110])

@@ -1,0 +1,120 @@
+t1 - RF antenna with the RF amplifier phantom test, which pairs with t1. 
+========================================================================
+air gap of 7mm. 
+
+Fs = 1e7, carrier = 1e6. 
+double chEnables[8]                 = {1,1,0,0,1,0,0,0};
+gain = 500
+keep this in mind when analysing. I did this to enable the higher sample rate. 1e7, carrier 1e6. 
+preamp settings 0.1 high pass, 10k low pass. 
+rf amplifier v out  = 0.3 
+duration            = 6 seconds. 
+
+= = = = =
+
+air gap of 7mm. 
+Fs = 1e7, carrier = 1e6. 
+double chEnables[8]                 = {1,1,0,0,1,0,0,0};
+gain = 500
+keep this in mind when analysing. I did this to enable the higher sample rate. 1e7, carrier 1e6. 
+preamp settings 0.1 high pass, 10k low pass. 
+vout     = 0.4 
+duration = 6 seconds. 
+iso      = 0.6 
+dfx      = [1,2,5,10,40,100,300,1000]
+vout     = 0.4 
+
+Phantom DF Ramp 1. 
+1. df = 1 - 
+2. df = 2 - 
+3. df = 5 - 
+4. df = 10 - 
+5. df = 40 -
+6. df = 100 -
+7. df = 300 -
+8. df = 1000 - 
+
+Phantom DF Ramp 2. 
+9. df = 1 -
+10 df = 2  -
+11. df = 5  -
+12. df = 10  -
+13. df = 40 -
+14. df = 100 - 
+15. df = 300 - 
+16. df = 1000 - 
+
+Phantom DF Ramp 3. 
+17. df = 1 -
+18. df = 2 - 
+19. df = 5 - 
+20. df = 10 - 
+21. df = 40 - 
+22. df = 100 - 
+23. df = 300 - 
+24. df = 1000 - 
+
+Phantom DF Ramp 4. 
+25. df = 1 - 
+26. df = 2 - 
+27. df = 5 - 
+28. df = 10 - 
+29. df = 40 - 
+30. df = 100 - 
+31. df = 300 - 
+32. df = 1000 - 
+
+Baselines vout = 0 
+33. no signal applied. - 
+34. 1MHz only applied. - 
+35. (1MHz + 10Hz) only applied. - 
+
+Apply direct signals through RF amplifier and antenna. 
+vout = 0.4 
+36. direct = 1  - 
+37. direct = 2  -
+38. direct = 5  - 
+39. direct = 10 - 
+
+Try frequency switching. 
+Attach a stimulating electrode to the phantom for the constant e field. 
+gain = 100. 
+40. dfx = 1000 , vout pressure = 0.4, direct current amplitude = 2
+    prf = 2 'pressure_burst_length':0.001,
+
+41. 'pressure_burst_length':0.01, dfx = 100. vout = 2 on d bono. 
+    
+42. repeat of 41. 
+
+43. PRF = 5
+
+44. change to duty cycle 50% so I can more easily see the change. dfx = 1000. prf = 5 . Analyse this one to start with. 
+    
+45. repeat of 44. 
+
+46. dfx = 1020 , so it doesnt clash with mains harmonics. I cannot see anything at 1020 anymore. There is no mixing. 
+
+47. Add a GND plane. vout = 4 
+
+48. the voltage dbono only. v out = 4 
+
+49. I moved the Fs down to 5e6 again, so I could turn on the other channels. Now I have turned on the channels, I can see there is a voltage output in both the measured signal, and the monitored signal. 
+
+50. Turn on the fmixing again. 
+
+this means that my fmixing in the mouse wouldn't have worked, because my channels were not turned on. So the output signal from the tx is dependent on the draw from the monitor channels... 
+
+51. The first actual fswitching recording. And indeed, there is a F at 1020 now. 
+
+52. 'pressure_burst_length':0.001, the 1020 amplitude looks tiny now in the FFT. But perhaps there is a way to filter it to see it? 
+
+53. 'pressure_burst_length':0.01, add a ground. dfx = 1020. 
+
+54. pressure sig only. with fswitching. 
+
+END 
+=========================== 
+
+
+
+

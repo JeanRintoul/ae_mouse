@@ -15,22 +15,25 @@ import time
 # 
 # Marker to show when US is turned on and off. Update from my main code to suit specific circumstance
 duration   = 6.0 
-start_null = 0.25 * duration * 1000 # in milliseconds(ms)
-end_null   = 0.75 * duration * 1000 # in milliseconds(ms)
+start_null = 0.05 * duration * 1000 # in milliseconds(ms)
+end_null   = 0.9 * duration * 1000 # in milliseconds(ms)
 # 
 # Select the frequency it will run at. 
-# frequency            = 1      # 0.5s on duration. 1 on every 2 seconds.
+frequency            = 1      # 0.5s on duration. 1 on every 2 seconds.
 #frequency            = 2        # 0.25s duration, 1 on every second.
 # frequency            = 4        # 0.125 duration, 1 on every 0.5s. 
 # frequency            = 8        # 0.0625 duration, 1 on every 0.25s.
 # frequency            = 7       # 0.0625 duration, 1 on every 0.25s.
-frequency              = 14      # 0.0625 duration, 1 on every 0.25s.
+# frequency            = 14      # 0.0625 duration, 1 on every 0.25s.
 # frequency            = 16       # 0.03125 duration, 1 on every 0.125s. 
 # frequency            = 32       # 0.015625 duration, 1 on every 0.0625s. 
 # frequency            = 64       # 0.0078125 duration, 1 on every 0.03125s. 
 # led_start_time       = 500   # in milliseconds(ms)
-led_start_time       = 1800   # in milliseconds(ms)
-led_stop_time        = 7000
+# led_start_time       = 1800   # in milliseconds(ms)
+# led_stop_time        = 6000
+
+led_start_time       = 500   # in milliseconds(ms)
+led_stop_time        = 8000
 # led_stop_time        = 4000
 # led_start_time       = 5000   # in milliseconds(ms)
 # led_stop_time        = 55000 
@@ -121,7 +124,7 @@ def pin_low_handler(sm):
     # marker for start time. 
     stimulus_monitor.value(1)
     led_on.value(1)
-    time.sleep(0.01)
+    time.sleep(0.05)
     stimulus_monitor.value(0)
     led_on.value(0)    
     # 

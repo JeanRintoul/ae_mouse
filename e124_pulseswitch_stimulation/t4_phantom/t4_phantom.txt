@@ -1,0 +1,23 @@
+t1 - RF antenna with the RF amplifier mouse test. 
+================================================== 
+
+Phantom Baseline to show my result is not a processing artefact. 
+
+Donut RF Antenna.
+vout = 0.8 
+Preamp 10k low pass. Gain = 500. 
+
+e124_pulse_antenna.py
+e124_fswitching_antenna.py 
+
+- I have now implemented jitter (0.4 seconds), so that the timing is different for each pulse. This should improve my SNR. 
+- I plan to do 40 recordings of each type of stimulation with the RF antenna. (i.e. 200 pulses)
+- Using a higher amplitude pulse i.e. vout = 0.8. 
+
+Then post-process these to ideally see the ERP clearly and with good error bars. 
+
+= = = = = = = = = = 
+1-50. 
+
+
+= = = = = = = = = = 

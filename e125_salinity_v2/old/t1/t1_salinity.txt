@@ -1,0 +1,100 @@
+t1 - salinity test
+================================================== 
+
+Start with de-ionized moving into higher salinity. 
+
+Electrodes positioned so they touch the bottom of the petri dish each time, filled to the same level each time. No barrier between liquid and antenna. 
+
+Question: Does frequency mixing amplitude trend with salinity? 
+Does carrier amplitude also trend as the difference frequency? 
+
+= = = = = = = = = 
+1-5. de-ionized. 
+6-10. 1.1g (0.225%)
+11-15 2.2g (0.45%) 
+16-20. 4.5g (0.9%) 
+21-25. 9g (1.8%)
+= = = = = = = = = 
+
+sample rate 10MHZ, carrier = 500kHz. no filters on preamp, gain = 50 
+duration = 4 seconds. 
+
+e125_salinity.py 
+3 channels, no preamp filters, vout = 0.5, 
+electrodes 7mm apart on bottom of petri dish. 
+
+1-5. de-ionized 
+df      = [38.3, 41.9 , 42.7 ,  43.47 ,  42.212  ]
+carrier = [15128.35, 15720.93 , 16249.87 , 15404.59, 16976.4]
+
+6-10. 1.1g
+df      = [54.6, 53.2, 51.63, 51.62, 52.78 ]
+carrier = [6341.68, 6339.187, 6341.51, 6357.8, 6348.5 ]
+
+11-15. 2.2g 
+df      = [58.55, 52.76, 54.95, 54.47, 50.28]
+carrier = [6657.8, 6643.65, 6598.55, 6589.7, 6600.4 ]
+
+16-20. 4.5g  (is this because it is more full than last time? so closer to the source makes carrier larger)
+df      = [69.07 , 59.8 , 65.7 , 64.23 , 54.8 ]
+carrier = [7581.69, 7560.97, 7528.88, 7528.24, 7524.39    ]
+
+these are equivalent to with less full saline: (
+df       = [54.59, 57.89, 52.59, 60.19, 66.41]
+carrier  = [6542.34, 6554.98, 6574.3, 6571.35, 6593.66 ])
+
+21-25. 9g
+df      = [66.48,  53.25, 76.4, 58.22 102.7]
+carrier = [6992.14, 6992.04, 6984.75,6977.39  6991.3 ]
+
+26-30 more 9g measurements. something is weird about some of these. 
+df      = [74.77, 60.69]
+carrier = [6986.7, 6996]
+
+Let's redo the transmission spectrum? 
+f = [50kHz, 250khz, 500khz, 1MHz, 2Mhz]
+
+31-35. 500khz 0.5V out. switched to 0.9% standard saline.  
+over a cm away from the liquid. 
+df       = [54.59, 57.89, 52.59, 60.19, 66.41]
+carrier  = [6542.34, 6554.98, 6574.3, 6571.35, 6593.66 ]
+
+36-40. 1MHz carrier 
+df       = [49.33,35.43,46.8,47.1,48.08  ]
+carrier  = [11698, 11672,11728,11681.2,11717.4   ]
+
+41-45. 2MHz carrier suddenly they are of equal size. 
+df       = [2030   ]
+carrier  = [2914   ]
+This suggests something else is going on - like mixing in the preamp. 
+
+46-50. 250khz. 
+df       = [35.35, 45.9, 46.5, 43.18, 43.5]
+carrier  = [3924, 3941.2, 3938, 3938.3, 3929.15 ]
+
+51-55 50khz
+df       = [10.5, 2.28 , 11.52 ,  4.99 , 6.4 ]
+carrier  = [1334.04, 1326, 1318.68,  1315.46, 1304  ]
+
+56-60. 1.5MHz. (seems like something weird is happening, non-linearity in preamp)
+df       = [2044.46, 2030, 2032.7, 2061, 2026  ]
+carrier  = [7631.6, 7599, 7578.6, 7615, 7523 ]
+
+Maybe what I am seeing with these secondary frequencies, is non-linearity in the preamp? 
+
+
+61-65  1.5MHz, with gain = 1 
+df       = [256.2 , 280.5 , 320.57, 288.31,  292.7]
+carrier  = [11487.4, 11801.2, 11284.479, 12234, 12385 ]
+
+66-70 2MHz with gain = 1  - seems like I have the same non-linearity problem here. 
+df       = [470.99, 443, 410.85, 439.26, 481.3 ]
+carrier  = [8305.6, 7006, 7703.26 , 7741.07, 6490 ]
+
+
+= = = = Can I redo the salinity data, with the water at the same level = = = 
+
+
+
+
+

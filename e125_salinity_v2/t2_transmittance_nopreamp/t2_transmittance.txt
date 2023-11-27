@@ -1,0 +1,46 @@
+t1 - transmittance test
+================================================== 
+
+petri dish of 0.9% saline. 
+frequency list = [100,10khz, 100khz, 500khz, 1MHz, 1.5MHz, 2MHz]
+df amplitudes at different frequencies. 
+10k low pass, gain = 500. 
+
+vout = 0.4 
+
+= = = df amplitudes taken with filter and gain  = = = 
+1-4. 500khz 4 reps. 
+5-8. 1MHz
+9-12. 1.5MHz
+13-17. 2MHz
+18-21 100khz.
+then I cannot go lower because my difference frequency is so big. 
+
+= = = = resistor test = = = 
+1k resistor. gain =1 
+- Apply the mean voltage at the carrier frequency amplitude to a resistor. 
+  Do I see mixing at the same amplitude if I 
+
+22-25 - 500khz. 
+26-30 - 1MHz. The non-linearity is TINY with a resistor on it. 
+31-34 - 1.5MHz. carrier 
+35-38 - 2MHz carrier. 
+39-42 - 100kHz carrier. 
+
+
+What do I want to plot here exactly? In every case, the non-linear mixing amplitude is present but much smaller. 
+
+Hence mixing is occuring in the preamp at a very low amplitude, most of the mixing is coming from the solution. 
+
+= = = = 
+
+- repeat with a resistor at 1kOhm resistance, with the same carrier amplitudes applied. Does the difference frequency appear the same amplitude? 
+
+
+
+
+
+
+
+
+

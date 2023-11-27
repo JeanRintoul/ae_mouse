@@ -14,6 +14,7 @@
 #include <inttypes.h>
 #include <unistd.h>
 #include <stdbool.h>
+#include <time.h>
 #include <math.h>
 #ifdef __WINNT__
   #include <windows.h>
@@ -28,6 +29,7 @@
 #include "PrintInfo.h"
 #include "Utils.h"
 #include "npy.h"
+
 
 #define MAX_SIZE 32
 #define EVENT_COUNT 3
@@ -81,19 +83,20 @@ int main(int argc, char* argv[])
   double gen_current_sample_frequency   = 1e7;   // 10Mhz sample rate 
   //
   // double sample_frequency               = 5e6;        // this is the recording sampling frequency. 
-  double sample_frequency             = 5e6;        // this is the recording sampling frequency. 
+  double sample_frequency             = 1e7;        // this is the recording sampling frequency. 
   double duration                     = 0.1;      // measured in seconds
   double no_ramp                      = 0.0; // this toggles whether or not we want to ramp into the measurement. 
   // double duration                  = 1.0;   // measured in seconds  
   unsigned int resolution             = 0;
   int usmep                           = 0;
-  uint64_t record_length              = 100000; // 50 kS
+  //uint64_t record_length              = 500000; // 50 kS
   // uint64_t record_length           = 1000000; // 50 kS  
-  //uint64_t record_length            = 50000; // 50 kS 
+  uint64_t record_length            = 50000; // 50 kS 
   //uint64_t record_length            = 100000; // 50 kS    
   // this is so channels can be selectively activated or de-activated. 
   // demod setting 
-  //double chEnables[8]                 = {1,1,0,0,0,0,0,1};
+  //double chEnables[8]                 = {1,1,0,0,1,0,0,0};
+  // double chEnables[8]                 = {1,1,0,0,1,1,1,0};  
   double chEnables[8]                 = {1,1,1,1,1,1,1,1};
   //double chEnables[8]                 = {1,1,1,1,0,0,0,0};
   // as long as I dont mess with the current generator enables, it's fine? 
@@ -116,23 +119,31 @@ int main(int argc, char* argv[])
   // current settings. 
   double current_burst_length  = 0.004;
   double  current_ISI          = 3;
-//
+  //
   double start_pause           = 0.25;
   double end_pause             = 0.75;  
   double start_null            = 0.0; 
   double end_null              = 0.0;      
   double ti_frequency          = 0.0;  
   double pi_frequency          = 0.0;  
-  double pfswitching_mode      = 0.0; // Should be set to the switching frequency?     
+  double pfswitching_mode      = 0.0; // Should be set to the switching frequency?  Assuming you are running a separate current source. 
+  double pfswitching_mode2     = 0.0; // all switching is done via modulation from one source
   double fswitching_mode       = 0.0; // Should be set to the switching frequency?   
   double long_recording        = 0.0; // if it is a long recording, then we loop a shorter amount of time(specificed in seconds) in the function generator. Ensure no ramp. 
-  // letters remaining. l,o,
+  double jitter_range          = 0.0;
+  // 
+  // letters remaining. l,
   //      current_burst_length
   //      current_ISI
   //
-  while ((opt = getopt(argc, argv, "a:b:c:d:e:f:g:h:i:j:k:m:n:p:q:r:s:t:u:v:w:x:y:z:")) != -1) {   
+  while ((opt = getopt(argc, argv, "a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:p:q:r:s:t:u:v:w:x:y:z:")) != -1) {   
   // while ((opt = getopt(argc, argv, "f:g:h:i:j:p:d:s:c:a:b:k:n:t:e:z:m:u:")) != -1) {    
       switch(opt) {
+      case 'l':
+        sscanf(optarg,"%lf\n",&jitter_range ); 
+        // snprintf(filename_prefix, MAX, "%0.2f", (float)jitter_range) ;
+        printf("jitter_range (s): %s\n",optarg);
+      break;        
       case 'f':
         sscanf(optarg,"%lf\n",&current_signal_frequency); 
         // snprintf(filename_prefix, MAX, "%0.2f", (float)current_signal_frequency) ;
@@ -142,8 +153,7 @@ int main(int argc, char* argv[])
         sscanf(optarg,"%lf\n",&fswitching_mode); 
         // snprintf(filename_prefix, MAX, "%0.2f", (float)current_signal_frequency) ;
         printf("current fswitching_mode(Hz): %s\n",optarg);
-      break;      
-
+      break;        
       case 'w':
         sscanf(optarg,"%lf\n",&current_burst_length); 
         // snprintf(filename_prefix, MAX, "%0.2f", (float)current_signal_frequency) ;
@@ -162,7 +172,12 @@ int main(int argc, char* argv[])
         sscanf(optarg,"%lf\n",&pfswitching_mode); 
         // snprintf(filename_prefix, MAX, "%0.2f", (float)current_signal_frequency) ;
         printf("pressure fswitching mode: %s\n",optarg);
-      break;      
+      break;
+      case 'o':
+        sscanf(optarg,"%lf\n",&pfswitching_mode2); 
+        // snprintf(filename_prefix, MAX, "%0.2f", (float)current_signal_frequency) ;
+        printf("current fswitching_mode2(Hz): %s\n",optarg);
+      break;                
       case 'h':
         sscanf(optarg,"%lf\n",&pressure_prf); 
         printf("pressure_prf(Hz): %s\n",optarg);
@@ -406,7 +421,7 @@ int main(int argc, char* argv[])
   bool raw = false;
   // 
   // Create array of data ranges. 
-  double dRanges[8] = {0.8,40.0,20.0,20.0,80.0,4.0,2.0,40.0}; // ch 6 was 40.0   
+  double dRanges[8] = {4.0,40.0,20.0,20.0,80.0,4.0,40.0,40.0}; // ch 6 was 40.0   
   // create array of AC or DC coupling. 
   uint64_t Couplings[8] = {CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV};
   // 
@@ -512,11 +527,26 @@ int main(int argc, char* argv[])
   int current_isi_counter = 0;
   int current_isi_end_counter = 0; // stop the transformer to recover from magnetostriction. 
   int check = 0;
+  int j = 0;
   printf("\n pressure duration in samples %d", pressure_duration_in_samples);
   // printf("\n pressure final end ramp %d", pressure_final_end_ramp);
   // printf("\n pressure start time %d", pressure_start_time);
   // printf("\n pressure end ramp %d", pressure_end_ramp);
-  // the pressure signal is free to have whatever signal in it. 
+
+  // create an array that store the jitter numbers to add to each pulse delay. 
+  srand (time ( NULL));
+
+  int max_pulses = (int)duration/pressure_prf;
+  double jitter_array[10];
+  double div = RAND_MAX / jitter_range;
+  for(int i=0; i<(max_pulses -1); i++)  {
+    jitter_array[i] = (rand() / div) ;  // it is a time in seconds specficied max by jitter range. 
+    printf("\n jitter array %f", (float)jitter_array[i]);
+  }
+  int jitter_iteration = 0;
+  // end creation of the jitter array and initialize the jitter iteration number. 
+
+  // create the pressure signal. 
   for(int i=0; i<pressure_duration_in_samples ; i++)  
   {  
     if (i < (int)pressure_start_null) {  // start area that is set to zero. 
@@ -526,39 +556,56 @@ int main(int argc, char* argv[])
 
       datap[i] = 0.0;
       // printf("\n %d = %lf", i, data[i]);
-      // code for the initial pressure ramp. 
-      if (no_ramp == 0.0) { 
+      if (no_ramp == 0.0) {       // code for the initial pressure ramp. 
         pressure_ramp_factor = (double)(i-pressure_start_null)/(double)(pressure_start_time-pressure_start_null);   
         
         if (pi_frequency > 0.0 && pressure_prf  == 0.0) {  // dual sine wave output option. 
-          datap[i] = pressure_ramp_factor*(sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (double)i/gen_pressure_sample_frequency + PI) );  
+          datap[i] = pressure_ramp_factor*(sin(2*PI* pressure_signal_frequency * (double)j/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (double)j/gen_pressure_sample_frequency + PI) );  
+          j++;
         }
         else if (pressure_prf  > 0.0) { // Ultrasound Neuromodulation Option. 
+
+          // iterate the jitter number for each pulse to get different offsets. 
+          if (pressure_prf_counter == 1 && (pressure_prf_guide) > 0) {  // once per pulse. 
+            jitter_iteration++;
+            printf("\n jitter no %d", jitter_iteration);            
+          }  // end jitter alteration. 
+
           isi_counter++;
           pressure_prf_counter++;
-          pressure_prf_guide = sin( 2*PI*(pressure_prf)*(double)i/gen_pressure_sample_frequency);
+          pressure_prf_guide = sin( 2*PI*(pressure_prf)*(double)(i)/gen_pressure_sample_frequency);
           datap[i] = 0;
-          if (pressure_prf_guide > 0 && (double)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+
+          if (pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length+ jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
             datap[i] = pressure_ramp_factor*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency); 
           }
           // pi frequency and prf option. 
-          if (pi_frequency > 0.0 && pressure_prf_guide > 0 && (double)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+          if (pi_frequency > 0.0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length + jitter_array[jitter_iteration])  ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
             datap[i] = pressure_ramp_factor*(sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (double)i/gen_pressure_sample_frequency + PI) ); 
           }
 
           // frequency switching burst mode. 
-          if (pfswitching_mode > 0) {
+          if (pfswitching_mode > 0) {  // first frequency
             datap[i] = pressure_ramp_factor*(sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency)); 
-          }
-          if (pfswitching_mode > 0 && pressure_prf_guide > 0 && (double)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+          }  // second frequency conjoined pulse. 
+          if (pfswitching_mode > 0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length + jitter_array[jitter_iteration])  ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+            
             datap[i] = pressure_ramp_factor*(sin(2*PI* pfswitching_mode * (double)i/gen_pressure_sample_frequency)); 
           }
 
+          // switching mode 2. frequency switching burst mode where both signals come out of the antenna.
+          if (pfswitching_mode2 > 0.0 ) {
+            datap[i] = pressure_ramp_factor*2*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);  
+          }
+          if (pfswitching_mode2 > 0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+            datap[i] = pressure_ramp_factor*(sin(2*PI* pfswitching_mode2 * (double)i/gen_pressure_sample_frequency) + sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency + PI) ); 
+          }
 
           // Reset the prf burst length counter. 
           if (pressure_prf_guide < 0  ) {
             pressure_prf_counter = 0;
           }
+
           // Reset. 
           if ((float)isi_counter/gen_pressure_sample_frequency > pressure_ISI) {
             isi_counter = 0;
@@ -574,19 +621,28 @@ int main(int argc, char* argv[])
     else if (i <= (int)pressure_final_end_ramp && i >= (int)pressure_start_time ) {  // the main pressure signal 
       // 
       if (pi_frequency > 0.0 && pressure_prf  == 0.0) {
-        datap[i] = (sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (float)i/gen_pressure_sample_frequency + PI) );  
+        datap[i] = (sin(2*PI* pressure_signal_frequency * (double)j/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (float)j/gen_pressure_sample_frequency + PI ) );  
+        j++;
       }
       else if (pressure_prf  > 0.0) {  // standard Ultrasound Neuromodulation Option. 
+        
+        // iterate the jitter number for each pulse to get different offsets. 
+        if (pressure_prf_counter == 1 && (pressure_prf_guide) > 0) {  // once per pulse. 
+          jitter_iteration++;
+          printf("\n jitter no %d", jitter_iteration);            
+        }  // end jitter alteration. 
+
         isi_counter++;
         pressure_prf_counter++;
-        pressure_prf_guide = sin( 2*PI*(pressure_prf)*(double)i/gen_pressure_sample_frequency);
+        pressure_prf_guide = sin( 2*PI*(pressure_prf)*(double)(i)/gen_pressure_sample_frequency );
         datap[i] = 0;
-        if (pressure_prf_guide > 0 && (double)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+        // 
+        if ( (pressure_prf_guide) > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration]  && ((double)pressure_prf_counter/gen_pressure_sample_frequency) < (pressure_burst_length + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
           datap[i] = sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency); 
         }
 
         // pi frequency and prf option. 
-        if (pi_frequency > 0.0 && pressure_prf_guide > 0 && (double)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+        if (pi_frequency > 0.0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length+ jitter_array[jitter_iteration])  ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
           datap[i] = (sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (double)i/gen_pressure_sample_frequency + PI) ); 
         }
 
@@ -594,8 +650,18 @@ int main(int argc, char* argv[])
         if (pfswitching_mode > 0.0 ) {
           datap[i] = sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency); 
         }
-        if (pfswitching_mode > 0 && pressure_prf_guide > 0 && (double)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+        if (pfswitching_mode > 0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
           datap[i] = sin(2*PI* pfswitching_mode * (double)i/gen_pressure_sample_frequency); 
+        }
+
+        // switching mode 2. frequency switching burst mode where both signals come out of the antenna.
+        if (pfswitching_mode2 > 0.0 ) {
+          datap[i] = 2*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);  
+        }
+        if (pfswitching_mode2 > 0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+          
+          datap[i] = (sin(2*PI* pfswitching_mode2 * (double)i/gen_pressure_sample_frequency) + sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency + PI) ); 
+        
         }
 
         // Reset the prf burst length counter. 
@@ -614,37 +680,45 @@ int main(int argc, char* argv[])
     }    
     else // the end point of the pressure signal. final end ramp. 
     {
+
+
       datap[i] = 0.0;
       if (no_ramp == 0.0) {  // if there is a ramp down implement it. 
         if (check == 0) {
           // printf("\n %d", i); 
           check++;         
         }
-        // 4e7 - 3e7 = 1e7
         // i want it to be max pressure_final_end_ramp
         // the length of the decline is (pressure_duration_in_samples-pressure_final_end_ramp)
         // pressure_ramp_factorend = (float)(pressure_duration_in_samples - i)/(float)(pressure_duration_in_samples-pressure_final_end_ramp);
-        //
         // implement the final end ramp, and end null period if requested. 
         if ((pressure_duration_in_samples - i - pressure_end_null) > 0) {
           // end ramp scaling factor. 
           pressure_ramp_factorend = (double)(pressure_duration_in_samples - i - pressure_end_null)/(double)(pressure_duration_in_samples-pressure_final_end_ramp - pressure_end_null);
           if (pi_frequency > 0.0 && pressure_prf  == 0.0) {
-            datap[i] = pressure_ramp_factorend*(sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (double)i/gen_pressure_sample_frequency + PI) );  
+            datap[i] = pressure_ramp_factorend*(sin(2*PI* pressure_signal_frequency * (double)j/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (double)j/gen_pressure_sample_frequency + PI) );  
+            j++;
           }
           else if (pressure_prf  > 0.0) {  //  Ultrasound PRF Neuromodulation Option. 
+
+            // iterate the jitter number for each pulse to get different offsets. 
+            if (pressure_prf_counter == 1 && (pressure_prf_guide) > 0) {  // once per pulse. 
+              jitter_iteration++;
+              printf("\n jitter no %d", jitter_iteration);            
+            }  // end jitter alteration. 
+
             isi_counter++;
             pressure_prf_counter++;
-            pressure_prf_guide = sin( 2*PI*(pressure_prf)*(double)i/gen_pressure_sample_frequency);
+            pressure_prf_guide = sin( 2*PI*(pressure_prf)*(double)(i)/gen_pressure_sample_frequency);
             datap[i] = 0;
             if (pressure_prf_guide > 0 ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
-              if ((double)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {
+              if ( ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length  + jitter_array[jitter_iteration]) ) {
                 datap[i] = pressure_ramp_factorend*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency); 
               }
             }
 
             // pi frequency and prf option. 
-            if (pi_frequency > 0.0 && pressure_prf_guide > 0 && (double)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+            if (pi_frequency > 0.0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length  + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
               datap[i] = pressure_ramp_factorend*(sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (double)i/gen_pressure_sample_frequency + PI) ); 
             }
 
@@ -652,9 +726,18 @@ int main(int argc, char* argv[])
             if (pfswitching_mode > 0.0) {
               datap[i] = pressure_ramp_factorend*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);
             }
-            if (pfswitching_mode > 0.0 && pressure_prf_guide > 0 && (double)pressure_prf_counter/gen_pressure_sample_frequency < pressure_burst_length) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+            if (pfswitching_mode > 0.0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length  + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
               datap[i] = pressure_ramp_factorend*(sin(2*PI* pfswitching_mode * (double)i/gen_pressure_sample_frequency) ); 
             }
+
+            // switching mode 2. frequency switching burst mode where both signals come out of the antenna.
+            if (pfswitching_mode2 > 0.0 ) {
+              datap[i] = pressure_ramp_factorend*2*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);  
+            }
+            if (pfswitching_mode2 > 0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length  + jitter_array[jitter_iteration])  ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+              datap[i] = pressure_ramp_factorend*(sin(2*PI* pfswitching_mode2 * (double)i/gen_pressure_sample_frequency) + sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency + PI) ); 
+            }
+
 
             // Reset the prf burst length counter. 
             if (pressure_prf_guide < 0  ) {
@@ -698,6 +781,7 @@ int main(int argc, char* argv[])
           
           if (ti_frequency > 0.0) {  // add two sine waves together.
             data[i] = current_factor*(sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) +dc_offset);  
+          
           }
           else if (prf_frequency > 0.0) {  // toggle the current sine wave on and off at the prf frequency. 
             current_isi_counter++;            
@@ -877,8 +961,6 @@ int main(int argc, char* argv[])
   GenSetFrequencyMode(gen_pressure,FM_SAMPLEFREQUENCY );
   GenSetFrequency(gen_pressure, gen_pressure_sample_frequency); // 1 kHz
   CHECK_LAST_STATUS();
-
-
 
   // Set amplitude:
   GenSetAmplitude(gen_pressure, pressure_amplitude); // 2 V

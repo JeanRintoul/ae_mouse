@@ -1,0 +1,119 @@
+t1 - RF antenna with the RF amplifier mouse test. 
+================================================== 
+Date of experiment: 30/10/2023  
+Mouse Cage: 116345
+Number of uses before: 3
+Gender: male
+Weight: 34.5g plus headbar. 
+DOB: 6.05.2023
+
+Isoflurane Anesthesia. Antenna.
+
+= = = = = time 10:20am = = = =
+air gap of 7mm. 
+
+Fs = 1e7, carrier = 1e6. 
+double chEnables[8]                 = {1,1,0,0,1,0,0,0};
+gain = 500
+keep this in mind when analysing. I did this to enable the higher sample rate. 1e7, carrier 1e6. 
+preamp settings 0.1 high pass, 10k low pass. 
+rf amplifier v out 	= 0.3 
+duration 			= 6 seconds. 
+
+iso = 0.6 
+dfx = [1,2,5,10,40,100,300,1000]
+
+vout = 0.3
+1. df = 1 - 
+2. df = 2. 
+
+stop and turn vout = 0.4 
+
+3. df = 1 - 
+iso = 0.75 
+4. df = 2 -
+5. df = 5 - 
+6. df = 10 - mouse woke up some. 
+iso = 1.0 
+7. df = 40
+iso = 0.75
+8. df = 100
+9. df = 300 
+10. df = 1000
+
+Baseline tests. iso = 0.75
+11. no signal applied. 
+12. 1MHz only applied. 
+13. (1MHz + 10Hz) only applied. 
+
+Apply direct signals through RF amplifier and antenna. 
+vout = 0.4 , iso = 0.75 
+14. direct = 1  -
+15. direct = 2  -
+16. direct = 5  -
+17. direct = 10 - 
+
+DF ramp repeat. iso = 0.75 
+18. df = 1  - 
+19. df = 2  - 
+20. df = 5  -
+21. df = 10 -
+22. df = 40 - 
+23. df = 100 - 
+24. df = 300 - 
+25. df = 1000 - 
+
+DF ramp repeat. iso = 0.75
+26. df = 1  - 
+27. df = 2  - 
+28. df = 5  -
+29. df = 10 - 
+30. df = 40 -
+31. df = 100 - 
+32. df = 300 - 
+33. df = 1000 - 
+
+DF ramp repeat. iso = 0.75
+34. df = 1    - 
+35. df = 2    -
+36. df = 5    -
+37. df = 10   - 
+38. df = 40   - 
+39. df = 100  -
+40. df = 300  - 
+41. df = 1000 -
+
+Total of 4 df ramp repeats. This is enough to create a std. 
+
+Try frequency switching? 
+Attach a stimulating electrode to the mouse for the constant e field. 
+gain = 100
+42. dfx = 1000 , vout pressure = 0.4, direct current amplitude = 1
+    prf = 2 'pressure_burst_length':0.001,
+
+43-45. 'pressure_burst_length':0.01, dfx = 100. vout = 1 on d bono. 
+     Mouse jumped? unsure of reason. iso = 0.75. 
+
+46. same as above except vout = 2
+
+- behavioral rf ti. gain = 1. 
+47. dfx = 1, vout pressure = 0.6. I couldn't see anything. I can't see it on the gain = 1 preamp either. 
+
+48. dfx = 2 it is big... maybe i need lower iso? 
+
+iso to 0 
+49. vout pressure = 0.6.
+
+50. vout pressure = 0.6. iso to 0... cannot see anything, but I may not have timing right. 
+
+51. vout pressure = 0.6. iso to 0... still no movement. It seems like maybe ketamine is better for behavioral.
+
+Or, vout pressure = 0.6. maybe something else is wrong? Such as the distribution of the electric field? 
+
+1 hr, 56 minutes moved to warming chamber. 
+
+= = END = = 
+
+
+
+

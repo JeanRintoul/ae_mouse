@@ -48,12 +48,14 @@ std_mf = np.std(d_mf,0)
 mean_df = np.mean(d_df,0)
 std_df = np.std(d_df,0)
 
-ratios 	   = mean_mf/mean_df
-ratios_std = std_mf/std_df
+# ratios 	   = mean_mf/mean_df
+# ratios_std = std_mf/std_df
 
 ratios 	   = mean_df/mean_mf
 ratios_std = std_df/std_mf
 
+print ('mean_df',mean_df)
+print ('mean_mf',mean_mf)
 
 fig = plt.figure(figsize=(6,5))
 ax = fig.add_subplot(111)
@@ -100,22 +102,22 @@ plot_filename ='_transmittance_difference_frequencies.png'
 plt.savefig(plot_filename, bbox_inches="tight")
 plt.show()
 
-fig = plt.figure(figsize=(6,5))
-ax = fig.add_subplot(111)
-plt.plot(frequencies,mean_mf/np.max(mean_mf),'c', marker='.')
-plt.plot(frequencies,mean_rf/np.max(mean_rf),'r', marker='.')
-# plt.plot(salinity,mean_dfs,'c')
-plt.fill_between(frequencies, (mean_mf-std_mf)/np.max(mean_mf-std_mf),(mean_mf+std_mf)/np.max((mean_mf+std_mf)),alpha=0.2,color='cyan')
-plt.fill_between(frequencies, (mean_rf-std_rf)/np.max(mean_rf-std_rf),(mean_rf+std_rf)/np.max((mean_rf+std_rf)),alpha=0.2,color='r')
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax.set_xlim([0-0.01,np.max(frequencies)+0.1])
-plt.yticks(fontsize=16)
-plt.xticks(fontsize=16)
-plt.ticklabel_format(style='plain') 
-plot_filename ='_transmittance_normalized_transmitted_vs_measured.png'
-plt.savefig(plot_filename, bbox_inches="tight")
-plt.show()
+# fig = plt.figure(figsize=(6,5))
+# ax = fig.add_subplot(111)
+# plt.plot(frequencies,mean_mf/np.max(mean_mf),'c', marker='.')
+# plt.plot(frequencies,mean_rf/np.max(mean_rf),'r', marker='.')
+# # plt.plot(salinity,mean_dfs,'c')
+# plt.fill_between(frequencies, (mean_mf-std_mf)/np.max(mean_mf-std_mf),(mean_mf+std_mf)/np.max((mean_mf+std_mf)),alpha=0.2,color='cyan')
+# plt.fill_between(frequencies, (mean_rf-std_rf)/np.max(mean_rf-std_rf),(mean_rf+std_rf)/np.max((mean_rf+std_rf)),alpha=0.2,color='r')
+# ax.spines['right'].set_visible(False)
+# ax.spines['top'].set_visible(False)
+# ax.set_xlim([0-0.01,np.max(frequencies)+0.1])
+# plt.yticks(fontsize=16)
+# plt.xticks(fontsize=16)
+# plt.ticklabel_format(style='plain') 
+# plot_filename ='_transmittance_normalized_transmitted_vs_measured.png'
+# plt.savefig(plot_filename, bbox_inches="tight")
+# plt.show()
 
 
 fig = plt.figure(figsize=(6,5))

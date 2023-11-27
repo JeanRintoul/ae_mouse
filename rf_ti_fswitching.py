@@ -25,7 +25,7 @@ from scipy.signal import iirfilter,sosfiltfilt
 # Increment this for each test. 
 # ch5 has the differential measurement of the function generator. 
 # 
-test_no = 2
+test_no = 1
 gain    = 1
 # 
 prf                 = 0.5
@@ -55,7 +55,7 @@ aeti_variables = {
 'pressure_fswitching': carrier+dfx,
 'pressure_ISI':0,
 'pressure_prf':prf,            # pulse repetition frequency for the sine wave. Hz. 
-'pressure_burst_length':0.25,  # in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
+'pressure_burst_length':0.01,  # in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
 
 # i.e. x/1e7 = 0.003s . 3 cycles so 0.003 seconds... 3 milliseconds
 # 

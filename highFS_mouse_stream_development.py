@@ -35,10 +35,8 @@ current_prf         = 0.5
 # there appears to be a sweet spot when Fs is x10 the carrier. x20 is NOT better... weirdly.  
 carrier = 5e5
 Fs      = carrier*10
-
 # carrier = 1e6
 # Fs      = carrier*10
-
 dfx 	= 1000
 # 
 # the other option is to just have a single channel come in. 

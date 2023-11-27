@@ -1,0 +1,99 @@
+t1 - transmittance test
+================================================== 
+
+petri dish of 0.9% saline. 
+frequency list = [100,10khz, 100khz, 500khz, 1MHz, 1.5MHz, 2MHz]
+df amplitudes at different frequencies. 
+10k low pass, gain = 500. 
+
+vout = 0.4 
+
+= = = df amplitudes taken with filter and gain  = = = 
+1-4. 500khz 4 reps. 
+5-8.  1MHz 4 reps.  - the signal dissappears in second half? 
+9-12 100khz 4 reps. 
+13-17. 10khz 4 reps. I can hear it. 
+18-21. 1.5Mhz. - the signal appears to have a weird aliasing effect in second half making it larger. 
+22-25. 2MHz 
+26-29 100 Hz
+
+= = carrier amplitudes with gain = 1 on preamp == no filters. 
+
+30-33. 1MHz. 
+34-37 500khz
+38-41 100khz
+42-45. 10khz. 
+46-49 10Hz. 
+50-53 1.5MHz
+54-57. 2MHz. 
+
+All results transcribed to transmittance t1 spreadsheet. 
+
+
+===
+test_no  = 1
+gain     = 1
+duration = 4 
+# 
+prf     = 1     # 
+Fs      = 1e7   # this is the max frequency I can have on the recording. The function gneerators can go higher though. 
+carrier = 2000000
+dfx     = 10  # This means we should get one dfx cycle in the pulse. 
+
+measurement_channel         = 0
+time_to_start_in_seconds    = 1.0
+time_to_end_in_seconds      = 0.8
+start_time_null_in_seconds  = 0.5
+end_time_null_in_seconds    = 0.0
+start_null_time = np.round(start_time_null_in_seconds/duration ,2)
+end_null_time   = np.round(end_time_null_in_seconds/duration ,2)
+start_time      = np.round(time_to_start_in_seconds/duration ,2)
+end_time        = np.round((duration - time_to_end_in_seconds)/duration,2)
+print ('start and end',start_time,end_time,start_null_time,end_null_time)
+
+aeti_variables = {
+'type':'demodulation',        # choice of 'pressure' or 'ae'. Note: this doesn't change the contents of the file, just the way it is processed at the end. 
+'Fs': Fs,                     # 
+# 'Fs': Fs,                   # 
+# 'Fs': 1e6,                  # this will change just the sample rate, and not the f generated rate if those two lines are left uncommented. 
+'USMEP': 1,                   # when usmep == 1, the current and pressure Fs can be different to the recorded Fs. In this case the US is at 5Mhz, but the recording frequency is 100kHz. This decreases the amount of data that needs to be dumped to disk. 
+'duration': duration, 
+'position': test_no,
+'pressure_amplitude': 0.4,      # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
+'pressure_frequency': carrier,
+'pi_frequency': carrier +dfx,
+# 'pressure_fswitching2': carrier+dfx, # both signals are output on the antenna. 
+# 'pressure_ISI':0,
+# 'pressure_prf':prf,             # pulse repetition frequency for the sine wave. Hz. 
+# 'pressure_burst_length':0.01,   # in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
+# 'jitter_range':0.4,             # add jitter around the prf. the time length is specificed in seconds, from which to generate a random number. 
+'current_amplitude': 0,         # its actually a voltage .. Volts. 
+'current_frequency': carrier,   # 
+# 'current_fswitching': 100,
+# 'current_ISI':0,
+# 'current_burst_length':0.25,    # Duration should be? 
+# 'current_prf':current_prf,      # twice per second. 
+# 'ti_frequency': carrier + dfx,  # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
+'ae_channel': 0,                  # the channel of the measurement probe. 
+'rf_monitor_channel': 4,          # this output of the rf amplifier.  
+# 'e_channel': 6,                 # this is the voltage measured between the stimulator probes. 
+# 'current_monitor_channel': 5,   # this is the current measurement channel of the transformer. 
+'e_channel': 6,                   # this is the voltage measured between the stimulator probes. 
+'current_monitor_channel': 5,     # this is the current measurement channel of the transformer. 
+'marker_channel':7,
+# 'end_null': 0.1,                # start of end null. 
+# 'end_pause': 0.8,               # start of end ramp
+# 'start_null': 0.2,              # percent of file set to zero at the beginning. 
+# 'start_pause': 0.3,             # percent of file in ramp mode or null at start.
+'end_null': end_null_time,        # start of end null. 
+'end_pause': end_time,            # start of end ramp
+'start_null': start_null_time,    # percent of file set to zero at the beginning. 
+'start_pause': start_time,      # percent of file in ramp mode or null at start.
+'no_ramp':0.0,                  # when we have no ramp we set this to 1. i.e. an impedance spectrum test. 
+'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
+'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
+'command_c':'code\\mouse_stream',
+'save_folder_path':'D:\\ae_mouse\\e125_salinity_v2',
+'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
+}
+

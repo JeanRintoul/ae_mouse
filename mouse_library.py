@@ -83,6 +83,8 @@ def aeti_recording(**aeti_variables):
         # print("{} is {}".format(key,value))
         if key == 'Fs':
             command = command + ' -s ' + str(value) 
+        elif key =='jitter_range':      
+            command = command + ' -l' + str(value)               
         elif key =='USMEP':      
             command = command + ' -c' + str(value)      
         elif key =='duration':
@@ -105,7 +107,9 @@ def aeti_recording(**aeti_variables):
         elif key == 'pressure_burst_length':
             command = command + ' -j ' + str(value) 
         elif key == 'pressure_fswitching':
-            command = command + ' -r ' + str(value)  
+            command = command + ' -r ' + str(value)
+        elif key == 'pressure_fswitching2':
+            command = command + ' -o ' + str(value)              
         elif key == 'current_frequency':
             command = command + ' -f ' + str(value)
         elif key == 'current_fswitching':
@@ -142,7 +146,7 @@ def aeti_recording(**aeti_variables):
             # print ('command',command)
             foo = check_output(command, shell=True)
             execution_result = str(foo, 'utf-8')
-            print ('execution_result',execution_result)
+            # print ('execution_result',execution_result)
             filename = prefix+'_stream.npy'
             print ('filename is',filename)
         except Exception as e: print(e, execution_result)

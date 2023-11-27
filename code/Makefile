@@ -35,7 +35,6 @@ SOURCES = $(wildcard Generator*.c) \
           ati_stream_df10.c \
           pressure_block_pchange.c \
           mouse_stream.c \
-          highFs_mouse_stream.c \
           signal_test_stream.c \
           stream.c
        

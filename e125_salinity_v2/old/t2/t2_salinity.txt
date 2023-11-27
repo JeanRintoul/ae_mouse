@@ -1,0 +1,50 @@
+t1 - salinity test
+================================================== 
+
+Start with de-ionized moving into higher salinity. 
+
+Electrodes positioned so they touch the bottom of the petri dish each time, filled to the same level each time. No barrier between liquid and antenna. 
+
+Question: Does frequency mixing amplitude trend with salinity? 
+Does carrier amplitude also trend as the difference frequency? 
+
+= = = = = = = = = 
+1-5. de-ionized. 
+6-10. 1.1g (0.225%)
+11-15 2.2g (0.45%) 
+16-20. 4.5g (0.9%) 
+21-25. 9g (1.8%)
+= = = = = = = = = 
+
+sample rate 10MHZ, carrier = 500kHz. no filters on preamp, gain = 100 
+duration = 4 seconds. 
+
+e125_salinity.py 
+3 channels, no preamp filters, vout = 0.5, 
+electrodes 7mm apart on bottom of petri dish. 
+
+1-5. de-ionized 
+df      = [64, 57.6, 60.8, 54.7, 59]
+carrier = [7791, 7502, 7378.2, 7167.9, 7194]
+
+6-10. 1.1g
+df      = [60.4, 56, 58.8, 55.48 , 59.3]
+carrier = [7113.5, 7104, 7107, 7115.99, 7138  ]
+
+11-15. 2.2g 
+df      = [59.6, 56.9, 58.42, 51.45, 56.66 ]
+carrier = [7359.4, 7363.8, 7368.5, 7339.58, 7336 ]
+
+16-20. 4.5g  
+df      = [52.7, 55, 47.7, 56, 55.9]
+carrier = [7469.4, 7465, 7448, 7457.25, 7458 ]
+
+21-25. 9g
+df      = [50.4, 51.2 , 50.23, 55.28, 53.58]
+carrier = [7387.22, 7369 , 7378, 7398.7, 7380]
+
+de-ionized?? 
+
+
+
+

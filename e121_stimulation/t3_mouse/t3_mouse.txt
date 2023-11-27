@@ -1,0 +1,106 @@
+t1 - RF antenna with the RF amplifier mouse test. 
+================================================== 
+Date of experiment: 02/11/2023  
+Mouse Cage: 116345
+Number of uses before: 4
+Gender: male
+Weight: 34.5g plus headbar. 
+DOB: 6.05.2023
+
+Isoflurane Anesthesia. Antenna.
+
+rf_ti_fswitching.py 
+
+= = = = = time of start: 10:56am  = = = =
+air gap of 7mm. 
+Fs = 1e7, carrier = 1e6. 
+double chEnables[8]                 = {1,1,0,0,1,0,0,0};
+gain = 500
+keep this in mind when analysing. I did this to enable the higher sample rate. 1e7, carrier 1e6. 
+preamp settings 10k low pass. 
+rf amplifier v out 	= 0.5
+duration 			= 6 seconds. 
+
+iso  = 0.6 
+vout = 0.5
+I am getting ride of the near DC filter. 
+
+
+= = = I changed the end null a bit, so I would get more peaks per recording. = = = 
+
+'end_null': 0.05,                # start of end null. 
+'end_pause': 0.9,               # start of end ramp
+'start_null': 0.15,              # percent of file set to zero at the beginning. 
+'start_pause': 0.3,             # percent of file in ramp mode or null at start.
+
+iso 0.9. 
+1-20. df = 1Hz. at vout = 0.5, the amplitude at df is clearly visible. 
+at file 5, iso to 0.75. 
+at 20 mouse woke up and I shifted back to iso = 1. 
+
+21-35. df = 2hz. started with iso = 1. 
+at 24 I put iso to 0.8. 
+
+36-50. df = 5 Hz. - 
+
+51-60. df = 10Hz. - 
+
+61-62. df = 40Hz. - 
+
+63-64. df = 100Hz. - 
+
+65-66. df = 300Hz. - 
+
+67-68. df = 1000Hz. - 
+
+69-70. df = 2000Hz. -
+
+71-72. df = 5000Hz. - 
+
+Do 20 repeats of 1Hz.   - 
+Do 15 repeats of 2 Hz   - 
+Do 15 repeats of 5 Hz.  - 
+Do 10 repeats of 10Hz.  - 
+Do 2 repeats of 40Hz.   - 
+Do 2 repeats of 100Hz.  - 
+Do 2 repeats of 300Hz.  - 
+Do 2 repeats of 1000Hz. - 
+Do 2 repeats of 2000Hz. - 
+Do 2 repeats of 5000Hz. -  
+
+Baseline tests. 
+73. no signal applied. - 
+74. 1MHz only applied. - 
+75. (1MHz + 10Hz) only applied. 
+
+Apply direct signals through RF amplifier and antenna. 
+vout = 0.5 , iso = 0.75 
+76-85. direct = 10 - repeat 10 times? That way I can do a stat sign comparison with rf ti 10hz amplitude with the same N. 
+
+Try frequency switching? - adjust the channels such that I get the voltage and current inputs as well. i.e. ch 4,5,6
+recompile code such that: 
+double chEnables[8] = {1,1,0,0,1,1,1,0};
+pulse_length = 0.01, prf = 2 dfx = 1020
+Do a ton of repeats so I can do averaging later. vout pressure = 0.5 
+sample rate 5MHz, carrier = 1MHz. 
+Directly applied constant frequency, vout = 1V on head. 
+86-87. vout = 1 on head. 
+88 vout = 2 on head. 
+89-99. vout = 3 on head. 
+
+Lower iso, PRF down to 1. Repeat. vout on head = 3, voutpressure = 0.8 
+Can I see behavioral stuff? 
+
+100. pulse = 0.01 nothing. 
+
+101. pulse = 0.1 nothing, signal looks weird. not sure. prf = 120. vout =0.8. 
+
+102. pulse = 0.1 nothing, signal looks weird. not sure. prf = 120. vout = 0.5
+
+Maybe the antenna is 1cm away from top of mouse head. 
+
+= = END = = 2 hr 20 minutes finished. 13:18pm. 
+
+
+
+
