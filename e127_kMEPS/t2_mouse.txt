@@ -1,0 +1,166 @@
+t1 - RF antenna with the RF amplifier mouse test with ketamine. 
+================================================== 
+
+Ket/Xyl
+drugs:
+antidote: 6.0
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 21/11/2023  
+Mouse Cage: 116345
+Number of uses before: 10
+Gender: male
+Weight: 32.2g including headbar. 
+DOB: 6.05.2023
+
+e127_rfti.py
+e127_pulse_antenna.py
+
+Connect the mouse, with plan to do direct stimulation through electrodes, experimenting with GND location. 
+
+IF... I get that working, then proceed to stimulating from a wire in gel on the head. 
+
+Then, an antenna. 
+
+=== start time: 10:35am === === === 
+
+- directly connected, at start time of K, I am injecting 78mA, 23.5 V, 301 Ohm impedance and see nothing.
+
+- perhaps the impedance is too low at the high frequencies. I decreased the frequency of stimulation to 100. Now I get a BIG movement. 
+- My Fs is now 1e4. 
+- I can now see a movement when I apply 2V!!! 
+- 1V! 
+- down to 3.7mA. 
+- The dbono current source doesn't really work that well at low frequencies... 
+
+Fs = 1e5. carrier = 2000 
+- the lower the carrier here the better. I assume because impedance is higher? 
+Lets try TI. 2khz and 2khz +2hz. Doesnt work at 1V. Works at 2V. 
+
+This means, I could try with the antenna, but need a very low mixing frequency.... and pulses appear to work better. 
+Didnt work at all. 
+
+Amplitude with opposite amplitude electrodes, vs gnd in mouth. 
+
+V out = 3 , carrier = 1000, pulse length = 0.1 I can see something GND is in mouth. 
+i = 3.8ma 
+
+Opposite polarity in mouth - giant movement at 3V. V out = 3 , carrier = 1000, pulse length = 0.1. GIANT RESPONSE. Thus GND is less effective than opposite polarity signal. 
+
+Try with gel on head instead of the on top electrode... 
+- it is working... current burst length = 0.01, 1V out. pulsing. 
+
+Try capacitive coupling with silicon interface. Remember I have voltage in mouth not GND. 
+- nada. NOTHING. Impedance reads super high. I think the current transmitted is still too low. 3.6mA. 
+- lets try TI with the capacitive interface. 
+
+Cap interface. 
+- TI has a higher current, and lower impedance than anything else so far. But is less likely to stimulate than a pulse. This is going to be much lower amplitude though. 
+
+
+--- 
+
+- Go back to directly applied current through gel interface. As I would apply it in AE. 
+
+
+Pulse: 
+1500 big response. 
+5000 response but smaller. 6mA is plenty. 
+10khz small response. 
+100khz. no response? 
+double amplitude at 100khz. no response
+
+bonos: 
+- ti at 100khz  - response? 
+- ti at 10khz = small response. 
+
+electrode direct in gel, other in mouth. 
+
+bigger response at df = 1 . 
+vout = 4
+df = 1
+ti at 10khz  = legs move at 1hz. 8ma. 1.7kohm resistance, 15v pp
+ti at 50khz  = nothing
+
+10kh zti, df = 1... again works. Its not the current, this is lower current at 8.7mA...
+it is the frequency. 
+
+mouse is waking up. 
+
+
+1hr 40 minutes. 
+
+The current output doesn't matter past a certain frequency. I need to generate low frequencies. 
+
+I am finding that I can only do TI to 10kHz - after that it doesn't work. 
+The carrier frequency does matter. 
+I also cannot do pulse stim at high frequencies - the carrier does matter. 
+
+= = 
+
+FOR RF TI, or Capacitive TI I could: 
+- What I could do, is do a PRF signal at 1000Hz. Where the carrier is much higher? Then the secondary PRF frequency is the one of interest. 
+- PRF TI, where I have two signals pulsing at some PRF that intersect at a lower frequency. 
+
+
+= 1hr 45 minutes into warming chamvber 12:19 pm. 
+
+
+- Learnings, the frequency that's applied completely changes the mouse response. everything works better at lower frequencies. 
+
+
+TODO sometime:
+- Both ae neuromod and the rf neuromod paper should have a plot of response wrt carrier frequency. 
+
+
+- - - 
+
+What might work is TI at 500Hz, directly coupled with the function generator instead so that I can use low frequencies through the capacitive interface. 
+
+
+- 
+
+
+
+
+= = = 
+
+To do ae ti, position opposite polarity electrodes on head and in mouth. 
+
+i think I could do it if I had a lower carrier frequency for the e field? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=== === ==== ==== ==== === ==== 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

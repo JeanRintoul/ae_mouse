@@ -779,7 +779,7 @@ int main(int argc, char* argv[])
           // TODO: check that this actually works. 
           current_factor = (double)(i-current_start_null)/(double)(current_start_time-current_start_null);  
           
-          if (ti_frequency > 0.0) {  // add two sine waves together.
+          if (ti_frequency > 0.0 && prf_frequency  == 0.0) {  // add two sine waves together.
             data[i] = current_factor*(sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) +dc_offset);  
           
           }
@@ -791,6 +791,11 @@ int main(int argc, char* argv[])
             if (prf_guide > 0 && (double)prf_counter/gen_current_sample_frequency < current_burst_length) {  // if prf frequency is 5 times a second, this will toggle 5 times on off. 
               data[i] = current_factor*sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+dc_offset; 
             }  
+
+            // ti frequency and prf option. 
+            if (ti_frequency > 0.0 && prf_guide > 0 && ((double)prf_counter/gen_current_sample_frequency) >= jitter_array[jitter_iteration] && (double)prf_counter/gen_current_sample_frequency < (current_burst_length  + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+              data[i] = current_factor*(sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) ); 
+            }
 
             // frequency switching burst mode. 
             if (fswitching_mode > 0) {
@@ -819,7 +824,7 @@ int main(int argc, char* argv[])
 
     }  //
     else if (i <= current_final_end_ramp && i >= current_start_time) {  // this is the meat of the data generation. 
-      if (ti_frequency > 0.0) {  // add two sine waves together.
+      if (ti_frequency > 0.0 && prf_frequency  == 0.0) {  // add two sine waves together.
         data[i] = (sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) +dc_offset);  
       }
       else if (prf_frequency > 0.0) {  // toggle the current sine wave on and off at the prf frequency. 
@@ -830,6 +835,11 @@ int main(int argc, char* argv[])
         if (prf_guide > 0 && (double)prf_counter/gen_current_sample_frequency < current_burst_length) {  // if prf frequency is 5 times a second, this will toggle 5 times on off. 
           data[i] = sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+dc_offset; 
         }  
+
+        // ti frequency and prf option. 
+        if (ti_frequency > 0.0 && prf_guide > 0  && ((double)prf_counter/gen_current_sample_frequency) >= jitter_array[jitter_iteration] && (double)prf_counter/gen_current_sample_frequency < (current_burst_length  + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+          data[i] = (sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) ); 
+        }
 
         // frequency switching burst mode. 
         if (fswitching_mode > 0) {
@@ -872,7 +882,7 @@ int main(int argc, char* argv[])
             current_factorend = (double)(current_duration_in_samples - i - current_end_null)/(double)(current_duration_in_samples - current_final_end_ramp - current_end_null);
             //pressure_ramp_factorend = (float)(pressure_duration_in_samples - i - pressure_end_null)/(float)(pressure_duration_in_samples-pressure_final_end_ramp - pressure_end_null);
             // pressure_ramp_factorend = (float)(pressure_duration_in_samples - i - pressure_end_null)/(float)(pressure_duration_in_samples-pressure_final_end_ramp - pressure_end_null);
-            if (ti_frequency > 0.0) {  // add two sine waves together. 
+            if (ti_frequency > 0.0 && prf_frequency  == 0.0) {  // add two sine waves together. 
               data[i] = current_factorend*(sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) +dc_offset);        
             }
             else if (prf_frequency > 0.0) {  // toggle the current sine wave on and off at the prf frequency. 
@@ -883,6 +893,12 @@ int main(int argc, char* argv[])
               if (prf_guide > 0 && (double)prf_counter/gen_current_sample_frequency < current_burst_length) {  // if prf frequency is 5 times a second, this will toggle 5 times on off. 
                 data[i] = current_factorend*sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+dc_offset; 
               }  
+
+              // ti frequency and prf option. 
+              if (ti_frequency > 0.0 && prf_guide > 0  && ((double)prf_counter/gen_current_sample_frequency) >= jitter_array[jitter_iteration] && (double)prf_counter/gen_current_sample_frequency < (current_burst_length  + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
+                data[i] =  current_factorend*(sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) ); 
+              }
+
               // frequency switch burst mode. 
               if (fswitching_mode > 0) {
                 data[i] = current_factorend*sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+dc_offset; 

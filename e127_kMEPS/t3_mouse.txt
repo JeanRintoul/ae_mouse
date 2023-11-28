@@ -1,0 +1,65 @@
+t1 - RF antenna with the RF amplifier mouse test with ketamine. 
+================================================== 
+
+Ket/Xyl
+drugs:
+antidote: 6.0
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 21/11/2023  
+Mouse Cage: 116345
+Number of uses before: 10
+Gender: male
+Weight: 32.2g including headbar. 
+DOB: 6.05.2023
+
+e127_dualfti_antenna.py
+
+later: work on dualfpulse_antenna.py 
+
+Discovery that the carrier frequency must be 5kHz or below. The lower the better. 
+This suggests that I should have a dual pulse. 
+
+Start with direct application of voltage: 
+
+Can I induce TI, at a based carrier frequency which is higher using duafti_antenna.py? 
+
+Compare against regular TI responses. 
+
+=== start time: === === === 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=== === ==== ==== ==== === ==== 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

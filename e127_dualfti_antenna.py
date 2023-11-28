@@ -32,9 +32,9 @@ test_no  = 1
 gain     = 500
 duration = 6 
 # 
-prf     = 1     # 
+prf     = 1000     # 
 Fs      = 5e6   # this is the max frequency I can have on the recording. The function gneerators can go higher though. 
-carrier = 10000
+carrier = 500000
 dfx     = 1  # This means we should get one dfx cycle in the pulse. 
 
 measurement_channel         = 0
@@ -54,22 +54,24 @@ aeti_variables = {
 # 'Fs': Fs,                   # 
 # 'Fs': 1e6,                  # this will change just the sample rate, and not the f generated rate if those two lines are left uncommented. 
 'USMEP': 1,                   # when usmep == 1, the current and pressure Fs can be different to the recorded Fs. In this case the US is at 5Mhz, but the recording frequency is 100kHz. This decreases the amount of data that needs to be dumped to disk. 
-'duration': duration, 
-'position': test_no,
+'duration': duration,         # 
+'position': test_no,          # 
 'pressure_amplitude': 0.0,    # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': carrier,
-'pressure_fswitching2': carrier+dfx, # both signals are output on the antenna. 
+'pi_frequency': carrier + dfx, 
+# 'pressure_fswitching2': carrier+dfx, # both signals are output on the antenna. 
 'pressure_ISI':0,
 'pressure_prf':prf,             # pulse repetition frequency for the sine wave. Hz. 
-'pressure_burst_length':0.15,   # in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
+'pressure_burst_length':0.001,   # in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
 # 'jitter_range':0.4,
-'current_amplitude': 4,         # its actually a voltage .. Volts. 
+'current_amplitude': 0.5,         # its actually a voltage .. Volts. 
 'current_frequency': carrier,   # 
-# 'current_fswitching': carrier + dfx,
-# 'current_ISI':0,
-# 'current_burst_length':0.1, # Duration should be? 
-# 'current_prf':prf,      # twice per second. 
 'ti_frequency': carrier + dfx,  # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
+# 'current_fswitching': carrier + dfx,
+'current_ISI':0,
+'current_prf':prf,      # twice per second. 
+'current_burst_length':0.001, # Duration should be? 
+
 'ae_channel': 0,                  # the channel of the measurement probe. 
 'rf_monitor_channel': 4,          # this output of the rf amplifier.  
 # 'e_channel': 6,                 # this is the voltage measured between the stimulator probes. 
@@ -141,7 +143,7 @@ end_pause       = int(aeti_variables['end_pause'] *N-1)
 #                        output='sos')
 
 # this is if I use the preamp. 
-fsignal               = 1e6*data[m_channel]/gain
+fsignal             = 1e6*data[m_channel]/gain
 # this is a stand in for my testing signal. 
 fsignal             = 1e6*data[1]
 rfdata              = 10*data[rf_channel]
@@ -161,16 +163,14 @@ i_data = 5*np.max(data[i_channel])/resistor_current_mon
 v_data = 1*np.max(data[v_channel])
 z = v_data/i_data 
 print ('i(ma),v,z',i_data*2*1000, v_data*2,z)
-
+# 
 fig = plt.figure(figsize=(5,5))
 ax = fig.add_subplot(311)
 plt.plot(t,data[v_channel],'k')
 ax2 = fig.add_subplot(312)
 plt.plot(t,data[i_channel])
-# ax2 = fig.add_subplot(312)
-# plt.plot(t,c_data,'k')
-# ax3 = fig.add_subplot(313)
-# plt.plot(t,c2_data,'k')
+ax3 = fig.add_subplot(313)
+plt.plot(t,data[1],'k')
 plt.show()
 
 
