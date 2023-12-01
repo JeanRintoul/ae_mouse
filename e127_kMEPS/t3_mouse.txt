@@ -11,14 +11,16 @@ saline: 50
 
 Date of experiment: 21/11/2023  
 Mouse Cage: 116345
-Number of uses before: 10
+Number of uses before: 3
 Gender: male
-Weight: 32.2g including headbar. 
+Weight: 31.5g including headbar. 
 DOB: 6.05.2023
 
 e127_dualfti_antenna.py
+e127_rfti.py 
 
-later: work on dualfpulse_antenna.py 
+- I also need some code, which I do not have yet, where i pulse for at prf for a period of time then stop. 
+later: work on dualfpulse_antenna.py to create a pulse once a second with a prf... 
 
 Discovery that the carrier frequency must be 5kHz or below. The lower the better. 
 This suggests that I should have a dual pulse. 
@@ -29,10 +31,97 @@ Can I induce TI, at a based carrier frequency which is higher using duafti_anten
 
 Compare against regular TI responses. 
 
-=== start time: === === === 
+=== === === start time: 14:10 === === === 
+
+rfti - vout =2, start of k, i can see motion of mouth. 
+
+keeps having an error when i try dualfti_antenna... 
+
+df is always 1 hz. 
+
+prf = 500. The prf doesn't appear to be helping. 
+
+- vout = 4, carrier = 10k, i see a response at 1hz df. 
+- vout = 4, carrier = 100k, nothing. 
+- vout = 4, carrier = 50k, nothing. 25mA goes through.  577 ohms. 
+- vout = 4, carrier = 25k, nothing. 24mA goes through.  592 ohms. 
+- vout = 4, carrier = 15k, nothing. 24mA goes through.  592 ohms. i can see it now. 
+
+Try changing the PRF. carrier = 15k. The higher the PRF, the more current is measured. 
+PRF 1000 - can see it. 
+- prf = 100 , looks abit bigger. 
+- prf = 2000, tiny response. 
+- prf = 100, decent size response. 
+- prf = 2000, tiny response. 
+
+The prf does appear to matter... the lower the better. 
+
+straight rf ti with 15k. vout = 4. 
+- i can see it. 
+
+rf ti with 25k, nothing. 
+dualfrfti with 25k carrier, prf = 100. nothing. 
+Basically - if my carrier goes above a f i see nothing. 
+
+- rf ti with 20k carrier. nothing. 4v out. 
+- rf ti with 20k carrier. nothing. 6v out. - i see it. 
+looks like i can turn up the amplitude...to see at higher carrier fs. 
+
+- dualfti, 20k, vout =6, prf = 100. big response. 
+- dualfti, 20k, vout =6, prf = 50. big. 
+
+is this prf = 50 result, larger than the direct ti at 20k carrier? no, not really. it appears the same or a bit smaller. 
+
+- so we can do direct ti, and turn up the amplitude to get to higher carrier frequencies. 
+- i see no advantage in the prf as previously thought. 
+- 25k, 6v out, small response. 
+
+- 50k carrier, 6V out. nothing. 
+- 50k carrier, 12v out - i see it. 
+
+- 
+
+Can I apply two separate waveforms? This seems somewhat better than applying just the modulated one. 
+Both directly applied, one with gel. 
+
+- carrier = 5k, large amplitude response. pout = 0.05, vout = 2.0 
+- carrier = 10k, pout = 0.05, vout = 2.0 - big response. 
+- carrier = 25k, pout = 0.05, vout = 2.0 - nothing. 
+- carrier = 25k, pout = 0.05, vout = 4.0 - small response - just nose. 
+- carrier = 50k, pout = 0.05, vout = 4.0 - nothing. 
+- carrier = 50k, pout = 0.1, vout = 8.0 -  see something
+i am getting random movements 1hr 18 min. 
+- carrier = 100k, pout = 0.1, vout = 8.0 - nothing
+- carrier = 100k, pout = 0.2, vout = 8.0 - nothing. 
+
+This works too, but similarly fades out as frequency increases. 
+--- 
+
+The way i am applying it, is to have the superposition happen in the function generator... 
+if it is NOT a modulated wave.. is it different because it is mixing in the medium? 
+
+- - 
+
+- I am going to need a different stimulation strategy altogether. i.e. can I mix the US PRF at 1000, with a direct stimulating current at 1kHz? 
+
+1 hr 26 min moved to warming chamber. 15:37. 
+
+
+Synopsis: 
+It seems that for the difference frequency to effect cells, the carrier needs to be low.
+
+As frequency of source voltage increases, capacitive reactance decreases and current increases.
+
+Xc = 1/ 
+
+The equation for capacitance is inversely proportional to frequency. 
+
+What is the equation for capacitive cell membrane wrt frequency? 
 
 
 
+
+TODO: Applying two separate source sine waves directly, pulse one, and direct other one. 
 
 
 

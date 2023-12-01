@@ -28,14 +28,15 @@ from scipy.signal import iirfilter,sosfiltfilt
 first = 125
 last  = 140
 
-test_no  = 1
+test_no  = 3
 gain     = 500
 duration = 6 
 # 
 prf     = 1000     # 
 Fs      = 5e6   # this is the max frequency I can have on the recording. The function gneerators can go higher though. 
 carrier = 500000
-dfx     = 1  # This means we should get one dfx cycle in the pulse. 
+
+dfx     = 100 # This means we should get one dfx cycle in the pulse. 
 
 measurement_channel         = 0
 time_to_start_in_seconds    = 1.0
@@ -56,21 +57,21 @@ aeti_variables = {
 'USMEP': 1,                   # when usmep == 1, the current and pressure Fs can be different to the recorded Fs. In this case the US is at 5Mhz, but the recording frequency is 100kHz. This decreases the amount of data that needs to be dumped to disk. 
 'duration': duration,         # 
 'position': test_no,          # 
-'pressure_amplitude': 0.0,    # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
+'pressure_amplitude': 0.1,    # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': carrier,
-'pi_frequency': carrier + dfx, 
+# 'pi_frequency': carrier + dfx, 
 # 'pressure_fswitching2': carrier+dfx, # both signals are output on the antenna. 
 'pressure_ISI':0,
-'pressure_prf':prf,             	# pulse repetition frequency for the sine wave. Hz. 
-'pressure_burst_length':0.001,   	# in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
-# 'jitter_range':0.4,
-'current_amplitude': 0.5,         	# its actually a voltage .. Volts. 
-'current_frequency': carrier,   	# 
-# 'current_fswitching':carrier,
-'current_ISI':2,
-'current_burst_length':0.01, 		# Duration should be? 
-'current_prf':100,      			# twice per second. 
+'pressure_prf':prf,             # pulse repetition frequency for the sine wave. Hz. 
+'pressure_burst_length':0.01,   # in seconds(maxes out at 50% duty cycle). pressure burst length is calculated as: prf_counter/gen_pressure_sample_frequency
+'jitter_range':0.0,
+'current_amplitude': 5,         # its actually a voltage .. Volts. 
+'current_frequency': prf+dfx,   # 
 # 'ti_frequency': carrier + dfx,  # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
+# 'current_fswitching': carrier + dfx,
+# 'current_ISI':0,
+# 'current_prf':prf,      # twice per second. 
+# 'current_burst_length':0.0001, # Duration should be? 
 'ae_channel': 0,                  # the channel of the measurement probe. 
 'rf_monitor_channel': 4,          # this output of the rf amplifier.  
 # 'e_channel': 6,                 # this is the voltage measured between the stimulator probes. 
@@ -82,18 +83,18 @@ aeti_variables = {
 # 'end_pause': 0.8,               # start of end ramp
 # 'start_null': 0.2,              # percent of file set to zero at the beginning. 
 # 'start_pause': 0.3,             # percent of file in ramp mode or null at start.
-'end_null': end_null_time,                 # start of end null. 
+'end_null': end_null_time,        # start of end null. 
 'end_pause': end_time,            # start of end ramp
-'start_null': start_null_time,               # percent of file set to zero at the beginning. 
-'start_pause': start_time,       # percent of file in ramp mode or null at start.
-'no_ramp':1.0,                  # when we have no ramp we set this to 1. i.e. an impedance spectrum test. 
-'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
-'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
+'start_null': start_null_time,    # percent of file set to zero at the beginning. 
+'start_pause': start_time,        # percent of file in ramp mode or null at start.
+'no_ramp':0.0,                    # when we have no ramp we set this to 1. i.e. an impedance spectrum test. 
+'gain':gain,                      # this is the preamp gain. If not using a preamp, set it to 1.
+'IV_attenuation':1,               # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\ae_mouse\\e127_kMEPS',
+'save_folder_path':'D:\\ae_mouse\\e128_USbringup_phantom',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
-
+# 
 # x = range(101,111)
 # x = range(first,last+1)
 # print ('x',x )
@@ -147,28 +148,36 @@ fsignal             = 1e6*data[m_channel]/gain
 fsignal             = 1e6*data[1]
 rfdata              = 10*data[rf_channel]
 
-# c_data              = sosfiltfilt(sos_c_band, fsignal)
-# c2_data             = sosfiltfilt(sos_c2_band, fsignal)
+fft_m = fft(fsignal[start_pause:end_pause])
+fft_m = np.abs(2.0/(end_pause-start_pause) * (fft_m))[1:(end_pause-start_pause)//2]
+xf = np.fft.fftfreq( (end_pause-start_pause), d=timestep)[:(end_pause-start_pause)//2]
+frequencies = xf[1:(end_pause-start_pause)//2]
+
+dfx_idx = m.find_nearest(frequencies,dfx)
+carrier_idx = m.find_nearest(frequencies,carrier)
+prf_idx = m.find_nearest(frequencies,prf)
+print ('amplitudes of interest dfx,carrier,prf:',2*fft_m[dfx_idx],2*fft_m[carrier_idx],2*fft_m[prf_idx])
 # 
+# 
+
 # calculate the current passing through. 
-# 
 resistor_current_mon    = 49.9  # 49.9 Ohms for current monitor, 
 # Now calculate the resistance and the reactance.   
-# i_data         = -5*data[i_channel][start_pause:end_pause]/resistor_current_mon
-# i_data         = i_data[start_pause:end_pause] # convert to 
-# v_data         = -10*data[v_channel][start_pause:end_pause]
-# 
-i_data = 5*np.max(data[i_channel])/resistor_current_mon
+i_data = np.max(data[i_channel])/resistor_current_mon
 v_data = 1*np.max(data[v_channel])
 z = v_data/i_data 
 print ('i(ma),v,z',i_data*2*1000, v_data*2,z)
 # 
+# 
 fig = plt.figure(figsize=(5,5))
-ax = fig.add_subplot(311)
+ax = fig.add_subplot(411)
 plt.plot(t,data[v_channel],'k')
-ax2 = fig.add_subplot(312)
-plt.plot(t,data[i_channel])
-ax3 = fig.add_subplot(313)
+ax2 = fig.add_subplot(412)
+plt.plot(t,data[i_channel],'k')
+ax3 = fig.add_subplot(413)
+plt.plot(frequencies,fft_m,'k')
+ax3.set_xlim([0,1e6])
+ax4 = fig.add_subplot(414)
 plt.plot(t,data[1],'k')
 plt.show()
 

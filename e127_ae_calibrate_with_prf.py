@@ -37,9 +37,8 @@ aeti_variables = {
 'pressure_frequency': 500000.0,
 # 'pi_frequency': carrier + dfx,
 'pressure_prf':1020,        	# pulse repetition frequency for the sine wave. Hz.
-'pressure_ISI':2.0,         	# inter trial interval in seconds. 
-'pressure_burst_length':0.05,  # burst length in seconds. 
-
+'pressure_ISI':0.0,         	# inter trial interval in seconds. 
+'pressure_burst_length':0.01,  # burst length in seconds. 
 'current_amplitude': 0.00,    		# its actually a voltage .. Volts. 
 'current_frequency': 500000.0,  # 
 # 'current_ISI':0,
@@ -59,12 +58,12 @@ aeti_variables = {
 'gain':gain,                # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':10,        # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\ae_mouse\\e115_F21_hydrophone',
+'save_folder_path':'D:\\ae_mouse\\e127_kMEPS',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 #  
 result, data_out            = m.aeti_recording(**aeti_variables)
-print ('impedance:',data_out[0])
+# print ('impedance:',data_out[0])
 data,idx_lag,original_data  = m.align_data_to_marker_channel(**aeti_variables)
 #  
 rf_channel = aeti_variables['rf_monitor_channel']
@@ -77,8 +76,8 @@ acoustic_frequency = aeti_variables['pressure_frequency']
 Fs       = aeti_variables['Fs'] 
 duration = aeti_variables['duration'] 
 savepath = aeti_variables['save_folder_path']
-# prf      = aeti_variables['pressure_prf']
-prf = 1020
+prf      = aeti_variables['pressure_prf']
+# prf = 1020
 #  
 timestep 		= 1.0/Fs
 N 				= int(Fs*duration)
@@ -108,8 +107,8 @@ fft_us = np.abs(2.0/(end_pause-start_pause) * (fft_us))[1:(end_pause-start_pause
 # 
 # 
 # 
-df = int(acoustic_frequency - current_signal_frequency)
-sf = int(acoustic_frequency + current_signal_frequency)
+df = int(prf)
+sf = int(acoustic_frequency*2+prf)
 print ('frequencies of interest')
 # 
 #
@@ -129,17 +128,26 @@ prf_sum_idx = m.find_nearest(frequencies,prf+acoustic_frequency*2)
 print ('size of signal at sum PRF:(microvolts)',2*fft_m[prf_sum_idx])
 # 
 # 
-
+# 
 # fig = plt.figure(figsize=(10,6))
-# ax = fig.add_subplot(311)
-# plt.plot(t,data[6],'k')
-# ax2 = fig.add_subplot(312)
-# plt.plot(t,data[0],'k')
-# ax3 = fig.add_subplot(313)
-# plt.plot(frequencies,fft_m,'k')
-# ax3.set_xlim([0,1e6])
+# ax = fig.add_subplot(211)
+# plt.plot(t,data[1],'k')
+# ax2 = fig.add_subplot(212)
+# plt.plot(frequencies,fft_nopreamp,'k')
+# ax2.set_xlim([0,1e6])
 # plt.show()
-# # 
+# 
+fig = plt.figure(figsize=(10,6))
+ax = fig.add_subplot(311)
+plt.plot(t,data[m_channel],'k')
+ax2 = fig.add_subplot(312)
+plt.plot(t,10*data[rf_channel],'k')
+ax3 = fig.add_subplot(313)
+plt.plot(frequencies,fft_m,'k')
+ax3.set_xlim([0,1e6])
+plt.show()
+
+# # # 
 # fig = plt.figure(figsize=(10,6))
 # ax = fig.add_subplot(211)
 # plt.plot(t,data[1],'k')

@@ -14,7 +14,7 @@ import rp2
 import time
 # 
 # Marker to show when US is turned on and off. Update from my main code to suit specific circumstance
-duration   = 6.0 
+duration   = 4.0 
 start_null = 0.05 * duration * 1000 # in milliseconds(ms)
 end_null   = 0.9 * duration * 1000 # in milliseconds(ms)
 # 

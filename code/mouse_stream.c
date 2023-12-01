@@ -79,8 +79,8 @@ int main(int argc, char* argv[])
   // double gen_pressure_sample_frequency  = 1e7;   // 5Mhz sample rate 
   // double gen_current_sample_frequency   = 1e7;   // 5Mhz sample rate 
   //
-  double gen_pressure_sample_frequency  = 1e7;   // 10Mhz sample rate 
-  double gen_current_sample_frequency   = 1e7;   // 10Mhz sample rate 
+  double gen_pressure_sample_frequency  = 5e6;   // 10Mhz sample rate 
+  double gen_current_sample_frequency   = 5e6;   // 10Mhz sample rate 
   //
   // double sample_frequency               = 5e6;        // this is the recording sampling frequency. 
   double sample_frequency             = 1e7;        // this is the recording sampling frequency. 
@@ -112,13 +112,13 @@ int main(int argc, char* argv[])
   //double pressure_signal_frequency    = 672800;    
   // variables for ultrasound neuromodulation. 
   double pressure_prf          = 0;   // pulse repetition frequency for the sine wave. h
-  double pressure_ISI          = 3;     // inter-trial interval. i
+  double pressure_ISI          = 0.0;     // inter-trial interval. i
   double pressure_burst_length = 0.004;   // milliseconds j
   // double prf_pulse_length      = 0.01; // 0.1 seconds. 
   double prf_frequency         = 0;  // this is the number of times a second to pulse the signal. Each pulse should be of length 0.1 seconds. 
   // current settings. 
   double current_burst_length  = 0.004;
-  double  current_ISI          = 3;
+  double  current_ISI          = 0.0;
   //
   double start_pause           = 0.25;
   double end_pause             = 0.75;  
@@ -523,7 +523,8 @@ int main(int argc, char* argv[])
   double pressure_prf_guide = 0.0; 
   int pressure_prf_counter  = 0;
   // 
-  int isi_counter = 0;
+  int pressure_isi_counter = 0;
+  int pressure_isi_end_counter = 0;  
   int current_isi_counter = 0;
   int current_isi_end_counter = 0; // stop the transformer to recover from magnetostriction. 
   int check = 0;
@@ -537,12 +538,16 @@ int main(int argc, char* argv[])
   srand (time ( NULL));
 
   int max_pulses = (int)duration/pressure_prf;
-  double jitter_array[10];
-  double div = RAND_MAX / jitter_range;
-  for(int i=0; i<(max_pulses -1); i++)  {
-    jitter_array[i] = (rand() / div) ;  // it is a time in seconds specficied max by jitter range. 
-    printf("\n jitter array %f", (float)jitter_array[i]);
+  double jitter_array[10]={0,0,0,0,0,0,0,0,0,0};
+  // this doesn't work when jitter is set to 0. 
+  if (jitter_range > 0.0) {
+    double div = RAND_MAX / jitter_range;
+    for(int i=0; i<(max_pulses -1); i++)  {
+      jitter_array[i] = (rand() / div) ;  // it is a time in seconds specficied max by jitter range.       
+      printf("\n jitter array %f", (float)jitter_array[i]);
+    }
   }
+
   int jitter_iteration = 0;
   // end creation of the jitter array and initialize the jitter iteration number. 
 
@@ -563,15 +568,15 @@ int main(int argc, char* argv[])
           datap[i] = pressure_ramp_factor*(sin(2*PI* pressure_signal_frequency * (double)j/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (double)j/gen_pressure_sample_frequency + PI) );  
           j++;
         }
-        else if (pressure_prf  > 0.0) { // Ultrasound Neuromodulation Option. 
+        else if (pressure_prf  > 0.0  || pressure_ISI > 0.0 ) { // Ultrasound Neuromodulation Option. 
 
           // iterate the jitter number for each pulse to get different offsets. 
-          if (pressure_prf_counter == 1 && (pressure_prf_guide) > 0) {  // once per pulse. 
+          if (pressure_prf_counter == 1 && (pressure_prf_guide) > 0 && jitter_range > 0.0) {  // once per pulse. 
             jitter_iteration++;
-            printf("\n jitter no %d", jitter_iteration);            
+            // printf("\n jitter no %d", jitter_iteration);            
           }  // end jitter alteration. 
 
-          isi_counter++;
+          pressure_isi_counter++;
           pressure_prf_counter++;
           pressure_prf_guide = sin( 2*PI*(pressure_prf)*(double)(i)/gen_pressure_sample_frequency);
           datap[i] = 0;
@@ -606,10 +611,24 @@ int main(int argc, char* argv[])
             pressure_prf_counter = 0;
           }
 
-          // Reset. 
-          if ((float)isi_counter/gen_pressure_sample_frequency > pressure_ISI) {
-            isi_counter = 0;
+
+          if (pressure_ISI > 0 && pressure_prf <=0.0) { // case for continuous wave with no prf. 
+            datap[i] = sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);
           }
+          // Implement ISI.       
+          if ((double)pressure_isi_counter/gen_pressure_sample_frequency < pressure_ISI && pressure_ISI != 0) {
+            pressure_isi_end_counter++;
+            if ((double)pressure_isi_end_counter/gen_pressure_sample_frequency > 0.05) // ISI pulse length. 
+            {
+              datap[i] = 0;
+            }
+          }
+          // Reset ISI counters
+          if ((double)pressure_isi_counter/gen_pressure_sample_frequency > pressure_ISI && pressure_ISI != 0) {  // 
+            pressure_isi_end_counter = 0;
+            pressure_isi_counter     = 0;
+          }        
+
         }  // end of PRF/ISI option inside the ramp. 
         else {
           datap[i] = pressure_ramp_factor*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);   
@@ -624,15 +643,15 @@ int main(int argc, char* argv[])
         datap[i] = (sin(2*PI* pressure_signal_frequency * (double)j/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (float)j/gen_pressure_sample_frequency + PI ) );  
         j++;
       }
-      else if (pressure_prf  > 0.0) {  // standard Ultrasound Neuromodulation Option. 
+      else if (pressure_prf  > 0.0 || pressure_ISI > 0.0 ) {  // standard Ultrasound Neuromodulation Option. 
         
         // iterate the jitter number for each pulse to get different offsets. 
-        if (pressure_prf_counter == 1 && (pressure_prf_guide) > 0) {  // once per pulse. 
+        if (pressure_prf_counter == 1 && (pressure_prf_guide) > 0 && jitter_range > 0.0) {  // once per pulse. 
           jitter_iteration++;
-          printf("\n jitter no %d", jitter_iteration);            
+          // printf("\n jitter no %d", jitter_iteration);            
         }  // end jitter alteration. 
 
-        isi_counter++;
+        pressure_isi_counter++;
         pressure_prf_counter++;
         pressure_prf_guide = sin( 2*PI*(pressure_prf)*(double)(i)/gen_pressure_sample_frequency );
         datap[i] = 0;
@@ -659,19 +678,33 @@ int main(int argc, char* argv[])
           datap[i] = 2*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);  
         }
         if (pfswitching_mode2 > 0 && pressure_prf_guide > 0 && ((double)pressure_prf_counter/gen_pressure_sample_frequency) >= jitter_array[jitter_iteration] && (double)pressure_prf_counter/gen_pressure_sample_frequency < (pressure_burst_length + jitter_array[jitter_iteration]) ) {  // if prf frequency is 500 Hz, this will toggle at that rate. 
-          
           datap[i] = (sin(2*PI* pfswitching_mode2 * (double)i/gen_pressure_sample_frequency) + sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency + PI) ); 
-        
         }
 
         // Reset the prf burst length counter. 
         if (pressure_prf_guide < 0  ) {
           pressure_prf_counter = 0;
         }
-        // Reset the isi counter. 
-        if ((float)isi_counter/gen_pressure_sample_frequency > pressure_ISI) {
-          isi_counter = 0;
+
+        if (pressure_ISI > 0 && pressure_prf <=0.0) { // case for continuous wave with no prf. 
+          datap[i] = sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);
         }
+
+        // Implement ISI.       
+        if ((double)pressure_isi_counter/gen_pressure_sample_frequency < pressure_ISI && pressure_ISI != 0) {
+          pressure_isi_end_counter++;
+          if ((double)pressure_isi_end_counter/gen_pressure_sample_frequency > 0.05) // ISI pulse length. 
+          {
+            datap[i] = 0;
+          }
+        }
+        // Reset ISI counters
+        if ((double)pressure_isi_counter/gen_pressure_sample_frequency > pressure_ISI && pressure_ISI != 0) {  // 
+          pressure_isi_end_counter = 0;
+          pressure_isi_counter     = 0;
+        }        
+
+
       }
       else {  // single sine-wave. 
         datap[i] = sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);
@@ -699,15 +732,15 @@ int main(int argc, char* argv[])
             datap[i] = pressure_ramp_factorend*(sin(2*PI* pressure_signal_frequency * (double)j/gen_pressure_sample_frequency)+sin(2*PI* pi_frequency * (double)j/gen_pressure_sample_frequency + PI) );  
             j++;
           }
-          else if (pressure_prf  > 0.0) {  //  Ultrasound PRF Neuromodulation Option. 
+          else if (pressure_prf  > 0.0 || pressure_ISI > 0.0 ) {  //  Ultrasound PRF Neuromodulation Option. 
 
             // iterate the jitter number for each pulse to get different offsets. 
-            if (pressure_prf_counter == 1 && (pressure_prf_guide) > 0) {  // once per pulse. 
+            if (pressure_prf_counter == 1 && (pressure_prf_guide) > 0 && jitter_range > 0.0) {  // once per pulse. 
               jitter_iteration++;
-              printf("\n jitter no %d", jitter_iteration);            
+              // printf("\n jitter no %d", jitter_iteration);            
             }  // end jitter alteration. 
 
-            isi_counter++;
+            pressure_isi_counter++;
             pressure_prf_counter++;
             pressure_prf_guide = sin( 2*PI*(pressure_prf)*(double)(i)/gen_pressure_sample_frequency);
             datap[i] = 0;
@@ -738,15 +771,28 @@ int main(int argc, char* argv[])
               datap[i] = pressure_ramp_factorend*(sin(2*PI* pfswitching_mode2 * (double)i/gen_pressure_sample_frequency) + sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency + PI) ); 
             }
 
-
             // Reset the prf burst length counter. 
             if (pressure_prf_guide < 0  ) {
                 pressure_prf_counter = 0;
             }
-            // Reset. 
-            if ((double)isi_counter/gen_pressure_sample_frequency > pressure_ISI) {
-              isi_counter = 0;
+
+            if (pressure_ISI > 0 && pressure_prf <=0.0) { // case for continuous wave with no prf. 
+              datap[i] = sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);
             }
+
+            // Implement ISI.       
+            if ((double)pressure_isi_counter/gen_pressure_sample_frequency < pressure_ISI && pressure_ISI != 0) {
+              pressure_isi_end_counter++;
+              if ((double)pressure_isi_end_counter/gen_pressure_sample_frequency > 0.05) // ISI pulse length. 
+              {
+                datap[i] = 0;
+              }
+            }
+            // Reset ISI counters
+            if ((double)pressure_isi_counter/gen_pressure_sample_frequency > pressure_ISI && pressure_ISI != 0) {  // 
+              pressure_isi_end_counter = 0;
+              pressure_isi_counter     = 0;
+            }        
           }  // end of PRF/ISI option inside the down ramp. 
           else {
             datap[i] = pressure_ramp_factorend*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);   
@@ -762,6 +808,8 @@ int main(int argc, char* argv[])
     }
   }
 
+  // reset the jitter counter ready to iterate through array for current pulses. 
+  jitter_iteration = 0;
   // Create the output voltage signal. This only works if the voltage amplitude is > 0.0. Otherwise I'll have no marker. 
   float dc_offset = 0.0;  
   double prf_guide = 0.0; 
@@ -783,7 +831,14 @@ int main(int argc, char* argv[])
             data[i] = current_factor*(sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) +dc_offset);  
           
           }
-          else if (prf_frequency > 0.0) {  // toggle the current sine wave on and off at the prf frequency. 
+          else if (prf_frequency > 0.0 || current_ISI > 0.0 ) {  // toggle the current sine wave on and off at the prf frequency. 
+            
+            // iterate the jitter number for each pulse to get different offsets. 
+            if (prf_counter == 1 && (prf_guide) > 0 && jitter_range > 0.0) {  // once per pulse. 
+              jitter_iteration++;
+              // printf("\n jitter no %d", jitter_iteration);            
+            }  // end jitter alteration. 
+
             current_isi_counter++;            
             prf_counter++;
             prf_guide = sin( 2*PI*(prf_frequency)*(double)i/gen_current_sample_frequency);
@@ -809,10 +864,26 @@ int main(int argc, char* argv[])
             if (prf_guide < 0  ) {
               prf_counter = 0;
             }
-            // Reset. 
-            if ((double)current_isi_counter/gen_current_sample_frequency > current_ISI) {
-              current_isi_counter = 0;
+
+            if (current_ISI > 0 && prf_frequency <=0.0) { // case for continuous wave with no prf. 
+              data[i] = sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency);
             }
+
+            // Implement ISI.       
+            if ((double)current_isi_counter/gen_current_sample_frequency < current_ISI && current_ISI != 0) {
+              current_isi_end_counter++;
+              if ((double)current_isi_end_counter/gen_current_sample_frequency > 0.05) // ISI pulse length. 
+              {
+                data[i] = 0;
+              }
+            }
+            // Reset ISI counters
+            if ((double)current_isi_counter/gen_current_sample_frequency > current_ISI && current_ISI != 0) {  // 0.05 seconds. 
+              current_isi_end_counter = 0;
+              current_isi_counter     = 0;
+            }    
+
+
           }  // end of PRF/ISI option inside the ramp.   
           else { // straight sine wave option. 
             data[i] = current_factor*sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+dc_offset;            
@@ -827,7 +898,14 @@ int main(int argc, char* argv[])
       if (ti_frequency > 0.0 && prf_frequency  == 0.0) {  // add two sine waves together.
         data[i] = (sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) +dc_offset);  
       }
-      else if (prf_frequency > 0.0) {  // toggle the current sine wave on and off at the prf frequency. 
+      else if (prf_frequency > 0.0 || current_ISI > 0.0 ) {  // toggle the current sine wave on and off at the prf frequency. 
+        
+        // iterate the jitter number for each pulse to get different offsets. 
+        if (prf_counter == 1 && (prf_guide) > 0 && jitter_range > 0.0) {  // once per pulse. 
+          jitter_iteration++;
+          // printf("\n jitter no %d", jitter_iteration);            
+        }  // end jitter alteration. 
+
         current_isi_counter++;            
         prf_counter++;
         prf_guide = sin( 2*PI*(prf_frequency)*(double)i/gen_current_sample_frequency);
@@ -854,17 +932,22 @@ int main(int argc, char* argv[])
           prf_counter = 0;
         }
 
-        // Reset.       
-        if ((double)current_isi_counter/gen_current_sample_frequency > current_ISI && current_ISI != 0) {
-          data[i] = 0;
-          current_isi_end_counter++;
-          // 
-          if ((double)current_isi_end_counter/gen_current_sample_frequency > 0.05) {  // 0.05 seconds. 
-            current_isi_end_counter = 0;
-            current_isi_counter     = 0;
-          }
-          // 
+        if (current_ISI > 0 && prf_frequency <=0.0) { // case for continuous wave with no prf. 
+          data[i] = sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency);
         }
+        // Implement ISI.       
+        if ((double)current_isi_counter/gen_current_sample_frequency < current_ISI && current_ISI != 0) {
+          current_isi_end_counter++;
+          if ((double)current_isi_end_counter/gen_current_sample_frequency > 0.05) // ISI pulse length. 
+          {
+            data[i] = 0;
+          }
+        }
+        // Reset ISI counters
+        if ((double)current_isi_counter/gen_current_sample_frequency > current_ISI && current_ISI != 0) {  // 0.05 seconds. 
+          current_isi_end_counter = 0;
+          current_isi_counter     = 0;
+        }        
 
       }  // end of PRF/ISI option inside the ramp.   
       else {  // the pi/2 is so that when you inject a pressure and a current that are single sine waves they will be offset correctly. 
@@ -885,7 +968,14 @@ int main(int argc, char* argv[])
             if (ti_frequency > 0.0 && prf_frequency  == 0.0) {  // add two sine waves together. 
               data[i] = current_factorend*(sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+sin(2*PI* ti_frequency * (double)i/gen_current_sample_frequency + PI) +dc_offset);        
             }
-            else if (prf_frequency > 0.0) {  // toggle the current sine wave on and off at the prf frequency. 
+            else if (prf_frequency > 0.0 || current_ISI > 0.0 ) {  // toggle the current sine wave on and off at the prf frequency. 
+              
+              // iterate the jitter number for each pulse to get different offsets. 
+              if (prf_counter == 1 && (prf_guide) > 0 && jitter_range > 0.0) {  // once per pulse. 
+                jitter_iteration++;
+                // printf("\n jitter no %d", jitter_iteration);            
+              }  // end jitter alteration. 
+
               current_isi_counter++;            
               prf_counter++;
               prf_guide = sin( 2*PI*(prf_frequency)*(double)i/gen_current_sample_frequency);
@@ -912,9 +1002,23 @@ int main(int argc, char* argv[])
                 prf_counter = 0;
               }
 
-              if ((double)current_isi_counter/gen_current_sample_frequency > current_ISI) {
-                current_isi_counter = 0;
+              if (current_ISI > 0 && prf_frequency <=0.0) { // case for continuous wave with no prf. 
+                data[i] = sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency);
               }
+
+              // Implement ISI.       
+              if ((double)current_isi_counter/gen_current_sample_frequency < current_ISI && current_ISI != 0) {
+                current_isi_end_counter++;
+                if ((double)current_isi_end_counter/gen_current_sample_frequency > 0.05) // ISI pulse length. 
+                {
+                  data[i] = 0;
+                }
+              }
+              // Reset ISI counters
+              if ((double)current_isi_counter/gen_current_sample_frequency > current_ISI && current_ISI != 0) {  // 0.05 seconds. 
+                current_isi_end_counter = 0;
+                current_isi_counter     = 0;
+              }        
  
             }  // end of PRF/ISI option inside the ramp.   
             else {  // don't add two sine waves together.

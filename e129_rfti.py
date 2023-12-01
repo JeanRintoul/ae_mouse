@@ -56,18 +56,19 @@ aeti_variables = {
 'USMEP': 1,                   # when usmep == 1, the current and pressure Fs can be different to the recorded Fs. In this case the US is at 5Mhz, but the recording frequency is 100kHz. This decreases the amount of data that needs to be dumped to disk. 
 'duration': duration, 
 'position': test_no,
-'pressure_amplitude': 0.15,    # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
+'pressure_amplitude': 0.0,        # how much is lost through skull??? 400kPa, 0.08 is about 200kPz. 0.15 is about 400kPa. 
 'pressure_frequency': carrier,
-'pi_frequency':carrier + dfx,
-'current_amplitude': 0.0,       
-'current_frequency': carrier+dfx,  # 
-# 'current_ISI':0,
-# 'current_burst_length':0.0002,  # 200 microseconds.
-# 'current_burst_length':0.001,   # 1ms 
-# 'current_burst_length':0.050,   # 50ms 
-# 'current_burst_length':0.1,     # 100ms 
-# 'current_burst_length':0.01,    # 10ms 
-# 'current_prf':current_prf,
+# 'pi_frequency':carrier + dfx,
+'pressure_prf':0,            # pulse repetition frequency for the sine wave. Hz.
+'pressure_ISI':1.0,             # inter trial interval in seconds. 
+'pressure_burst_length': 0.01,   # burst length in seconds. 
+
+'current_amplitude':1.0,       
+'current_frequency':carrier,   # 
+'current_ISI':0.0,  # time in seconds between repeats. default length of time for pulse is 0.05s. see c code. 
+# 'current_burst_length':0.1,   # 100ms 
+'current_burst_length':0.01,    # 10ms 
+'current_prf':500,
 # 'ti_frequency': carrier + dfx,  # if this is included or  > 0 it means we are adding two sine waves together. i.e. TI. 
 'ae_channel': 0,                # the channel of the measurement probe. 
 'rf_monitor_channel': 4,        # this output of the rf amplifier.  
@@ -90,7 +91,7 @@ aeti_variables = {
 'gain':gain,                    # this is the preamp gain. If not using a preamp, set it to 1.
 'IV_attenuation':1,             # the current and voltage monitor both have attenuators on them 
 'command_c':'code\\mouse_stream',
-'save_folder_path':'D:\\ae_mouse\\e127_kMEPS',
+'save_folder_path':'D:\\ae_mouse\\e129_bonostx',
 'experiment_configuration':'monopolar',  # if it is monopolar, it is coming straight from the fg, bipolar, goes through David Bono's current source. 
 }
 # 
@@ -142,12 +143,12 @@ df_h = 1500
 sos_spike_band = iirfilter(17, [df_l, df_h], rs=60, btype='bandpass',
                        analog=False, ftype='cheby2', fs=Fs,
                        output='sos')
-
+# 
 # this is if I use the preamp. 
-fsignal 		      = 1e6*data[m_channel]/gain
-
-
+# fsignal 		      = 1e6*data[m_channel]/gain
+# 
 fsignal = 1e6*data[v_channel]
+
 # this is if I use the daq differntial input. 
 # fsignal               = data[measurement_channel]
 
@@ -170,6 +171,12 @@ sf_idx = m.find_nearest(frequencies,sf)
 # print ('Amplitude at df and sf:',2*fft_v[df_idx],2*fft_v[sf_idx])
 print ('df and sf:',2*fft_m[df_idx],2*fft_m[sf_idx])
 # 
+
+# vdata = data[v_channel]
+# idata = 0.1*data[i_channel] # 100mA per V i.e. 100*data[i_channel] gives i in mA. 
+# impedance = np.max(vdata)/np.max(idata)
+
+# print ('v,i(ma),z:',np.max(vdata),np.max(1000*idata),impedance)
 # plt.rc('font', family='serif')
 # plt.rc('font', serif='Arial')
 # plt.rcParams['axes.linewidth'] = 2
@@ -179,12 +186,12 @@ print ('df and sf:',2*fft_m[df_idx],2*fft_m[sf_idx])
 # stop  = duration
 # 
 fig = plt.figure(figsize=(5,5))
-ax = fig.add_subplot(211)
+ax = fig.add_subplot(111)
 plt.plot(t,data[v_channel],'k')
-ax2 = fig.add_subplot(212)
-plt.plot(frequencies,fft_m,'k')
-ax2.set_xlim([0,dfx+100])
-ax2.set_ylim([0,500])
+# ax2 = fig.add_subplot(212)
+# plt.plot(t,data[i_channel],'k')
+# ax2.set_xlim([0,dfx+100])
+# ax2.set_ylim([0,500])
 plt.show()
 
 

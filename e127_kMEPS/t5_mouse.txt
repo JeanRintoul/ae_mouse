@@ -1,0 +1,107 @@
+t5 - acoustoelectric neuromodulation attempt
+================================================== 
+
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 01/12/2023  
+Mouse Cage: 116345
+Number of uses before: 11
+Gender: male
+Weight: 31.5g including headbar. 
+DOB: 6.05.2023
+
+The carrier frequency is key to obtaining good electrical meps. However, this appears not to be true for ultrasound as I was able to get a response with two waves at 500khz df = 1 before. This makes the two methods DIFFERENT. So it is worth testing the ideas of mixing again both direct mixing and mixing through 1khz PRF. I can look at the signal on the voltage signal. 
+
+Last time I found that the electrical carrier frequency was key to getting a good response in the mouse. 
+
+e127_rfti.py 
+e127_prf_ti.py 
+e127_transmission_spectrum.py 
+
+It would be good to do a transmission spectrum using df = 1 for a variety of carrier frequencies in the mouse. 
+
+=== === === === === === === === 
+
+Goals: 
+1. calibrate position using e127_ae_calibrate_with_prf.py 
+2. run e127_rfti.py with 500khz and 500khz +1 hz all acoustic, to see if I get motion at the envelope of 1Hz.  
+3. If I can get motion at the envelope frequency, apply an electric field at high 499.999khz directly through brain, then apply continuous acoustic field. What does it look like? Can I see the difference frequency at all? Can I vary the levels to get a larger difference frequency? 
+4. try direct electrical 1.001kHz with a PRF of 1khz through the 500khz ultrasound, to see if I can do mixing at the lower frequency. What is the amplitude of the difference frequency here? 
+
+
+=== start time: 10:17am === === 
+- white plug in the motor cortex.
+
+- prf calibration failed really. 
+- I am trying dual acoustic mep calibration at df = 400 now to calibrate position. 
+- i think i need a high pass filter on the preamp to avoid dc stuff
+- now try calibrating with the acoustoelectric effect, current going from MEP electrode to mouth vertically. df = 400 
+- I am not picking anything up. 
+- I am not seeing the acoustoelectric effect anywhere. 
+
+- Mouse is starting to wake up. Whiskers are moving. 
+- Right at the end i got a tail startle response. Not correlated with DF. 
+- Altogether pretty underwhelming. 
+
+1hr 31min. 
+11:52am. 
+
+- - - - I didn't get very far. 
+
+TODO: I need to try and do the regular acoustoelectric effect in a petri dish.
+TODO: check if the ISI code can work and go for the bare basics for acoustic meps. 
+      with just pulse meps. - DONE. 
+
+I left transducer set up for over weekend. 
+I plugged in the acoustic chan into ch 1 to do the ISI work. 
+
+
+
+
+
+
+
+
+
+
+= = = 
+
+What results do I have? 
+- I have single trial acoustoelectric neural recording I think. I should try to do it for VEPs, at a lower PRF. If it is electric mixing, I would guess the amplitude would be higher at a lower PRF. 
+- I have ionic mixing in electrolytes. 
+
+- voltage source version current source. 
+
+- I have the dual ultrasound frequency thing. ? What even is that.
+- I 'may' have mechanism of US neuromodulation. 
+
+= = = 
+
+acoustoelectric neural recording: 
+- Electric mixing occurs between neurons and the electrical PRF? 
+- The electrical PRF is induced via acoustoelectric mixing. 
+
+
+=== === === === 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
