@@ -97,7 +97,8 @@ int main(int argc, char* argv[])
   // demod setting 
   //double chEnables[8]                 = {1,1,0,0,1,0,0,0};
   // double chEnables[8]                 = {1,1,0,0,1,1,1,0};  
-  double chEnables[8]                 = {1,1,1,1,1,1,1,1};
+  //double chEnables[8]                 = {1,1,1,1,1,1,1,1};
+  double chEnables[8]                 = {1,1,1,1,1,1,1,1};  
   //double chEnables[8]                 = {1,1,1,1,0,0,0,0};
   // as long as I dont mess with the current generator enables, it's fine? 
   // double chEnables[8]              = {1,1,1,1,0,0,0,0};  
@@ -421,7 +422,7 @@ int main(int argc, char* argv[])
   bool raw = false;
   // 
   // Create array of data ranges. 
-  double dRanges[8] = {4.0,40.0,20.0,20.0,80.0,4.0,40.0,40.0}; // ch 6 was 40.0   
+  double dRanges[8] = {2.0,0.2,20.0,20.0,80.0,4.0,2.0,40.0}; // ch 6 was 40.0   
   // create array of AC or DC coupling. 
   uint64_t Couplings[8] = {CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV};
   // 
@@ -618,7 +619,7 @@ int main(int argc, char* argv[])
           // Implement ISI.       
           if ((double)pressure_isi_counter/gen_pressure_sample_frequency < pressure_ISI && pressure_ISI != 0) {
             pressure_isi_end_counter++;
-            if ((double)pressure_isi_end_counter/gen_pressure_sample_frequency > 0.05) // ISI pulse length. 
+            if ((double)pressure_isi_end_counter/gen_pressure_sample_frequency > pressure_burst_length) // ISI pulse length. 
             {
               datap[i] = 0;
             }
@@ -693,7 +694,7 @@ int main(int argc, char* argv[])
         // Implement ISI.       
         if ((double)pressure_isi_counter/gen_pressure_sample_frequency < pressure_ISI && pressure_ISI != 0) {
           pressure_isi_end_counter++;
-          if ((double)pressure_isi_end_counter/gen_pressure_sample_frequency > 0.05) // ISI pulse length. 
+          if ((double)pressure_isi_end_counter/gen_pressure_sample_frequency > pressure_burst_length) // ISI pulse length. 
           {
             datap[i] = 0;
           }
@@ -783,7 +784,7 @@ int main(int argc, char* argv[])
             // Implement ISI.       
             if ((double)pressure_isi_counter/gen_pressure_sample_frequency < pressure_ISI && pressure_ISI != 0) {
               pressure_isi_end_counter++;
-              if ((double)pressure_isi_end_counter/gen_pressure_sample_frequency > 0.05) // ISI pulse length. 
+              if ((double)pressure_isi_end_counter/gen_pressure_sample_frequency > pressure_burst_length) // ISI pulse length. 
               {
                 datap[i] = 0;
               }
@@ -872,7 +873,7 @@ int main(int argc, char* argv[])
             // Implement ISI.       
             if ((double)current_isi_counter/gen_current_sample_frequency < current_ISI && current_ISI != 0) {
               current_isi_end_counter++;
-              if ((double)current_isi_end_counter/gen_current_sample_frequency > 0.05) // ISI pulse length. 
+              if ((double)current_isi_end_counter/gen_current_sample_frequency > current_burst_length) // ISI pulse length. 
               {
                 data[i] = 0;
               }
@@ -938,7 +939,7 @@ int main(int argc, char* argv[])
         // Implement ISI.       
         if ((double)current_isi_counter/gen_current_sample_frequency < current_ISI && current_ISI != 0) {
           current_isi_end_counter++;
-          if ((double)current_isi_end_counter/gen_current_sample_frequency > 0.05) // ISI pulse length. 
+          if ((double)current_isi_end_counter/gen_current_sample_frequency > current_burst_length) // ISI pulse length. 
           {
             data[i] = 0;
           }
@@ -1009,7 +1010,7 @@ int main(int argc, char* argv[])
               // Implement ISI.       
               if ((double)current_isi_counter/gen_current_sample_frequency < current_ISI && current_ISI != 0) {
                 current_isi_end_counter++;
-                if ((double)current_isi_end_counter/gen_current_sample_frequency > 0.05) // ISI pulse length. 
+                if ((double)current_isi_end_counter/gen_current_sample_frequency > current_burst_length) // ISI pulse length. 
                 {
                   data[i] = 0;
                 }

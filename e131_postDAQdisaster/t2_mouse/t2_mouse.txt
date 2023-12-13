@@ -1,0 +1,72 @@
+t1 - Neural response baseline test with low levels of Isoflurane. 
+=================================================================
+
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 12/12/2023  
+Mouse Cage: 116345
+Number of uses before: 6 
+Gender: male
+Weight: 31.2g including headbar. 
+DOB: 6.05.2023
+
+= = = 
+
+Goal:
+- obtain an electrical stim ERP. 
+- obtain a VEP. 
+
+Isoflurane, 0.75: 
+1. VEPS. 1 per second. Get a good sample set of 50 - enough to do averaging. Do it in the dark. Can I see the VEP? 
+2. Pulsed electrical stimulation at 500Hz stim frequency, such that I can see the response each time? Then do post analysis to obtain ERP. Motor cortex and chest electrode. 
+3. consider pulsed electrical stimulation at a higher carrier frequency, to get null ERP result. 
+
+Code: e131_pulse.py 
+
+========  start time : 12:37   ======= 
+
+VEPS Files 1:20, about 8 veps per file. 
+Fs = 5Mhz, once a second LED. Gain = 500, ISO = 0.75, no preamp filters. 
+1-20. Positive electrode red on visual cortex connected to 1. on left input of preamp. The last channel is the marker channel. 
+
+=== === === === === === === === === ===
+
+ERPS from e pulse stim. Stim is applied with gel on top of measurement electrodes. Sceond electrode is wet with gel and under chest. 
+ Files 1:20. 
+100Hz pulse, once per second. Iso = 0.75 
+Gain = 100. 2v output. No filters. 
+
+21-40 100khz carrier pulse. otherwise the same. 1 second 50ms pulse length. 
+
+Note: no movements visible. I may need to do this test with ketamine so i can simultaneously see the physical ERP. 
+
+=== === === 
+
+Try VEP mixing with e stim? at 500Hz carrier? Lower amplitude 500hz - say 1V only. 100 gain. Iso = 1.0 
+
+1hz vep i.e. frequency            = 2        # 0.25s duration, 1 on every second.
+
+
+Also try 4hz vep. 
+frequency            = 8        # 0.0625 duration, 1 on every 0.25s.
+
+== END time: 1 hr 40 min under iso. 
+14:17. 
+
+
+
+
+
+
+
+
+
+
+
+

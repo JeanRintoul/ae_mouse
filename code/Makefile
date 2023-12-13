@@ -35,6 +35,7 @@ SOURCES = $(wildcard Generator*.c) \
           ati_stream_df10.c \
           pressure_block_pchange.c \
           mouse_stream.c \
+          mouse_4stream.c \
           signal_test_stream.c \
           stream.c
        
@@ -43,6 +44,8 @@ DEPENDENCIES = CheckStatus.c \
                PrintInfo.c \
                Utils.c  \
                npy.c
+
+
 
 OBJECTS = $(SOURCES:.c=.o)
 DEPOBJECTS = $(DEPENDENCIES:.c=.o)
@@ -61,3 +64,6 @@ clean :
 
 $(TARGETS) : %$(TARGET_EXT) : $(DEPOBJECTS) %.o
 	$(LD) $+ -o $@ $(LFLAGS)
+
+
+

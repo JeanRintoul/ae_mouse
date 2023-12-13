@@ -1,0 +1,82 @@
+t1 - Now I know that the electrical carrier and ionic mixing is key to getting a good amplitude. 
+================================================== 
+
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 06/12/2023  
+Mouse Cage: 116345
+Number of uses before: 5 
+Gender: male
+Weight: 31.2g including headbar. 
+DOB: 6.05.2023
+
+= = = 
+
+1. Pulsed electrical stimulation. 
+2. Calibrate position of the ultrasound. 
+3. Pulsed US stimulation. 
+4. If 3. works, then try 100Hz prf, and directly applied 101Hz. 
+
+1,3, 	e130_pulse.py
+2, 		e130_ae_calibrate_with_prf
+4. 		e130_ae_n.py 
+
+========  start time : 13.09   =====
+
+
+   1V output. 
+1. 500khz pulse - no movement. 
+   1khz pulse - whisker twitch. 
+   200khz nothing at 3v out. 
+   2MHz, also nothing. 
+- when I put it in the other electrode near VEP, no movement at 1khz. 
+	PRF 100 - nothing. 
+
+	Basically nothing is working, unless the carrier is within the df mixing range... this doesn't really bode well for RF neuromodulation at high frequencies. PRF doesnt matter, straight DC ocntinuous signal doesnt matter either.  
+
+2. The PRF amplitude appears much smaller than before, which makes sense as the voltage coming out of the transducer is also smaller. It is so small it isn't practically usable for calibration really. Altogether the 500kHz size is super tiny in electrical signal... 
+
+3. pulse stimulation with US. TO ANALYZE LATER. 
+   I can see no movement.  
+
+   Let's get a good number of recordings of this so I can post analyse. 
+   files 1-20. 6 channel Fs = 5MHz. 6 pulses in each. Gain = 500. No filters on preamp. 50ms continuous sine wave pulse each time. 
+
+   NOTE: retrospectively i could have done this with a larger gain. 
+
+4. try pulse stim at a larger US amplitude. Nothing. 
+
+5. ae_n - i cannot apply 100Hz with the bono transmitter. 
+   file 1. 100 prf no current. I CAN see it in the voltage monitor. 25 microvolts. 
+   file 2. 1000prf no current. 30 microvolts at 1000hz. 
+
+   Now, at 1hr 23 minutes, i did the pulse and i saw some whisker moves. 
+   I am not getting any US neuromodulation in a predictable way. 
+
+1 hr 33 minutes under K, moved to warming chamber 14:42. 
+
+=== === ==== ==== ==== === === 
+
+- I should check if the US transducer is doing what we think it is wrt pressure outputs. Why didn't I see the PRF to begin with, did I have air trapped or what was the problem? 
+
+My best results so far: 
+- I think Ionic frequency mixing plays a part in acoustoelectric neural recording. Knowing how this works, versus acoustoelectric interaction could inform us how to do single-shot focus neural recording through acoustoelectric effect and ionic mixing in electrolytes. 
+- acoustoelectric neural recording. 
+- ionic frequency mixing. 
+TODO: read more recent neural recording papers. 
+
+
+
+
+
+
+
+
+
+

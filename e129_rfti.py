@@ -62,7 +62,6 @@ aeti_variables = {
 'pressure_prf':0,            # pulse repetition frequency for the sine wave. Hz.
 'pressure_ISI':1.0,             # inter trial interval in seconds. 
 'pressure_burst_length': 0.01,   # burst length in seconds. 
-
 'current_amplitude':1.0,       
 'current_frequency':carrier,   # 
 'current_ISI':0.0,  # time in seconds between repeats. default length of time for pulse is 0.05s. see c code. 

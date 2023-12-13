@@ -1,0 +1,84 @@
+t3 - Acoustoelectric neural recording with VEPs and ketamine. 
+=================================================================
+
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 13/12/2023  
+Mouse Cage: 116345
+Number of uses before: 7
+Gender: male
+Weight: 32.4g including headbar. 
+DOB: 6.05.2023
+
+= = = = = = 
+
+Goal: Ketamine. 
+- obtain a VEPs under ketamine. VEP needs no complex arrangement. 
+- then try acoustoelectric neural recording with a VEP? Try for a few different PRFs. 
+
+========  start time : 13:36   ======= 
+
+Fs = 5Mhz, once a second LED. Gain = 500, no preamp filters. 
+VEPS files 1:20, 8Hz VEP, 1HZ VEPS.
+
+=== 
+
+Calibrate US position. Didn't work again. Not sure why. I tried the prf method. 
+I think I now have a very small electrical signal... so all amplitudes for this are tiny. 
+
+=== 
+
+e131_ae_r neural recording. 
+10k low pass filter. 
+PRF 1020. LED 4Hz. Gain = 500 
+PRF 520. LED 4Hz. Gain = 500 
+PRF 120. LED 4Hz. Gain = 500 
+Then do it at 500khz. NO filters. 
+then do it again at 500khz, 8hz led, no filters. g = 100. 
+8hz led PRF 1020, gain = 100. 
+
+Gain 500 seems strange, maybe it is broken. 
+
+The LED may be in the wrong position for some of the recordings. particularly in the first continuous one. 
+
+=== === 
+Try some US neuromodulation at the end. 
+I am not seeing any neuromodulation. 
+I am tired. 
+1 hr 27 minutes. 
+
+=== End === 15:12
+1hr 37 minutes. 
+
+Why isn't ultrasound neuromodulation working anymore? 
+It may be because I have far less electrical noise. Hence the amplitude of my mixing products from the ultrasound is very small. This appears true in my calibration. 
+
+To overcome this, I should apply an electrical signal at high frequency to the mouse. 
+
+
+====== ===== 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
