@@ -1,0 +1,67 @@
+t3 - acoustoelectric neural recording with low dosage ketamine. 
+=================================================================
+
+Ket/Xyl
+drugs:
+antidote: 6.0
+X: 1.4
+k1: 2.0
+k2: 1.0
+saline: 50
+
+Date of experiment: 05/02/2024  
+Mouse Cage: 116345
+Number of uses before: 1
+Gender: male
+Weight: 32.5g including headbar. 
+DOB: 06.05.2023
+
+- ensure that the two electrodes are not electrically connected via the gel. 
+- calibrate position, using the VEP electrode as the current source, and two external to head references. 
+- Perform F21, Kaiser windowed, and SNR averaged acoustoelectric neural recording. 
+  Do LOTS of repeats.  
+Then in post processing, I can ideally mess around with matched filters to see what I can come up with. For instance, using a better more accurate template for the 4Hz VEP would be good. 
+- Preamp 1M low pass, 0.3Hz high pass. F21 in place. 
+
+= = = = = = Start time: 13:20 = = = = = =  
+
+Spike demod. preamp 500 gain. 12 sec duration. Fs = 100kHz. 
+This is the mouse with the vertical implant. 
+I think I got nice VEPs on this instance, as I could see them in a single recording. 
+
+1. Position calibrate with F21 in place. 
+I messed up putting the electrodes in at the right time. 
+My calibration was rough. 
+my max value was only 8.7... so not great. Maybe this was due to other things though like the measurement electrode position?
+
+2. Do lots of repeats using a 4Hz LED waveform. 8Hz peak in FFT. 
+   preamp 0.3-1MHz band pass. 
+   I am now running 8 second duration recordings. pout = 0.14v. 
+   Fs = 5MHz. Started this 40 minutes in, after spike demod recordings and position calibration. 
+   It is looking like I got it. I am seeing sneak peaks every 10 recordings. 
+
+   I'm getting an add of about 2SNR every 10 recordings?
+   At 50 recordings I get an SNR of 39.2
+   28.28, 35.18, 36.4, 38.5, 39.2
+
+Into warming chamber at 3pm. 1:44hrs under ketamine. 
+Administered saline, made wet mash for recovery. 
+
+Thank you most excellent 9 month old mouse! 
+
+= = = = = = = 
+
+Looking at this - I DID get it. 
+I didn't do any artefact tests however. I think this needs a two-tone test. 
+
+Also, it'd be good to do it at a slightly higher frequency. There is a lot of gunk around the 500kHz. 
+
+Also, now I look back at the data - the signal was railing. This suggests that it is indeed an artefact? 
+
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+t7 - 3 test ae neural recording. 
+===================================
+
+Attempt at a full test. If this works, I can then repeat it in n=6 mice. 
+
+VEP at 10Hz
+Calibration
+
+3 tests:
+1. frequency specificity test 8Hz and 10Hz VEP with US at 1MPa. v out = 0.1. 10x repeats of each. 30 seconds duration of each. 
+2. focal location, versus 4mm to the right and 4 mm forward(outside of the locus of the visual cortex). 10x repeats. Is there a difference in amplitude here between the modulated VEP at focus versus not? 
+3. Two-tone test: to prove f mixing not occuring in the preamp. Remove the US, place electrodes such that the measurement electrodes and stim electrodes are at 3 separate levels. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+- This time, I am using the non-twisted pair electrodes. 
+- I am going to se a gain of 2000. 
+- VEP frequency 8Hz and 10Hz to take it away from the 500kHz peak. 
+- VEPs in darkness. 
+
+Isoflurane. m2 mouse. 
+Date of experiment: 04/04/2024  
+Mouse Cage: 127973
+Number of uses before: 2
+Gender: male
+Weight: 28.4g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 10:47am  = = = = =
+
+e139_vep.py 
+e139_ae_calibrate.py    
+e139_ae_neural_recording.py
+
+==============================
+
+TODO: mark on the two electrode cable more clearly. 
+Nail polish insulate my phantom electrode more thoroughly. 
+I definitely need point electrodes as these phantom ones are too big. 
+clean up my disk space. 
+
+OR: make a special smaller current applicator and GND electrode pair. 
+
+- silicon was coming off, so I removed it, and reapplied after cleaning head. 
+10:56am. There appears to be some bleeding coming from the skull. 
+altogether, nail polish works better for longevity.. but then... acoustic impedance. 
+
+1. VEP at 10Hz, 12s, Fs = 100kHz. Iso = 0.6, gain = 500. Mouse moved a bit. 
+VEP amplitude = 4 microvolts or 8 p-p. VEP is there. 
+
+2. Applying current with the other PtIr electrode set... I am getting larger amplitudes as I have more surface area exposed. I approximately calibrated, but it wasn't great. 
+
+3. ae neural recording. vep=10Hz, iso=0.6, 10 reps. gain = 2000. duration = 30. 
+   p vout = 0.12. 
+   If I don't get it... I am going to stop the experiment. 
+
+VEP is there, but 2 microvolts. I have heat mat noise in the data. Stop. 
+
+1hr 26 minutes. 
+12:15, into warming chamber. 
+I think I did better the previous time. 
+
+Do what I did the previous time. 
+
+
+

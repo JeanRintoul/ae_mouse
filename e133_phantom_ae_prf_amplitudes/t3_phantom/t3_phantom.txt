@@ -1,0 +1,47 @@
+t3 phantom - neural decoding with continuous wave in US gel. 
+=================================================================
+
+Goal: Can I improve the spectral leakage issue I saw in US gel, so that I have a better chance of doing continuous mode decoding in the phantom. 
+- 
+- Longer time length of recording. 
+- Try a couple of different sample rates. i.e. 5MHz, 2MHz. 
+- Try a different windowing. How does any of this effect the spectral leakage problem? 
+
+=== === === === 
+
+- First, prepare the US transducer with water, and set up over an US gel phantom. 
+- Calibrate the position of the US using the acoustoelectric effect. 
+
+== == == == == == 
+
+- Calibration could be done with: 1: stim/measure technique. 
+  i.e. on the voltage monitor channel, notice when the df signal is largest. This really was a convenient method to do position calibration - AND i could do it in the mouse. 
+
+  - this calibration method will center the US over the measurement electrode. Right now, I don't want this. I actually want to center over the electrode which will emit the current. 
+
+  - I had better luck applying two high frequencies. i.e. a current at 498khz, and detecting acoustoelectric effect this way with the distant reference electrode that is next to the measurement system. 
+
+OK I found the focus with v out = 0.05 
+
+Now, apply a small field at 26Hz. vout = 0.05v. 
+
+- Then, apply a small size field(place next to one electrode) with reference even further away on the same side. 
+
+
+I can now see signals down to about 3Hz by using a kaiser window, gain = 1000. The other way to increase the SNR  in the FFT is to increase the duration of recording. The duration increase would not necessarily assist demodulation though. 
+
+Since I can do this at reasonable amplitudes. 
+
+----- 
+ANALYSIS: 
+- Do an artefact test when I get some good data? i.e. going through all carriers and seeing which one has frequency specificity. 
+- Can I demodulate this signal to obtain the original 4hz?
+   t1,t2 : 8 s duration, 500khz, 4Hz sine wave. Gain = 1000. 
+
+
+
+
+
+
+
+

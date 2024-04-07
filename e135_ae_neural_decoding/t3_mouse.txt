@@ -1,0 +1,59 @@
+t3 - acoustoelectric neural recording with ketamine. 
+=================================================================
+
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 17/01/2024  
+Mouse Cage: 116345
+Number of uses before: 0
+Gender: male
+Weight: 33.2g including headbar. 
+DOB: 6.05.2023
+
+- ensure that the two electrodes are not electrically connected via the gel. 
+
+= = = = = = Goal start time: 13:37 = = = = = =  
+
+Acoustoelectric Neural Recording: 
+python e135_ae_neural_decoding.py 
+- I did no focusing at all. 
+
+- run e135_ae_neural_recording.py 
+Settings: 0.3Hz high pass. Gain = 1000, Fs = 2Mhz. Run for 12 seconds 
+ 
+1. ae 4Hz. 20 repeats. p out = 0.08 
+
+2. ae 2Hz. 20 repeats. p out = 0.1 , I attempted to reposition the US more overhead. 
+
+3. US no LED. x 5
+
+4. LED no US. x 10, 2Hz. 
+
+5. LED no US. x 10, 4Hz. 
+
+-- -- finished 1hr 2 minutes into warming chamber. Administered antisedan. 
+
+END: 14:40 pm. 
+
+16:20 (2hrs 43 minutes after ketamine injection) I return mouse to cage, with wet mash. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

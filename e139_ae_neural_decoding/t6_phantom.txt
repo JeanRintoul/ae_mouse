@@ -1,0 +1,61 @@
+t   - phantom. 
+=====================================================
+
+Goals: 
+- Using the 500kHz transducer, and larger surface area wires, can I more easily see the mixing? 
+- Two-tone test optimization. Is there a particular arrangement, which minimizes mixing in the two-tone test configuration at gain = 2000? 
+
+- META goal: UNBLOCK ae neural recording mouse experiments, by enabling the complete test process to be underway. 
+
+Results: 
+- get a dataset showing that the surface area of the electrodes makes a difference to the amplitude of the measured signal. 
+- Show that dual f mixing is possible with the big transducer. 
+- Show that a two tone test at gain = 2000 will work, thereby unblocking further mouse experiments for ae neural decoding. 
+
+= = = 
+
+First, calibrate position. e139_ae_calibrate. 
+- I did this with the PtIr electrode delivering the e field, and the large surface area electrodes doing the measurement. 8 microvolts at the midpoint, calibration worked. Notably, it shrinks off very quickly when I leave the close together field. 
+
+Learning: To calibrate, I should have the current and GND wires close together. I think this is perhaps more key to why I succeeded a previous time. 
+
+Using the 500kHz transducer and larger surface area measurement wires, can I more easily see f mixing? Yes, I can. It is much larger, also, has lots of harmonics. Set up here is one thick wire electrode at focus, other distant. 
+2 close PtIr electrodes for other measurement, both positioned either side of focus. p v out = 0.12. 
+
+1-5. PtIr electrodes at the focus. I get fewer harmonics. About 25 microvolt difference frequency with the big transducer. 23-26 microvolts in size, minimal harmonics, maybe a small one at 4Hz. 8 s duration. 
+
+1-5. Big surface area wire electrodes - same settings as PtIr electrodes, though I had to reduce the gain to 100 otherwise I got OVLD on preamp when at gain = 500. 76 microvolts p-p or 40 microvolts. 
+So the bigger surface area is roughly double the voltage size of the smaller electrodes. 
+
+TODO: show results somehow in supplementary material. It is super interesting how the surface area of electrodes effects the measured signal so much 
+
+So, we can always change the surface area size of electrodes, if we specifically wish to measure a larger voltage, as higher surface area enables more ionic transfer. This is not our goal however, our goal is to show that we can do acoustoelectric neural decoding. 
+
+The surface area of the electrodes, need only be large enough to enable the measurement voltage to be above the thermal noise floor of the mouse, all else can be done through the preamplifier. as long as appropriate dual sine tests are done to show that frequency mixing does not occur in the preamp. 
+
+RESULT: dual sine is possible. The surface area of the electrodes makes a big difference to the amplitude of the measured signal. 
+
+Current draw of US? 50 ohm load, 50V p-p, 1A. That would be huge as a current source. Even 0.5A is huge. Ok, my transducer is a MASSIVE current source. 
+
+TWO-TONE test? For this, I do not need the US. 
+
+- The two tone test is a bit dumb, because it is completely dependent on both the SA and positions of the electrodes. 
+
+To get the best result, with the lowest mixing at gain = 2000, the measurement electrode should be outside of the action area, and both m and r should be PtIr. 
+
+Just the 500kHz current is with big wires, rest is with PtIr. 
+
+- I keep getting a mixing frequency. I'm at gain = 500. 
+The mixing is happening in the solution. 
+
+- I see no actual advantage to doing this test in vivo, as opposed to in the US gel? In the mouse, I have the same problem whereby currents travel through the US gel. 
+
+To do this test successfully and minimize electrical mixing. I need two separate circuits which do not overlap - the 500kHz and the 8Hz on either side with their own GND nearby such that current does not cross over. 
+
+
+I think I should perform calibration, with the two electrodes mounted on a PtIr cable so they are close together... 
+
+
+
+
+

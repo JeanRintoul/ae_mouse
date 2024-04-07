@@ -14,23 +14,27 @@ import rp2
 import time
 # 
 # Marker to show when US is turned on and off. Update from my main code to suit specific circumstance
-duration   = 8.0 
+duration   = 12.0 
 start_null = 0.125 * duration * 1000 # in milliseconds(ms)
 end_null   = 0.875 * duration * 1000 # in milliseconds(ms)
 # 
 # Select the frequency it will run at. 
-# frequency            = 1      # 0.5s on duration. 1 on every 2 seconds.
+# frequency            = 1        # 0.5s on duration. 1 on every 2 seconds.
 # frequency            = 2        # 0.25s duration, 1 on every second.
-# frequency            = 4        # 0.125 duration, 1 on every 0.5s. 
-# frequency            = 8        # 0.0625 duration, 1 on every 0.25s.
-# frequency            = 7       # 0.0625 duration, 1 on every 0.25s.
-#frequency              = 8      # 0.0625 duration, 1 on every 0.25s.
-frequency            = 16       # 0.03125 duration, 1 on every 0.125s. 
+#frequency            = 20        # 0.125 duration, 1 on every 0.5s. 
+# frequency            = 8          # 0.125 duration, 1 on every 0.5s. 
+#frequency            = 2        # 0.0625 duration, 1 on every 0.25s.
+# frequency            = 10       # 0.0625 duration, 1 on every 0.25s.
+frequency              = 8       # 0.0625 duration, 1 on every 0.25s.
+#frequency            = 16      # 0.03125 duration, 1 on every 0.125s. 
 # frequency            = 32       # 0.015625 duration, 1 on every 0.0625s. 
 # frequency            = 64       # 0.0078125 duration, 1 on every 0.03125s. 
-# led_start_time       = 500   # in milliseconds(ms)
-led_start_time       = 100   # in milliseconds(ms)
-led_stop_time        = 8000
+# led_start_time       = 500      # in milliseconds(ms)
+led_start_time       = 1000        # in milliseconds(ms)
+#led_start_time       = 6000      # in milliseconds(ms)
+# led_stop_time        = 7800
+# led_stop_time        = 11500
+led_stop_time        = 29500
 # led_stop_time        = 4000
 # led_start_time       = 5000   # in milliseconds(ms)
 # led_stop_time        = 55000 
@@ -118,6 +122,7 @@ def wait_pin_high():
 def pin_low_handler(sm):
     print ('pin low handler called, daq event')
     global start_time,check
+    skip_one = 0 
     # marker for start time. 
     stimulus_monitor.value(1)
     led_on.value(1)
@@ -133,7 +138,7 @@ def pin_low_handler(sm):
 def pin_high_handler(sm):
     global check
     print ('pin high handler called, ready to receive event')
-    
+    skip_one = 0 
     # this is the final LED flash when the end of daq recording is reached. 
     led_on.value(1)
     time.sleep(0.01)

@@ -1,0 +1,92 @@
+t1 - phantom testing to improve the signal to noise.  
+=================================================================
+
+Tests to characterize, and improve the noise floor. 
+1MPa. Small voltage application. 
+
+- Duration. Does the SNR improve with duration of recording? Is there a limit? 
+- Sample Rate. Try 5MHz and 10MHz. Is one better than the other? 
+- Does having the transducer at an angle, to reduce reflections help at all? 
+
+Phantom testing for noise floor improvements: 
+
+- First calibration. Calibration works well. 
+  - though the wire might have touched, 
+  - then I had trouble after a slight move finding the focus again. 
+  - This happens if one of the wires moves even slightly. 
+  - So I definitely have a calibration issue. 
+  
+
+
+Gain = 100. duration = 8s. 
+I keep getting unsuccessful for 10Mhz. 
+26.6 snr at 5MHz. 
+36.94 at 2MHz? 
+
+If I try to increase the sample rate, it doesnt seem to do it. 
+The file stops halfway through... 
+
+I could decrease the sample rate to 2MHz. 
+
+-- -  
+TO GET to 10MHz. 
+- I need to turn on and off some channels. 
+Oh wait, I should keep the function generators at 5MHz? 
+
+I couldnt get to 10MHz successfully. 
+
+- - 13 second duration recordings x 5. 5Mhz Fs. 
+   - The longer duration certainly does help the SNR. 
+   - SNR = 37.96
+
+It is a pity, I cannot make it a longer duration signal... 
+Nor can I easily increase the sampling rate?  
+2MHz 13s has SNR 33.54. 
+
+
+2MHz recording 18s SNR = 30.97. Here the sample rate of the function generator is decreased. fg = 2Mhz. 
+5Mhz recording, SNR = 41.18 sample rate fg = 2MHz. 
+
+- 
+- So I can change the Fs of the function generator, or recording system independently. 
+- My recording system is 8MHz? 
+
+- 8MHz recording, SNR = ? duration = 18s, sample rate fg = 2MHz. 
+
+- So I need to experiment with this offline. 
+  If I plug in the US fg to ch 1? Maybe I could continue with this at home? 
+
+TODO: 
+- Figure out how I can record for a long duration, with a high sample rate, while applying a 500kHz signal. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

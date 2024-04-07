@@ -1,0 +1,59 @@
+t1 - mouse with low isoflurane, and long duration recordings. 
+=====================================================
+
+- turn off heat mat when recording? 
+- also grounding, and complete darkness VEPs. 
+- For calibration - consider placing the GND nearby? 
+
+Isoflurane. 
+Date of experiment: 21/03/2024  
+Mouse Cage: 127973
+Number of uses before: 0
+Gender: male
+Weight: 28.4g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 11:56am = = = = =
+
+e139_vep.py 
+e139_ae_calibrate.py    
+e139_ae_neural_recording.py
+
+======= 
+
+I seem to have fixed the heat mat noise issue by covering it with tape. 
+
+1. veps iso = 0.75, 2hz , 20 microvolts VEP. It is small but there. i.e. 40 microvolts pp. also some signal at 34Hz? 
+
+3. calibration. still not really working, values going all over the place with the gnd placed underneath. I put the GND litely at the edg of the neurotar, not all the way through. I seem to be calibrating ok... with the GND wire just touching the neurotar. 
+The connection seems not that good... goes in and out. Need an easy way to connect it.
+
+My VEP is super small - this is the problem: 
+4. gain = 500. 3hz LED. iso = 0.6 ae neural recording. p v = 0.12 
+   6 times. 30 seconds. 
+
+5. gain = 500. 2hz LED. iso = 0.6 ae neural recording. p v = 0.12 
+   6 times. 30 seconds. 
+
+6. 2hz led again. iso = 0.5 for all but the first file. I left heat mat on here. 
+
+7. 3hz ae neural recording same settings as 4. iso = 0.5  - signal super low and crap here.. nothing to write home about. 
+- remember to look at these files around 34hz for isoflurane signal there. 
+
+Post process with all 10 files together to improve snr. 
+
+finish 2 hrs in. 
+14:04 
+
+- it is possible i got it here... but i need a bigger VEP to know for sure. 
+- my real problem, is the size of my VEP when doing the measurement. tHIS IS not due to the US, but the anesthesia level.  
+- i think the earlier files may have larger 34 hz. 
+
+TODO: analysis.... 
+The initial files may have larger 34 Hz signal. 
+
+Analysis result, no veps except some 3Hz ones - 3hz_aevep2 -> file 2,4 
+- everything else is useless. 
+
+On the good side - calibration appeared to work relatively well this time. 
+Need an effective way to position the GND electrode... 

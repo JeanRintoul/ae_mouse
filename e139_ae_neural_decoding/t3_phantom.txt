@@ -1,0 +1,73 @@
+t  - phantom. 
+=====================================================
+
+- can i generate a dual sine wave mixing frequency with the small transducer? 
+- I do see something small. 1 microvolts. 
+
+I can obtain a difference frequency reliably. It is very small. 
+It scales with pressure. 
+
+How can I make it bigger? 
+Have the other measurement point be the distant reference. 
+
+I changed the two measurement wires such that one was ptir, the other was the thick wire, and suddenly it got bigger? 
+
+Shit - the small signals, may be cancelling each other out via the twisted wire?
+
+It is now a good 20 microvolts. 
+
+I switch to distant reference - and it is up to 43 microvolts. 
+
+======= 
+TODO: 
+- undo everything and try again with the non-twisted wire. 
+
+- With the non-twisted wire... it is bigger... but not as big as when I use the distant reference? Why is this? 
+
+- is the difference frequency common mode noise? 
+I plugged it into GND and it increased? 
+
+1489 microvolts at carrier, now that I have a distant reference... 
+- 
+- Everything seems bigger without the twisted cable. 
+
+- - - - - 
+
+- Does the surface area of the electrodes make a difference? 
+
+- I switched to put a fat wire at the focus, and suddenly saw a large DC offset. 
+- That suggests an electrode interface situation. the 8hz amplitude also increased. 
+I now see both a larger 8hz, and a big DC offset. 
+
+Switching back to the small PtIr wire and distant thick wire reference:  
+- big dc drift... then it settles and I can see a tiny mixing frequency at 8hz 0.35 microvolts. 
+
+There seems to be something key about the surface area of the measurement electrode that I do not understand. 
+
+1. Tomorrow, when I do ae veps, I will use the untwisted wires. 
+
+The larger surface area seems better for measurements. 
+
+Yep - it seems pretty clear here. I am getting a much larger measurement when I increase the surface area of the electrode. This is what happened before - when I used screws. 
+
+Is this mixing happening at the electrode interface? 7 microvolts, 14 microvolts p-p? oir is it occuring in solution 
+
+- Let's try the PEDOT electrodes... these should have a larger surface area because they are a volumetric conductor. 
+
+- With the PEDOT electrode I am getting much higher noise. Or at least, that is what it looks like. Each measurement, the noise appears to be settling, though it is still pretty crazy compared to either the thick wire, or the PtIr. 
+
+- My best results, appear to be with a thick wire in terms of response amplitude, and what looks like linearity. 
+
+Is this df focal with the big wire? 
+
+What to do? 
+
+That means, that if I use a screw instead - I am likely to get a clearer larger result. 
+
+Two takeaways - stop using the twisted wire cable. 
+- consider a larger surface area implant for a larger signal. It does appear focal. 
+
+
+
+- I could, still modify an existing mouse to do this. 
+

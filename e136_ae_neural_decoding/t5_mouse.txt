@@ -1,0 +1,91 @@
+t3 - acoustoelectric neural recording with low dosage ketamine. 
+=================================================================
+
+Does this low dose ketamine work with the big mouse? 
+
+This time have the LED blink at 6Hz, to see if I can get greater separation from the 500kHz peak. i.e. better SNR. If I can get this, it would also be the second time I have acquired acoustoelectric neural recording. 
+
+Ket/Xyl
+drugs:
+antidote: 6.0
+X: 0.75
+k1: 1.5
+k2: 1.0
+saline: 50
+
+Date of experiment: 06/02/2024  
+Mouse Cage: 116345
+Number of uses before: 5
+Gender: male
+Weight: 32.9g including headbar. 
+DOB: 06.05.2023
+
+- ensure that the two electrodes are not electrically connected via the gel. 
+- calibrate position, using the VEP electrode as the current source, and two external to head references. 
+- Perform F21, Kaiser windowed, and SNR averaged acoustoelectric neural recording. 
+  Do LOTS of repeats.  
+Then in post processing, I can ideally mess around with matched filters to see what I can come up with. For instance, using a better more accurate template for the 4Hz VEP would be good. 
+- Preamp 1M low pass, 0.3Hz high pass. F21 in place. 
+
+= = = = = = Start time: 10:40am = = = = = =  
+
+Low dose ketamine. At 4 minutes the mouse is still and did not wake after anesthetic. 
+It's whiskers are moving but it appears immobilised. 
+5 mins, it is moving a little bit. 
+7 mins, whiskers are moving, legs moving a little. 
+9 mins, small movements. 
+12 minutes, I gave it the second does of ketamine, as it had tail and leg movments. 
+It's possible that the larger mice, need a little more to immobilize them, and the smaller mice should have a lower dose. 
+15 minutes:  
+16 minutes? 
+TO Do: I think I should put the xylazine dosage back up to where it was, and just lower the ketamine.
+
+VEP results:  Good. I can see it in a single recording. This mouse has a fair amount of ketamine, not much xylazine... 
+
+Position calibration: 37 minutes in. Set up electrodes.  
+
+I am getting really small amplitudes. I think this is because my measurement electrodes are too close together?... Consider where to put them better. I think I need one at the back and the other is in the brain at the front. I tried this, and i could localize a bit better. Still, amplitudes were small and I do not know why. I did not do vertical calibration. 
+
+
+AE neural recording started at 1hr, 4 mins. 6 Hz LED. 50 recordings. 
+6Hz LED, 5MHz Fs, gain = 500. 8 second duration. Preamp is 0.3Hz high pass and 1MHz Low pass. The amplitude here is much smaller, and it seems like perhaps I am not vertically aligned as well. The SNR is improving but it is very low. 
+
+
+If I have time, try two tone artefact test in vivo. Repeat it as many times as I can to get some sort of statistic. 
+1000 microvolts at 500kHz from pressure output. 
+40 microvolts at 8Hz? 
+Try to keep gain settings the same. 
+Mouse is waking.. be quick. 
+Gain = 500 set! 
+Got it set now to be approximately correct amplitudes, in mouse, now repeating 5 times. 
+8 seconds. 
+Mouse is moving a lot... I should probably stop... 
+I got 5 files of in vivo two tone test. 
+
+Administered saline, made wet mash for recovery. 
+2 hrs in. END. Mouse into warming chamber. 
+12:46 into warming chamber. 
+
+= = = 
+
+Idea: For the spatial map calibration, you want to baseline it by the mixing frequency amplitude as you move it, otherwise you may be just plotting the decrease in amplitude of the VEP spikes with distance. ?? Doesn't make sense. The US does change the broadband noise profile. 
+
+Could this be the confound?
+Plot of US vs no US. So, it'd be easy to mistake this change in the baseline as the signal? 
+
+If using the US changes the broadband noise baseline in that area, then ? 
+
+= = = 
+
+spike demod results: something there, but timing is offset. 
+
+Next time, go back to 4Hz VEP - it seemed to work ok... can I just get it again? 
+I think I should have vertically calibrated better to obtain a larger amplitude. 
+
+TODO: put the xylazine dosage back up. - Done. 
+
+
+
+
+
+

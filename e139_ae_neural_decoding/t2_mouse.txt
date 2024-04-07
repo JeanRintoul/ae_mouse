@@ -1,0 +1,68 @@
+t2 - mouse with low isoflurane, and long duration recordings. 
+=====================================================
+
+- turn off heat mat when recording? 
+- also grounding, and complete darkness VEPs. 
+- For calibration - consider placing the GND nearby? 
+
+Isoflurane. 
+Date of experiment: 22/03/2024  
+Mouse Cage: 127972
+Number of uses before: 1
+Gender: male
+Weight: 28.4g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 11:56am = = = = =
+
+e139_vep.py 
+e139_ae_calibrate.py    
+e139_ae_neural_recording.py
+
+======= start time: 9:39am  ======= 
+
+1. vep iso 0.75, mouse slightly awake. moving. 3hz. I have NO VEP. 
+   Is it the Iso, or the implant? 
+
+2. calibration at iso = 1: double check I can do position calibration. 
+   I put the GND electrode on the other side, and it sort of worked. 
+
+3. iso to 0.5. Can I get a 3 Hz VEP?  maybe, i also got something at 30Hz. 
+
+4. do ae neural recording at 3Hz VEP. pressure = 0.1 v out. 
+
+5. do ae neural recording at 4Hz VEP. pressure = 0.1 v out. some of these looked like they were a good amplitude... i did a total of 10 of these. 
+
+Why does my vep look so weird?  
+
+6. dualsine mep. I moved the stereotax forward 3mm, to the right 3mm. 
+
+Problem, nail polish layer on MEP electrode... stop. 
+
+If I get no VEP, try MEPS with lights on. Nothing... 
+dual sine acoustic, 1Hz df? 
+ae MEPS, use low pass filter? apply 499.99khz waveform? 
+
+The dual meps may have worked better, when the voltage output of the transducer was higher? Is this true? That would also make sense with my theory. That means the 500kHz transducer is good for ae meps... How big was the DC offset? 
+
+end 1 hr 48 min under iso. 11:27am. 
+
+Try the dual meps waveform in saline, with the small transducer? In this case - do I see the mixing frequency? 
+
+
+
+Next time: move back to ketamine. 
+Positive things I can do: 
+- do another spike demodulation on mouse m2. so i have an extra data set. 
+- count the number of data sets i have for spike demodulation. 
+
+- Try dual sine meps, using the other planar transducer in saline? In which case do I see the difference frequency?  
+
+Looking at the data now, M1 mouse had a pretty good 4Hz vep... 
+
+= = = 
+
+make new mouse with not so deep electrodes? 
+Consider going back to ketamine to see if I get better VEPs. 
+
+==========

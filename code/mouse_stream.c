@@ -78,28 +78,38 @@ int main(int argc, char* argv[])
   // constants which can either be parsed in or set here and recompiled.  
   // double gen_pressure_sample_frequency  = 1e7;   // 5Mhz sample rate 
   // double gen_current_sample_frequency   = 1e7;   // 5Mhz sample rate 
+  // double sample_frequency             = 1e7;        // this is the recording sampling frequency. 
   //
-  double gen_pressure_sample_frequency  = 5e6;   // 10Mhz sample rate 
-  double gen_current_sample_frequency   = 5e6;   // 10Mhz sample rate 
-  //
-  // double sample_frequency               = 5e6;        // this is the recording sampling frequency. 
-  double sample_frequency             = 1e7;        // this is the recording sampling frequency. 
-  double duration                     = 0.1;      // measured in seconds
-  double no_ramp                      = 0.0; // this toggles whether or not we want to ramp into the measurement. 
+  // double gen_pressure_sample_frequency  = 5e6;   // 10Mhz sample rate 
+  // double gen_current_sample_frequency   = 5e6;   // 10Mhz sample rate 
+  //double gen_pressure_sample_frequency  = 2e6; // 2e6;   // 10Mhz sample rate
+  //double gen_pressure_sample_frequency  = 2e6; // 2e6;   // 10Mhz sample rate  
+  // double gen_pressure_sample_frequency  = 2e6;  
+  // double gen_current_sample_frequency   = 1e5; // 10Mhz sample rate   
+
+  // double gen_pressure_sample_frequency  = 5e6;  
+  // double gen_current_sample_frequency   = 5e6; // 10Mhz sample rate   #
+  double gen_pressure_sample_frequency  = 2e6;  
+  double gen_current_sample_frequency   = 2e6; // 10Mhz sample rate   #
+  // 
+  double sample_frequency               = 5e6; // this is the recording sampling frequency. 
+  // 
+  double duration                     = 0.1;   // measured in seconds
+  double no_ramp                      = 0.0;   // this toggles whether or not we want to ramp into the measurement. 
   // double duration                  = 1.0;   // measured in seconds  
   unsigned int resolution             = 0;
   int usmep                           = 0;
-  //uint64_t record_length              = 500000; // 50 kS
-  // uint64_t record_length           = 1000000; // 50 kS  
-  uint64_t record_length            = 50000; // 50 kS 
-  //uint64_t record_length            = 100000; // 50 kS    
+  // uint64_t record_length            = 500000; // 50 kS
+  uint64_t record_length            = 100000; // 50 kS  
+  // uint64_t record_length            = 50000; // 50 kS 
+  // uint64_t record_length            = 100000; // 50 kS    
   // this is so channels can be selectively activated or de-activated. 
-  // demod setting 
-  //double chEnables[8]                 = {1,1,0,0,1,0,0,0};
-  // double chEnables[8]                 = {1,1,0,0,1,1,1,0};  
-  //double chEnables[8]                 = {1,1,1,1,1,1,1,1};
-  double chEnables[8]                 = {1,1,1,1,1,1,1,1};  
-  //double chEnables[8]                 = {1,1,1,1,0,0,0,0};
+  // demod setting. 
+  // double chEnables[8]              = {1,0,0,0,1,0,0,1};
+  // double chEnables[8]              = {1,1,0,0,1,1,1,0};  
+  double chEnables[8]               = {1,1,1,1,1,1,1,1};
+  // double chEnables[8]              = {1,1,1,1,1,1,1,1};  
+  // double chEnables[8]              = {1,1,1,1,0,0,0,0};
   // as long as I dont mess with the current generator enables, it's fine? 
   // double chEnables[8]              = {1,1,1,1,0,0,0,0};  
   // it seems like there is an issue if I turn the enables off on the second generator (HS6)
@@ -132,6 +142,9 @@ int main(int argc, char* argv[])
   double fswitching_mode       = 0.0; // Should be set to the switching frequency?   
   double long_recording        = 0.0; // if it is a long recording, then we loop a shorter amount of time(specificed in seconds) in the function generator. Ensure no ramp. 
   double jitter_range          = 0.0;
+  int waveform_marker          = 1;   // This should be 1 if I want to insert marker into pressure channel. 
+  int led_alignment_marker     = 0; // this converts the voltage channel to an event channel. 
+
   // 
   // letters remaining. l,
   //      current_burst_length
@@ -383,6 +396,7 @@ int main(int argc, char* argv[])
   GenSetOutputInvert(gen_pressure, BOOL8_TRUE);
 
   // try to set the output of the WS6DIFF to start when streaming starts. 
+  // get it to start when the generator starts. 
   const uint16_t trig_out_count = DevTrGetOutputCount(scp);
   printf("trigger output count: %d\n",trig_out_count); // 8!
   const uint16_t external_out = DevTrGetOutputIndexById( scp, ( DN_SUB_THIRD << TIOID_SHIFT_DN ) |TOID_EXT1 );
@@ -390,7 +404,10 @@ int main(int argc, char* argv[])
   // Enable the trigger output. 
   DevTrOutSetEnabled(scp, external_out, BOOL8_TRUE);
   // Set the event type to manual. Device, Output, Event.
-  DevTrOutSetEvent(scp,external_out,TOE_OSCILLOSCOPE_RUNNING);
+  // DevTrOutSetEvent(scp,external_out,TOE_OSCILLOSCOPE_RUNNING); //oscilloscope running was how it was before. 
+  // DevTrOutSetEvent(scp,external_out,TOE_GENERATOR_START);
+  DevTrOutSetEvent(scp,external_out,TOEM_GENERATOR);
+  // 
 
   // Set the trigger inputs
   const uint16_t input_pressure = DevTrGetInputIndexById(gen_pressure, TIID_EXT3);
@@ -422,7 +439,7 @@ int main(int argc, char* argv[])
   bool raw = false;
   // 
   // Create array of data ranges. 
-  double dRanges[8] = {2.0,0.2,20.0,20.0,80.0,4.0,2.0,40.0}; // ch 6 was 40.0   
+  double dRanges[8] = {8.0,40.0,20.0,20.0,80.0,4.0,2.0,40.0}; // ch 6 was 40.0   
   // create array of AC or DC coupling. 
   uint64_t Couplings[8] = {CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV};
   // 
@@ -438,7 +455,6 @@ int main(int argc, char* argv[])
   ScpChSetBandwidth(scp, 6, 50000000);
   ScpChSetBandwidth(scp, 7, 50000000);
   // 
-
   // adjust the scope resolution. 
   // printDeviceInfo(gen_pressure);
   // uint8_t byResolutionCount = ScpGetResolutions( scp , NULL , 0 );
@@ -475,7 +491,8 @@ int main(int argc, char* argv[])
   if (long_recording > 0) { // long recording in seconds. 
       current_duration_in_samples = (int)gen_current_sample_frequency*long_recording;
       data = malloc(sizeof(float) * current_duration_in_samples);
-      pressure_duration_in_samples = (int)gen_pressure_sample_frequency*duration;  
+      // 
+      pressure_duration_in_samples = (int)gen_pressure_sample_frequency*long_recording;  
       datap = malloc(sizeof(float) * pressure_duration_in_samples);  
   }
   else {    // make it so the signal doesnt repeat. 
@@ -514,6 +531,14 @@ int main(int argc, char* argv[])
   int pressure_end_null        = end_null*pressure_duration_in_samples;  
   int pressure_final_end_ramp  = end_pause*pressure_duration_in_samples;   
 
+  // Code to insert a marker into the pressure waveform. 
+  // samples per wavelength
+  double pulse_length = gen_pressure_sample_frequency/pressure_signal_frequency;
+  int pressure_marker_start_time = (start_null*pressure_duration_in_samples/2); 
+  int pressure_marker_end_time   = pressure_marker_start_time + pulse_length*2;
+  // int pressure_pause_time_start = pressure_marker_end_time;
+  // int pressure_pause_time_end  = pressure_marker_end_time + pulse_length*15;
+  // // 
   double current_factor       = 0.0;
   double current_factorend    = 0.0;
 
@@ -530,6 +555,8 @@ int main(int argc, char* argv[])
   int current_isi_end_counter = 0; // stop the transformer to recover from magnetostriction. 
   int check = 0;
   int j = 0;
+  // switch this to 1, if I want to insert an alignment marker into the current waveform. 
+
   printf("\n pressure duration in samples %d", pressure_duration_in_samples);
   // printf("\n pressure final end ramp %d", pressure_final_end_ramp);
   // printf("\n pressure start time %d", pressure_start_time);
@@ -557,6 +584,21 @@ int main(int argc, char* argv[])
   {  
     if (i < (int)pressure_start_null) {  // start area that is set to zero. 
       datap[i] = 0.0;
+
+      if (waveform_marker == 1 && i>= pressure_marker_start_time && i <= pressure_marker_end_time ) {  // insert a small pattern at the beginning to do manual time alignment. 
+        // this puts a marker only in the pressure signal at half the regular amplitude. 
+        datap[i] = 0.5*sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency);
+      }
+      // 
+      // else if  (i>= pressure_pause_time_start && i <= pressure_pause_time_end )
+      // {
+      //   datap[i] = 0.0;
+      // }
+      // else {
+      //   datap[i] = 0;
+      //   //sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency);
+      // }
+      // 
     }
     else if (i < (int)pressure_start_time && i >= (int)pressure_start_null) {  // start of ramp period
 
@@ -632,7 +674,7 @@ int main(int argc, char* argv[])
 
         }  // end of PRF/ISI option inside the ramp. 
         else {
-          datap[i] = pressure_ramp_factor*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);   
+          datap[i] = pressure_ramp_factor*sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);  
         }
         //
       }
@@ -709,6 +751,15 @@ int main(int argc, char* argv[])
       }
       else {  // single sine-wave. 
         datap[i] = sin(2*PI* pressure_signal_frequency * (double)i/gen_pressure_sample_frequency);
+        // code to convert it into a square wave. 
+        // if (datap[i] > 0) {
+        //     datap[i] = 1;    
+        // }
+        // else {
+        //     datap[i] = 0;  
+        // }
+
+    
       }
  
     }    
@@ -819,6 +870,8 @@ int main(int argc, char* argv[])
   {  
     if (i < (int)current_start_null) {  // start area that is set to zero. 
       data[i] = 0.0;
+
+
     }
     // this ramps the electric field, so that it doesn't make an impulse response for the filter. 
     else if (i < current_start_time && i >= (int)current_start_null)
@@ -892,6 +945,8 @@ int main(int argc, char* argv[])
         }
         else {  // this is if no_ramp is true,  there will be no ramp. 
           data[i] = 0.0;
+
+
         }      
 
     }  //
@@ -1041,6 +1096,21 @@ int main(int argc, char* argv[])
   }
   printf("\n");  
 
+  // 
+  // 
+  // 
+  if (led_alignment_marker == 1) {
+    for(int i=0; i<current_duration_in_samples ; i++)  
+    {
+      data[i] = 0;
+      if ( i>= pressure_marker_start_time && i <= pressure_marker_end_time ) {  // insert a small pattern at the beginning to do manual time alignment. 
+        // this puts a marker only in the pressure signal at half the regular amplitude. 
+        data[i] = sinf(2*PI* pressure_signal_frequency * (float)i/gen_pressure_sample_frequency);
+      }
+    }
+  }
+  //
+  // 
   // Set amplitude:
   GenSetAmplitude(gen_current, current_amplitude); // 2 V
   CHECK_LAST_STATUS();

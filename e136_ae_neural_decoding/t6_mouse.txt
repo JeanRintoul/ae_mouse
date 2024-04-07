@@ -1,0 +1,79 @@
+t3 - acoustoelectric neural recording 4Hz, attempt at repeat. 
+=================================================================
+
+4Hz, just try to repeat last weeks successful AE result. Is it repeatable? 
+Try to do a two tone test as well. 
+
+Ket/Xyl
+drugs:
+antidote: 6.0
+X: 1.5
+k1: 1.5
+k2: 1.0
+saline: 50
+
+Date of experiment: 09/02/2024  
+Mouse Cage: 116345
+Number of uses before: 6
+Gender: male
+Weight: 33g including headbar. 
+DOB: 06.05.2023
+
+Notably - this good mouse has nailpolish on the electrodes... 
+TOOD: Add nail polish to electrodes in new mice. 
+
+- ensure that the two electrodes are not electrically connected via the gel. 
+- calibrate position, using the VEP electrode as the current source, and two external to head references. 
+- Perform F21, Kaiser windowed, and SNR averaged acoustoelectric neural recording. 
+  Do LOTS of repeats.  
+Then in post processing, I can ideally mess around with matched filters to see what I can come up with. For instance, using a better more accurate template for the 4Hz VEP would be good. 
+- Preamp 1M low pass, 0.3Hz high pass. F21 in place. 
+- remember to do depth calibration. 
+
+If I get AE neural recording today, then make another mouse on monday? 
+
+= = = = = = Start time: 11:17am = = = = = =  
+
+- First do some 4Hz VEPs. Gain = 500, no filters on preamp. Do I see anything? 
+- It's a great size vep. 40 microvolts. 
+
+- When I set up the US, first arrange the wires ready for both two tone test, and calibration. 
+- Remember to also do depth calibration.  Done, my biggest magnitude was 6.26 microvolts. The depth calibration helped a lot. 
+- This amplitude is still small. 
+- I then re-pluggeed the cables ready for the main ae neural recording series. 
+- 1 hr in. run e136_ae_neural_recording.py 
+- p out = 0.14, same settings as that last recording last friday. 
+
+- I need to double check if time syncing is working? 
+- I have a really low amplitude for the electric signal coming from the US this time. It's there, but small... 
+
+10 recordings in, I didn't get it -10.62, -6.69 
+20 recordings in, -4.96
+30 recordings in, -15? 
+40 recordings in, 
+stop at 40? it isn't there. 
+
+I gave it another tick of ket at 1 hr 36 mins
+try some without the f21? 
+
+Also the US amplitude at 500kHz is REALLY low? Something is wrong with the US. Maybe there is air in it? need to put new water in it?  
+
+Something is weird with the US electrical thing. 
+
+Mouse is waking. 
+2 hrs 10 min into warming chamber. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

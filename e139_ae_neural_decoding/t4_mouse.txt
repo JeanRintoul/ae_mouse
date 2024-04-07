@@ -1,0 +1,59 @@
+t2 - mouse with low isoflurane, and long duration recordings. 
+=====================================================
+
+- This time, I am using the non-twisted pair electrodes. 
+- I intend to do a larger number of reps, but otherwise the same as t2. 
+- If there is time, try a couple of different frequencies. 
+
+- turn off heat mat when recording? 
+- also grounding, and complete darkness VEPs. 
+- For calibration - consider placing the GND nearby? 
+
+Isoflurane. m1 mouse. 
+Date of experiment: 26/03/2024  
+Mouse Cage: 127972
+Number of uses before: 2
+Gender: male
+Weight: 28.4g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 11:38am = = = = =
+
+e139_vep.py 
+e139_ae_calibrate.py    
+e139_ae_neural_recording.py
+
+==========
+
+TODO: watch the O2 cylinder as it is only at 50 right now. 
+
+1. 4hz vep, iso = 0.6, 12.4 microvolts, 25 peak to peak. Single predominant peak at 4Hz. 
+
+2. Calibrate US position. 
+   Remove wires. 
+
+3. ae neural recording. iso = 0.5, 1 hour into the recording time. 
+   4hz led. 
+   30 files. 
+   p out = 0.12. 
+   gain = 500. 
+   arms are moving. 
+
+4. same as 3, except with 7hz led. GAIN = 1000. 
+   I had to stop at file 5, and up the isoflurane as it was moving too much, i then decreased it back to 0.6. The size at 7Hz is TINY. 
+
+
+END 2hr, 40 mins under iso. 14:26. 
+
+- change over the 02 canister. 
+- i think the screw IS a good idea, to increase the surface area that picks up current. 
+
+I think I got it, but I will have to double check to make sure. Down at 0.002 microvolts... 
+
+==========
+
+When I took it out of the warming chamber, there was a small amount of blood, which I think was due to it waking up too much and struggling. 
+
+
+Results:
+The recording where gain = 1000 seems better... in that maybe... i can almost see a 7Hz wing. 

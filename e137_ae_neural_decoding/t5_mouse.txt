@@ -1,0 +1,104 @@
+t5 - mouse
+=================================================================
+
+Ket/Xyl
+drugs:
+antidote: 4.8
+X: 1.2
+k1: 1.2
+k2: 0.8
+saline: 50
+
+Date of experiment: 19/02/2024  
+Mouse Cage: 126531
+Number of uses before: 1
+Gender: male
+Weight: 25.4g including headbar. 
+DOB: 15.10.2023
+
+There is a larger noise floor in the mouse than in the phantom. This experiment is with a mouse, and all about changing parameters in order to decrease the noise floor around the 500kHz carrier. 
+
+Is this electrical noise or acoustic noise? 
+- do a rough position calibration. 
+- ensure a large GND plane is attached to the mouse. Test with and without GNDing. 
+- noise a depth study. Starting high measure the noise and go down in 1mm increments. Does the noise get linearly larger?  
+
+- - - ae neural recording settings - - -
+- Do a careful position calibration.
+- tight filter 5Hz(to remove as much Johnson thermal noise as possible) and 1MHz low pass. Re-insert the bandpass. It was the right plan. 0.3Hz-1Mhz. 
+- make the room darker when doing VEPs. 
+- repeat the ae neural decoding experiment. 
+   - 4Hz VEP 
+   - 2Hz VEP for maximal amplitude. 
+
+If the 500kHz noise decreases in amplitude linearly with depth then it is electrically generated noise from the RF monopole of the ultrasound. 
+
+Phantom: neuromodulation. 
+- Consider doing the fmixing study instead of the PRF study, as this previously worked well. Can I make the amplitude of the mixing frequency larger by including an electric field at just one of the frequencies - wait, I already know the answer is no(or only a little bit), otherwise I'd have this already working? The acoustoelectric amplitude is far smaller, than the acoustic carrier electrically induced amplitude. However, the acoustic amplitude is accompanied by an electric field proportional to the carrier frequency. Could it be this electric field that is inducing neuromodulation? This has nothing to do with the acoustoelectric effect. It is still true, that it may be related to inducing an electric field in solution. 
+
+= = = = = start time: 14:42 = = = = =
+
+e137_ae_calibrate.py 
+e137_carrier_noise.py
+e137_ae_neural_recording.py
+
+======
+
+1. 4Hz VEP in total darkness. 18 microvolt pp vep at 8hz. Notable 1.9Hz ketamine peak. 
+
+2. 2hz vep in total darkness. 31.8 microvolts. 
+
+3. Calibration didn't really seem to work that well. 
+   There was a vertical maxima however, quit high up... like an inch above the mouse. 
+
+4. Preamp gain 500, 0.3Hz-1MHz. Pressure 1MPa. 12s duration. 
+
+1. It is possible my start and end point is just not accurately calculated in other files. If I eliminate the start and end ramps, I seem to have less noise. 
+
+No GND: start at 2second-10seconds. 1-4 
+
+noise mean/std, carrier amplitude: 0.1 0.08 466.81682599844487
+noise mean/std, carrier amplitude: 0.1 0.09 465.5441412203526
+noise mean/std, carrier amplitude: 0.14 0.1 464.22168668432164
+noise mean/std, carrier amplitude:  0.14 0.1 466.38357262124975
+---- TODO: 
+Note in file 3 I think I can see the modulated ketamine 2Hz? Have another look at this? 
+Is it there if I demodulate it? 
+
+GND: there is a gel connection between mouse and the copper tape it is lying on. 
+noise mean/std, carrier amplitude:  0.09 0.08 438.4547804382784
+noise mean/std, carrier amplitude:  0.19 0.11 440.3636520044728
+noise mean/std, carrier amplitude:  0.08 0.1 438.41978161965346
+noise mean/std, carrier amplitude:  0.14 0.08 438.3030774272408
+noise mean/std, carrier amplitude:  0.09 0.06 436.8883434804775
+I am finding the 500khz peak smaller, and the noise maybe about the same? 
+
+TODO: re-analyse an old file, with a shorter time span in which i do fft to remove offset periods. These are all 12s. 
+
+Vertical traversal. 
+DV 2: f6 noise mean/std, carrier amplitude:  0.26 0.11 391.60244141684495
+DV 1: f1 noise mean/std, carrier amplitude:  0.16 0.09 406.1584197199099
+0: f2 noise mean/std, carrier amplitude:   0.25 0.14 414.57563798746537
+-1: f3 noise mean/std, carrier amplitude:  0.22 0.1 432.3939197606283
+-2: f4 noise mean/std, carrier amplitude:  0.35 0.1 455.3158978405945
+-3: f5 noise mean/std, carrier amplitude:  0.17 0.11 449.15501807174616
+
+Match this against my calibration values for the acoustoelectric effect. 
+
+TODO: go back through these files and re-calculate the noise and std over a broader bandwidth, on both sides of the carrier. 
+
+i gave second k dose, squirting some out so it is about a half dose again. 
+p vout = 0.12
+Try 2Hz AE VEP in total darkness, with gnding included?  
+If time, try 4Hz AE VEP in total darkness, with gnding included?  
+
+There appears to be no VEP, or extra small VEP. 
+I suggest I stop after this because signal is too small. 
+
+2hr 31 minutes into warming chamber: 17:10. There is an air bubble in the US. 
+
+On one side of the carrier... but not the other... I can see a 4hz and an 8Hz? 
+I should re-analyze the 4hz led data. 
+
+On analysis, there appear to be no VEPs. 
+

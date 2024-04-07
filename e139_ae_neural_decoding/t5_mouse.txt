@@ -1,0 +1,71 @@
+t5 - mouse with low isoflurane, and long duration recordings. 
+=====================================================
+
+- This time, I am using the non-twisted pair electrodes. 
+- I am going to use a gain of 1000, or 2000. 
+- VEP frequency 7hz and 10Hz to take it away from the 500kHz peak. 
+
+- Do 30 reps. 
+- turn off heat mat when recording? 
+- also grounding, and complete darkness VEPs. 
+- For calibration - place GND on other side nearby with direct conductive connection. 
+
+Isoflurane. m2 mouse. 
+Date of experiment: 28/03/2024  
+Mouse Cage: 127973
+Number of uses before: 1
+Gender: male
+Weight: 28.4g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 10:42am  = = = = =
+
+e139_vep.py 
+e139_ae_calibrate.py    
+e139_ae_neural_recording.py
+
+==========
+
+1. 7hz vep, iso = 1, size = 8.5 microvolts. 16 p-p. That means it should be bigger if I turn down the iso. 
+
+2. Calibrate US position. Calibration seemed shitty this time. Need to reset transducer so it sits straight. 
+   Remove wires. 
+   I left it at the position where it gave a higher signal, though it looks visually a bit off target. :/ 
+
+3. ae neural recording. iso = 0.6, 1 hour into the recording time. 
+   7hz led. p out = 0.12v. 30 second duration. gain = 1000. iso=0.6
+   1hr 14 min into iso. 
+
+   I can see the 7hz wings, but. they ARE close to the noise floor. What should I do? 5 microvolt VEP. Is this real, or just there anyway? SNR 14.5 dB
+
+4. 10hz vep. gain = 2000, iso = 0.6.
+I had to change the daq input range from 4V to 8V to prevent a saturated region. Previously it was at 4V range. 
+First file has a clear 30Hz, which is up modulated successfully. Check it out. I could see it within a single file. 
+
+2hr 10 minutes. start...  
+
+- It looks like I got it at gain = 2000. 
+3hrs 52 minutes in. 
+
+5. Two tone test. 11 reps to match my 8Hz VEP data. 
+   Finally, I set up the two tone test, for 30 seconds, gain = 2000. 
+   I applied 8Hz, at a higher amplitude than what I have. 
+
+   Wait- it is mixing. that's bad... is it the gain, the electrode position? what is causing this? 
+
+   I separated the cables some- the two brain connected ones, and the mixing appeared to stop? One cable is the measurement cable, the other is sending in the 5hz. 
+
+   I reduced the mixing issue somewhat... but not entirely... and did the 11 recordings at 30 seconds, gain = 2000. 
+
+   TODO: I may need to refine how to do this in the phantom. 
+
+Two tone mixing test failed. This could be a whole variety of reasons, and it is not synonymous with the VEP test... 
+
+Finish 4 hrs 50 mins, 15:33. 
+
+- - 
+
+- I think I should try with the transducer I can visually focus. 672.8khz 
+
+
+

@@ -1,0 +1,78 @@
+t6 - mouse with ketamine, long duration recordings. 
+=====================================================
+
+- also grounding, and complete darkness VEPs. 
+- big column of us gel. 
+- 30 second duration recordings at 2MHz. Acoustic function generator at 2MHz. 
+- When doing calibration, ensure that the measurement electrode is close to the stim electrode, and the GND of the stim electrode is on the thorax. The measurement electrodes stay the same for both calibration and detection. 
+
+duration = 30 seconds. 
+Fs = 2Mhz
+
+Ketamine
+Date of experiment: 11/03/2024  
+Mouse Cage: 116345
+Number of uses before: 11 
+Gender: male
+Weight: 33g including headbar. 
+DOB: 15.10.2023
+
+
+Ket/Xyl
+drugs:
+antidote: 6
+X: 1.6
+k1: 1.6
+k2: 1
+saline: 50
+
+= = = = = start time: 9:30am = = = = =
+
+e138_vep.py
+e138_ae_calibrate.py    
+e138_ae_neural_recording.py
+
+======
+
+preamp 0.3Hz -> 1MHz. Gain = 200 for ae neural recording. 
+
+5Hz VEP in total darkness. Note down what size the signal is? 
+position calibration.  Before setting up, scratch off a little bit of the nail polish. gain = 10  
+30 second long acoustoelectric neural recording. 
+Consider moving electrode a bit forward so pressure can go straight though. 
+
+======= start time: 9:30am ======== 
+
+1. 3hz VEP, 62 microvolts, 120 microvolts p-p. Great! 
+2. Calibration: Initially it didn't work, and I just saw non-linear artefacts from the applied e field. I decreased the e field and calibration appeared to work in the vertical direction. I ended up calibrating at vout = 0.1. 
+
+3. 3 hz vep, 30 seconds, repeated 5 times. p v out = 0.12v  
+  at gain = 500, the signal was railing due to the high e signal at 500khz. 
+  i switched gain down to 200. 
+
+4. 5hz VEP, 30 seconds, repeated 6 times, otherwise same settings as 3. 
+
+3hz vep, 30 seconds, repeated 5 times, same settings as 3 except pvout = 0.15
+Analyse this one. 
+- Did the VEP get smaller? Look at the VEP alone. It looks like it went way down in amplitude to 6 microvolts. whereas it was huge at the start. 
+- could the exposed wire be effecting the size? 
+
+- There appears to be a 3Hz peak. maybe peaks at carrier + 6.7 Hz... sort of unclear. 
+
+1hr 46 minutes end. 11:17am. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

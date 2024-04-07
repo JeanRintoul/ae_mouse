@@ -1,0 +1,97 @@
+t3 - acoustoelectric neural recording 4Hz, attempt at repeat. 
+=================================================================
+
+4Hz VEP, try with slightly higher pressure. No F21. Careful calibration. 
+
+
+Ket/Xyl
+drugs:
+antidote: 6.8
+X: 1.6
+k1: 1.6
+k2: 1.0
+saline: 50
+
+Date of experiment: 06/05/2024  
+Mouse Cage: 116345
+Number of uses before: 7
+Gender: male
+Weight: 33g including headbar. 
+DOB: 15.10.2023
+
+- ensure that the two electrodes are not electrically connected via the gel. 
+- calibrate position, using the VEP electrode as the current source, and two external to head references. 
+- Perform  Kaiser windowed, and SNR averaged acoustoelectric neural recording. 
+  Do LOTS of repeats.  
+- remember to do depth calibration. 
+
+For neural recording: 
+- On preamp, implement a high pass filter - 1Hz. Gain = 5000
+- Consider a 12s recording time? 
+- higher pressure. vout = 0.12
+
+Nail polish to cover bits of showing metal at 10 mins in. 
+These bits of metal on the wire showing were closer to the middle, and may be causing a position calibration error. 
+
+= = = = = = Start time: 15:27 = = = = = =  
+
+5 mins, lots of whisker twitching. 
+
+1. VEPS only. Solid 25 microvolt VEP. 
+
+2. Calibration. Ok it didnt work that well. It was a big size, then suddenly small. Do not know why. 
+
+3. AE Neural recording.  Do groups of 10 files only. That's enough. 
+   gain = 500
+   1hz high pass
+   4hz led. 
+   duration = 12. 
+   p vout = 0.12. 
+   Looks like nothing there after 10 recordings. stop. 
+   signal snr/kaiser snr/individual_signal snr: 8.2 5.89 0.35
+
+4. PRF test? 
+gain = 100. Nothing. My results look nothing like before... 
+Weird.. its like there is an issue with pressure coming out? 
+
+1hr 22 mins mouse wakes, adminster k2 
+
+5. Try a higher LED frequency to get to lower noise floor. Moved the transducer down lower so the focus is lower. 8hz LED, look for 16Hz peak. 10 reps. Nothing. 
+I moved it around a bit between recordings to get a range. Totally non-systematic. 
+
+Mouse is waking at file 4. Stop. 
+Nothing. Just nothing. 
+I think I should move back to phantom work. 
+Try to get an even small amplitude signal. 
+
+1hr 49 mins into warming chamber. 17:13. 
+
+What if the electrical noise around the 500kHz, is caused by reflections? 
+Does more energy get reflected back in the mouse, than in the petri dish? 
+
+I also couldn't repeat any of the PRF results... ? 
+
+= = = 
+
+Consider free styling with a few different locations. Name each file with the coords. 
+Is there a non-conductive gel I could use? 
+Consider trying the other transducer? 
+
+= = = = = = = = = = = = = 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

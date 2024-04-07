@@ -1,0 +1,94 @@
+t4 - acoustoelectric neural recording with ketamine. 
+=================================================================
+
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 09/01/2024  
+Mouse Cage: 120964
+Number of uses before: 13
+Gender: male
+Weight: 32.4g including headbar. 
+DOB: 6.05.2023
+
+= = = = = = Goal = = = = = = = = =  
+
+Spike demodulation (LED no US): 
+Gain = 500, no filters. 8s duration. Fs = 5e6. 
+- 10x vep 4hz - 
+- 10x vep 1hz
+
+Acoustoelectric Neural Recording with position calibration: 
+1. use a second set of electrodes on head to generate acoustoelectric field around 1 measurement electrode, at 498khz field. 
+
+2. run e133_ae_neural_recording.py 
+   at 1Hz and 4Hz. Consider running for 12 seconds. 
+   Fs = 2MHz or 5MHz is fine. 
+
+= = = = = = = = = = start 10:13am = = = = = = = = = = = = 
+
+- woke up after the anesthesia, despite injecting with ket and xyl. 
+- mouse is not completely asleep at 6 minutes 38 s despite injections being given 4 minutes ago. Eventually mouse movements slowed down, but it took a long time. Perhaps I didn't get it IP this time? 
+- did VEP 4Hz and 1Hz for spike demodulation paper. 
+- I seem to have weird heat mat noise right now. Maybe this is because moisture between temp probe and heat mat? 
+
+
+Try calibrating position with the additional set of electrodes. 
+- calibration with external set of electrodes def didn't work. 
+- calibrated by eye. 
+
+
+0.3Hz high pass. gain = 1000. Fs = 2MHz. 
+1. vep 4hz. I might see something? 8 seconds. Fs 5MHz. Analyze this. 
+2. vep 4hz, 12 second duration. Fs 5MHz. Didnt see any VEP. not even in original signal. 
+3. vep 4Hz, 12 second duration. Fs 2MHz. No VEP?
+4. vep 4hz, no US. I am simply not seeing a VEP. all signals henceforth ar 2MHz. 
+5. no LED, just US. 
+6. VEP 2Hz. no US. so I'd expect 4hz and 8hz peaks. It's tiny and there. maybe 4 microvolts at 4hz. 
+7. VEP 2Hz. no US. I am not measuring a VEP right now. I think it is due to shorting of the electrodes through the gel. 
+8. VEP 2Hz US. 
+9. VEP 2Hz, US, PRF = 5000. 12s. Fs 2MHz. Cannot see any underlying VEP. 
+10. small small VEP. really nothing to write home about. 
+11. half amplitude pressure at 0.05. VEP 2Hz. no VEP. 
+12. VEP is back when I dont use pressure. 
+13. US PRF 120, US out 0.05. 2Hz VEP. Analyze this. Is there a VEP? yes but small. 
+14. Continuous wave 0.05 out. 2hz VEP. 
+15. Continuous wave 0.05 out. 4hz VEP. 
+16. Continuous wave 0.1 out. 4hz VEP. VEP is there but v small. 
+17. Continuous wave 0.1 out, 4hz VEP. 
+18. repeat. this one looks like it has something a bit in FFT. 
+
+
+So, I think what I need... is just a bigger VEP to do this. 
+
+Note: for a large part of this I had the LED running only for 8 seconds of the 12. 
+
+It's possible my measurement electrodes are both going through the gel and not through the head as I made a gel mistake at the start. This seems to be making my signal much smaller. 
+
+In this experiment, I have noise in my measurement signal, and my VEP amplitude is small. Try unplugging preamp. 
+
+-- ? -- 
+- Does ultrasound inhibit VEPs? 
+
+warming chamber after 1hr 38 minutes. 11:52am. 
+
+-- -- -- -- -- -- -- -- -- 
+
+- order a cage of 5 mice. 
+- order more fisher tape. 
+
+-- -- -- -- -- -- -- -- --
+
+
+
+
+
+
+
+
+

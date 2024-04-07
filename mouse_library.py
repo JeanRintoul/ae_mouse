@@ -396,6 +396,107 @@ def copy_to_folder_and_return_data(**aeti_variables):
 
     return data
 
+def time_align_copy_to_folder_and_return_data(**aeti_variables):
+    impedance_variables = 0
+    prefix = ''
+    for key, value in aeti_variables.items():
+        if key == 'Fs':
+            Fs = value
+        elif key =='duration':
+            duration = value
+        elif key == 'fileprefix' or key == 'position': 
+            if key == 'position':
+                prefix = str(np.round(value,2) )
+            else: 
+                prefix = value
+        elif key == 'pressure_frequency':
+            transducer_frequency = value
+        elif key == 'ae_channel':
+            measure_channel = value
+        elif key == 'current_frequency':
+            current_signal_frequency = value
+        elif key == 'current_monitor_channel':
+            i_channel = value
+        elif key == 'e_channel':
+            v_channel = value  
+        elif key == 'rf_monitor_channel':
+            rfchannel = value 
+        elif key == 'marker_channel':
+            marker_channel = value     
+        elif key == 'save_folder_path':
+            save_path = value      
+    # Load the file. 
+    filename = prefix+'_stream.npy'
+    # print ('filename is',filename)
+    d = np.load(filename,allow_pickle = True)
+    a,b,c = d.shape
+    # print ('data shape',a,b,c)
+    data = d.transpose(1,0,2).reshape(b,-1) 
+    a,b = data.shape
+    # print ('data shape',a,b)
+    # pressure monitor is: ch 4 
+    x = data[rfchannel]
+
+    # fig = plt.figure(figsize=(5,5))
+    # ax = fig.add_subplot(111)
+    # plt.plot(data[rfchannel],'m')
+    # plt.show()
+
+    # peaks, properties = find_peaks(x,height = (0.02,0.09) )
+    # with the rf amplifier    
+    peaks, properties = find_peaks(x,height = (0.3,2.0) )  
+    # with the bono tx. 
+    # peaks, properties = find_peaks(x,height = (3,8.0) )    
+    # 
+    if len(peaks) == 0:
+        print ('WARNING WARNING! : peaks not found, RF amplifier not on')  
+        newdata = data 
+    else:
+        first_marker = peaks[0]
+        
+        print ('start peak is: ',first_marker,len(peaks) )
+        # fig = plt.figure(figsize=(5,5))
+        # ax = fig.add_subplot(111)
+        # plt.plot(data[rfchannel],'b')
+        # plt.axvline(x = first_marker,color='r'  )
+        # plt.show()
+
+        if first_marker < 1500000: 
+            # Now, how to reshape the data so it all turns out the same shape? 
+            # The easiest way is to add zeros the length of the file until the start peak, to the end. 
+            # Then it is the same shape as it was previously. 
+            a,b = data.shape
+            # print ('data shape: ', data.shape,first_marker,a,b)
+            newdata = np.zeros((a,b))
+            endpoint = b - first_marker
+            newdata[:,0:endpoint] = data[:,first_marker:] 
+            # print ('newdata shape',newdata.shape)
+            # 
+            # Use this plot to check if time alignment is working. 
+            # fig = plt.figure(figsize=(5,5))
+            # ax = fig.add_subplot(111)
+            # plt.plot(data[rfchannel],'b')
+            # plt.plot(newdata[rfchannel],'k')
+            # plt.axvline(x = first_marker,color='r'  )
+            # plt.show()
+
+        else: 
+            print ('marker error occurred',first_marker)
+            # Use this plot to check if time alignment is working. 
+            # fig = plt.figure(figsize=(5,5))
+            # ax = fig.add_subplot(111)
+            # plt.plot(data[rfchannel],'b')
+            # plt.plot(newdata[rfchannel],'k')
+            # plt.axvline(x = first_marker,color='r'  )
+            # plt.show()
+            # for now, just store out the non-time aligned file. 
+            newdata = data
+
+    outfile = save_path+'\\t'+filename  # the t indicates that it is time synced. 
+    np.save(outfile,newdata)
+
+    return newdata
+
 # 
 # use the marker channel to align the data.  
 def align_data_to_marker_channel(**aeti_variables):

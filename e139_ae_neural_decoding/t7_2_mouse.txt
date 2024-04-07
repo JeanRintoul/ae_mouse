@@ -1,0 +1,75 @@
+t7 - 3 test ae neural recording. 
+===================================
+
+Attempt at a full test. If this works, I can then repeat it in n=6 mice. 
+
+VEP at 10Hz
+Calibration
+
+3 tests:
+1. frequency specificity test 8Hz and 10Hz VEP with US at 1MPa. v out = 0.1. 10x repeats of each. 30 seconds duration of each. 
+2. focal location, versus 4mm to the right and 4 mm forward(outside of the locus of the visual cortex). 10x repeats. Is there a difference in amplitude here between the modulated VEP at focus versus not? 
+3. Two-tone test: to prove f mixing not occuring in the preamp. Remove the US, place electrodes such that the measurement electrodes and stim electrodes are at 3 separate levels. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+- This time, I am using the non-twisted pair electrodes. 
+- I am going to se a gain of 2000. 
+- VEP frequency 8Hz and 10Hz to take it away from the 500kHz peak. 
+- VEPs in darkness. 
+
+Isoflurane. m1 mouse. 
+Date of experiment: 04/04/2024  
+Mouse Cage: 127972
+Number of uses before: 3
+Gender: male
+Weight: 28.4g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 13:07pm = = = = =
+
+e139_vep.py 
+e139_ae_calibrate.py    
+e139_ae_neural_recording.py
+
+==============================
+
+
+
+TODO: mark on the two electrode cable more clearly. 
+clean up my disk space. 
+
+1. 10Hz VEP, Iso = 0.75, 4 microvolts, 8p-p
+
+2. calibrate. The stim and gnd are quite close, using the thick wire electrodes. The values are smaller. The center point could calibrate, but it was in a surprising place. The US looks like it is off to the side... but... this is where the max is. Perhaps the cone is crooked? 
+
+3. ae neural recording. 10Hz. p out = 0.1V. I got it. It works. 
+4. ae neural recording. 8Hz. p out = 0.12V. It wasn't very clear. Maybe? 
+5. vep 10hz, p out = 0.12, mb... at the noise floor... not great... but maybe a little bit there. 
+
+6. side by side test. move to the right 4mm, move forward 4mm. Then repeat 10Hz test. 
+  p vout = 0.1. iso = 0.6. I can see the 20 and 30 in there. This didn't work. 
+  What does this mean though? It means that I am picking up noise through the cables. The 500kHz in the cables... is mixing. I mean with the gel column it may be reflecting. What I can do is do the acoustic disconnection? Then we know there is no traversing acoustic field. Second attempt worked. 
+
+  So, perhaps I do need to watch out for the gel reflection. It may still be working. 
+  The alternative is the not acoustically connected test. This test is likely to have less capacitive coupling in it anyway. 
+
+7. not acoustically connected. pvout = 0.1. I still see a large 500khz, but I do not see the mixing occuring. vep = 10hz. This works. No mixing to be seen. 
+
+8. two-tone test. I used the twisted pair cable as the measurement cable... I think this is non-ideal. but whatever. Maybe it was successful. My 500khz was a bit small. No 10Hz around the carrier. Though carrier was only at 768 microvolts. 
+
+So... maybe it DOES work? 
+
+3 hrs 28 mins under iso. 16:38 into warming chamber. 
+
+end. 
+
+- All tests are passed... but some may have subtleties... 
+  This is always the way. 
+
+
+
+
+
+
+

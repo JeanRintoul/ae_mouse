@@ -1,0 +1,78 @@
+t2 - acoustoelectric neural recording with ketamine. 
+=================================================================
+
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 2.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 15/01/2024  
+Mouse Cage: 116345
+Number of uses before: 0
+Gender: male
+Weight: 33.7g including headbar. 
+DOB: 6.05.2023
+
+- ensure that the two electrodes are not electrically connected via the gel. 
+
+The mouse doesn't fit into the headbar all that well. 
+- Go back to the other style of implant. 
+- metal is exposed at the back near hair. 
+- I should do better cross-checking of fit during.  
+
+- the straight up connection, gets in the way of the US transducer. 
+- I put some new silicon over the MEP electrode. 28 minutes in. 
+
+= = = = = = Goal = = = = = = = = =  
+
+Spike demodulation (LED no US): 
+- e135_vep.py 
+Gain = 500, no filters. 8s duration. Fs = 5e6 
+- 10 x vep 4Hz. - done
+- 10 x vep 1hz. - done. 
+
+Acoustoelectric Neural Recording: 
+python e135_ae_neural_decoding.py 
+
+- run e135_ae_neural_recording.py 
+Settings: 0.1Hz high pass. Gain = 1000, Fs = 2Mhz. Run for 12 seconds 
+VEP at 1Hz, 2Hz, 4Hz, 5Hz, 6Hz. 
+I don't need so many repeats of each here. I just need high amplitude VEPS. 
+US + 
+1. 4hz vep. cannot see vep. I can see the ketamine modulated waveform though. It appears to have been modulated.  I recorded over the first one by accident when i switched. 
+2. 2Hz vep. 
+3. 8 hz vep. 
+4. no US. 4Hz VEP. 
+
+
+Another design problem is I need to bend it backwards to lower US over it. stupid. 
+
+
+= = = = = = = = = = start:11am = = = = = = = = = = = = 
+
+- into warming chamber 12:36am. 
+- 1hr 37 minutes. 
+
+Starting with ae neural recording: 
+- Preamp: 0.3Hz high pass. Gain = 1000. Fs = 2MHz. Duration = 12. 
+- I have tape insulating one electrode(the one over the motor cortex). 
+
+Next time, start directly with ae_neural recording as it is a good indicator as to whether i am getting a vep or not. 
+
+-- -- -- -- -- -- -- -- --
+
+It turns out the signal was ok, I am not sure why I didn't see it. 
+
+Was it 
+
+
+
+
+
+
+
+
+

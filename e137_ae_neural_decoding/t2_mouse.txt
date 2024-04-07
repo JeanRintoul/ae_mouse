@@ -1,0 +1,81 @@
+t3 - acoustoelectric neural recording 4Hz, attempt at repeat. 
+=================================================================
+
+No F21. 
+Ket baseline
+4Hz VEP alone. 
+4Hz, just try to repeat last weeks successful AE result. Is it repeatable? 
+Try to do a two tone test as well. 
+
+TODO: Put nail polish on wires of this mouse. 
+
+Ket/Xyl
+drugs:
+antidote: 4.8
+X: 1.2
+k1: 1.2
+k2: 0.8
+saline: 50
+
+Date of experiment: 14/02/2024  
+Mouse Cage: 126531
+Number of uses before: 0
+Gender: male
+Weight: 24.9g including headbar. 
+DOB: 15.10.2023
+
+- ensure that the two electrodes are not electrically connected via the gel. 
+- calibrate position, using the VEP electrode as the current source, and two external to head references. 
+- Perform  Kaiser windowed, and SNR averaged acoustoelectric neural recording. 
+  Do LOTS of repeats.  
+- remember to do depth calibration. 
+- consider, no filters on preamp? If I do a test run with US running, do I get a big DC offset or not? 
+
+Back down to 1MPa, now I have got rid of the F21. 
+
+= = = = = = Start time: 10:07am = = = = = =  
+
+- gave mouse low doses, it is a small mouse. It did not go unconscious entirely straight away. I am definitely at a borderline dosage level. It did settle down to stillness after 10 mins. 
+- nail polish at 9 mins in. 
+
+1. ketamine baseline, 100kHz Fs. Duration 12s. Gain = 500. 
+2. 4hz VEP. Duration 12s. Gain = 500. Can I see a VEP on the new mouse? 
+   NO VEP. Problem. I think the silicon isn't strong enough, and I need to put the glue or clear nail polish to stablize the electrode. I was very careful with the mouses eyes not to damage anything near them in any way. The silicon did seem to keep the skull moist and not dried out. now I have a little something I think. It is small at 20 microvolts. 
+3. Add clear nail polish to solidify position of the VEP electrode. I definitely have a VEP. 35 minutes applied clear nail polish. This experiment will not have enough time to complete due to this nail polish drying business. Consider the ketamine dosage.
+4. Collect another 10 VEPs while I wait for nail polish to dry. 32 microvolts VEP. Not bad. 
+5. Re-arrange wires and calibrate position at 1hr in. 
+6. Calibration took a long time. Max value is: 21
+  Before start next section, give extra K dose. It is a tiny dose... 1 hr 23 minutes. 
+7. ae neural recording. started 1 hr and 27 minutes in. Gain = 500, no filters on preamp.
+   q1: Am I railing if I use no filters? Not railing. Signal looks food. Stick with no filters. 
+   It is unclear that having a 1MHz low pass reall improves the SNR.. maybe it does? I could also do this in software. The front up filters is good as it is at the beginning before digitization. 
+
+8. 10.8, -4.3, 7.4
+   10.98, 5.77, 7.47 The original signal itself is tiny. Maybe if I had a way to analyse it  10.86 4.0 -0.3
+
+9. two tone test. 1000 microvolts 500kHz signal. 30 microvolt. 
+   mouse is starting to wake. I think.. this was a better two tone test than the one I did before... Check it. 
+
+Mouse to warming chamber at 12:33, wet mash in prep. 
+Total time:  2 hrs 28mins. 
+12:35pm
+
+There is a bubble in my ultrasound. 
+
+= = = = = = = = = = = = = 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

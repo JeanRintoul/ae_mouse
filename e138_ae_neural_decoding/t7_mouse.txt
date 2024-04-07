@@ -1,0 +1,105 @@
+t7 - mouse with ketamine, long duration recordings. Very shielded wires. 
+=====================================================
+
+- new mouse, shield the wires, is there a trend of vep size with US pressure? 
+
+- also grounding, and complete darkness VEPs. 
+- big column of us gel. 
+- 30 second duration recordings at 2MHz. Acoustic function generator at 2MHz. 
+- When doing calibration, ensure that the measurement electrode is close to the stim electrode, and the GND of the stim electrode is on the thorax. The measurement electrodes stay the same for both calibration and detection. 
+
+duration = 30 seconds. 
+Fs = 2Mhz
+
+Ketamine
+Date of experiment: 12/03/2024  
+Mouse Cage: 127972
+Number of uses before: 0
+Gender: male
+Weight: 26.8g including headbar. 
+DOB: 15.10.2023
+
+Ket/Xyl
+drugs:
+antidote: 6
+X: 1.3
+k1: 1.3
+k2: 1
+saline: 50
+
+= = = = = start time: 10:30am = = = = =
+
+e138_vep.py
+e138_ae_calibrate.py    
+e138_ae_neural_recording.py
+
+======
+
+preamp 0.3Hz -> 1MHz. Gain = 200 for ae neural recording. 
+
+5Hz VEP in total darkness. Note down what size the signal is? 
+position calibration.  Before setting up, scratch off a little bit of the nail polish. gain = 10  
+30 second long acoustoelectric neural recording. 
+Consider moving electrode a bit forward so pressure can go straight though. 
+
+======= start time: 10:30am ======= 
+
+- put nail polish onto wires and do VEP test while waiting for nailpolish to dry. 
+- 4Hz VEP and ketamine baseline. Both to check for VEP, and 
+
+27 minutes in, nail polish on. 
+
+1. super tiny VEP. 8 microvolts in size, or 16 microvolts p-p. It is there, just entirely unimpressive. 
+
+2. 4hz VEPS just with gel. no ultrasound. The vep has totally gone. 
+
+3. 4hz veps no gel. no ultrasound.  Nothing, no vep. I do have the GND attached... 
+
+55 minutes in, I see that the nail polish has come off one electrode, I replace it. 
+
+4. repeat, but now with no gnd plate. It's just the differential measurement wires. still nothing, 1 hr 12 mins in. 
+
+There is no VEP... 1Hz, no VEP. 
+
+1hr 24, 1hz vep... 30 microvolts... The anesthesia may be lightening. 
+
+4hz vep, 4 microvolts.  1 hr 30 mins. It is coming back. 
+
+4hz vep, 8 microvolts.  1 hr 40 mins. It is coming back. 
+
+I think the ketamine kills the VEP, though it takes a few minutes. Since I always do my initial VEP measure at the start of a test, I miss the VEP decrease due to ketamine. 
+
+I could plot vep height with time? 
+
+Tomorrow: TODO: 
+Isoflurane expt. VEP before gel, VEP after gel. VEP size with ultrasound. etc
+
+
+1 hr 54 minutes into warming chamber. 
+12:29
+
+
+
+
+
+
+3. Can I calibrate position? 
+
+
+To determine if it is the gel or the US that inhibits the VEP, do a VEP test once the gel is in place, but the US is off. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
