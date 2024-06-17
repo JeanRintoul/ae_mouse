@@ -1,0 +1,115 @@
+t2 - ae meps pulse test, with DC offset being largest, 
+========================================================
+
+F21, d bonos voltage source, low pass filter, and 1k low pass on preamp. 
+- EMG electrode in tail, and visual cortex of brain. stim cup in mouth/ptir motor cortex. 
+
+Mouse M2
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 26/05/2024  
+Mouse Cage: 127973
+Number of uses before: 11
+Gender: male
+Weight: 29.5g including headbar. 
+DOB: 15.10.2023
+
+= = = = = = = start time: am = = = = = = = 
+
+All with F21? 
+Goals: Do loo test on pulse stim, ae stim and fswitch all at 0.5Hz. 
+- do frequency ramp ae amplitude test, do pressure amplitude ramp test. 
+
+== = = = 
+ae ramp while mouse is in deep anesthesia. 
+vout = 4v, p out = 0.2, gain = 500. F21 in place. 
+
+Note: the way I am measuring it seems inaccurate, so I need to go back over these. 
+
+- 4 repeats of each here. 
+
+dfx   df/pp amplitude
+0.33   
+0.5    203/325
+1      97/235
+2 	   85/298
+4      163/298
+8      33/213
+20     108/348
+40     58/226
+
+NOTE: if I go to higher voltages, I have non-linear effects. Applying a high voltage correctly in a small rodent is a non-trivial problem. 
+
+= = = = = = = = = = = = = = = = = = = = = = 
+
+pressure ramp under ketamine, to look at both ae amplitude with pressure, and the DC offset change. frequency of this test is dfx = 4Hz (so it can be easier enough to separate from the DC component)
+
+
+
+= = 
+couldnt see anything in the pulse mep loo test. 
+
+
+loo test... the ae 0.5hz was the biggest. 
+ae 
+ae amplitude: 657.4019628790986
+p amplitude: 367.53667061763576
+v amplitude: 280.0664042191043
+
+fswitch  (this measure is the 100hz amplitude... )
+ae amplitude: 368.6175692184661
+p amplitude: 284.9066236508982
+v amplitude: 196.35282190803167
+
+- - 
+
+How big can I make the df amplitude? 
+
+keeping the vout = 4, df = 0.2. 
+
+df = 0.33 
+ae amplitude: 427.6021473493439
+p amplitude: 246.26288554368952
+v amplitude: 295.4113179818669
+maybe 200 
+
+df = 1 
+ae amplitude: 431.2207012291482
+p amplitude: 294.9204223657581
+v amplitude: 370.4613892125902
+maybe 200 
+
+Mouse is starting to move... 1hr df 0.5, v4, p0.35
+ae amplitude: 565.696234484903
+p amplitude: 507.29129091225724
+v amplitude: 269.71864935448286
+i saw onset and maybe the second one. 
+
+df 0.5, v5, p0.3
+ae amplitude: 700.9901129993544
+p amplitude: 533.5725150293612
+v amplitude: 290.42109826599074
+
+Take away, I think I need to ramp the pressure. 
+
+Ramp experimentation
+v = 8, p =0.2, start_time  = 0.3, duration = 10 
+
+END exp mouse too awake. 1hr 17 minutes. 
+
+Takeaway - to avoid onset effect I need to do ramping at the start and end. 
+
+why does ae mep always display the wrong thing? Oh wait - it doesn't - it just displays the voltage only result. 
+
+Takeaway: ramping removes the DC offset effect when US begins. Moving forward I should use a ramp. 
+
+- there are significant non-linear effects from applying the voltage. 

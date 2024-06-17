@@ -1,0 +1,67 @@
+t8 - mouse 
+======================================================================================
+
+This time I have moved the EMG SR560 to where the other one is, ideally isolating it from the second RF amplifier. 
+
+EMG in rear paw. 
+Try fswitch test. 
+
+Attempt: 
+AEDC loo test
+AE loo test
+Fswitch loo test
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+Mouse M9
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 1.4
+k2: 1.0
+saline: 50
+
+Date of experiment: 05/06/2024  
+Mouse Cage: 132299
+Number of uses before: 0
+Gender: male
+Weight: 31.7g including headbar. 
+DOB: 30.11.2023 
+
+= = = = = = = start time: 9:55 am = = = = = = = 
+
+- 18 minutes fully set up. 
+
+It has EMG? at current amplitude 0.1, p0.2. 
+
+It is getting stim just from the voltage. I put volts down to 0.05. 
+I have a vast EMG improvement.
+- It just seems like the voltage is injecting an emg signal... 
+
+- So the voltage is still injecting noise... 
+- I am refining fswitch to be pretty good. 
+- I added gnding to the mouse just now, to try to decrease the voltage noise on the EMG when I apply this field. 
+- Let's change the filtering on the preamp for EMG? ovlded, keep the 30hz high pass. 
+- Adding or removing the GND under mouse appears to do nothing. 
+
+1hr 11minutes. mouse is waking up. 
+
+- There is clear noise from the voltage source on the EMG. Perhaps I will need to live with it? I should do some analysis about what it is exactly... 
+
+1hr 27 minutes, mouse is too awake. 
+
+
+switch4 - i unplugged the gnd line from the tx. there were ovlds. 
+i put gain down to 200. there are still ovlds. gnd plugged in again 
+
+
+It is possible there is an issue with the EMG cables? or electrodes... looks like one might have fallen out at the end. the one in the tail. 
+
+The switch test 'might' have worked, i saw twitches but not sure of timing, need to analyse. The EMG electrodes are an issue though. 
+
+This mouse had a huge offset when US was applied. 
+
+Results: I am switching the EMG cables. 
+

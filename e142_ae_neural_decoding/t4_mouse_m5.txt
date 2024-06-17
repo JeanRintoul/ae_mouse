@@ -1,0 +1,74 @@
+t2 - ae neural recording. 
+===================================
+
+M5 - vertical mouse. Do the 10hz ae test, and ae isolation test at the highest gain achievable. 
+
+Attempt at a full test at gain = 10000, or the highest gain I can achieve without OVLD.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. 10Hz VEP with shielding test, lots of repeats to make a beautiful comparison plot. 
+2. 10Hz ae vep at 1MPa, gain = 5000. preamp + acoustic isolation test with perspex. More than 20 reps? 
+3. 10Hz ae vep at 1MPa, gain = 10000. 
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m4 mouse. 
+Date of experiment: 30/04/2024  
+Mouse Cage: 129802
+Number of uses before: 1
+Gender: female
+Weight: 23g including head bar. 
+DOB: 15.10.2023
+
+= = = = = start time: 13:29am  = = = = = = = =  
+
+e142_vep.py 
+e142_ae_calibrate.py    
+e142_ae_neural_recording.py
+
+=============================================== 
+
+1. calibration - seemed to work. transducer located more towards the front than I expected. 
+
+2. ae neural recording at 10hz vep, iso = 0.5. gain = 10000. It is overloading at this gain. I can't turn the gain up past 2000 without ovld due to the amplitude of the acoustic signal. 
+
+One difference is that the parafilm was new yesterday, perhaps providing better electrical shielding. The electrical signal amplitude was far smaller... 
+
+So I got the mixing at gain = 2000, but couldnt go beyond that gain. 
+Something really weird is happening, I am also getting strange DC drops at gain = 2000, making this not work. Could it be the RA implant? 
+
+Could it als be the polarity of the cable? It isn't the cable. 
+
+I removed the tape on top of the head, in case that was related - so both side should be exposed to the 500khz. 
+
+The problem is the acoustic signal dominates. 
+My two guesses as to why I cannot increase the gain is that the parafilm is too thin, and there is some issue with the RA implant picking up noise. 
+
+What can I do? I can refill the US transducer, and I can use a mouse with the straight back implant. 
+
+So I ran the test at gain = 2000. 
+
+Results:? 
+ae10hz test: Its a successful 10Hz ae modulation test. gain = 2000. 
+ae isolation test: the electric signal is half the size as it was... but otherwise it seems successful. 
+
+The 10000 gain result on monday was just so good... how do I get that again? I need a much smaller acoustic e signal... i think the straight back connector is shielded better. 
+i left the iso too high for measurements 5-10 of ae isolation. 
+
+Frankly, based on my data so far, I could use some higher quality data at gain = 2000 data in case I need to use it and cannot get gain = 10000 for all 5 files. 
+
+
+TODO: check t1 to see what a single file electrical signal looks like, and compare amplitudes. could the similar appearance amplitude be an averaging effect? 
+   
+
+
+
+
+
+
+
+
+

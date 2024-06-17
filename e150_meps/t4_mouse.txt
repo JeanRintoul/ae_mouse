@@ -1,0 +1,34 @@
+t2 - long time recording mouse, no F21
+===============================================================================
+
+- do ae 0.5Hz and measure the temperature change via video. repeat 4 times. It doesn't need to be done when the mouse is motor responsive. 
+- when the mouse is motor responsive, do a large number of repeats of a single frequency. 
+- emg in back paw. 
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+Mouse M9 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 1.4
+k2: 1.0
+saline: 50
+
+Date of experiment: 14/06/2024  
+Mouse Cage: 132299
+Number of uses before: 3
+Gender: male
+Weight: 28.5g including headbar. 
+DOB: 30.11.2023 
+
+= = = = = = = start time: 13:37 pm = = = = = = = 
+
+- initially I got weird noisy emg, so i decided to move it to the rear paw and tail. 
+- I am also not seeing the acoustoelectric effect... 
+
+- I seem to be getting it, but then I have some weird noise on the electrodes. 
+
+

@@ -1,0 +1,110 @@
+t1 - meps test  m4 mouse. 
+===================================
+
+First, do a phantom meps test to see if the LEDs can work. I might need a separate thonny file for meps. 
+
+Do a position calibration over the front electrode. 
+
+Goal: Attempt at meps test under ketamine. 
+
+I will need to do a VEP test once in a while to determine when the neurons 'reconnect'.
+
+1. Dual sine mep amplitude US only. With and without GNDing. Are the MEPS proportional to the electric field amplitude rather than the acoustic amplitude? i.e. ionic mixing. 
+Get measurements of e field in vivo, and video if possible. 
+
+2. Attempt AE MEP where the field is applied via neurotar single wire, and cup electrode in mouth. The US should be GNDed to minimize additional fields. 
+
+3. If I get a response in any of these, also try with F21 in place, and absent. 
+   Or try moving the gel to the side, as in the acoustic isolation test - such that the e field is still applied. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4.0
+X: 1
+k1: 1.0
+k2: 1.0
+saline: 50
+
+Date of experiment: 03/05/2024  
+Mouse Cage: 129801
+Number of uses before: 0
+Gender: male
+Weight: 22.5g including headbar. 
+DOB: 24.12.2023
+
+= = = = = = = start time: 9:57am = = = = = = = 
+
+e141_ae_calibrate.py 
+e141_vep.py    (to see when the neurons reconnect)
+e141_dualsine_mep.py (with and without GNDing) - do I get a movement in either case? 
+e141_ae_mep.py (can I get this working?) Have some thoughts on how to improve it. 
+
+==============================
+
+1. calibrate position. Didnt really work. I just positioned the US in the middle. 
+
+2. VEP - I see giant ketamine baseline, and tiny VEP. 
+
+3. gain = 500. no filters. 
+   GNDED: dualsine mep at 1Hz df. 1Hz at 50 micrvolts. 
+   UNGNDED: I got OVLD. 
+   Even at gain = 1, it is MASSIVE at 1Hz. 
+   I put the pressure down to 0.05v out, and I got a 500 microvolts signal at 1Hz,g=1, no railing. 
+
+   I am successfully generating the df by removing the GND. This could be either electrical mixing or ionic mixing. 
+   
+   I am getting NO VEP... hence I wouldn't expect a movement from the mouse as the neurons are not connected. I can monitor both the ketamine signal delta amplitude, and the vep size. 
+
+   Time     Ketamine 		   VEP amplitude
+   (mins)	amplitude(0.9hz)   (10Hz)
+   ==========================================
+    50			30 				0 
+    55			40 				0
+    60			35				0 
+    65 			36			 	0 
+    70			35              0 
+    75			29 				0 
+    80 			33              0 
+    85			32				0 
+    90 			23				0 
+    95			45				0 
+    100 		25				0 
+    105 		9 				0 
+    110 
+
+
+4. UNGNDED - I got a massive 1Hz... but no movement. 
+
+5. I am only getting a movement when the pressure is high, and the ultrasound is GND. 
+
+
+6. gnded, p out = 0.2. 
+
+I need a high pressure to do anything. 
+
+- I got a movement with the dual mep, at high pressures. 
+- I did not get a movement when it was ungrounded... I had trouble measuring at ungnded as the central freq was so high in the preamp. 
+- I did not try AE MEP. 
+- what is clear, is that pressure plays a role in ultrasound neuromodulation - and it is not ionic mixing? 
+- I had a fairly short period at the end to do this. Ideally I should have used high pressures earlier. 
+
+What is different is the gradient of the field. When an acoustoelectric effect takes place there is a gradient field? 
+
+- I DID get the dual mep response when p out = 0.2. I need high pressure to generate it. 
+- Next time try ae mep at 1hz. 
+
+=== Logic pathway === 
+
+- increasing the electric field did not alter the motor response. This suggests it is pressure alone that is generating it? What do I do with that, I say ae neuromodulation won't work, because the effect is independent of the electric field? I do know that acoustic modulation induces an electric field in both neurons and saline though. This is a localized effect requiring a localize current density. 
+
+The means that perhaps ae neuromodulation will work, using a high gradient, high frequency field at the site of interest. 
+
+= = = = = = = = = = = 
+
+
+
+
+

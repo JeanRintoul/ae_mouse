@@ -1,0 +1,43 @@
+t10 - ae neural recording. 
+===================================
+
+M2 - new mouse
+
+Try to get gain = 2000 10hz recording, then with F21 in place, then acoustic isolation. 
+
+This is for the SNR figure with F21 in the paper. 
+If I have time, then do F21 recording at a higher gain. 
+
+10 recordings of each only, as VEP amplitude decreases with time. 
+
+= = = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m2 mouse. 
+Date of experiment: 15/05/2024  
+Mouse Cage: 131589
+Number of uses before: 7
+Gender: male
+Weight: 27g including head bar. 
+DOB: 15.10.2023
+
+= = = = = start time: 10:05 am  = = = = = = = =  
+  
+e142_ae_neural_recording.py
+with and without F21 and isolation test. 
+
+============================================== 
+iso = 0.6, gain = 5000, PRESSURE = 1MPA. 
+preamp filter 3hz-1Mhz band pass. 
+
+1. 10hz vep: iso = 0.5, gain = 5000. I think I got it here... there was a power surge due to construction equipment at file 6. It tripped the UPS. I could hear the equipment loudly somewhere. I went up to file 15 so I have a few extra. The modulation is clear. 
+
+2. F21 gain = 5000. The heat mat noise looks really bad now. I think this may be due to the F21 itself? I turned off the heat mat at file 12. The F21 is not really helping with the SNR at all. It seems to be causing this weird curve around the 500khz, spectral spreading... it is actually not that great. 
+
+3. F21 gain = 10000. pressure 0.2. VEP is now too small. heat mat is on. Noise seems to have dissappeared. Weird. Anyway, this is a tenable arrangement and I am not OVLDing. 
+The VEP is now very small - 1hr 20 minutes into the recording. 
+
+What I might want to do, is come back another day and do just this recording? When VEP is more fresh? 
+
+END  1hr 25 minutes under ISO. 
+
+What I might want to do, is come back and just do the F21, high pressure, high gain test when the VEP is large at the start of the experiment, then compare that - to the gain = 5000 etc measurement? 

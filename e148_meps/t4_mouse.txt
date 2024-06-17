@@ -1,0 +1,43 @@
+t3 - mouse 
+===============================================================================
+
+- pulse test with and without F21. 
+- acoustically connected and disconnected test. 
+- no filter on the brain preamp at all. gain = 200. 
+- EMG preamp 100Hz-1kHz filter, gain = 500. 
+- F21 test: start with no F21 - when I get an EMG response add the F21 and add 20% to the pressure, and repeat a few times. 
+- Acoustic connection test: acoustically connected get response, then disconnected with added 20% pressure. 
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+Mouse M10 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 1.4
+k2: 1.0
+saline: 50
+
+Date of experiment: 11/06/2024  
+Mouse Cage: 132473
+Number of uses before: 3
+Gender: male
+Weight: 30.6g including headbar. 
+DOB: 30.11.2023 
+
+= = = = = = = start time: 13:45 pm = = = = = = = 
+
+30 minutes in now. at 14:15. So add 30 to the timer and it is approx right. 
+
+
+
+
+
+
+
+
+
+
+

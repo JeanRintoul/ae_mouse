@@ -1,0 +1,120 @@
+t6 - meps test  m4 mouse. 
+===================================
+
+EMEPS only. 
+Which electrical stimulation electrode position, yields paw movements at the lowest voltage? 
+
+1.3 mA minimum to see a paw movement, the cup electrode is working best in mouth. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4.0
+X: 1.0
+k1: 1.0
+k2: 1.0
+saline: 50
+
+Date of experiment: 14/05/2024  
+Mouse Cage: 129801
+Number of uses before: 3
+Gender: female
+Weight: 23.0g including headbar. 
+DOB: 24.12.2023
+
+= = = = = = = start time: 10:30 am = = = = = = = 
+
+e141_e_mep.py 
+
+==============================
+
+
+1. continuity test. Continuity test passed. Implant is connected. 
+
+1hz, 5v signal. 
+
+2. 
+
+-  cup electrode in mouth, Using resistor based direct voltage application. 
+   - 5v works, 4v tiny mouth movement. impedance = 6.6k. 
+- both ptir electrodes 
+   - 5v nothing, 4v nothing. impedance = 7.7k. 
+- wire electrode touching skull on other hemisphere with gel and motor cortex electrode. 
+   - 5v nothing, impedance = 10k. 
+
+- cheek hair removal. 
+
+- cheeck electrode contralateral to the motor cortex electrode. 
+   5v:nothing, impedance = 11.2k
+
+- cheeck electrode contralateral the motor cortex electrode. bigger movement. 
+   5v: movement, particularly on cheek and side which has cup impedance 6.3k. 
+
+- cheek electrode on same side as the motor cortex electrode. using cup electrode on cheek
+  5v, impedance - 19.4k
+   
+- mouth again with cup electrode, 
+    5v: big movement. maybe I am just stimulating mouth with cup electrode? impedance 5.8k. 
+
+- can I use two large surface area electrodes? one thick wire on head, one cup in mouth? 
+     5v: tiny movement of mouth only... impedance 6.5k. 
+
+- changing the polarity, going back to one cup electrode in mouth and ptir electrode in brain. 
+   5v: larger mouth response. impedance = 5.8k. 
+
+- original polarity. 
+   5v: still getting big mouth response. impedance 6.5k. 
+
+Switch to david bonos one - bipolar. Not getting anything out? oh yeah, it cannot do low frequencies... 
+
+I switch to the visual cortex electrode being stim, and suddenly response was bigger? 
+- response is bigger when I use the visual cortex electrode? weird... 
+
+suddenly the impedance has changed. I do not know why. up at 70k. oh it was unplugged. good reason.  
+back ti 5.9k impedance.
+
+the mouth electrode is definitely the way to go... 
+
+Does the voltage change with time? 1.65ma. 
+
+Time: 1hr 19 minutes. 
+
+1hr 20 minutes 5v, i get small paw movement and jaw movement, 4v i get small whisker movement. 
+
+Confirmed: I am getting a larger movement with the visual cortex electrode and the cup mouth electrode. 
+
+Can I use lower values as I come out of anesthesia? 
+
+1hr 30 mins: i get small paw movement and jaw movement, 4v i get small whisker movement. 
+
+I am starting to get spontaneous movements, mouse is waking. 
+
+1hr 32 mins. everything has suddenly change
+i get big paw movement and jaw movement, 4v i get small whisker movement.
+
+still need  5v, 1.3 ma before I see anything. 
+
+- It is actually easier to see movement when there are no spontaneous movements. 
+
+stop. It doesn't seem like i suddenly need less current to obtain stimulation. 
+
+That's interesting and means the whole experiment is good for applying US? 
+
+= = = 
+
+to consider: 
+- use bonos source at its highest output. 
+- use visual cortex electrode as the stim electrode. 
+- try to look for whisker movements instead of whole paw movements. 
+- consider inserting EMG electrode if I think I have something. 
+- calibrate the position of the US using the AE effect itself. Is it bigger in any one direction? Measure with the cheek electrode and other head electrode... i.e. EMG. 
+
+this afternoon: last ae neural recording with f21 and new mouse?  snr optimization diagram. 
+
+
+
+
+
+

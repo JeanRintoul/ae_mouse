@@ -1,0 +1,51 @@
+t5 - mouse 
+=============================================================================
+
+Using 2 chained txs, at vout = 12. This time have an emg in the tail, and in the leg muscle. 
+Gain = 500. Include a GND under the mouse, to try to steer current away from the body, to avoid chances of conduction block.  Preamp on EMG is bandpassed between 100Hz-1kHz to remove the large DC offset. 
+
+gold cup electrode in mouth. 
+EMG in tail and rear paw muscle. 
+
+Attempt: 
+AEDC loo test
+AE loo test
+If I can see a response, take videos of both tests. 
+
+= = = = = = = = = = = = = = = = = = = = = =
+Mouse M3
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.2
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 10/06/2024  
+Mouse Cage: 125058
+Number of uses before: 10
+Gender: male
+Weight: 28.6g including headbar. 
+DOB: 15.10.2023 
+
+= = = = = = = start time: 8am = = = = = = 
+
+
+ae1 12v, p0.2 - i got v based emg. 
+ae2 v8, p0.25 - mostly nothing... but maybe a little tiny something on ae, but not large.  
+ae3 v10, p0.25 - 
+
+mouse came online 57 minutes in. 
+
+
+
+
+
+
+
+
+
+

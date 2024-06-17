@@ -1,0 +1,25 @@
+t9 - phantom: pressure versus dual sine amplitude. 
+==========================================================
+
+the increase should not be linear. 
+
+dual sine wave
+dfx = 4 
+gain = 500
+1k low pass on preamp
+duration = 6s 
+NO F21. 
+
+
+pressures     4hz amplitude. 
+============================
+0.05 			9.78
+0.1 			10.1
+0.15 			59.9 
+0.2				67 
+0.25 			140
+0.3				273
+0.35 			306 something weird happened - i think reflections might start getting in the way. This is what I see in ae effect too. 
+0.4 			816
+
+redo the 0.2s? 

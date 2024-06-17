@@ -1,0 +1,68 @@
+t8 - ae neural recording. 
+===================================
+
+M2 - 
+
+Try to get gain = 5000 10hz recording, then with F21 in place, then acoustic isolation. 
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m2 mouse. 
+Date of experiment: 09/05/2024  
+Mouse Cage: 127973
+Number of uses before: 7
+Gender: male
+Weight: 28g including head bar. 
+DOB: 15.10.2023
+
+= = = = = start time: 13:10 pm  = = = = = = = =  
+  
+e142_ae_neural_recording.py
+
+with and without F21 and isolation test. 
+
+============================================== 
+iso = 0.5, gain = 5000. PRESSURE = 1MPA. 
+gain = 5000 induced an OVLD. 
+Switched to gain = 2000. No OVLD. 
+
+preamp filter 3hz-1Mhz band pass. 
+
+1. 10hz VEP. Visible in first file. Continue gathering 20 of these. They look really good. 
+
+2. Added F21 into place. Kept gain at 2000. 20 reps. Suddenly the heat mat noise is back! gah. Mouse is moving weird in these... they have a bunch of noise in them from both heat mat and mouse movements, need to sift through them and eliminate the ones with large movements. I couldnt really see anything 
+
+3. With F21 in place, gain = 5000. Now it doesnt rail. It just seems dominated by heat mat noise. At file 12 I turned off the heat mat to remove the noise source. So look there to see clean files. This will shrink the VEP though. 
+
+4. Can I do gain = 10000? 1 files. I can get to this gain, but the VEP has dissappeared. Heat mat noise back. stop. 
+
+5. Isolation test at gain = 2000. The VEP is super tiny right now. Too much time passed since the original test. The VEP is there, just FAR FAR smaller. 
+
+
+Result: 
+- heat mat noise started when I introduced the F21. 
+- The F21 did reduce the electrical amplitude, but I didnt have enough gel on top of it... meaning I didnt have a great acoustic connection. I should retry this, but with more gel layer on top. 
+
+Also, in a future test, I should do only 10 recordings of each, and then the isolation test directly after the first connected test, otherwise the VEP amplitude shrinks with time. 
+
+- - - end 2 hrs 9 minutes. - - - 
+
+- next week, do a single test on this with the new mouse. 
+Monday: double surgery, then recovery for them for rest of week. 
+Tuesday: MEPS tests. 
+
+Wednesday: F21 test after meeting. 
+Thurs/Fri: MEPS test in afternoon after meeting. 
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,45 @@
+t3 - temperature mouse 
+===============================================================================
+
+- do ae 0.5Hz and measure the temperature change via video. repeat 4 times. It doesn't need to be done when the mouse is motor responsive. 
+
+- when the mouse is motor responsive, do a large number of repeats of a single frequency. 
+- consider trying switch again. 
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+Mouse M2 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 1.4
+k2: 1.0
+saline: 50
+
+Date of experiment: 13/06/2024  
+Mouse Cage: 132473
+Number of uses before: 14
+Gender: male
+Weight: 28.5g including headbar. 
+DOB: 15.10.2023 
+
+= = = = = = = start time: 9:48am = = = = = = = 
+
+- temperature test. I did 4 at 0.5 hz with ae first, and 4 with pressure first, taking videos of the thermometer the whole time. 
+
+I am not getting any deviation with pressure on the measurement electrodes. 
+
+53 mins mouse is on
+
+
+
+
+
+
+
+
+
+
+

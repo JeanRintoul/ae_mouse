@@ -1,0 +1,83 @@
+t2 - motor threshold test, using a pulse with and without F21. 
+========================================================
+
+Mouse M3
+- At what threshold do I get a pulse motor response in the mouse? 
+- add 20% and the F21, do I see a motor response? What is the motor response threshold? 
+- repeat 3 times? 
+
+No mouth or stim electrode required. Just measurement electrodes? One in tail, one in brain. 
+
+Measurement electrode in tail, same as other measurements. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 27/05/2024  
+Mouse Cage: 125058
+Number of uses before: 7
+Gender: male
+Weight: 29.5g including headbar. 
+DOB: 15.10.2023
+
+= = = = = = = start time: 9:24am = = = = = = = 
+e145_us_pulse_mep.py 
+
+Start without F21. 
+
+gain = 500. low pass filter 
+
+- While mouse is in deep anesthesia, I try to refine difference delta code. 
+difference delta seems more effective at df = 1
+
+With just an ultrasound pulse, the e field amplitude is HUGE. 
+
+- us pulse mep, 6 second duration. 3 pulses. over 1000 microvolts in amplitude. This seems sure to induce a mep... p out = 0.2 
+
+With just an ultrasound pulse, the e field amplitude at low frequencies is HUGE when I don't use F21.
+
+I am guessing that this e field amplitude, is going to do something when the anesthesia is lower. 
+It is very simple and clear. 
+
+- p out = 0.1 df = 625 microvolts. 
+
+
+- I can ideally show that the size of the MEP is proportional to the evoked electric field. 
+
+
+- In this motor threshold experiment, do everything at the motor threshold of no F21. Then swap enough times to show the effect is not due to the anesthesia level. 
+
+I have movement at 0.2 
+1675 uv df 
+#
+f21
+323 df
+
+
+End:11am. 
+
+Result:
+Positive: I got movements when I had very high electrical amplitudes. 
+Negative: The F21 didnt provide electrical isolation past the first time. Perhaps because the whole thing was slightly damp? This echoes what I see in the ae neural recording as well. 
+That means the first use of F21 recordings are good... 
+
+It DOES look like I successfully got EMG this time. ANALYSE it. This is because I actually induced a movement. 
+
+-- - 
+
+Thoughts: The amplitude is really high compared to what I get normally with the ae effect. This is because the voltage from the transducer is ALSO really high. 
+
+Is there a way I can feasibly apply such a high voltage to the mouse? For instance, can I daisy chain two of BONOs TX together? Can I use that mesh thing to apply the v signal on the head, or another cup electrode? 
+
+--- - - 
+
+It would be good if I had more F21... so I could place it again and again and itd be fresh...
+

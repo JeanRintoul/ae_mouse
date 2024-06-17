@@ -1,0 +1,60 @@
+t7 - ultrasound motor threshold test with and without F21, and attempt to get EMG without heart beat. 
+======================================================================================
+
+- I have new F21
+- I will have two electrodes in the tail or tail and leg to measure EMG without heart rate. 
+- Plan is to cycle the F21, each time using a new piece. 
+- preamp filter try 1k low pass only
+- lp hardware filter is in place. 
+Use mouse with vertical implant, as I do not need to plug it in as I am measuring from elsewhere. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+M5
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4.8
+X: 1.2
+k1: 1.2
+k2: 1.0
+saline: 50
+
+Date of experiment: 29/05/2024  
+Mouse Cage: 129802
+Number of uses before: 6
+Gender: female
+Weight: 26.8g including headbar. 
+DOB: 24.12.2023
+
+= = = = = = = start time: 12:10 am = = = = = = = 
+
+- The US low signal is far smaller when i have both electrodes in the leg. 
+- It may be worth having both a brain measurement, and an EMG measurement? 
+- I am not seeing any EMG like I was yesterday? Could it be my electrode placement? 
+
+Note: this is a small female mouse. 
+
+- - - - - - - - - - - 
+
+- The fact I could measure EMG yesterday at all, suggests I was inducing a high amplitude low frequency signal... However, when the mouse was coming out of anesthesia, I saw onset and wiggle activity, not a clear sine wave of motion or EMG. 
+
+1hr 18 minutes, I start getting motion. 
+finished 1 hr 37 minutes in. 
+
+Threshold is: 0.35 for a clear signal. 
+
+- Result, bypassing the heart DOES lead to less artifact in the EMG. 
+
+My F21 is only 1mm thickm which is too thin to attenuate the electrical signal enough. 
+
+TODO: make slightly thicker F21. 2mm thick. #
+
+- I sort of need to amplifier channels at the same time. One for EMG and one for brain? 
+- There is a second SR560. 
+
+- - - 
+
+
+
+

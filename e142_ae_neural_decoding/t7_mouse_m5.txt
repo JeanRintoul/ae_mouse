@@ -1,0 +1,53 @@
+t7 - ae neural recording. 
+===================================
+
+M5 - vertical mouse.
+
+Try to get gain = 2000 or 5000 10hz recording, then with F21 in place, then acoustic isolation. 
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m5 mouse. 
+Date of experiment: 01/05/2024  
+Mouse Cage: 129805
+Number of uses before: 1
+Gender: female
+Weight: 28g including head bar. 
+DOB: 15.10.2023
+
+= = = = = start time: 13:48 pm  = = = = = = = =  
+
+e142_ae_calibrate.py    
+e142_ae_neural_recording.py
+
+============================================== 
+
+1. calibrate.py didnt work too well. I stopped caring. 
+
+2. ae neural recording 10Hz, pressure = 1MPa. iso = 0.5 
+   gain = 5000. no ovrld. signal looks messed up somehow. 
+   There is blood on the head. turned iso up to 1.0 and stop. 
+   I cannot see any VEP. 
+
+3. I stop, remove gel, and guy removes mice from other room for perfusion. 
+   I clean up head with saline, and then try do do a simple VEP test. 
+   Mouse is waking, 
+   Still no VEP. Stop. This mouse now also has a connection problem. 
+   I think somehow the electrodes are not connected - this has happened before with the vertical electrodes. The problem is the electrodes bend when I plug in the connector. 
+   No signal. Stop. 
+
+4. This mouse has a bad connection. It tried to fix it but still couldn't get a VEP. 
+
+
+This leaves mouse 2 and mouse 3. I need to make 2 new mice on tuesday. 
+
+- - - 
+
+
+
+
+
+
+
+
+

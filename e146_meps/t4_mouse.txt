@@ -1,0 +1,69 @@
+t4 - mouse 
+======================================================================================
+
+Goal: US modulation decreases in amplitude when the electric signal from the ultrasound is blocked. 
+US modulation increases in amplitude when an independent electric field is added. 
+
+
+Hardware improvements: 
+- try 2 EMG electrodes in a single paw to try to decrease DC offset between measurement points. 
+
+1. At the start do ae_pulse_mep where I keep the acoustic amplitude stable, and pulse the e field. 
+2. With and without F21 measurements. At the end when mouse has movements. e146_us_pulse_mep.py 
+
+= = = = = = = = = = = = = = = = = = = = = 
+Mouse M10
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.2
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 04/06/2024  
+Mouse Cage: 132474
+Number of uses before: 0
+Gender: male
+Weight: 30.6g including headbar. 
+DOB: 30.11.2023
+
+= = = = = = = start time: 13:12 pm = = = = = = = 
+
+- Start with no F21 in place? 
+
+gain in brain = 10, gain in EMG = 500. 
+- lootest4 I had overload - whereby i may have been inducing frequency mixing with itself? 
+
+- i can confirm that the peaks at start and end pulse are not EMG. 
+
+- i fiddled with the pulse start times for test 6. improved. 
+- I am NOT seeing EMG. 
+
+- could the whole low frequency signal be seen as rectification from my filter???
+
+stop, put one electrode in tail. Still, no EMG. This suggests that the mouse simply isnt responding yet. So that means I could put the electrode back in the leg, as I do not yet have a clear answer on it? 
+
+- I am now getting EMG. 1hr 19 minutes in. at p = 0.3 
+
+I would say EMG was LESS sensitive this time... 
+sometimes not picking up small movements, whereas it appeared to do a better job when it was in the tail. 
+
+For the pulse mep, I seem to only get a response for the first one, which coincides with the US onset - which is a HUGE DC offset about 3000 uV in size. 
+
+1hr 40 mins moved into warming chamber. 
+
+Result: 
+This mouse didn't get EMG until close to the end. 
+- I got a single good F21 recording (3 pulses). This should make a the picture I want... I should consider carefully what next to do. 
+
+- the pulse series is confounded by the start of the pressure being when the 
+
+Discovery: I have been filtering the EMG wrong... I should not be high pass filtering it... it causes giant filter artefacts. 
+
+
+
+
+

@@ -1,0 +1,86 @@
+t1 - ae neural recording. 
+===================================
+
+M2 
+
+Attempt at a full test.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. 10Hz VEP with shielding test, lots of repeats to make a beautiful comparison plot. 
+2. 10Hz ae vep at 1MPa, gain = 5000. preamp + acoustic isolation test with perspex. More than 20 reps? 
+3. 10Hz ae vep at 1MPa, gain = 10000. 
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m2 mouse. 
+Date of experiment: 29/04/2024  
+Mouse Cage: 129802
+Number of uses before: 5
+Gender: male
+Weight: 27g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 9:32am  = = = = = = = =  
+
+e142_vep.py 
+e142_ae_calibrate.py    
+e142_ae_neural_recording.py
+
+=============================================
+
+some of the silicon was raised. I pulled it off, and saline cleaned underneath, then re-applied new silicon. 22 minutes in. gain = 500. 
+
+1. VEP shield test. 10Hz VEP unshielded. With and without aluminium foil. 
+iso = 0.5, at file 14 i upped the iso to 0.7 due to too many movements. 
+2. 10hz VEP shielded. iso = 0.5 
+3. calibrate the ultrasound position. seemed stable and reliable. 
+4. 10Hz ae neural recording, iso = 0.6. 1hr 14 minutes in. gain = 5000, p out = 0.1v, 1hz to 1M bandpass filter. I could see it immediately. I could also see some heat mat noise so I turned off the heat mat. Heat mat off decreased VEP size... so I need to repeat this. 
+6. gain = 10000 test? do it how many times? 20 repeats. I should be able to see it in a single recording. It overloaded a couple of times. 3Hz-1MHz seems to eliminate OVLDing. The issue is the DC offset taking it out of range. The mixing is definitely happening in the brain/gel... and not the preamp. This gain is better for getting better SNR really... switch? 
+It looks great. 30SNR... this is the way to go. 
+
+5. Acoustic isolation test with 3mm thick perspex sheet? System remains electrically connected via the gel, with ultrasound in exactly the same position, but acoustic signal and associated reflections can't get through. Does acoustic isolation test work? gain = 10000 too. 
+Single recording result was? there is mixing. 
+
+I do not know if the perspex is acoustically transparent or not. 
+The F21 didnt work either - though I didn't put it in at an angle so some acoustic field would go through. I seemed to be getting suddenly some noise from the heat mat all of a sudden. 
+
+It did work work , when i used an air gap with gel still connecting on the side with a petri dish. So it is electrically connected... but also definitely acoustically disconnected. 
+
+This test worked. I need reps of this. 
+
+END. 
+
+Single-shot focused acoustoelectric neural recording, with gain = 10000. 
+
+NOTE: must keep mouse warm to get a good VEP. 
+
+I made a mistake in the vep shield test by not changing the time length of recording in thonny. 
+I could consider redoing the vep shield test? 
+
+12:33am, 2hrs 44 min under iso. 
+
+TODO: 
+After this test, then decide if I can do a second test this afternoon on another mouse. Bring up both M3 and M4 mouse ready to test. I think I should re-test M4 mouse, to see if it can work? Maybe last time I just didn't plug it in right. If M4 mouse is indeed faulty, I need to prepare 2 mice tomorrow. 
+
+Since mouse4 has a bad connection, and mouse 1 died. I think I should do surgery tomorrow. I only really have 3 mice in play? 
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+

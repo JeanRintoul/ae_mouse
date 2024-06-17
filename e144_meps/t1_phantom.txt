@@ -1,0 +1,97 @@
+t1 - phantom. 
+===================================
+
+F21 is in place, low pass filter on preamp, gain = 200. The ae signal looks great. 
+Bonos current source. 
+
+- - 
+gain = 200. 
+vout  = 4  - if i go above this i get a weird non-linear effect in the preamp. I think I hit a CIL of the thick wires I am using, this goes away if I use a cup electrode? 
+
+
+df    = 1 hz
+pout = 0.2 
+filter 1k low pass, + my low pass filter. 
+duration = 10s. 
+
+- - - - 
+
+Frequencies / Amplitude(pp)
+0.0 - 200
+0.5 - 339
+1   - 284
+2   - 313
+4   - 245
+8   - 338
+20  - 375
+40  - 321 
+
+Notably, the ramp doesnt have the same trend as it had the other day. Perhaps the spaces/impedance is an issue? 
+
+I switched so that the stim electrodes were the PtIr wires, and measure was the cup and thick wire. 10s duration. 
+
+0.0 - 193
+0.5 - 127
+1   - 117
+2   - 135
+4   - 119
+8   - 114
+20  - 155
+40  - 124
+
+I am no longer getting this trend with frequency. Switch to duration = 6s? 
+p out =0.3 
+
+0.0 - 124
+0.5 - 138
+1   - 
+2   - 
+4   - 
+8   - 
+20  - 
+40  - 
+
+I tried pulsing with a 0.5s continuous wave pulse. 
+Looks pretty good really, large onset deviation - this looks like it will work in a mouse... 
+
+
+Vary the voltage, and note the DC amplitude. duration = 10. 
+
+pout = 0.2 
+using F21. 
+DC coupled. 
+
+vout   / dc offset.  
+0       134 (from the US through the F21)
+1       134 
+2       140
+3       167 
+4       309
+5       148 
+
+- - - - - - - - - - 
+
+proposed waveform, back to 0.1-1khz filter. AC coupled. duration 10s. 
+
+vout   / dc offset of pulse i.e. at 1Hz /  p-p pulse amplitude.    
+0       47
+1       41
+2       61
+3       32 
+4       75
+5       88    184
+6       87    194
+8       103 
+10      130   273
+12      113   304
+
+i think I should be measuring the pp amplitude instead. This is not a sine wave. 
+
+duration = 10
+
+v12, no pressure.  - pp 120 - i can see ionic mixing and weird shit. 
+v6, no pressure.  - pp 66 - very small amplitude ionix mixing?  
+
+pressure 0.2, v 0  - pp 175 (mixing from the supplied voltage of the transducer. )
+
+pressure 0.2, v6.0 - 

@@ -1,0 +1,76 @@
+t5 - ae neural recording. 
+===================================
+
+M3 - horizontal mouse.
+I have now seen the promised land when the gain is high. I cannot get to this gain when the electric signal is too high, thus I should try to use F21 again. 
+
+Attempt at a full test at gain = 10000, or the highest gain I can achieve without OVLD.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. 10Hz ae test. What is the amplitude of the carrier? Does it change when I use F21? If I use F21, can I increase the gain? 
+2. 10Hz ae isolation test. 
+3. Try to get some 8hz modulation. 
+4. Try to do a spatial map if I can get a good modulation. 
+5. Do US on and off today. To see if VEP amplitude effected by US. 5 recordings in each state.  
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m3 mouse. 
+Date of experiment: 01/05/2024  
+Mouse Cage: 129805
+Number of uses before: 1
+Gender: female
+Weight: 28g including head bar. 
+DOB: 15.10.2023
+
+= = = = = start time: 10:16am  = = = = = = = =  
+
+e142_ae_calibrate.py    
+e142_ae_neural_recording.py
+
+============================================== 
+
+1. calibration. 
+   p vout = 0.1 1MPa. 
+
+2. ae neural recording 10hz: i can go up to gain 5000, 10000 ovlds. I seem not to be getting a vep though iso is at 0.5. Heat mat noise that I cannot get rid of. 
+
+3. Do with and without US VEP test. 3Hz-1Mhz preamp, gain = 5000. 11 recordings of each, labelled in a folder. The VEP was there, but I wasn't getting very good modulation... so this really is just a vep with ultrasound versus vep with no ultrasound test. - Done. 
+
+It looks roughly equivalent. VEP is there... 
+
+If I am not getting a clear modulated vep, I shouldn't do a spatial map, instead - try the F21. Does it make a difference to the carrier amplitude? 
+
+= = = F21 testing = = = 
+I have NO VEP? 
+4. No heat mat, 10hz, 1MPa - can I see modulation at gain = 5000? ASD amplitude shows: 552 microvolts. 
+
+5. F21 carrier amplitude test. Single file is sufficient. 
+    - without F21 it is 552 microvolts. 
+    - with F21 it is 100 microvolts. 
+
+   Gain at 10000 with F21. I no longer overload the preamp. Do I see any mixing though?  
+
+   The problem is that I am not getting a VEP. This is a different problem, and is related to the mouse. This mouse sometimes has a VEP, and sometimes doesn't. Altogether it seems highly variant in amplitude and I think at iso =0.5 it may be too high as it is never moving. 
+
+   For whatever reason, I am not getting a clear modulation. I was also not getting a clear modulation previously without the F21... so yeah... I could try repositioning. 
+   I also have a lot of heat mat noise right now which is getting in the way. 
+
+   Since I am not seeing the modulation effect, I will try repositioning, and then if I do not see it stop the experiment, go to lunch, and come back and try mouse M2 again, after checking the heat mat and thermometer. 
+
+   VEP has gone... not sure... Ok stop. Iso is below 0.5. Mouse is moving a bit. 
+
+   1 hr 52 minutes into warming chamber. 
+
+   12:07. 
+
+
+= = = = 
+
+
+
+
+

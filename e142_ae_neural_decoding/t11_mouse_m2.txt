@@ -1,0 +1,46 @@
+t10 - ae neural recording. 
+===================================
+
+M2 - Can I get high SNR, at the beginning of my recording time when VEPs are big using high pressure and high gain with F21? 
+
+IF I have time, do an acoustoelectric isolation test at the end. 
+
+= = = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m2 mouse. 
+Date of experiment: 17/05/2024  
+Mouse Cage: 131589
+Number of uses before: 7
+Gender: male
+Weight: 27g including head bar. 
+DOB: 15.10.2023
+
+= = = = = start time: 10:05 am  = = = = = = = =  
+  
+e142_ae_neural_recording.py
+with F21 and high pressures. Can I get a better SNR this way? 
+
+- I put new thin layer silicon. 7 minutes in. 
+
+================================================= 
+iso = 0.6, gain = 5000, PRESSURE = vout = 0.2 
+preamp filter 3hz-1Mhz band pass. 
+
+I can only get to gain 5000 without OVLD at this pressure w F21. 
+
+14 minutes in all set up. iso at 0.5, mouse moving too much. 
+
+1. 11 repeats of 10hz VEP at gain = 5000, p out = 0.2 with F21. I couldnt see the modulation? it is not clear to me F21 is helping, though I could on my first attempt... 
+
+2. 11 repeats of 10Hz VEP at gain = 10000, p out = 0.1 with F21. 
+   I can now get to this high gain. iso = 0.6. I got the modulation ... it looks small though.
+
+3. 11 repeats acoustoelectric isolation test at gain 5000? No F21. Just the regular test... p out = 0.1, gain = 5000. no f21. The vep has almost gone so this might not be that great a test. I will run it anyway, then end the experiment. This worked. 
+
+1hr 15 minutes under isoflurane. 
+
+Mouse in warming chamber, given wetmash on return to cage. 
+
+= = = = = = = = = 
+
+

@@ -1,0 +1,79 @@
+t5 - mouse 
+======================================================================================
+
+- Block the acoustic signal from the US, such that only the electrical signal gets through to the mouse. Do it when the mouse is EMG responsive to US, and try to keep to the same US levels as yesterday i.e. Pvout = 0.3. 
+
+- Enhancing the amplitude of US neuromodulation by adding an additional electric field? 
+    - this is a leave one out test at pvout = 0.3 and 
+
+= = = = = = = = = = = = = = = = = = = = = 
+Mouse M9
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 1.4
+k2: 1.0
+saline: 50
+
+Date of experiment: 05/06/2024  
+Mouse Cage: 132299
+Number of uses before: 0
+Gender: male
+Weight: 31.7g including headbar. 
+DOB: 30.11.2023
+
+= = = = = = = start time: 9:45 am = = = = = = = 
+
+- 16 minutes to set up entirely. 
+
+- First try US pulse mep code at p out = 0.3. 
+
+I can see clear paw movements with both sigs applied, but I am not getting EMG.
+This suggests that the way i am measuring EMG is not good enough. This could ruin the whole measurement situation really. I tried re-inserting in the tail and leg and still it isn't great. 
+
+I switched to the other pair of EMG electrodes I have. I am still not clearly seeing what IS the EMG signal as I can see paws at the front move. 
+
+Lets try the paws at the front then. 
+The front paws yield lower amplitude values, but still I am not measuring EMG well. 
+
+I unplugged the sr560 and the noise went way down... I was getting mains noise. 
+
+I only get EMG when I have a large DC offset.... THIS should be important to getting ae meps!! 
+(I think the pressure is currently too high)
+
+- - - 
+
+Final test is the pressure with and without acoustic connection. 
+
+This test definitely works. Pressure was at 1MPa. 
+
+
+- - - The us pulse mep test, I never really got at the right levels - - - 
+
+What I did learn was that I need to induce a large offset in a short duration of time to obtain a measurable EMG response. This is best done
+
+- I have the dual sine wave example showing that a slow ramp does not induce movement. 
+- When I pulse the electric field, I can see an offset in the EMG signal. However - this isn't EMG. I need like 10mV of offset to really see it in the EMG trace, and the DC offset to be zeroed... This is hard when i am continually apply US. 
+
+
+- Unless there is a way to compensate for this? By applying a DC field? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

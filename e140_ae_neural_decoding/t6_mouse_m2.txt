@@ -1,0 +1,85 @@
+t6 - ae neural recording. 
+===================================
+
+M2, vertical headbar, first use. 
+
+Attempt at a full test.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. frequency specificity test 8Hz and 10Hz VEP with US at 1MPa. v out = 0.1. 10x repeats of each. 30 seconds duration of each. 
+2. side to side test, and attempt at spatial map based on 10Hz VEP. 
+3. Acoustically connected vs not. (this should just be the not, as 1. is the connected part)
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m2 mouse. 
+Date of experiment: 18/04/2024  
+Mouse Cage: 127973
+Number of uses before: 4
+Gender: male
+Weight: 28g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 9:35am  = = = = = = = =  
+
+e140_vep.py 
+e140_ae_calibrate.py    
+e140_ae_neural_recording.py
+
+=============================================
+
+02 is very low, keep a close eye on it. 
+
+1. 10Hz VEP, iso = 0.7 10 mins in. 16 microvolts or 32 pp. smaller at 20 bu8t there. 
+
+2. calibration: seemed stable and repeatable. removed wires. 
+
+I put alfoil over the connection cable to further isolate it from the transducer. 
+3. 10Hz ae vep: iso = 0.6, 30 minutes in.
+    I could see it in a single file... this will do. do 10 reps.  
+    it is there. 
+
+4. 8hz ae vep: iso = 0.5 10 reps. got it. 
+
+5. side test. drilling noise in the background. I can still see the signal 10 hz modulated signal.  
+
+6. acoustically dc. signal at 500khz is totally gone... so that works. I turned the iso up at the final files because too much mouse movement. 
+
+7. sidetest 2. arranged gel so there is no chance of acoustic reflections being the culprit. The us is over the side of the head bar, not near the cabling or connector... gel connection so that there is a wet conductive connection. iso = 0.5, vep = 10Hz.  
+
+I can immediately see the ionic mixing. this means that what I have is ionic mixing, not acoustoelectric mixing. 
+
+This sidetest confound, means that I am getting ionic mixing dominating, not acoustoelectric mixing. Both likely exist in the medium but acoustoelectric mixing is focal. 
+
+I used foil shielding in this one for the cables. 
+
+=== i think i have enough data now. stop testing mice. === 
+
+2hrs 5 minutes. end of acoustoelectric neural recording. 
+
+ionic mixing in electrolytes. is the thing. 
+
+How can I show that this occurs? 
+
+I am out of isoflurane. 
+
+=== === === === === === === === === === === ===
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+

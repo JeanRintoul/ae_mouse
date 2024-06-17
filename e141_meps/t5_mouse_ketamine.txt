@@ -1,0 +1,91 @@
+t5 - meps test  m5 mouse. 
+===================================
+
+F21 in place, with heaped gel on top. Only do pressure measurements at the end, to minimize US saturation. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4.0
+X: 1.1
+k1: 1.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 13/05/2024  
+Mouse Cage: 129802
+Number of uses before: 5
+Gender: female
+Weight: 23.6g including headbar. 
+DOB: 24.12.2023
+
+= = = = = = = start time: 13:42 am = = = = = = = 
+
+e141_dualsine_mep.py (with and without GNDing) - do I get a movement in either case? 
+e141_ae_mep.py (can I get this working?) Have some thoughts on how to improve it. 
+
+==============================
+
+ensure to completely tape over the VEP electrode - don't add nail polish if I don't have to. 
+
+1. continuity test. oops, it is the same mouse i put high pressures into on friday. This mouse was continuous... 
+
+2. Consciousness monitoring. works best when both electrodes are in the brain. 
+
+   Time     Ketamine 		    
+   (mins)	amplitude(0.9hz)    
+   ===========================
+    30          40.0 
+    40          36.0
+    50			 48.8  				 				
+    60			 52.0 				
+    65 			 31 			  
+    70			 20                 
+    80			    				
+   				 
+
+2. AE MEP preparation. 
+
+- Since the amplitude of dual meps is so small in this configuration, I can't really use it to test if everything is working. 
+
+f21 in place
+pv out = 0.4, vout = 6v.  g= 100. lp filter in place before preamp.
+
+- I did an ae mep size vs frequency, and all the generated voltages looked pretty good. 
+
+
+Can i do plain e mep? yes i can but my voltage output is 6v. 1hz. So I have a fairly high threshold, before I can see anything. 
+
+My threshold for seeing anything is super huge. 5v just a bit... 
+So if this is direct electrical stim, I am going to need something much bigger. 
+
+= = = = = = = = = = = 
+
+- So what i need to do is to use less voltage to obtain a bigger field gradient
+This again points to needing a gradient field. 
+
+- I also get all the secondary harmonics from applying a voltage with different size electrodes... and a massive electrochemical drift. 
+
+What dominates is the DC offset... 
+
+This may also have to do with how I am measuring it. 
+
+1hr 49 minutes. Moved to warming chamber and given wet mash. 
+
+Revising the files, they look amazingly great. The signals are generated correctly and i get about 150 microvolt amplitudes at 1Hz. The problem seems to be the non-linearity induced at high fields. I need 
+
+
+- What's happening is that although I can generate a the difference frequency, I am generating a far larger DC offset in the mouse and this activity is what I am seeing, I think this is due to electrochemical interaction between cup electrode and the PtIR electrode. i would do better to have two closely positioned electrodes at the motor cortex to deliver the current, so I deliver less with fewer non-linear interactions due to electrode interface. 
+
+TODO: double e gradient field surgery. 
+Get my stuff OFF dropbox. 
+
+
+
+
+
+
+
+

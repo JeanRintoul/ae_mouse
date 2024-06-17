@@ -138,6 +138,8 @@ def aeti_recording(**aeti_variables):
             command = command + ' -m ' + str(value)  
         elif key == 'long_recording':
             command = command + ' -q ' + str(value) 
+        elif key == 'difference_delta':
+            command = command + ' -9 ' + str(value)             
     # print ('command: ',command)
     # print ('prefix: ',prefix)
     execution_result = None
@@ -271,6 +273,7 @@ def impedance(**aeti_variables):
     v_idx = find_nearest(frequencies,current_signal_frequency)
     V_pp  = fft_v[v_idx]*2
     I_pp  = fft_i[i_idx]*2    
+    #     
     # For low frequencies, it is hard to get an accurate fft amplitude without a long time duration. 
     # if current_signal_frequency < 100:
         # V_pp = np.max(v_data) - np.min(v_data)
@@ -280,11 +283,11 @@ def impedance(**aeti_variables):
     #     V_pp = np.max(v_data) - np.min(v_data)
     #     I_pp = np.max(i_data) - np.min(i_data)
     #     measurement_pp = np.max(data[m_channel][start_pause:end_pause]) - np.min(data[m_channel][start_pause:end_pause])
-    
+    #     
     Z = np.abs(V_pp /I_pp)
     print ('max I(mA),V(V),Z(Ohms)', 1000*I_pp,V_pp,Z)
     amplitude = aeti_variables['current_amplitude']
-
+    # 
     # Phase calculation
     # Center both I and V around zero, normalize and filter so sine wave is easier to align and work with. 
     tt = np.linspace(0, duration, N, endpoint=False)

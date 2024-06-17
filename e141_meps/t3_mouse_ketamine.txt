@@ -1,0 +1,102 @@
+t3 - meps test - Can I get MEPs using ketamine. 
+===========================================================================
+
+Mouse M5 - vertical implant mouse. 
+Ensure that the two electrodes are not connected in the gel. 
+keep the two electrodes electrically isolated from each other. 
+Mice with vertical headbars and dubious connection. Must perform multimeter connection test first, and attempt to fix. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4.0
+X: 1
+k1: 1.0
+k2: 1.0
+saline: 50
+
+Date of experiment: 10/05/2024  
+Mouse Cage: 129802
+Number of uses before: 4
+Gender: female
+Weight: 23.5g including headbar. 
+DOB: 24.12.2023
+
+= = = = = = = start time: 10:02am = = = = = = = 
+
+e141_ae_calibrate.py 
+e141_vep.py    (to see when the neurons reconnect)
+e141_dualsine_mep.py (with and without GNDing) - do I get a movement in either case? 
+e141_ae_mep.py (can I get this working?) Have some thoughts on how to improve it. 
+
+==============================
+
+The ketamine dose is so low, it takes a while to settle into it. 
+Both electrodes are connected. 
+
+1. Do connectivity tests and re-nail polish to guarantee insulation. Connected. 
+   Put nail polish on the VEP electrode, it was exposed. 
+
+2. e meps. cup electrode in mouth. I ramp the voltage output seeking a mep response by eye. I get it at 5V output. The mouse is at max K depth. This is pretty big... One cup electrode in mouth, the other over motor cortex. 
+
+3.  I use 5V out, but use both the electrodes that are in the brain. No response. The position really matters. 
+
+4. Now, reverse the polarity of the cup and motor cortex electrode. Same effect. 
+
+5. Try a chest electrode. Can I get an emep response with it? Doesnt look like it. No... the mouth works much better, I can see whole body response at 7V output. 
+
+I think I need a high field gradient, going through the motor cortex to do this. 
+
+6. Set up ultrasound and try dual meps. 
+   This time I used the visual cortex electrode and chest electrode to measure the signal, and left the motor cortex and cup electrode hooked up to stim. 
+   I have the low pass filter in place. 
+
+   I can now measure the dual mep signal quite well. gain = 500. I cannot yet get a response as ketamine level is too high. 
+
+   Weird power fault. I turned the UPS off and rebooted everything, moved the mouse to the warming chamber. 
+
+7. Dual meps works again... .
+
+What I need is a plan to iterate and determine which amplitude of ae signal I need, to generate a response, by using emeps? 
+
+switch to bono isolated voltage source. 
+
+8. ae meps. 
+   measuring it this way seems to have a large dc offset... 
+
+ If I put the pressure up too much, I seem to induce some sort of surge state on the NAS and everything shuts down. 
+
+Where is the RF amplifier plugged in? I think the RF amplifier needs to be plugged into the mains to avoid this surge state. 
+
+I put the RF amplifier into the mains socket so it doesn't go through the UPS. 
+
+9. pressure out = 0.3. No surge induced... clear 1Hz visible. 13.4 microvolts. 
+
+pressure = 0.4 - bubbles suddenly appear at this pressure... df = 105 microvolts. 
+
+
+I am seeing movements, sometimes they even seem to correlate... but I also cannot get the dual sine mep right now. 
+
+TODO: 
+- Need to update ae mep code so only comput fft on central part. 
+- Also it should start in such a way as it is small then goes big, not at maxima. 
+
+
+try emep:  i couldnt get it, though i could get it at the start. There is a more general error here in what I am doing. 
+
+
+Go back and look at when I successfully got emeps - where were the electrodes? How did I do it? 
+
+TODO: 
+- go to cafe and add back that amplitude with respect to frequency in saline and phantom, as well as the relationship with ionic mobility plot. 
+- Figure out a plan to iterate to a movement using ae meps, by alternating between consciouness measurement, and emeps. 
+
+- 
+
+
+
+
+
+

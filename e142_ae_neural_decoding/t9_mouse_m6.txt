@@ -1,0 +1,47 @@
+t9 - ae neural recording. 
+===================================
+
+M6 - new mouse
+
+Try to get gain = 2000 10hz recording, then with F21 in place, then acoustic isolation. 
+
+This is for the SNR figure with F21 in the paper. 
+If I have time, then do F21 recording at a higher gain. 
+
+10 recordings of each only, as VEP amplitude decreases with time. 
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m6 mouse. 
+Date of experiment: 15/05/2024  
+Mouse Cage: 131589
+Number of uses before: 0
+Gender: female
+Weight: 25g including head bar. 
+DOB: 24.12.2023
+
+= = = = = start time: 09:13 am  = = = = = = = =  
+  
+e142_ae_neural_recording.py
+with and without F21 and isolation test. 
+
+M6 has major issue - the plug is at an angle such that I cannot plug into it and put it in the neurotar. 
+
+============================================== 
+iso = 0.5, gain = 2000, PRESSURE = 1MPA. 
+preamp filter 3hz-1Mhz band pass. 
+
+1. I am not getting a VEP. 
+
+Stop: go get mouse M2, and try again. 
+
+
+
+
+
+
+
+
+
+
+

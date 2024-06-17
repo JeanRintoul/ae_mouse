@@ -1,0 +1,79 @@
+t7 - mouse 
+======================================================================================
+
+- Continuous wave loo test, showing that adding an additional electric field, changes the EMG response. Have both fields at the same frequency. 
+
+- Try some AE Loo tests at higher amplitudes? How do I maximize the DC offset? It 'may' be that a faster or slower frequency is key - try to generate a 10mV oscillation. 
+
+- EMG in the front paw. 
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+Mouse M3 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.2
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 06/06/2024  
+Mouse Cage: 125058
+Number of uses before: 0
+Gender: male
+Weight: 29.3g including headbar. 
+DOB: 15.10.2023
+
+- emg in tail and rear paw. 
+
+= = = = = = = start time: 9:50 am = = = = = = = 
+- all set up 17 minutes in. 
+- Ok I am generating a beautiful 0.5Hz, but it may be too early for EMG. 
+- the mouse feels a bit cold - i wonder if this is a problem. 
+
+- when I put the volts up past 0.1, i seem to get too much residual in the emg signal. 
+- I moved the cables so the cable from the sr560 wasnt near the stim cable. 
+
+- at pout - 0.2, v 0.1 i am way under motor threshold. 
+
+Problem: When I put the voltage up, the EMG signal is a mess. 
+
+- I still have a gnding issue... 
+- put moisture in mouth too. 
+- moisture on belly. 
+
+- TO measure EMG, I am going to have to go down to a lower amplitude voltage - OR move the other electrode to the same leg to make a small difference? 
+
+- The second emg electrode had slipped out abit... i need a more secure solution to this. 
+
+- I am having a lot of issue with the emg electrodes. I am getting noise from the voltage source on them. 
+
+- Over time, the pressure induced dc does appear to go down. I am still not getting any paw response at 1hr 35 minutes. Despite pressure being quite high.  
+
+- Why is this mouse completely unresponsive so late in the piece? The signal I am applying looks really good. 
+1hr 43 i see a whisker twitch! 
+
+- mouse is suddnely pretty awake 2 minutes later? 
+very responsive. 
+
+Weirdly, my noise issue subsided as the mouse was waking? 2hrs in now. 
+
+Look at: 
+- with aedc6, the mouse had lots of moving under the ae field, no moving under the pressure field, or v field... 
+- can i repeat this? mouse started moving too much. stop. 
+
+mouse into warming chamber 2hr 14 minutesin. 12:03
+
+
+Though visually aedc6 was awesome... i couldnt get it due to the voltage signal somehow being in the wrong f range? 
+
+- when there was emg signal... i DID get it. So that isn't the problem. Why amn I not filtering away the EMG? 
+- It looks like the RF amplifier is injecting mains noise into the system? 
+
+This is with the RF amplifier. 
+
+
+
+

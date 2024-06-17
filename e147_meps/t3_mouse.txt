@@ -1,0 +1,69 @@
+t3 - mouse 
+==============================================================================
+
+This is an EMG noise debugging test. 
+- To start with, try applying the the stim voltage through the motor cortex electrode. 
+- measure emg between the other brain electrode and a rear tail emg. 
+
+EMG at gain = 500? 
+
+Attempt: 
+AEDC loo test
+AE loo test
+
+If I can see a response, take videos of both tests. 
+
+= = = = = = = = = = = = = = = = = = = = = =
+Mouse M6
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4.4
+X: 1.1
+k1: 1.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 09/06/2024  
+Mouse Cage: 131589
+Number of uses before: 4
+Gender: female
+Weight: 25g including headbar. 
+DOB: 24.12.2023 
+
+= = = = = = = start time: 9am = = = = = = 
+
+The mouse was slow to go under anesthesia, and then its breathing momentarily stopped, then started again. It is gasping now. Breathing steadied and I continued. 
+
+ae1 - I first attempted a low voltage and I could still see this mixing on the EMG channel, suggesting this electrode position is not the culprit. The EMG has a ton of 50Hz noise in it. 
+
+ae2 - Next, I switch to the other sr560. i.e. the brain sr560. gain = 200 on brain chan. The signal coming through is really nice... ? 
+
+ae3 - remove the hardware low pass filter from the emg channel on the emg amplifier? i.e. plug the emg electrodes streight into the emg amplifier and do another recording. This is to determine if the issue is the amplifier, or the low pass filter. Without the low pass filter, the DC offset is huge. It isn't railing... and I can see the heart beat very clearly. This means something weird is going on with this hw filter. That means I have a massive DC offset occuring in the brain. This is the cause of my issue? ... or one issue at least.  
+
+I think both sr560s are working. one of my filters is not. 
+
+Applying a current induces a large DC offset... 
+
+ae4 - try the emg sr560 with the hw filter i was using for the brain. 
+      didnt look super great... the dc offset was gone. Problem could still be in the emg sr560. 
+
+ae5 - brain filter and brain sr560. 
+
+ae6 - brain filter and brain sr560, voltage amplitude 0.1. 
+
+ae7 - higher pressure and voltage on brain filter and amplifier. gain = 200.  
+
+ae8 - gain 500 no ovld. 
+
+ae9 - gain 500 lower pressure. p0.2
+
+rest were at gain = 500. 
+
+So what about it... 
+
+1hr 30 minutes, mouse into warming chamber. 
+
+
+Result.

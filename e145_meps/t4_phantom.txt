@@ -1,0 +1,16 @@
+t4 - phantom
+===========================================================================
+
+Data: 27/05/2024
+
+- I need to daisy chain two bono txs so I get a 4x increase. 
+
+At the  max I can get 85Vpp. This is still significantly below where I need to be. 
+Its the RF amplifier that can make high voltages... 
+
+
+When I get a response, the rf voltage is about 100V pp. 
+
+
+
+

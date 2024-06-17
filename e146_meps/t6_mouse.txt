@@ -1,0 +1,71 @@
+t6 - mouse 
+======================================================================================
+
+- Continuous wave loo test, showing that adding an additional electric field, changes the EMG response. Have both fields at the same frequency. 
+
+- Try some AE Loo tests at higher amplitudes? How do I maximize the DC offset? It 'may' be that a faster or slower frequency is key - try to generate a 10mV oscillation. 
+
+- EMG in the front paw. 
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+
+Mouse M7
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.2
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 05/06/2024  
+Mouse Cage: 132297
+Number of uses before: 0
+Gender: male
+Weight: 29.4g including headbar. 
+DOB: 30.11.2023
+
+= = = = = = = start time: 12:50 pm = = = = = = = 
+
+- I am not seeing any EMG. This mouse seems less responsive? 
+  Mouse seems genuinely 'off' while under anesthesia. 
+
+The light is going on and off - I think i ened better GNDing. 
+
+I added better gnding, but light still go on and off... 
+
+- mouse small movement at 1hr 4 minutes. 
+
+Changing the polarity of the stim field made the voltage amplitude sky rocket? Changing the polarity of the electrodes has a massive effect? 
+
+Suddenly mouse is overly responsive. 
+
+1hr 18min. 
+I seem to be getting some noise interference in the emg measurement, maybe because I had stim cables near it? 
+
+
+My EMG is crazy.. i think i had a dc. 
+
+I have some weird grounding issue.. all the files are shite. STOP. it is 1hr 40 minutes anyway. 
+
+14:40 into warming chamber. 1hr 45mins. 
+
+I think one of the EMG electrodes had come out, AND I wasn't getting super clear EMG anyway. 
+
+In two of the 12 second files... at 0.5dF it looks like I might be getting some EMG. The EMG looks so weird that I am not sure. 
+
+That, and the light goiung on and off suggest I had a grounding disaster this time. Write off this experiment. 
+
+
+
+
+
+
+
+
+
+
+
+

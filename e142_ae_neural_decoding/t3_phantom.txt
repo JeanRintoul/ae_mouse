@@ -1,0 +1,20 @@
+t3
+===================================
+
+two tone test. gain = 5000. 
+I could only go to gain = 5000 before overload occurs... 
+preamp 3hz-1Mhz. 
+The light is off, and the faraday cage is down. 
+
+As long as the fields don't cross, even with a resistor.. they do not mix. 
+
+If the fields cross on the load at all - I see mixing. This is true of saline, mouse and a resistor. 
+
+Wait... now I dont see mixing when the fields cross... i dunno... the complementary test failed... maybe the electrodes moved etc. 
+
+Distance test. 
+vout = 0.001
+
+
+
+

@@ -1,0 +1,82 @@
+t2 - ae neural recording. 
+===================================
+
+M4 - vertical mouse. NOTE:THIS mouse gets weird signals... there is either an issue with how the electrodes are placed, or the solder on connector came undone. 
+
+Attempt at a full test.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. 10Hz VEP with shielding test, lots of repeats to make a beautiful comparison plot. 
+2. 10Hz ae vep at 1MPa, gain = 5000. preamp + acoustic isolation test with perspex. More than 20 reps? 
+3. 10Hz ae vep at 1MPa, gain = 10000. 
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m4 mouse. 
+Date of experiment: 29/04/2024  
+Mouse Cage: 129802
+Number of uses before: 1
+Gender: female
+Weight: 23g including head bar. 
+DOB: 15.10.2023
+
+= = = = = start time: 13:25am  = = = = = = = =  
+
+e142_vep.py 
+e142_ae_calibrate.py    
+e142_ae_neural_recording.py
+
+=============================================
+
+1. VEP shield test. 10Hz VEP unshielded. With and without aluminium foil. 
+iso = 0.7, gain = 500. No preamp filters. 
+2. 10hz VEP shielded. iso = 0.7 gain = 500. No preamp filters. 
+
+3. Two-tone test in vivo at gain = 10000. Just electric fields. Iso = 1.0
+ Preamp is 3Hz->1Mhz band pass. There is clear electric field mixing when the e fields cross each other. Maybe I should just record this a few times. 10 times. Ionic mixing example. I cannot align the fields properly right now to minimize this... and it is worth being aware of. 
+
+ What I should do, is show that there is no mixing in the preamp at this gain and these voltage levels in a 3k resistor.
+
+4. do acoustoelectric calibration. 
+
+5. I can only go up to gain = 2000 before I see an overload. This I am having trouble changing, thus.. try to just work with this gain. iso = 0.5. 
+
+- It has a vertical head bar, so try pasting down the cable so it is more away from the transducer. I also have no VEP? 
+
+- Easy to overload, and no VEP... after some time only... I think there is something weird about the connection on this mouse. Oh no, there is a tiny tiny VEP... gain = 2000. The VEP is just too small... something is wrong with the connection. STOP. 
+
+Maybe one of the electrodes isn't pressed down enough? 
+
+There is something wrong with doing measurements on mouse M4. not sure what... maybe an electrode positioning issue? 
+
+Do the ex vivo preamp test. 
+
+Stop experiment, and do the preamp test. 
+
+Ex vivo preamp linearity test with a 10k resistor. 
+
+I apply the fields and see? 
+Run this 20 times just so I have it. 
+
+Shit, there is non-linearity in the preamplifier when the fields cross. 
+I then set it up so the fields do not cross. Then the amplitudes were bad causing an overload. 
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,105 @@
+t3 - ae meps pulse test(DC ae meps) - mouse M3. Experimental refinement.
+=========================================================================== 
+
+Goal: Get EMG working with this test. Take video if I can. Two electrodes in a single paw. Use a leg splint to enable this. Shave the leg first. TODO: This time, plug in the v and i monitor from bonos voltage source... 
+
+F21 is in place. M3 mouse. 
+
+Run the two independent scripts that implement the leave one out test in a way that is anesthesia dependent. 
+- e144_ae_vs_v_mep.py 
+- e144_ae_vs_p_mep.py 
+
+I use the low pass filter, and a tight filter on the preamp together to remove high frequency signals. 
+
+- Switch to measuring I and V through Bono's source. 
+Fs = 2e6. 
+Try new scripts which interleave the pressure only/e field only/ae effect to isolate from the effects of changing anesthesia level.  
+
+
+- use bonos source at its highest output. 
+- calibrate the position of the US using the AE effect itself. Is it bigger in any one direction? Measure with the cheek electrode and other head electrode... i.e. EMG. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.3
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 23/05/2024  
+Mouse Cage: 125058
+Number of uses before: 7
+Gender: male
+Weight: 28.8g including headbar. 
+DOB: 15.10.2023
+
+= = = = = = = start time: 10:22 am = = = = = = = 
+
+
+- replaced the silicon as is was lifting up. 8 minutes in. 
+
+Measurement electrodes: visual cortex electrode(PtIr) and Cup electrode on left paw. 
+Stim electrodes: Motor Cortex electrode and cup electrode in mouth. Gel for conductive connection. 
+D Bonos voltage source. 
+
+26 minutes to get set up, the splint arm EMG prep seemed to go ok, but I haven't done a measurement yet. 
+
+
+Code: e144_aedc_mep_pulse.py 
+
+gain = 200. 
+vout  = 6   
+isi    = 0.5 hz, pulse length 0.5Hz. 
+pout = 0.2 
+filter 0.1 -> 1k
+
+= = = = = 
+
+3 peaks in 6 seconds. 
+
+v=8v ( i adjusted the software filt cut to be lp only) - looks good
+pressure and voltage pp = 200 
+pressure only pp = 105 
+voltage only pp = 143
+
+added start pause:end pause into the peak-peak calculation. 
+gain to 500. I dont get ovld. 
+
+ae pp = 62 
+v pp  = 
+p pp = 
+
+
+- i am not seeing any emg yet. I also am not seeing the acoustoelectric size variation - perhaps because thats a spatially local effect. This all sounds correct, and suggests I need a brain measurement as well? 
+
+at pout = 0.4 I saw a small movement. 
+
+Do I see any emg? NO I dont. 
+
+I see an onset effect movement only. 
+I am not picking it up on the EMG set up. 
+
+I think I should wait until the mouse has a larger response and keep going to fully test the EMG capabilty. 
+
+I am not really seeing much muscle movement at all visually at p out = 0.4 so far. 
+Trying just with pressure, and I still cannot see EMG. 
+
+
+Suddenly I am seeing movements, but still no EMG measurement. 
+
+So my EMG isn't really working so great. 
+I am also not seeing really great clean movements either. 
+
+= = = = 
+
+How to test EMG measurement? 
+The best way would be to apply a direct current field using a cup electrode and motor cortex electrode, then try to measure the EMG on the arm. The problem here, is that the low frequency field will not be filtered out. 
+
+If that is the case - can I at least measure a heartbeat by connecting tale/arm. 
+
+= = = = 
+

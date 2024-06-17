@@ -1,0 +1,45 @@
+t2 - mouse 
+===============================================================================
+
+- pulse test with and without F21. 
+- acoustically connected and disconnected test. 
+
+- 0.1hz high pass filter on brain preamp. gain = 200. 
+- EMG preamp 100Hz-1kHz filter, gain = 500. 
+- F21 test: start with no F21 - when I get an EMG response add the F21 and add 20% to the pressure, and repeat a few times. 
+- Acoustic connection test: acoustically connected get response, then disconnected with added 20% pressure. 
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+Mouse M5
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4.8
+X: 1.2
+k1: 1.2
+k2: 1.0
+saline: 50
+
+Date of experiment: 12/06/2024  
+Mouse Cage: 129802
+Number of uses before: 3
+Gender: female
+Weight: 25.2g including headbar. 
+DOB: 24.12.2023 
+
+= = = = = = = start time: 10 am = = = = = = = 
+
+I put a 0.1Hz high pass on the brain filter to avoid the dc drift issue. Seems to work. 
+Sometimes the EMG didnt correlate with the paw movements I saw. 
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+t2 - long time recording mouse, no F21
+===============================================================================
+
+- do ae 0.5Hz and measure the temperature change via video. repeat 4 times. It doesn't need to be done when the mouse is motor responsive. 
+
+- when the mouse is motor responsive, do a large number of repeats of a single frequency. 
+- consider trying switch again. 
+
+- emg in rear paw and tail. 
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+Mouse M10 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 1.4
+k2: 1.0
+saline: 50
+
+Date of experiment: 14/06/2024  
+Mouse Cage: 132473
+Number of uses before: 2
+Gender: male
+Weight: 28.5g including headbar. 
+DOB: 30.11.2023 
+
+= = = = = = = start time: 9:47am = = = = = = = 
+
+- first recording seemed really good. Can I repeat it? 
+
+- mouse came online at 1hr 16 minutes at v = 7, p = 0.1. 
+- 1hr 21 min i get random whiskers. 
+
+
+
+
+
+
+
+

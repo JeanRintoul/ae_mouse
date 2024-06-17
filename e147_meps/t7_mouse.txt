@@ -1,0 +1,59 @@
+t7 - mouse 
+=============================================================================
+
+Try to repeat yesterdays test results exactly, except with randomized loo test ordering. 
+
+Using 2 chained txs, at vout = 12. This time have an emg in the tail, and in the leg muscle. 
+Gain = 500. Include a GND under the mouse, to try to steer current away from the body, to avoid chances of conduction block.  Preamp on EMG is bandpassed between 100Hz-1kHz to remove the large DC offset on the EMG electrodes. 
+
+Gold cup electrode in mouth. 
+EMG in tail and rear paw muscle. 
+
+Attempt: 
+AEDC loo test
+AE loo test in randomized order at 1Hz and 0.5Hz. 
+If I can see a response, take videos of both tests. 
+
+= = = = = = = = = = = = = = = = = = = = = =
+Mouse M10 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.6
+X: 1.4
+k1: 1.4
+k2: 1.0
+saline: 50
+
+Date of experiment: 11/06/2024  
+Mouse Cage: 132473
+Number of uses before: 3
+Gender: male
+Weight: 30.6g including headbar. 
+DOB: 30.11.2023 
+
+= = = = = = = start time: 10:16am = = = = = = 
+
+- no emg in this mouse. Try moving the tail emg electrode. 
+- Otherwise, it may be fine, but I have to wait until the mouse comes online. 
+
+1hr 7 mins, mouse is on. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,121 @@
+t7 - ae meps test  m3 mouse. 
+===================================
+
+F21 is in place. The ae signal looks great. 
+
+
+I use the low pass filter, and a tight filter on the preamp together to remove high frequency signals. 
+
+- apply the stimulation through the cup electrode, i will need to use bonos thing in gnded mode. 
+  use bonos current source. At what level does it become non-linear and surpass the charge injection limit? 
+- How big can I get the acoustoelectric effect to be? 
+- Do this at intervals, and see if the amplitude changes as the mouse comes out of anesthesia? 
+
+- - -
+
+- use bonos source at its highest output. 
+- use visual cortex electrode as the stim electrode. 
+- try to look for whisker movements instead of whole paw movements. 
+- calibrate the position of the US using the AE effect itself. Is it bigger in any one direction? Measure with the cheek electrode and other head electrode... i.e. EMG. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 17/05/2024  
+Mouse Cage: 125058
+Number of uses before: 6
+Gender: male
+Weight: 29.3g including headbar. 
+DOB: 15.10.2023
+
+= = = = = = = start time: 13:45 pm = = = = = = = 
+
+==============================
+
+gain = 200. 
+vout  = 4  - if i go above this i get a weird non-linear effect in the preamp. 
+df    = 1 hz
+pout = 0.2 
+filter 0.3 -> 1k
+
+NOTE: in all recordings I deliberately filter out DC. 
+
+calibrated position -
+
+This time I have taped the cup electrode to the mouse arm. the other measurement electrode is the vep electrode. 
+
+= = = = = 
+
+v out , p out = 0.2, df 1Hz, redo these numbers as I messed up the gain calc but the data is good. 
+
+4, 115 uv 
+5, 151 uv 
+6, 176 uv
+7, 236 uv 
+8, 256 uv 
+9, 279 uv 
+10, 305 uv 
+11, 302 uv
+12, 300 uv seem to be getting but more intermodulation or have hit cil? 
+
+= = = = 
+
+So now I am going up to the maximum using the voltage source... I get 300 microvolts with pout = 0.2 
+
+= = = = 
+
+pressure ramp. vout = 12, measurement electrode in visual cortex and on leg. 
+
+p out
+0.1   = 421 uv
+0.2   = 712 uv 
+0.3   = 1025 uv - larger DC shift. 
+0.4   = 1291 uv - bigger DC shift. 
+0.5   = 930 uv? not sure. 
+
+It as if, the higher the pressure, the higher the ae effect, but ALSO, the higher the difference frequency. 
+
+So I am showing a whole millivolt in amplitude at the difference frequency. This is a huge AE effect... but is it big enough to induce movement? It is barely big enough... The DC shift may be getting in the way - and certainly dominates at higher pressures. 
+
+= = = = time series versus anesthesia. 
+
+pout = 0.3, vout = 12 (which is 24v pp or the biggest I can go). I can only adjust the pressure from here. the files a labelled with the time since ketamine start. I get a beautiful and large acoustoelectric amplitude. It is clear - the F21 really helps reduce intermodulation. 
+
+This is the biggest that I have made the acoustoelectric effect. 
+
+Time:  Amplitude: 
+= = = = = = = = = = 
+62		930 uv 
+65      1103 uv 
+70      1032 uv
+75      970 uv
+80      1019 uv 
+85 		1005 uv 
+90 		1013 uv  (mouse jumped a bit right at the start)
+93 		1000uv         (mouse moving)
+95 		995 uv 
+96		960 uv 
+
+As soon as the pressure goes to 0.4 I get a physiological response. And it reflects the ultrasound DC offset. 
+
+analyse t103 for emg. 
+
+Right at the end I was getting a paw depression at p out = 0.3(w F21). So sensitivity WAS increased. However, it did not seem sensitive to the generated electric field, just the envelope of the pressure. 
+
+- - - - 
+
+Maybe the field I am generating, is not going through the right region? 
+
+try higher gain for emg. I am not measuring EMG properly. 
+What am I actually measuring there right now? 
+
+- - - - 
+

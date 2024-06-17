@@ -1,0 +1,22 @@
+t1 - twotone test. 
+===================================
+
+two tone test. gain = 2000. 
+Use isolated 500khz voltage source(d bonos) to avoid THD. 
+
+= = = = = = = = = = = = = = = 
+
+I can only go up to 2000 without an ovld. 
+
+Do it with a distant measurement reference. 
+
+
+
+
+Really, it is very easy to get frequency mixing... whenever the fields cross. 
+
+Also, THD can occur if the field reaches the stim electrode hence the isolation of the 500khz source. 
+
+This time I have distanced the 
+
+- 1000 gain resistor test, about 500 microvolt signal. I had 3Hz-1MHz filter in place

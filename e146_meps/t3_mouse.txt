@@ -1,0 +1,96 @@
+t3 - mouse 
+======================================================================================
+
+Goal: Using a longer duration dual field waveform, can I see the difference frequency? 
+Can I also try the difference delta strategy to elicit EMG spikes. 
+
+Hardware improvements: 
+In t2 I had large 50hz noise on the SR560. This time, I have shielded the filter that goes into the SR560 with glad wrap and aluminium foil, and am running the SR560 for EMG off battery to isolate from mains. 
+
+Hardware set up notes: 
+RF amplifier with Bono TX. Two SR560s for EMG and brain measurements. 
+
+Note: I think the EMG shows there is a low frequency component due to the voltage source. This is less focal though. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+Mouse M11
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.2
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 04/06/2024  
+Mouse Cage: 132474
+Number of uses before: 0
+Gender: male
+Weight: 29.6g including headbar. 
+DOB: 30.11.2023
+
+= = = = = = = start time: 9:30am = = = = = = = 
+
+- at 2MHz function generator I have a weird aliasing effect. 
+I am getting a large DC offset. I can see this in the EMG. 
+Is the DC offset coming from the pressure or the voltage field? 
+The voltage field... 
+
+So the voltage field alone, or the pressure field can cause a DC offset... 
+I need to find a place where I can escape this. 
+
+When I have a large DC offset, just the voltage causes EMG. 
+
+Discovery, there is a DC offset which can occur due to charge imbalance when applying an electric field. 
+
+I can also get a DC offset when I apply the pressure field... when it mixes with the e field there.  
+
+- 
+- When I have a DC offset from the applied field, I generate 'amplitude' in the EMG. 
+- This is what i want to avoid really. 
+
+Why is there a big DC offset between the tail and leg, and not between the brain electrodes? 
+
+
+1. long mep, 12 seconds, p out 0.1, 
+
+- ae loo test 1: brain gain = 10, emg_gain = 500 with 30-1k band pass. p=0.18,v=0.06.
+- ae loo test 2: brain gain = 10, emg_gain = 500 with 30-1k band pass. p=0.18,v=0.1. - got a whisker movement. 
+1hr 7 minutes, mouse can move. 
+- ae loo test 3: p=0.18,v=0.05
+
+- ae loo test 3: p=0.1,v=0.05
+
+- I got a depression at the start of pressure. 
+
+- The emg seems time lagged, and based on a shape change. What is EMG based on - a threshold? 
+
+Finish at 11:06am - moved to chamber. 1:37
+
+Result:
+- there is a big DC offset across the EMG electrodes... what if i placed the EMG electrodes closer together? This should reduce the DC. 
+
+In all of these, gain brain = 10, gain emg = 500 with a 40-1Mhz filter. 
+I seem to have really big DC offsets when I apply voltage today. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

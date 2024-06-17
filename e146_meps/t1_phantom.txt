@@ -1,0 +1,34 @@
+t1 - phantom
+===========================================================================
+
+Data: 31/05/2024
+
+When I apply a current, I am getting a large DC offset. This DC offset decreases, when I add a GND. 
+So, I need to add a GND to my mouse. 
+
+Oh shit, one electrode causes electrolysis in the liquid... that is why you neeed biphasic.     
+No this doesnt explain what I see on the measurement electrodes? Or does it? 
+removing the monitor didnt change anything. 
+
+What I could do.. is use another PtIr electrode for the gnd? oh wait it halved the size of this. 
+
+for tomorrow: 
+- the solution would be to use this and a biphasic tx? 
+
+
+- Create a recording which shows the DC offset issue with and without a biphasic current source. 
+
+RF amplifier characterization. 2 PtIr electrodes. i have lp filter in place on the recording side. 
+preamp filter 0.3-1Mhz. 
+12second recording, gain = 1, 28V pp. (vout = 0.1), 500 uv dc shifts at start and end. 
+
+I see giant DC sweeps... 50000 uv. 
+
+= = 
+- putting bonos tx in front of it. THE DC HAS GONE? EVEN though i am applying 54Vpp. 
+
+= I have saved two files which exemplify the difference. 
+
+Having a biphasic voltage is key. 
+
+= = =

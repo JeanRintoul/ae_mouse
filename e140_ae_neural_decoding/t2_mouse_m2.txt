@@ -1,0 +1,68 @@
+t2 - ae neural recording. 
+===================================
+
+Attempt at a full test.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. frequency specificity test 8Hz and 10Hz VEP with US at 1MPa. v out = 0.1. 10x repeats of each. 30 seconds duration of each. 
+2. side to side test, and attempt at spatial map based on 10Hz VEP. 
+3. Acoustically connected vs not. (this should just be the not, as 1. is the connected part)
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m2 mouse. 
+Date of experiment: 12/04/2024  
+Mouse Cage: 127973
+Number of uses before: 3
+Gender: male
+Weight: 28.4g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 10:23am  = = = = =
+
+e140_vep.py 
+e140_ae_calibrate.py    
+e140_ae_neural_recording.py
+
+==============================
+
+1. 10Hz VEP, ISO = 0.7. 9 minutes into Iso experiment. Mouse started moving at file 7 just a bit. 40 microvolts p-p. Looks good. 
+
+2. Calibration: again the focus was off to the side, cone must be a bit off. Gain = 200. v out = 0.4 for this. The calibration seemed fairly repeatable when I moved back and forth and reliable. Remove the calibration wires. 
+
+3. ae neural recording, gain = 2000, p vout = 0.12. There is heatmat noise again. Turning heat mat off. 
+
+1 hour in. I turned Xiaoqi's light on, so the room is dim.. but not totally dark... just because sitting in the darkness is depressing. 
+
+
+8Hz ae VEP, filter set to 3Hz to 1MHz to decrease the DC offset from the US so it rails less. The heat mat was on the whole time. The VEP was about 10 microvolts p-p. Got it in the modulated signal! 
+
+10Hz ae vep, iso = 0.5, p vout = 0.12 3Hz to 1MHz filter on preamp to avoid the DC offset. I saw no saturation. Heat mat on. This has a high noise level - I may have to go through the files one by one to eliminate a culprit file. Maybe one file has discontinuities? The 10hz modulation doesn't seem that clear. 
+
+side test: 20 reps with same settings as 10Hz VEP inclusive of flashing LED. 10hz led, 0.5 iso, p out = 0.12, 30 seconds everything the same as the 10Hz recording. I turned the iso up when mouse started moving so not all files have low iso... 
+
+mouse is making strange sounds. 
+I think I should stop this. 
+
+
+3 hrs 50 mins... 
+14:12 
+
+TODO: look through the 10hz data, are any particular files bung? 
+
+- another confound test, analyse for saturation? 
+
+
+
+TODO: 
+- make code that records the X and Y coord in the filename. 
+- Plan out what figures i actually need, so I know what tests to repeat and how many times. 
+- For instance, a frequency specificity test - what does this plot look like? 
+- What are the time series representations etc. 
+- I have all the data now really... I just need to plan it out. 
+
+4 hrs and 28 mins. 14:52 into warming chamber. 
+

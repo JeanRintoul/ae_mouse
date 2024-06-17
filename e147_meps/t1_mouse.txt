@@ -1,0 +1,57 @@
+t1 - mouse 
+===============================================================================
+
+This mouse was best at the start, and didnt really have much response at the end? 
+
+- I have plugged the SR560 in, changed the EMG cables, and switched the bonotx to try to eliminate the noise. I will also use a cup electrode for stim in the mouth as it has a larger surface area, and copper tape as one of the EMG electrodes. 
+
+EMG at gain = 200 all the way through. 
+
+Attempt: 
+AEDC loo test
+AE loo test
+Fswitch loo test
+
+= = = = = = = = = = = = = = = = = = = = = = = = = 
+Mouse M3
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.2
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 08/06/2024  
+Mouse Cage: 125058
+Number of uses before: 0
+Gender: male
+Weight: 29.6g including headbar. 
+DOB: 15.10.2023 
+
+= = = = = = = start time: 8:39 am = = = = = = = 
+
+- all set up 15 minutes in. 
+- i have changed the water in the utrasound, for whatever reason, this has diminished the DC offset I see in the applied pressure signal. 
+
+ae1hz. 
+1. - my first ae 1hz loo test, I still have noise on the EMG. 
+   - when I remove the noise, the ae signal actually looks pretty good. 
+   - the signal generated in the brain is good. 
+2. voltage too high, mostly dc offset induce by the applied voltage in the EMG. 
+
+k too deep at 43 minutes in. 
+
+1hr 14 minutes, mouse starts twitching on application of fields. 
+
+EMG gain is at 200, and still seems to work. 
+
+Time to stop the test. 
+
+
+1HR 35 MINS, 10:14AM INTO WARMING CHAMBER. 
+
+
+

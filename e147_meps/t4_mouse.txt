@@ -1,0 +1,60 @@
+t4 - mouse 
+==============================================================================
+
+Attempt: 
+AEDC loo test
+AE loo test
+If I can see a response, take videos of both tests. 
+
+= = = = = = = = = = = = = = = = = = = = = =
+Mouse M5
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4.4
+X: 1.1
+k1: 1.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 09/06/2024  
+Mouse Cage: 131589
+Number of uses before: 4
+Gender: female
+Weight: 25g including headbar. 
+DOB: 24.12.2023 
+
+= = = = = = = start time: 9am = = = = = = 
+ae1,2 with rf amplifier 
+
+ae3 back to chained txs. 
+
+The rf amplifier appears to be injecting far more current... I ovld at lower voltages with the rf amplifier, but not  when i usd the txs chained together. 
+
+ae4 - chained txs, g500
+
+removed the hw filter and try again? no good. 
+
+ae5 - repeat - i simply cannot get the ae signal very large, even at max volts. So I am correct to use the RF amplifier... just realize... that I am injecting ALOT of current. 
+
+ae6 - 12second duration to avoid filter start and end artefacts. 
+
+
+The question is, should I wait until the mouse comes back into consciousness with this set up? Sure.. why not. 
+
+Basically - I think my set up is fine. 
+
+ae9 - changed filter to 100hz-1k to try to get rid of dc offset imposed by emg voltage even more. continued onwards with this setting. 
+
+ae10 - mouse appears to be waking... 
+
+Result: This is generally an ok set up, and I think the rf amplifier is too at low levels... however - i am not seeing any emg. 
+
+
+
+
+
+
+
+

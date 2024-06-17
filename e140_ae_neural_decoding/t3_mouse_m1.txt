@@ -1,0 +1,102 @@
+t3 - ae neural recording. 
+===================================
+
+Mouse M1, has what looks like some scabbing on the top of its headbar. 
+I should do a full test, in a non-recovery experiment. Ideally getting all information I need from it in a single session. 
+
+
+Attempt at a full test.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. frequency specificity test 8Hz and 10Hz VEP with US at 1MPa. v out = 0.1. 10x repeats of each. 30 seconds duration of each. 
+2. side to side test, and attempt at spatial map based on 10Hz VEP. 
+3. Acoustically connected vs not. (this should just be the not, as 1. is the connected part)
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m1 mouse. 
+Date of experiment: 16/04/2024  
+Mouse Cage: 127972
+Number of uses before: 4
+Gender: male
+Weight: 28.4g including headbar. 
+DOB: 15.10.2023
+
+= = = = = start time: 9:37am  = = = = =
+
+e140_vep.py 
+e140_ae_calibrate.py    
+e140_ae_neural_recording.py
+
+==============================
+
+This mouse can handle more isoflurane than the other one. At Iso 0.7 it is starting to move. Maybe this is due more to time in exp? 
+
+1. 10Hz VEP, ISO = 0.7. 450 microvolt vep? 
+
+2. Calibration was a repeatable pattern with a maxima, this time off to the left. I guess my refilling of the US has changed this slightly?  
+
+3. ae neural recording, p out = 0.12. VEP = 10hz. Iso = 0.5, preamp filter = 3hz -> 1Mhz. I start a new set with heat mat on, and iso = 0.5. Turning the heat meat off decreases VEP size. 
+
+8Hz AE VEP: immediately the vep is a larger size than the 10hz one. The vep ended up being only 2 microvolts in size. something is not ideal. 
+
+8hz moved 4.5mm to the right. Move DV 1mm down as well to penetrate below skull. 
+
+Looks like I may have just had the US in the wrong place. This bodes well for it being the acoustoelectric effect and not ionic mixing. 
+Using an 8Hz VEP. 
+ML 7.5:
+ML 6.5: can't see it. 
+ML 5.5: I can see it in a single recording. This means I could do a spatial map. 
+ML 4.5: 
+ML 3.5: 
+ML 2.5: 
+ML 1.5: 
+
+Got the ae 8Hz VEP. 
+
+Note: I converted my first wrongly positioned attempt at ae 10hz vep into side test... as it turns out that it was... to the side. 
+
+I am now just missing the 10Hz ae vep test. 
+I got it, but it is small? 
+
+My VEP is just too tiny. stop experiment. Recover mouse. Consider a second innings. 
+
+Stop 4 hrs and 20 minutes of experiment. 
+gel had dried, and appear to be stuck to eye/whisker/nosecone. 
+
+13:50 
+
+- I then ran the checker on 10Hz_aevep_1 to see if I got anything. 
+ I got everytthing it was just small. 
+
+==============================
+
+start again at 15:17 - attempt at a spatial map using SNR values and a 5Hz VEP. Each file is encoded MLAP. 
+
+I skip the initial vep, and the calibration, and attempt to do a vep based calibration. 
+
+kaiser snr position map attempt. 5hz VEP. looking at SNR calced on 10Hz harmonic. 
+
+I could see it in file 3020 single recording of 5hz vep. 
+
+I can't really see the VEP so clear any more. 
+
+The spatial map looks like it sort of worked, though my VEP amplitudes were terrible. 
+
+Killed the mouse as requested, though I think its head looked in good condition. 
+17:52. 
+
+
+   
+
+
+
+
+
+
+
+
+

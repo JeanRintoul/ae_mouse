@@ -1,0 +1,78 @@
+t3 -
+=========================================================================== 
+
+Goal: Can I get EMG working at all? If I can, do current versus EMG amplitude plot? Or voltage out vs EMG amplitude? 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4
+X: 1.
+k1: 1.
+k2: 1.0
+saline: 50
+
+Date of experiment: 23/05/2024  
+Mouse Cage: 131589
+Number of uses before: 1
+Gender: female
+Weight: 23.3g including headbar. 
+DOB: 24.12.2023
+
+= = = = = = = start time: 13:12 = = = = = = = 
+
+- ketamine took a while to take effect. 
+- I set up the original voltage source measurement set up so I can measure current. 
+
+- extra ket at 26 minutes in. less than a tick. 
+
+- oh crap... my new cup electrode wasn't connected? So the last experiment, t3 was no fgood. 
+
+I am not seeing anything with the EMG electrodes...  
+
+I finally got a 50hz with a cup electrode and a ptir electrode... gain 500. 
+
+= = = 
+
+ok can i simply repeat what i did yesterday? 
+
+I get a really clear movement with just pressure. 
+
+I have a emg electrode stabbed through the tail, so I can see heartbeat which is ool. 
+
+leave one out. 
+
+p 0.3 no movement pp = 287
+v= 8 pp = 209 
+v = 8, p 0.3 pp = 304
+
+Analyze these, with matching videos. 
+
+p 0.35 i can see stuff. v = 10 
+ae = 427, 422, 473, 413
+p = 305, 343, 347, 
+v = 239, 288, 
+
+After that it seemed to get into a different anesthesia state, where it only responded to the onset.  ? stop experiment. 
+
+- - - 
+
+I got some good files amnd some good video. Now go back and correlate it back together. 
+- take a second look at the MEG data. 
+
+Mouse 6 did a good job using US as well, despite it being not able to fit perfectly into neurotar while plugged in due to implant angle. 
+
+The videos and the files should have co-correlated times. 
+
+The petri dish tape splint works better than taping without a splint. 
+
+- - - 
+
+Only 1 of my cup electrodes seems to be working? 
+
+
+- the electrode through the tail seems to work... 
+
+

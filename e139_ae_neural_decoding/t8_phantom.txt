@@ -1,0 +1,72 @@
+t8 - phantom.  
+===================================
+
+- phantom test, measuring the acoustoelectric effect with and without a GND on the ultrasound transducer. 
+- what is the maximum amplitude I can generate with AE MEPs? 
+- phantom test with 4 wires arranged in a row, for ionic mixing in electrolytes? 
+
+= = = = = = = = = = = = = = = = = = = = 
+
+1. set up the ultrasound. 
+
+2. Set up a phantom with a current generation, and distant reference. 
+
+3. When I put the switch in place, I changed the impedance. 
+
+3 folders, each with 5 files: 
+
+I am applying 0.4 V which appeared to calibrate ok. 
+
+Switch on and connected: 
+750 microvolts at df, and 622198 at the center f p-p. 
+
+Switch off and connected: 
+15 microvolts, 50000 at the center peak. 
+
+Switch removed: 10 microvolts at df, 11639 at carrier p-p. 
+
+Is the df focal, when it is so high with the switch connected? 
+
+The impedance may vary with temperature and cable position etc. The impedance of the cable makes a giant difference to the voltage measured in the medium. Having the switch OFF i.e. removing the GND, makes this signal huge. 
+
+But now, it is NOT focal. There is electrical mixing just with itself. Perhaps some acoustoelectric mixing too but that would be much smaller. 
+
+Without GNDING, I lose focality. Phantom t2. 
+
+Phantom t3: Wait - right now nothing has focality? what is going on? 
+
+stop.. try again another day.. maybe a different wire set up. 
+
+RESULT: removing the ground massively increases the df amplitude. However, focality is lost. 
+
+Day 2: This time repeat the US GNDING focality experiment, except use a higher current frequency, so that I can filter out the 500kHz area, and just look at remnant low frequency info. This means I could apply a higher current to see focality more clearly. 
+
+1. focus calibration is working. current f is 491khz. 
+Raw focused ultrasound. 6 second duration, low pass filter. 
+
+suddenly not working... now it seems terrible... so the calibration is pretty random right now. Maybe it has to do with the fact I taped the measurement electrode to the stim electrode so they are close together? 
+
+I rearranged the electrodes such that the stim electrode(thick metal) is on one side of the measurement set. 
+
+
+aah.. when the US isn't perfectly gel connected... I get this weird amplitude effect.
+
+I seem to get better focality repeatability in the vertical direction, where the wire is NOT. 
+The problem is because the GND is far away from the stim source... meaning the e field localization is broader. 
+Also, the high e field goes everywhere? 
+
+If I put the stim and GND close together, I can map it. 
+
+
+
+To calibrate: 
+- So, the US gel column needs to entirely connect at the end of the cone. 
+- 
+
+- 
+
+The neuromodulation response: 
+Is it ionic mixing, or the acoustoelectric effect? 
+
+
+

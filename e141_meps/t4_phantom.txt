@@ -1,0 +1,78 @@
+t4 - phantom
+===========================================================================
+
+Data: 13/05/2024
+
+= = = = 
+
+- First, calibrate the position with dual sine mep. This worked really well. There is a clear peak. 10 microvolts at 2MPa. I am measuring with the PtIR probes connected through to the low pass filter at 6Hz df. This df is definitely very focal. 
+
+Measurement settings: 
+preamp is 3khz low pass, and has gain = 500, duration = 6 seconds. 4 recordings of each. p out = 0.2, i.e. 2MPa. 
+There is intentionally no filter at the low frequencies so I can see DC drift. 
+Fs = 5e6 
+
+1. Dual sine mep amplitude with frequency, 4 recordings at df = 0.5Hz, 1Hz, 2Hz, 4Hz, 8hz, 12hz, 20Hz, 40Hz. gain = 500. 
+
+In each case, the df is extremely clear. I can see it in the raw data... easy to see why this is inducing neuromodulation. 
+0.5hz (95microvolts pp)
+1Hz (51.7 microvolts)
+2Hz (44.2 microvolts)
+4hz (29.43 microvolts)
+8hz (7.19 microvolts pp)
+20hz (5.92 microvolts pp)
+40hz (2.27 microvolts pp)
+
+2. ae mep amplitude with frequency (no F21). 4 recordings at df = 0.5Hz, 1Hz, 2Hz, 4Hz, 8hz, 12hz, 20Hz, 40Hz. 2MPz, and vout = 5V. gain = 100. I am using the PtIr wires as measurement, and the stim is one between them, and the other distant and using bonos current source.  
+
+0.5hz (123microvolts pp) - the peak itself is not clear. 
+1Hz (5.65 microvolts) - nothing there. something went wrong here. 
+2Hz (14.69 microvolts) - the peak is not super clear and the amplitude all the way up to it seems larger. 
+4hz (40.7 microvolts) - the peak is now clear. 
+8hz (15.6 microvolts pp) - 
+20hz (17.3 microvolts pp) - 
+40hz (2.6 microvolts pp) - clear peak
+
+3. ae mep amplitude with frequency (with F21). Otherwise this has the same settings as 2. gain = 100. 
+
+0.5hz (127microvolts pp) - the peak itself is not clear. big DC
+1Hz (38 microvolts) - clear peak, but smaller in amplitude than hoped. 
+2Hz (14microvolts) - no clear peak
+4hz (25 microvolts) - beautifully clear. 
+8hz (39.76 microvolts pp) - clear peak. 
+20hz (6.53 microvolts pp) - clear peak
+40hz (16 microvolts pp) - clear peak. 
+
+4. dual mep with same settings as 1. but using F21. gain = 500. 
+
+0.5hz (18microvolts pp) - clear
+1Hz (11.7 microvolts) - clear, smaller DC than the ae meps. 
+2Hz (6.96 microvolts) - clear
+4hz (3.14 microvolts) - clear
+8hz (1.52 microvolts pp) - clear
+20hz (1.2 microvolts pp) - clear 
+40hz (0.6 microvolts pp) - 
+
+The ae meps are effected by both the current mixing from the ultrasound and the direct current ionic electrochemistry issue. So this DC low frequency effect is going to be a much bigger issue. 
+
+The smallest amplitudes are when we shield the electric signal with F21, meaning the acoustoelectric effect from the ultrasound is attenuated. 
+
+
+5. lastly, electrical impedance plot for the same frequencies. I want to do this with the simple resistor as I think it is more accurate(not bonos thing), and do it between the PtIr probes. I inject 1V between the PtIr probes, and calculate the impedance. I repeat each measurement 4 times. 6 seconds duration. 
+
+0.5hz    - 43.9kohm
+1Hz      - 36.38kohm
+2Hz      - 29.7kohm
+4hz      - 22.38kohm
+8hz      - 16.01kohm
+20hz     - 9.5kohm
+40hz     - 6.355kohm
+2000hz   - 2.21kohm
+500000hz - 0.987 kohm
+
+Result: 
+The reason I am not getting ae meps is NOT amplitude related, it is due to there being all these other electrical frequencies all intermodulating when signal is applied. Though when using F21 I likely need to turn up the amplitude as it does attenuate the pressure too. 
+- I can try ae meps at 4hz or above without F21? 
+- I can use F21 and do ae meps, but at higher pressure and voltage. 
+
+

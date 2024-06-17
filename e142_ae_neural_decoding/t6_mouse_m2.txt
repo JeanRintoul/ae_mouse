@@ -1,0 +1,89 @@
+t5 - ae neural recording. 
+===================================
+
+M2 - horizontal mouse.
+I have now seen the promised land when the gain is high. I cannot get to this gain when the electric signal is too high, thus I should try to use F21 again. 
+
+Attempt at a full test at gain = 10000, or the highest gain I can achieve without OVLD.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. 10Hz ae test. What is the amplitude of the carrier? Does it change when I use F21? If I use F21, can I increase the gain? 
+2. 10Hz ae isolation test. 
+3. Try to get some 8hz modulation. 
+4. Try to do a spatial map if I can get a good modulation. 
+5. Do US on and off today. To see if VEP amplitude effected by US. 5 recordings in each state.  
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m2 mouse. 
+Date of experiment: 01/05/2024  
+Mouse Cage: 129805
+Number of uses before: 1
+Gender: female
+Weight: 28g including head bar. 
+DOB: 15.10.2023
+
+= = = = = start time: 13:14 pm  = = = = = = = =  
+
+e142_ae_calibrate.py    
+e142_ae_neural_recording.py
+
+============================================== 
+I covered the thermometer and heat mat with tape and 
+This time I am not getting heat mat noise. 
+
+1. calibration. was tricky - values were small, but pattern was there. 
+   p vout = 0.1 1MPa. 
+   VEP is good. 
+
+2. ae neural recording 10hz vep. tried gain = 2000 first. no ovld
+   g 5000  = no ovld. I can see it. 
+   g 10000 = no ovld. Oh wait.. it is occasionally overloading here. 
+
+3. 8hz? g = 5000. Started doing repeats at iso = 0.5. Modulated signal IS THERE. 
+
+4. Attempt at spatial map at gain = 5000. 10hz vep. 
+
+    I seem to be seeing modulation(single file), but it is not at exactly 10Hz...
+    so I may need to manually reprocess these.  
+
+    Spatial map didnt work. 
+
+5. attempt gain = 10000 or even higher with F21 in place. Can I see the modulation more clearly? 
+- 10hz at gain = 10000. 
+- It looks insanely good using F21.... no OVLD. 
+
+Can I move to Gain = 20000 using F21? No - it just overloads... 
+
+I can suddenly not see a VEP... 
+
+- - I left the heat mat on... though there is some noise coming from it. - - 
+
+This is for the figure: Single shot ae recording with F21. 
+
+Do a 10hz, 8hz set, and a ae isolation test at gain = 10000 with F21. 
+
+Should I do 20 of these, or is 10 enough? It is really boring here. 
+
+STOP: I am just getting heat mat noise. VEP signal has gone... 
+
+Really, the only good thing I got in this experiment was the 8Hz ae modulation at g=5000. I also at least tried the spatial map... It seems that the spatial map is not straight forward... I think I should give up on it... 
+
+
+
+
+
+
+- - - 
+
+
+
+
+
+
+
+
+

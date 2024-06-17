@@ -1,0 +1,90 @@
+t4 - ae neural recording. 
+===================================
+
+M5, vertical headbar, first use. 
+
+Attempt at a full test.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. frequency specificity test 8Hz and 10Hz VEP with US at 1MPa. v out = 0.1. 10x repeats of each. 30 seconds duration of each. 
+2. side to side test, and attempt at spatial map based on 10Hz VEP. 
+3. Acoustically connected vs not. (this should just be the not, as 1. is the connected part)
+
+= = = = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m4 mouse. 
+Date of experiment: 17/04/2024  
+Mouse Cage: 129802
+Number of uses before: 0
+Gender: female
+Weight: 23g including headbar. 
+DOB: 24.12.2023
+
+= = = = = start time: 9:17am  = = = = = = = =  
+
+e140_vep.py 
+e140_ae_calibrate.py    
+e140_ae_neural_recording.py
+
+=============================================
+NOTE: I only have 40 left of 02 - keep an eye on it. 
+
+Everything fit together, I had to press quite hard to get the plug in. Maybe I didn't do this correctly before in M4? 
+
+1. 10Hz VEP, ISO = 0.7. 25 microvolts. 
+
+2. When I apply US, do I see a constant good signal? I do in calibration. 
+
+3. ae neural recording: preamp 1hz-1Mhz bandpass. iso = 0.5 
+	8hz ae vep:  30 seconds. Do I see the US signal properly, or does it look weird? It looks correct. At least this mouse is connected properly.  1-11 files have nothing in them. vep too small. 
+	file 12 got it... I just needed a larger vep amplitude -> lower iso. 
+
+	the vep has gone... in the first few files. 
+
+	10hz ae vep:  got it.. but there is some extra noise in there. Maybe post analysis can help.  
+
+	It is possible I am inducing a movement from the US? It sure looks like it. Each time I apply a continuous wave the paws outstretch as does the tail. 
+
+	I repeated the 8hz ae vep another 10 times, just in case I could get it more clearly. 8hz aevep_2. 
+
+	Then I moved the ultrasound to the left, and got a seemingly much clearer modulated signal.. So I am now not sure which are the good signals? 
+
+TODO: figure out which files are the side test, and which are the modulated ones. 
+
+4. side test with 10hz vep. I moved the gel across far to the side, so that it is unlikely to be reflected into the visual cortex location place. 
+
+analysis. 
+- 8Hz_aevep-notsure-10files - there is a blip at 16Hz on either side. 
+
+
+
+
+It may be possible, that I need to sort through to the 10 best files of the 8hz ae vep and select those that have the biggest VEP? 
+
+NOTE: 
+This mouse would be a good choice to do a spatial map on another occasion. 
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+

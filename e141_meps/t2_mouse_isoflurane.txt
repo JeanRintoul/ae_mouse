@@ -1,0 +1,138 @@
+t1 - meps test - Can I get MEPs using isoflurane? Lower body load, faster.
+===========================================================================
+
+Goal: Attempt at meps test under isoflurane at low levels iso = 0.5. 
+
+Use the VEPs to determine consciousness level. Use the VEP test to determine when the neurons 'reconnect'.
+
+1. Dual sine mep amplitude US only. High pressure amplitude to elicit movement such as p out = 0.2V. Does this work? 
+
+2. Attempt AE MEPs where the e field is applied via neurotar single wire, and electrode under torso or in VEP electrode. The US should be GNDed to minimize additional fields. 
+
+To do this I will need a filter in place if I do an electrical measurement... 
+the low pass filter. 
+
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Date of experiment: 08/05/2024  
+Mouse Cage: 125058
+Number of uses before: 4
+Gender: male
+Weight: 27.5g including headbar. 
+DOB: 15.10.2023
+
+= = = = = = = start time: 9:55am = = = = = = = 
+
+e141_ae_calibrate.py 
+e141_vep.py    (to see when the neurons reconnect)
+e141_dualsine_mep.py (with and without GNDing) - do I get a movement in either case? 
+e141_ae_mep.py (can I get this working?) Have some thoughts on how to improve it. 
+
+==============================
+
+
+
+1. VEP - iso = 0.5. When I see vep run the dualsine mep code. 
+   giant heat mat noise. 
+
+
+2. dual sine mep, preamp 200 gain, filter band 0.03-1k, p vout = 0.3 
+75 microvolts in amplitude. 
+
+3. with my low pass filter, 200 gain. 63 microvolts df. 
+
+Need to rearrange mouse legs by turning up iso, then repositioning. 
+
+4. df = 2, gain = 500, pvout = 0.3. electrical amplitude 33 microvolts. 
+
+5. df = 2, gain = 500, pvout = 0.3. electrical amplitude 50 microvolts. 
+
+6. df = 2, gain = 500, pvout = 0.3. electrical amplitude 48 microvolts. I am not really seeing movement here... 
+
+7. df = 1, gain = 500, pvout = 0.3. electrical amplitude 82 microvolts. I see sort of non-correlated movement here. 
+
+8. df = 1 gain = 500. 49 micrvolts
+
+9 df = 1, gain = 500, pvout = 0.5 - too high... mouse started doing way weird moving crazy. df = 761. too awake. I turned up the iso. 
+
+I am not getting 
+
+10. pvout = 0.3 df = 1 , everything super small suddenly, iso also at 0.7... 
+
+11. try ae meps, just to get amplitudes... using this same filter arrangement. 
+
+ae meps. start chest electrode gnd, and wire electrode through neurotar to deliver stim. 
+iso = 0.5 
+12. pvout = 0.3, lp filter in place, gain = 500. duration = 6s. 
+   vout = 5, and I see a df at5 5Hz? 
+
+13. df = 2 , df appears at 8Hz ? 16 microvolts. 
+
+14. df = 0.5 , df appears at 2hz. 37 microvolts
+
+df = 0.25, df appears at 1hz, 46 microvolts. pressure amplitude vout = 0.3, vout =  df= 0.25, but appears as 1hz. 
+
+15 vout = 8 p out = 0.3  1hz amplitude ios clean and large. 75 microvolts. 
+   check this file out... 
+
+16 vout = 10 p out = 0.3  massive mixing amplitude... 150 microvolts. 
+
+17.  vout = 10 p out = 0.4 amplitude 150 microvolts. 
+
+18. repeat this, with F21 in place... 90 microvolts at 1Hz... 
+
+The amplitude of the field I am generating just fine... there is something wrong with the way I am applying the field. 
+
+19. vout = 10 p out = 0.4,  200 microvolts at 1Hz... 
+
+Next step is to remove the preamp measurement, and apply the field at the head electrodes... I am just going to have to observe. 
+
+20. stim electrode at motor cortex, and gnd electrode at vep location. Nothing. 
+
+21. I see nothing. 
+
+22. Can I send in just an electrical signal at 1Hz and see a movement? yes. But i am sending in a really high amplitude of 4v.straight to motor cortex. 
+ 
+ Down at 1V I dont get any motion. 
+ at 2V 1Hz I see small motion. 
+ at 3V I see larger motion. I see motion, but it is not like the super neat and clean stuff I saw at the end of ketamine. It is hard to see the correlated paw movement. I am not consistently seeing movement at 4v output either... 
+
+ I then switch the arrangement so motor cortex electrode and the chest gnd instead. 
+
+ 5v out I see some movement but it just isnt very clear really. Without the tape, I may just be getting shorting between the electrodes. 
+  I cant record during this either. 
+
+- - - - 
+   Things look good for ae meps really... I just have to figure out the trick to applying the electric field. 
+
+  Next mouse experiment: generate electric field meps only... can I do this cleanly? 
+
+ So something is wrong with the way I simply apply an electric field... 
+ If I cannot get a clean movement doing this - something is MORE wrong. 
+
+ 2 electrodes in motor cortex. 
+
+ Solution, I think I need an optimized gradient field mouse. 
+ Can I generate a high gradient field in vivo for ae meps? 
+
+NOTE WELL: s
+Next experiment: 
+TODO: make sure the electrodes are electrically isolated from each other in the gel. Otherwise I cannot apply a large gradient field and have it go through the brain. 
+
+Try to do just regular e meps. If I can do this, then switch to ae meps. 
+
+
+Good points: 
+- I can generate a large ae field. 
+- This drops of exponentially with frequency same as the plots I had before of this. So those plots are definitely correct. 
+
+Bad points: 
+- The field may be travelling through the gel and not through the brain. This likely effected the results I got in this test, because I didnt put tape. 
+
+
+
+
+
+
+

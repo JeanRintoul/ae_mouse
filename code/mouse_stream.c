@@ -80,17 +80,11 @@ int main(int argc, char* argv[])
   // double gen_current_sample_frequency   = 1e7;   // 5Mhz sample rate 
   // double sample_frequency             = 1e7;        // this is the recording sampling frequency. 
   //
-  // double gen_pressure_sample_frequency  = 5e6;   // 10Mhz sample rate 
-  // double gen_current_sample_frequency   = 5e6;   // 10Mhz sample rate 
-  //double gen_pressure_sample_frequency  = 2e6; // 2e6;   // 10Mhz sample rate
-  //double gen_pressure_sample_frequency  = 2e6; // 2e6;   // 10Mhz sample rate  
-  // double gen_pressure_sample_frequency  = 2e6;  
-  // double gen_current_sample_frequency   = 1e5; // 10Mhz sample rate   
 
-  // double gen_pressure_sample_frequency  = 5e6;  
-  // double gen_current_sample_frequency   = 5e6; // 10Mhz sample rate   #
-  double gen_pressure_sample_frequency  = 2e6;  
-  double gen_current_sample_frequency   = 2e6; // 10Mhz sample rate   #
+  double gen_pressure_sample_frequency  = 5e6;  
+  double gen_current_sample_frequency   = 5e6; // 10Mhz sample rate   #
+  // double gen_pressure_sample_frequency  = 2e6;  
+  // double gen_current_sample_frequency   = 2e6; // 10Mhz sample rate   #
   // 
   double sample_frequency               = 5e6; // this is the recording sampling frequency. 
   // 
@@ -144,13 +138,13 @@ int main(int argc, char* argv[])
   double jitter_range          = 0.0;
   int waveform_marker          = 1;   // This should be 1 if I want to insert marker into pressure channel. 
   int led_alignment_marker     = 0; // this converts the voltage channel to an event channel. 
-
+  double difference_delta      = 0.0; 
   // 
   // letters remaining. l,
   //      current_burst_length
   //      current_ISI
   //
-  while ((opt = getopt(argc, argv, "a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:p:q:r:s:t:u:v:w:x:y:z:")) != -1) {   
+  while ((opt = getopt(argc, argv, "a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:p:q:r:s:t:u:v:w:x:y:z:9:")) != -1) {   
   // while ((opt = getopt(argc, argv, "f:g:h:i:j:p:d:s:c:a:b:k:n:t:e:z:m:u:")) != -1) {    
       switch(opt) {
       case 'l':
@@ -265,6 +259,10 @@ int main(int argc, char* argv[])
         sscanf(optarg,"%lf\n",&long_recording);
         printf("long recording: %s\n",optarg);
       break;
+      case '9':  // 
+        sscanf(optarg,"%lf\n",&difference_delta);
+        printf("difference_delta: %s\n",optarg);
+      break;      
       case '?':
       /* Case when user enters the command as
        * $ ./cmd_exe -i
@@ -439,7 +437,7 @@ int main(int argc, char* argv[])
   bool raw = false;
   // 
   // Create array of data ranges. 
-  double dRanges[8] = {8.0,40.0,20.0,20.0,80.0,4.0,2.0,40.0}; // ch 6 was 40.0   
+  double dRanges[8] = {8.0,40.0,8.0,20.0,80.0,8.0,80.0,40.0}; // ch 6 was 40.0   
   // create array of AC or DC coupling. 
   uint64_t Couplings[8] = {CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV,CK_DCV};
   // 
@@ -860,6 +858,13 @@ int main(int argc, char* argv[])
     }
   }
 
+  if (difference_delta > 0.0) {
+    printf("\ndifference_delta: %lf\n",difference_delta);
+  }
+
+  int difference_delta_counter = 0;
+  int difference_delta_max = 2*gen_current_sample_frequency*difference_delta;
+
   // reset the jitter counter ready to iterate through array for current pulses. 
   jitter_iteration = 0;
   // Create the output voltage signal. This only works if the voltage amplitude is > 0.0. Otherwise I'll have no marker. 
@@ -939,8 +944,8 @@ int main(int argc, char* argv[])
 
 
           }  // end of PRF/ISI option inside the ramp.   
-          else { // straight sine wave option. 
-            data[i] = current_factor*sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency)+dc_offset;            
+          else { // straight sine wave option. +dc_offset
+            data[i] = current_factor*sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency);            
           }
         }
         else {  // this is if no_ramp is true,  there will be no ramp. 
@@ -1005,9 +1010,26 @@ int main(int argc, char* argv[])
           current_isi_counter     = 0;
         }        
 
-      }  // end of PRF/ISI option inside the ramp.   
+      }  // end of PRF/ISI option inside the ramp.   +dc_offset
       else {  // the pi/2 is so that when you inject a pressure and a current that are single sine waves they will be offset correctly. 
-        data[i] = sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency )+dc_offset;            
+        data[i] = sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency );   
+        
+        // implement phase switching at set frequency. 
+        if (difference_delta > 0) {
+          difference_delta_counter++;
+          if (difference_delta_counter < difference_delta_max/2) {
+            data[i] = sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency +PI/2)+dc_offset;   
+          }
+          else {
+            data[i] = sin(2*PI* current_signal_frequency * (double)i/gen_current_sample_frequency + +PI/2+ PI)+dc_offset;        
+          }
+
+          if (difference_delta_counter >= difference_delta_max) {
+              difference_delta_counter  = 0;
+          }
+
+        }
+
       }  
 
     }

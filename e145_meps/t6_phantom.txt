@@ -1,0 +1,50 @@
+t6 - phantom
+===========================================================================
+
+Data: 28/05/2024
+
+3x daisy chained txes. I am not getting a higher voltage than before. i.e. 60 voltas 
+PtIR wire for stim electrodes. 
+
+3 tx
+- when I zoom in, it is 20V to -20V. This is NOT big enough. 
+
+1 tx. just the older one. 
+46v pp. 
+i can definitely see this peak at 1hz 360 uv on measurement electrodes, 
+i can also see high f stuff at 4hz on output. 
+
+Try just 1 of the other txs 
+This one has a 50v pp. Also has 1Hz on the measurement electrode and the 4hz signal. 
+
+So I definitely have a transformer problem. 
+
+The third transformer, the BNC rotates in place... which is no good at all. 
+
+If I can stop using these transformers, that'd be a great thing. 
+
+I switched the Fs of the function generators to 5MHz. Perhaps there is a where interaction there due to aliasing. THERE IS. I have now removed the beat frequency in the function generator output. 
+
+I can however still see a 1Hz in the measurement electrodes? 
+
+- Could this 1Hz be due to my high pass filter on the preamp? 
+
+By removing the high pass filter, the 1Hz is much diminished. 
+I am not confident I can use this with US as well, as that induces a big DC offset. 
+
+- Max is 48Vpp with this one transformer. 
+
+- Add back the old transformer in a daisy chain configuration.. 
+
+- Max is 69V PP in US gel petri dish test. This is better... but not ideal. 
+
+I think this is going to be about as good as I get with these transformers. 
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+t2 - ae meps, with new rf amplifier and bono tx to deliver electric field.  
+======================================================================================
+
+Goal: Can I see EMG or movement when I apply acoustoelectric neuromodulation under ketamine/xylazine anesthesia. 
+
+- I have new F21
+- I will have two electrodes in the tail or tail and leg to measure EMG without heart rate.  
+- preamp filter try 1k low pass only
+- lp hardware filter is in place. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+Mouse M2
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5.2
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 03/06/2024  
+Mouse Cage: 127973
+Number of uses before: 12
+Gender: male
+Weight: 29.1g including headbar. 
+DOB: 15.10.2023
+
+= = = = = = = start time: 10:09 am = = = = = = = 
+
+- reapplication of silicon at 13 minutes in. 
+
+I tried ae mep, and pulsing e field with cont p field. 
+I am seeing the original pulse signal in the EMG, but NOT muscle movement. 
+
+I am seeing just the noise I am making in the EMG... I could turn up the gain. 
+Otherwise I need to reorg equipment. 
+
+I am getting a weird psike at the beginning right now. 
+
+Try a loo test of each type of waveform. 
+
+
+I am not seeing EMG. I cannot turn the gain up past 500 due to noise. 
+
+My computer suddenly shut down when running these. I think this may be due to improper grounding of the mouse. 
+
+I added mouse grounding. Gain = 500. 
+
+I change the preamp filter cut offs to 30Hz0>1k, gain = 500. Seems to be ok. 
+
+1hr 20, mouse whiskers moved when stim applied. 
+
+Mouse is good to go now. 
+
+I repeat the loo test at high v, and i see movement more to do with the pressure than the 0.5hz generated. 
+
+I keep putting the voltage up on each loo test. at v =0.2 it is 90V pp. 
+vout 0.25 is 117 PP. 
+
+Big response at 0.25, hard to see direct EMG correlation but MAYBE? 
+
+I videoed just the 0.3V output one. 
+
+NOTE: EMG preamp is 30hz-1k band pass. So I definitely see a larger muscle response when i apply both fields... I am somehow not getting a great periodic reflection of what I am doing though. Perhaps the US focus isn't great? Unclear. 
+
+Finally ae p out 0.1, vout 0.3
+
+Finish, analyze, and wait for mouse to entirely recover. 
+
+Into warming chamber 1hr 53 mintues. 
+
+At no point did I see clean paw movements
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

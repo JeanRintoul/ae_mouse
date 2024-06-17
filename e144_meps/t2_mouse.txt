@@ -1,0 +1,146 @@
+t2 - ae meps pulse test, with DC offset being largest, 
+========================================================
+
+F21 is in place. M2 mouse. 
+
+I use the low pass filter, and a tight filter on the preamp together to remove high frequency signals. 
+
+- apply the stimulation through the cup electrode, i will need to use bonos thing in gnded mode. use bonos current source.
+- use bonos source at its highest output. 
+- calibrate the position of the US using the AE effect itself. Is it bigger in any one direction? Measure with the cheek electrode and other head electrode... i.e. EMG. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 5
+X: 1.3
+k1: 1.3
+k2: 1.0
+saline: 50
+
+Date of experiment: 22/05/2024  
+Mouse Cage: 127973
+Number of uses before: 10
+Gender: male
+Weight: 29.5g including headbar. 
+DOB: 15.10.2023
+
+= = = = = = = start time: 10:30 am = = = = = = = 
+
+Goals: Using the pulsed waveform, ISI 1Hz, pulse length 0.5. 
+    - Do a frequency ramp for amplitude peak-peak mapping. 
+    - Do e field only, do p field only, do both together. 
+    - When mouse wakes up repeat this. 
+
+- Stim cup in mouth, stim cup on arm for measurement. 
+
+==============================
+
+I removed the existing silicon as it was a bit flaky. I put nail polish over the wires on the mouse. I think this will help calibration? 
+- 14 minutes in I added nail polish. 
+- 20 minutes in I added new silicon. 
+
+= = 
+
+Measurement electrodes: visual cortex electrode(PtIr) and Cup electrode on left paw. 
+Stim electrodes: Motor Cortex electrode and cup electrode in mouth. Gel for conductive connection. 
+D Bonos voltage source. 
+
+Code: e144_aedc_mep_pulse.py 
+
+gain = 200. 
+vout  = 4   
+isi    = 1 hz, pulse length 0.5Hz. 
+pout = 0.2 
+filter 0.1 -> 1k
+
+calibrate position -
+
+= = = = = 
+
+duration 6s. gain 200. 
+
+leave one out test: 
+pressure and voltage. vout 12v, pout 0.3: df 137, pp 334
+voltage only (vout = 12): df 156, pp 448 
+pressure only (p out 0.3): df 120, pp 435. (peak not that visible)
+#i would say this isn't working 
+
+vout 8, p out 0.3 duration 10
+ae: df 75, pp 366
+v : df 122, pp 443
+p : df 77, pp 416
+
+
+Could it be due to how I am measuring it? I switch the measure cup on paw to a wire. 
+
+Wire leave one out. 
+p 0.3, v0, df 206, pp 590 - very clear. 
+p 0.3 v12, df 168, pp 727 - not as clear. 
+p 0.0, v 12, df 225, pp 529 - very clear. 
+
+swap the polarity of the electrodes on bonos thing?
+p 0.3 v12, df 49, pp 739 - not as clear. nothing in raw data. 
+
+I switched to the shorter cup electrode in the mouth. 
+ae @ p 0.3 v12, df 152 pp 670 - now it is clear? There is a problem with the other cup electrode. 
+voltage @ p 0.0 v12, df 110, pp 389 very clear. 
+pressure @ v0, p0.3, df 66, p 317 
+
+ae @v12, p 0.3, df = 158, pp 1060
+
+voltage ramp with p = 0.2 
+v    df/pp
+0    126/266
+12   51/498
+
+
+
+voltage ramp with p = 0.3 
+v    df/pp
+0    234 700 saw movement. 
+12   
+
+Try increasing the ISI so there is more rest time between. 2 seconds ISI. 
+measurement electrode not connected. 
+
+ df/pp 
+v0   88/605
+v12  76/708
+
+Measurement
+
+I am seeing largest effect as an onset effect... so lets go with this? 
+
+p 0.2 
+v0  12/221
+v12  36/594      i saw 3 distinct movements. 
+v12/p0  38/185   nothing. 
+
+ae again i saw 3 distinct movements. 55/505   I definitely also have a measurement issue. 
+
+I definitely have a measurement issue... with connection
+
+anethesia too low. End experiment. 
+
+- What I saw was inline with what I am measuring, I have a lot of electrode placement issues though. 
+- Also timing is all important, and having the experiment 
+
+It's possible that this was it - it wasn't too clear due to experimental problems which I can solve. 
+
+Timing is critical in this... 
+
+1hr 44 minutes duration. 
+
+it is possible that this is it... needs some experimental refining... 
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+t4 - phantom
+===========================================================================
+
+Data: 26/05/2024
+
+Arrangement: measure electrode are the phantom ptir probe. 
+stim electrodes are the thick wires, one between the probes, the other distant. 
+
+= = = = 
+p = 0.2. i.e. 2MPa. (same as e141 t4 where I have the comparative dual sine results)
+
+Measurement settings for AE ramp. 
+gain = 500, 1k low pass filter, duration 6 seconds, low pass filter in place. I want to see DC drift, so try not to put low filter. Fs = 5e6 
+df = 0.5Hz, 1Hz, 2Hz, 4Hz, 8hz, 12hz, 20Hz, 40Hz. gain = 500. 
+Using bonos voltage source. 
+
+1. Calibrate position? at 2hz df. 
+
+Pressure ramp without F21: dfx = 4Hz, vout = 4v
+pressure output. Then compare the DF amplitude and the DC amplitude. The DF amplitude should be linear, the DC amplitude should be non-linear. 
+
+I am getting a ton of non-linear effects, so I put the voltage down to 4v. 
+p out, vout = 4v(doubled by tx)
+Pressure v out, 
+0.05   59
+0.1    89
+0.15   95
+0.2    197
+0.25   weird nonlinear effect here? pressure reflections? 13.4
+0.3    208
+0.35   205
+0.4    176 
+
+NOTE: AE RAMP
+In this medium, I hit the charge injection limit pretty soon compared to a mouse, likely due to the lower impedance. Hence I cannot do it at such high amplitudes. 
+
+vout = 4v, doubled due to bono transformer = 8v, gain = 500, 0.1-1k band filter. 
+I cannot put the voltage above this in this medium, otherwise I hit CIL either with any form of electrodes. I tried cup and wire. 
+
+FREQUENCY RAMP WITHOUT F21. The DC offset is very high, and gets in the way. 
+
+REDO THIS WITH VOUT = 4 to avoid so many crazy non-linear CIL effects. 
+frequency df/ppamplitude(uv)
+0.5Hz  174   NOTE: I am getting these amplitude by eye, filter 1k
+1      150
+2 	   228/136 double check 
+4      57
+8      65
+20     139
+40     173
+
+NOTE: I am not really seeing the trend clearly here... this may be because at higher frequencies the signal travels further? 
+
+My measurement electrodes are the two PtIr electrodes, and my stimelectrodes are the wires, one central, one distant. 
+
+LOO TESTS IN PHANTOM WITH DIFFERENT WAVEFORMS AT THE SAME PRESSURE AND VOLTAGE. 
+= = = = = = 
+
+Then do a series of loo tests with each waveform, set at the same amplitude. F21 in place. 
+
+p out = 0.2, vout = 4(do avoid non linear CIL effects)
+
+df = 0.5
+ae loo test results: 
+ae amplitude: 239.23458270970806
+p amplitude: 143.067141205787
+v amplitude: 138.40594312392847
+
+pulse loo test results: 
+ae amplitude: 102.24014514818606
+p amplitude: 118.1505712855888
+v amplitude: 100.49485092100159
+
+switch loo test results: the amplitude shown here is the 100Hz difference frequency, I cannot really see an additional DC offset when frequencies match, as I am already applying this - if there is it is very small. This is because we already have a DC offset from the application of the signal. Also, I am only applying 4V so it would be very small. 
+ae amplitude: 219.1316563745362
+p amplitude: 183.28773839064195
+v amplitude: 130.83013164949762
+
+ae 0.33 hz. 
+ae amplitude: 292.3353940803252
+p amplitude: 145.00712723370626
+v amplitude: 136.9872983315062
+
+ae 1 hz. 
+ae amplitude: 300.1748470406313
+p amplitude: 143.2516829894219
+v amplitude: 133.05327253612623
+
+ae 2 hz. some no-linearity effect as well. 
+ae amplitude: 256.93953678765746
+p amplitude: 135.34876750577797
+v amplitude: 132.1619736223514
+
+ae 4 hz.
+ae amplitude: 305.05132090223225
+p amplitude: 146.2252048086936
+v amplitude: 128.06674551262728
+
+Next: I need a higher impedance medium... like the mouse so I can apply a higher voltage to obtain results for this loo test trilogy. 
+
+
+Phantom results suggest that: 
+
+
+
+
+
+

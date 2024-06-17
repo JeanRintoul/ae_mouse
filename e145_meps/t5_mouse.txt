@@ -1,0 +1,54 @@
+t5 - ae mouse test, with a daisy chained bono tx to get to higher voltages. 
+==========================================================================
+
+Mouse M6. This time do ae field with two daisy chained bono tx's. 
+Either apply this through a cup electrode in the gel, or the mesh. 
+Use F21. 
+Measurement electrode in tail, same as other measurements. 
+
+If it doesn't work, daisy chain 3 tx's. 
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Ketamine. 
+Ket/Xyl
+drugs:
+antidote: 4.4
+X: 1.1
+k1: 1.1
+k2: 1.0
+saline: 50
+
+Date of experiment: 27/05/2024  
+Mouse Cage: 131589
+Number of uses before: 2
+Gender: male
+Weight: 24g including headbar. 
+DOB: 24.12.2023
+
+= = = = = = = start time: 13:15pm = = = = = = = 
+- this one is going down slowly. It may need more ketamine. 
+
+- all set up, with gold cup electrode in mouth, and in US gel for stim electrodes. 
+
+- i am getting only 54v pp - i dont think this is enough, need the third tx. 
+
+- i am seeing mostly dc offset, and minimal df. maybe 800uv... 
+putting the df at 0.25 yields a signal with df at 1hz?
+
+This may have something to do with how I am applying the voltage? 
+The beat frequency is coming from the tx. 
+
+- I do still get a df between the US and the tx though... so there is hope. 
+
+1hr 13m mouse is on: 
+
+MOvements even for pulse mep were not that clear this time. 
+
+
+
+
+
+
+
+

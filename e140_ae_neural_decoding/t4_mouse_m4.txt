@@ -1,0 +1,74 @@
+t4 - ae neural recording. 
+===================================
+
+M4, vertical headbar, first use. 
+
+
+Attempt at a full test.  
+
+VEP at 10Hz
+Spatial Calibration
+
+3 tests:
+1. frequency specificity test 8Hz and 10Hz VEP with US at 1MPa. v out = 0.1. 10x repeats of each. 30 seconds duration of each. 
+2. side to side test, and attempt at spatial map based on 10Hz VEP. 
+3. Acoustically connected vs not. (this should just be the not, as 1. is the connected part)
+
+= = = = = = = = = = = = = = = = = = = = = 
+
+Isoflurane. m4 mouse. 
+Date of experiment: 17/04/2024  
+Mouse Cage: 129801
+Number of uses before: 0
+Gender: female
+Weight: 23g including headbar. 
+DOB: 24.12.2023
+
+= = = = = start time: 9:17am  = = = = = =  
+
+e140_vep.py 
+e140_ae_calibrate.py    
+e140_ae_neural_recording.py
+
+==============================
+NOTE: I only have 50 left of 02 - keep an eye on it. 
+
+1. 10Hz VEP, ISO = 0.7. 25 microvolt p-p... with lights on.. smaller at 20 and 30 looks great. 
+
+2. Instead of calibration, consider just going straight to the spatial map code. 
+
+3. The signal looks sort of weird... it is possible I have a non-ideal connection. The VEP looked good though? The VEP is gone now mouse has been under iso longer. 
+
+I do a regular calibration, replace tape.. still the signal looks weird. 
+
+ae neural recording. 
+8hz aevep - I didnt get it, but instead got some large deviation... maybe i need to remove a file? I think somehow I am positioned in the wrong location? 
+
+absolutely nothing. The signal looks really weird... 
+
+I think I should stop, fix the signal. 
+
+
+I then tried the US again, without the mouse... in a phantom and the signal looked normal. Hence I think the signal issue is related to the implant electrodes. Perhaps there is a d/c? 
+
+Suggestion for after lunch - try mouse m5. Is it the vertical electrode style, or is it something else? 
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
